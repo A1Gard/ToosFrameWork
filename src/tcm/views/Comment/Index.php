@@ -1,0 +1,35 @@
+<?php
+
+$prefix = GetLinkPrefix('order');
+
+$listview = new TListView('comment_id');
+$listview->SetList($this->cls_list);
+$listview->SetPattern(1,  '<img src="' . UR_CM_PUB . 'images/comment%s.png" alt="[comment status]" />');
+$listview->AddColum('وضعیت', '%1comment_status', 2);
+$listview->AddColum('ip', '%icomment_ip', 3);
+$listview->AddColum('زمان', '%tcomment_time', 3);
+$listview->AddColum('ارسال کننده', 'manager_displayname,member_name', 3);
+$listview->AddColum('عنوان یادداشت', 'topic_title', 7);
+$listview->AddColum('', 'comment_text',16);
+$pattern = '<a class="button delete" href="' . UR_CM . 'Comment/Delete/%id%"> حذف </a>
+                <a class="button approve" href="' . UR_CM . 'Comment/Status/%id%/1"> تایید </a>
+                <a class="button unapprove" href="' . UR_CM . 'Comment/Status/%id%/2">  رد کردن   </a>
+                <a class="button penddling" href="' . UR_CM . 'Comment/Status/%id%/0"> بازگشت  به بررسی</a>
+                <a class="button reply" href="' . UR_CM . 'Comment/NewComment/%id%/%topic%">پاسخ</a>';
+$listview->AddAction($pattern, 8, 'comment_status');
+
+
+$listview->AddFilter('در انتظار بررسی ', 'comment_status', '0');
+$listview->AddFilter('تاییده شده', 'comment_status', '1');
+$listview->AddFilter('  رد شده ', 'comment_status', '2');
+
+$listview->AddBulkAcction('  بازگشت به بررسی', 'Edit', 'comment_status,0');
+$listview->AddBulkAcction('  تایید کردن', 'Edit', 'comment_status,1');
+$listview->AddBulkAcction('    رد کردن', 'Edit', 'comment_status,2');
+$listview->AddBulkAcction(' حذف', 'Delete', null);
+
+$listview->Render('Comment');
+
+$this->pagination->Render();
+
+

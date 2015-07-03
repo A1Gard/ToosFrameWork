@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @package Toos FrameWork
+ * @author Phoenix Tech <info@pxt.ir> 
+ * @date : 13-Juan-2014
+ * @time : 17:31 
+ * @subpackage   Topic-controller.php | topics controller
+ * @todo :   
+ */
+
+class Search extends Controller {
+    
+    private static $_main_title ;
+    function __construct() {
+        
+        parent::__construct() ;
+        self::$_main_title = _lg('Search') ;
+    }
+    
+    public function AjaxSearchAll() {
+       echo $this->model->AjaxSearchAll($_GET['mode'],$_GET['q']);     
+    }
+    
+ 
+}
+

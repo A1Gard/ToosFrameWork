@@ -1,0 +1,150 @@
+
+.thumb {
+    display:block;
+    width:100%;
+    height:220px;
+    position:relative;
+    float:left;
+    margin-bottom:25px;
+}
+
+.thumb-wrapper {
+    display:block;
+    width:100%;
+    height:100%;
+    border: 1px solid rgb(255, 0, 173);
+}
+
+.thumb img {
+    width:100%;
+    height:100%;
+    position:absolute;
+    display:block;			
+
+}
+
+.thumb .thumb-detail {
+    display:block;
+    width:100%;
+    height:100%;
+    position:absolute;			
+    background:url(../img/header.png);
+    font-family:arial;
+    font-weight:bold;
+    font-size:16px;	
+    border: 1px solid rgb(255, 0, 173);
+}
+
+.thumb .thumb-detail a {
+    display:block;
+    text-transform:uppercase;
+    font-weight:bold;	
+    color:gold;
+    text-decoration:none;		
+    letter-spacing:-1px;
+    padding:10px;	
+    font-size:18px;
+    text-align: center;
+}		
+.thumb .thumb-detail p{
+    color:#fff;
+    margin:10px;
+    text-align: justify;
+    font-weight:normal;
+}
+/*
+* Without CSS3
+*/
+.thumb.scroll {
+    overflow: hidden;
+}	
+
+.thumb.scroll .thumb-detail {
+    bottom:-280px;
+}
+
+
+/*
+* CSS3 Flip
+*/	
+.thumb.flip {
+    -webkit-perspective:800px;		
+    -moz-perspective:800px;
+    -ms-perspective:800px;		   		
+    -o-perspective:800px;
+    perspective:800px;
+}
+
+.thumb.flip .thumb-wrapper {
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -ms-transition: -moz-transform 1s;
+    -o-transition: -moz-transform 1s;
+    transition: -moz-transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;			
+    -ms-transform-style: preserve-3d;			
+    -o-transform-style: preserve-3d;			
+    transform-style: preserve-3d;			
+}
+
+.thumb.flip .thumb-detail {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);			   			
+}
+
+.thumb.flip img,
+.thumb.flip .thumb-detail {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.thumb.flip .flipIt {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);			
+    -ms-transform: rotateY(-180deg);			
+    -o-transform: rotateY(-180deg);			
+    transform: rotateY(-180deg);			
+}
+
+
+#typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+#jtype{
+    color: white;
+}
+
+
+
+
+#tutorials h3{
+    background: rgba(255,255,255,0.6);
+    padding: 5px 1em;
+    border-radius:2px;
+}

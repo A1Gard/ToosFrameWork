@@ -1,0 +1,38 @@
+<?php
+/**
+ * @package Toos FrameWork
+ * @author Phoenix Tech <info@pxt.ir> 
+ * @date : 22-March-2013 (2-1-1392) 
+ * @time : 16:32 
+ * @subpackage   index.php
+ * @todo : index - index page view
+ */
+echo "This a message to show {$this->msg}";
+?>
+
+<div class="row autofit">
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" ></div></div>
+</div>
+
+<?php 
+    $str_time = '3:30';
+sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+
+$time_seconds = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
+echo $time_seconds;
+?>

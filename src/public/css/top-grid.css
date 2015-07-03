@@ -1,0 +1,342 @@
+/* 
+    Created on  : Mar 20, 2014, 9:55:43 AM
+    Author      : A1Gard.
+    Project     : top Grid
+    Version     : 1.0
+*/
+
+/**
+ *
+ * xLarg > 1900px
+ * Larg =  1799px - 768px -> Default 
+ * Mediom = 767px - 480px
+ * Small < 489px
+ *
+ **/
+
+/**reset*/
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    border-spacing:0;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+}
+
+a,a:visited,a:hover,a:hover:visited{
+    text-decoration:none;
+}
+ul{
+    list-style-position:inside;
+}
+
+button,input[type="submit"],input[type="reset"],
+input[type="image"],input[type="button"]{
+    cursor:pointer;
+}
+
+
+/**********************************************************************
+***********************************************************************
+***********************************************************************/
+
+
+/*define defualt classes*/
+.center{
+    margin-right:auto;
+    margin-left:auto;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
+.clr{
+    clear:both;
+    display:block;
+    content: ""; 
+}
+.text-center{
+    text-align:center;
+}
+.text-left{
+    text-align:left;
+}
+.text-right{
+    text-align:right;
+}
+.text-justfy{
+    text-align:justify;
+}
+.margin{
+    margin:1em;
+}
+.margin-v{ /* vertical margin */
+    margin-top:1em;
+    margin-bottom:1em;
+}
+.margin-h{ /* horizntal margin */
+    margin-right:1em;
+    margin-left:1em;
+}
+.t-wrapper{
+    margin:0 auto;
+    overflow:hidden;
+    position:relative;
+}
+.std-wrapper{ /* standard width wrapper */
+    max-width:1100px;
+    margin:0 auto;
+    overflow:hidden;
+    position:relative;
+}
+.full-width{
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    *behavior: url(../js/boxsizing.htc); 
+    /*	If you need support for IE7 and lower make 
+            sure the boxsizing.htc file is linked properly.
+            More info here:  https://github.com/Schepp/box-sizing-polyfill */
+    width:100%;
+}
+.full-height{
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    *behavior: url(../js/boxsizing.htc); 
+    /*	If you need support for IE7 and lower make 
+            sure the boxsizing.htc file is linked properly.
+            More info here:  https://github.com/Schepp/box-sizing-polyfill */
+    box-sizing:border-box;
+    min-height:100vh;
+}
+.clearfix:before, .clearfix:after {
+display: table;
+content: " ";
+}
+
+.animate{
+    -o-transition:.6s;
+    -ms-transition:.6s;
+    -moz-transition:.6s;
+    -webkit-transition:.6s;
+    transition:.6s;
+}
+.animate-fast{
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+.animate-slow{
+    -o-transition:1.2s;
+    -ms-transition:1.2s;
+    -moz-transition:1.2s;
+    -webkit-transition:1.2s;
+    transition:1.2s;
+}
+
+
+
+
+
+/**********************************************************************
+***********************************************************************
+***********************************************************************/
+
+/*grid system*/
+.row{
+    width:100%;
+    padding:0;
+    font-size:0;
+}
+
+.row .grd-primary  ,
+.row .grd-secondary  ,
+.row .grd-equal-priority,
+.row .grd1  ,
+.row .grd2  ,
+.row .grd3  ,
+.row .grd4  ,
+.row .grd5  ,
+.row .grd6  ,
+.row .grd7  ,
+.row .grd8  ,
+.row .grd9  ,
+.row .grd10,
+.row .grd11,
+.row .grd12,
+.row .grd13,
+.row .grd14,
+.row .grd15,
+.row .grd16,
+.row .grd17,
+.row .grd18,
+.row .grd19,
+.row .grd20,
+.row .grd21,
+.row .grd22,
+.row .grd23,
+.row .grd24{
+	display: inline-block;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    *behavior: url(../js/boxsizing.htc); 
+    /*	If you need support for IE7 and lower make 
+            sure the boxsizing.htc file is linked properly.
+            More info here:  https://github.com/Schepp/box-sizing-polyfill */
+    
+	font-size: initial;
+	vertical-align: top;
+}
+
+/**********************************************************************
+***********************************************************************
+***********************************************************************/
+
+/*default larg system *** Larg =  1799px - 768px -> Default */
+.grd1 { width: 4.16666666667%; }
+.grd2 { width: 8.33333333333%; }
+.grd3 { width:12.5%; }
+.grd4 { width: 16.6666666667%; }
+.grd5 { width: 20.8333333333%; }
+.grd6 { width: 25%; }
+.grd7 { width: 29.1666666667%; }
+.grd8 { width: 33.3333333333%; }
+.grd9 { width: 37.5%; }
+.grd10 { width: 41.6666666667%; }
+.grd11 { width: 45.8333333333%; }
+.grd12 { width: 50%; }
+.grd13 { width: 54.1666666667%; }
+.grd14 { width: 58.3333333333%; }
+.grd15 { width: 62.5%; }
+.grd16 { width: 66.6666666667%; }
+.grd17 { width: 70.8333333333%; }
+.grd18 { width: 75%; }
+.grd19 { width: 79.1666666667%; }
+.grd20 { width: 83.3333333333%; }
+.grd21 { width: 87.5%; }
+.grd22 { width: 91.6666666667%; }
+.grd23 { width: 95.8333333333%; }
+.grd24 { width: 100%; }
+
+/* * Mediom = 767px - 480px*/
+/*-768 width*/
+@media ( max-width : 768px ) {
+    .autofit .grd6 { width: 50%; }
+    .autofit .grd4 { width: 25%; }
+}
+/* * Small < 479px */
+/*-480 width*/
+@media ( max-width : 480px ) {
+	.row .grd-primary  ,
+	.row .grd-secondary  ,
+	.row .grd-equal-priority,
+	.row .grd1  ,
+	.row .grd2  ,
+	.row .grd3  ,
+	.row .grd4  ,
+	.row .grd5  ,
+	.row .grd6  ,
+	.row .grd7  ,
+	.row .grd8  ,
+	.row .grd9  ,
+	.row .grd10,
+	.row .grd11,
+	.row .grd12,
+	.row .grd13,
+	.row .grd14,
+	.row .grd15,
+	.row .grd16,
+	.row .grd17,
+	.row .grd18,
+	.row .grd19,
+	.row .grd20,
+	.row .grd21,
+	.row .grd22,
+	.row .grd23,
+	.row .grd24 { width:100%;display:block;}
+    .autofit .grd6 { width:100%;display:block; }
+    .autofit .grd4 { width: 33.3333333333% ;display:inline-block;} 
+}
+/**********************************************************************
+***********************************************************************
+***********************************************************************/
+/*Prioritize * equal priority */
+/*default larg system *** Larg =  1799px - 768px -> Default */
+.grd-primary{
+    width:75%;
+}
+.grd-secondary{
+    width:25%;
+    float:right;
+} 
+.grd-equal-priority{
+    width:50%;
+}
+/*+768 width*/
+@media ( min-width : 768px ) {
+    float:right;
+}
+
+/* * Mediom = 767px - 480px*/
+/*-768 width*/
+@media ( max-width : 768px ) {
+    .grd-primary{
+        width:100%;
+        display:block;
+    }
+    .grd-secondary{
+        width:100%;
+        display:block;
+        float:none;
+    } 
+    .grd-equal-priority{
+        width:100%;
+        display:block;
+    }
+}
+/** xLarg > 1900px*/
+/*+1900*/
+@media ( min-width : 1900px ) {
+    .grd-primary{
+        width:50%;
+    }
+    .grd-secondary{
+        width:25%;
+        float:none;
+    } 
+    .grd-equal-priority{
+        width: 33.3333333333% ;
+    }
+}
+
+
+/**********************************************************************
+***********************************************************************
+***********************************************************************/
