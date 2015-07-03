@@ -21,11 +21,4 @@ if (_DBG_):
     
     echo '</pre>';
     
-    $a = 'a1';
-$baz = <<<FOOBARa
-Property example 
-  $a       
-FOOBARa;
-         
-         echo $baz;
 endif;
