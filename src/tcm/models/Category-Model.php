@@ -51,6 +51,9 @@ class CategoryModel extends TCategory {
         // exc sql
         $result = $this->db->CustomQuery($sql);
         
+        if ($result !== FALSE) {
+            $result = TRUE;
+        }
         return $result;
     }
 

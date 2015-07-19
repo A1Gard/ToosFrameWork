@@ -15,11 +15,11 @@
  */
 function __autoload($class) {
 
-    if (__CM__) {
+    if (__MP__) {
         if (file_exists(PA_CORE . $class . '.php')) {
             require PA_CORE . $class . '.php';
         } else {
-            require PA_LIBS_CM . $class . '.php';
+            require PA_LIBS_MP . $class . '.php';
         }
     }else{
         require 'libs/' . $class . '.php';
@@ -38,11 +38,19 @@ function Redirect($location) {
  * @todo go to back page
  * @param string $message
  */
-function GoBack($message = null, $notification_icon = 1, $params = array()) {
+function GoBack($message = null) {
     if ($message == null) {
         Redirect($_SERVER["HTTP_REFERER"]);
     } else {
-        RedirectNotification($_SERVER["HTTP_REFERER"], $message, $notification_icon, $params);
+        $tmp = explode('/', $_SERVER["HTTP_REFERER"]);
+        $lst = array('create','edit','delete','do');
+        if (in_array($tmp[count($tmp)-1], $lst)) {
+            $red = substr($_SERVER["HTTP_REFERER"], 0,strlen($_SERVER["HTTP_REFERER"]) 
+                    - ( strlen($tmp[count($tmp)-1])+1)  );
+        }else{
+            $red = $_SERVER["HTTP_REFERER"];
+        }
+        Redirect($red . $message);
     }
 }
 

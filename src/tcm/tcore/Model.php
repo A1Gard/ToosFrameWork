@@ -36,7 +36,7 @@ class Model {
 
                 //check class exists
                 if (!class_exists('TDatabase', FALSE)) {
-                    require (PA_LIBS_CM . 'TDatabasePDO.php');
+                    require (PA_LIBS_MP . 'TDatabasePDO.php');
                 }
 
                 $this->db = new TDatabase(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);
@@ -46,7 +46,7 @@ class Model {
 
                 //check class exists
                 if (!class_exists('TDatabase', FALSE)) {
-                    require (PA_LIBS_CM . 'TDatabaseMysqli.php');
+                    require (PA_LIBS_MP . 'TDatabaseMysqli.php');
                 }
 
                 $this->db = new TDatabase(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD);

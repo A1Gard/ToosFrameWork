@@ -18,7 +18,7 @@
         <div class="margin-h grd3">
             <h4><?php _lp('Widget prepared') ?></h4>
             <div class="em-padding">
-                <?= $this->widget_prepared ?>
+                <?php echo  $this->widget_prepared ?>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 accept: ":not(.ui-sortable-helper)",
                 drop: function(event, ui) {
                     //get ajax info.
-                    $.post('<?= UR_CM ?>Widget/Insert', {class: ui.draggable.attr('data-class'), type: 0, ajax: 1},
+                    $.post('<?php echo  UR_MP ?>Widget/Insert', {class: ui.draggable.attr('data-class'), type: 0, ajax: 1},
                     function(e) {
                         //console.log(e);return true;
                         var resolt = JSON.parse(e);
@@ -61,7 +61,7 @@
                                 source: function(request, response) {
 
                                     $.ajax({
-                                        url: "<?= UR_CM ?>Search/AjaxSearchAll",
+                                        url: "<?php echo  UR_MP ?>Search/AjaxSearchAll",
                                         dataType: "json",
                                         data: {
                                             q: request.term,
@@ -106,7 +106,7 @@
                             $.ajax({
                                 type: 'POST',
                                 data: {ajax: 1},
-                                url: '<?= UR_CM ?>Widget/Delete/' + $(item).attr('data-id'),
+                                url: '<?php echo  UR_MP ?>Widget/Delete/' + $(item).attr('data-id'),
                                 success: function(e) {
                                     //console.log(e);return true; 
                                     var result = JSON.parse(e);
@@ -125,7 +125,7 @@
                             $.ajax({
                                 type: 'POST',
                                 data: {ajax: 1},
-                                url: '<?= UR_CM ?>DropDownMenu/Delete/' + $(item).attr('data-id'),
+                                url: '<?php echo  UR_MP ?>DropDownMenu/Delete/' + $(item).attr('data-id'),
                                 success: function(e) {
                                     //console.log(e);return true; 
                                     var result = JSON.parse(e);
@@ -154,7 +154,7 @@
                             $.ajax({
                                 type: 'POST',
                                 data: {ajax: 1, dropdown_sort_index: sort, dropdown_parent: parent},
-                                url: '<?= UR_CM ?>DropDownMenu/Update/' + $(item).attr('data-id'),
+                                url: '<?php echo  UR_MP ?>DropDownMenu/Update/' + $(item).attr('data-id'),
                                 success: function(e) {
                                     //console.log(e);return true;
                                     var result = JSON.parse(e);
@@ -183,7 +183,7 @@
                             $.ajax({
                                 type: 'POST',
                                 data: {ajax: 1, widget_id: id, parent_id: parent,sort:sort},
-                                url: '<?= UR_CM ?>DropDownMenu/Insert/' + $(item).attr('data-id'),
+                                url: '<?php echo  UR_MP ?>DropDownMenu/Insert/' + $(item).attr('data-id'),
                                 success: function(e) {
                                     //console.log(e);return true;
                                     var result = JSON.parse(e);
@@ -229,7 +229,7 @@
                 source: function(request, response) {
 
                     $.ajax({
-                        url: "<?= UR_CM ?>Search/AjaxSearchAll",
+                        url: "<?php echo  UR_MP ?>Search/AjaxSearchAll",
                         dataType: "json",
                         data: {
                             q: request.term,

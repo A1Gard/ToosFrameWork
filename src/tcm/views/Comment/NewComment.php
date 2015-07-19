@@ -1,5 +1,5 @@
 <?php
-$frm = new TForm(UR_CM . 'Comment/Insert', 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Comment/Insert', 'post', array('class' => 'form rtl'));
 
 $frm->AddField('textarea', 'متن پاسخ', null, array('name' => 'comment_text','class'=>'ckeditor'));
 
@@ -10,7 +10,7 @@ $frm->AddField('submit', '', 'ارسال');
 ?>
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo  $this->title ?>
 </h2>
 <br />
 <br />

@@ -2,7 +2,7 @@
 <div class="row">
     <div class="grd24"  style="min-height:200px;margin-bottom:40px" >
 
-        <form action="<?= UR_CM ?>DropDownMenu/Sync" method="post" id="sort_form" onsubmit="return false;" >
+        <form action="<?php echo  UR_MP ?>DropDownMenu/Sync" method="post" id="sort_form" onsubmit="return false;" >
 
             <?php echo $this->dropdown->DropDownOl(); ?>
 
@@ -140,7 +140,7 @@
                             ajax: 1,
                             dropdown_title: newtxt
                         },
-                        url: '<?= UR_CM ?>DropDownMenu/Update/' + id,
+                        url: '<?php echo  UR_MP ?>DropDownMenu/Update/' + id,
                         success: function (e) {
                             //console.log(e);
                             //return true;
@@ -198,7 +198,7 @@
                             data: {
                                 ajax: 1
                             },
-                            url: '<?= UR_CM ?>DropDownMenu/Delete/' + id,
+                            url: '<?php echo  UR_MP ?>DropDownMenu/Delete/' + id,
                             success: function (e) {
                                 //console.log(e);
                                 //return true;
@@ -250,7 +250,7 @@
                                 dropdown_sort_index: sort,
                                 dropdown_parent: parent
                             },
-                            url: '<?= UR_CM ?>DropDownMenu/Insert',
+                            url: '<?php echo  UR_MP ?>DropDownMenu/Insert',
                             success: function (e) {
                                 //console.log(e);
                                 //return true;
@@ -282,7 +282,7 @@
             });
             $("#drop-down-menu").bind("dblclick", function () {
                 $(this).toggleClass('drop-down-menu');
-                $(this).toggleClass('pro-ol');
+                $(this).toggleClass('gray-ol');
                 $(this).toggleClass('highlite');
             });
             
@@ -290,14 +290,14 @@
             $(".autocomplete").autocomplete({
                 source: function (request, response) {
 
-                    var rmode = <?= SEARCH_MODE_CATEGORY ?>;
+                    var rmode = <?php echo  SEARCH_MODE_CATEGORY ?>;
                     if ($("#mode").val() == 1) {
-                        rmode = <?= SEARCH_MODE_TOPIC ?>;
+                        rmode = <?php echo  SEARCH_MODE_TOPIC ?>;
                     } else if ($("#mode").val() == 2) {
-                        rmode = <?= SEARCH_MODE_TAG ?>;
+                        rmode = <?php echo  SEARCH_MODE_TAG ?>;
                     }
                     $.ajax({
-                        url: "<?= UR_CM ?>Search/AjaxSearchAll",
+                        url: "<?php echo  UR_MP ?>Search/AjaxSearchAll",
                         dataType: "json",
                         data: {
                             q: request.term,

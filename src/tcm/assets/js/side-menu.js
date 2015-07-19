@@ -21,22 +21,41 @@ function elementInViewport(el) {
             );
 }
 
-$(function() {
-    
+$(function () {
+
     // constants
     var defaults = {
         event: 'click',
         speed: 300
     };
 
+    $("#sidemenu-show").bind('click', function () {
+        
+        $("#sidebar").toggleClass('show');
+        $(document).bind('click.close', function (e) {
+            //console.log(e);
+           
+            if ($(e.target).closest('#sidebar').length === 0 && 
+                    !$(e.target).is('#sidebar') &&
+                    $("#sidebar").hasClass('show')) {
+                // do something
+                $("#sidebar").removeClass('show');
+                $(document).unbind('click.close');
+            }
+        });
+        return  false;
+    });
+
+
+
     // toggle sidebar show full
-    $("#side-toggle").bind('click', function() {
+    $("#side-toggle").bind('click', function () {
         $("#sidebar").toggleClass('icon-only');
         $("#content").toggleClass('no-margin');
         $('.sub').attr('style', '');
         $('.sub').toggleClass('animate');
         $(".pinned").width($(".pinned").parent().width());
-        $(".pinned").css('left','');
+        $(".pinned").css('left', '');
     });
 
     // add expand icon
@@ -44,27 +63,22 @@ $(function() {
 
 
     // control menu in full width mode
-    $('#nav-accordion .sub-menu').bind(defaults.event, function() {
-        
-        // reset styles if mini width before than
-        if (($(window).width() > 768)) {
-            $('.sub').attr('style', '');
-        }
+    $('#nav-accordion .sub-menu').bind(defaults.event, function () {
+
         // find clicked child
         var el = $(this).find('.sub');
         // slide up all sub menus
         $('#nav-accordion .sub').slideUp(defaults.speed);
-        // reset nav accordion postion
-        $("#nav-accordion").css("margin-top",'80px');
+
         // if slide active remove from this
         if ($(el).hasClass('sAct')) {
             $(this).removeClass('expand');
             $(el).removeClass('sAct');
         } else { // else slide down
-            $(el).slideDown(defaults.speed, function() {
+            $(el).slideDown(defaults.speed, function () {
                 if (elementInViewport($(el)[0]) === false) {
                     // show overflow menu
-                    $("#nav-accordion").css("margin-top",('-'+($(el).height()-15)+'px'));
+                    $("#nav-accordion").css("margin-top", ('-' + ($(el).height() - 15) + 'px'));
                 }
             });
             // remove slide active from all
@@ -77,37 +91,13 @@ $(function() {
     });
 
     // disable redirect
-    $("sub-menu a[href='#']").bind('click.no_redirect', function() {
+    $("sub-menu a[href='#']").bind('click.no_redirect', function () {
         return false;
     });
 
     // control in mini width mode
-    $('#nav-accordion .sub-menu').bind('mouseenter', function() {
-        // if mini width mode
-        if ($(this).parent().parent().hasClass('icon-only') || ($(window).width() < 768)) {
-            var elm = $(this).find('.sub');
-            $(elm).css({
-                "left": "30px",
-                "height": "auto",
-                "overflow": "visible",
-                "position": "absolute",
-                "opacity": "1"
-            });
-            // if have overflow show from bottom
-            if (elementInViewport($(elm)[0]) === false) {
-                $(elm).css({'bottom': "0"});
-            }
-        }
-    });
-    // control in mini width mode
-    $('#nav-accordion .sub-menu').bind('mouseleave', function() {
-        // if mini width mode
-        if ($(this).parent().parent().hasClass('icon-only') || ($(window).width() < 768)) {
-            var elm = $(this).find('.sub');
-            $(elm).css({
-                "opacity": "0"
-            });
-        }
+    $('#nav-accordion .sub-menu').bind('mouseenter', function () {
 
     });
+
 });

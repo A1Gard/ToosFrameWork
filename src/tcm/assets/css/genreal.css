@@ -1,0 +1,224 @@
+
+/* 
+    Created on : Mar 31, 2015, 9:23:22 PM
+    Author     : ToosCM team
+    todo       : general application css
+*/
+
+
+@import url(font-awesome.min.css);
+
+
+*{
+    outline: none;
+}
+
+body{
+    background: #ddd;
+    font-family:tahoma,arial;
+}
+
+a,a:visited{
+    color: #007fba;
+}
+a:hover,a:visited:hover{
+    color: #13a7c7;
+}
+
+#header {
+    border-bottom:1px solid #007fba;
+    background: #fff;
+    height: 60px;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:29;
+}
+
+#header #logo{
+    width:10%;
+    height:100%;
+    float: left;
+    background:#13a7c7 url(../img/wlogo.png) no-repeat center;
+    background-size: 85%;
+}
+
+#header #nav-header {
+    float: left;
+    height:100%;
+    width:60%;
+}
+#header #nav-header ul{
+    list-style:none;
+    height:100%;
+    padding: 10px;
+}
+#header #nav-header ul li{
+    display:inline-block;
+    background: #ddd;
+    border-radius:100%;
+    height:40px;
+    width:40px;
+    margin:0 3px;
+    text-align: center;
+    position: relative;
+}
+#header #nav-header ul li .notify{
+    background:red;
+    position:absolute;
+    top:-3px;
+    left: -4px;
+    color:white;
+    border-radius:100%;
+    padding:2px;
+    font-style: normal;
+}
+
+#header #nav-header ul li:hover{
+    background: #eee;
+}
+
+#header #nav-header ul li a{
+    display: block;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+#header #admin-bar {
+    width:30%;
+    float: left;
+    height:40px;
+    padding:10px 0;
+}
+
+#header #admin-bar #admin-search{
+    background: #ddd url(../img/search.png) right center no-repeat;
+    padding:4px;
+    padding-right: 18px;
+    cursor: pointer;
+    border:3px solid #ddd;
+    width:0;
+    margin:4px;
+    border-radius:3px;
+    float: right;
+}
+#header #admin-bar #admin-search:focus{
+    width:35%;
+}
+
+#header #admin-bar #you{
+    float:right;
+    margin: 4px;
+    background: #ddd;
+    width: 40%;
+    border-radius:12px;
+    margin-right:1em;
+    cursor: pointer;
+    position:relative;
+    /* z-index: 999; */
+}
+
+#header #admin-bar #you .hello{
+    font-weight:bold;
+    display:inline-block;
+    padding-top:7px;
+}
+#header #admin-bar .fa-angle-down{
+    float:right;
+    margin:5px;
+}
+#header #admin-bar #you img{
+    width:25px;
+    height:25px;
+    border-radius:100%;
+    border: 1px solid #eee;
+    float:left;
+    margin-right:5px;
+}
+
+
+#content {
+    margin-top: 60px;
+    margin-left:230px;
+}
+#content .view-port{
+    padding: 5px 0.5em;
+}
+
+#sidebar {
+    width:230px;
+    background-color: #32323a;
+    position:fixed;
+    left:0;
+    /*padding-top:60px;*/
+    height:100vh;
+    top:0;
+    z-index:28;
+    padding-top:60px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:border-box;
+
+}
+
+#footer{
+    position:fixed;
+    height:15px;
+    bottom:0;
+    border: 1px solid #007fba;
+    right:35%;
+    background: #13a7c7;
+    border-radius: 3px 3px 0 0 ;
+    text-align: center;
+    color:white;
+    padding:10px;
+    opacity:0.3;
+}
+#footer:hover{
+    opacity:1;
+}
+
+
+.suggest-bg{
+    background: #f8ab6b !important; 
+}
+
+.gray-ol li{
+    list-style: none;
+    border: 1px solid gray;
+    padding:3px 1em;
+    margin: 2px;
+    background: rgba(220,220,220,.5);
+    border-radius: 1px;
+}
+
+.white-bg{
+    background: white;
+    margin:1em;
+    overflow: hidden;
+    min-height:300px;
+}
+
+.white-bg h3{
+    background: #13a7c7;
+    padding:1em; 
+    color: white; 
+}
+
+ul.state{
+    margin:1em 10px;
+    list-style:none;
+}
+ul.state li{
+    padding:5px;
+}
+ul.state li:nth-child(odd){
+    background:rgba(0,0,0,0.1);
+}
+ul.state li span{
+    color:red;
+}
+
+.mobile-visble{
+    display: none !important; 
+}

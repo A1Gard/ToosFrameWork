@@ -4,18 +4,18 @@ $prefix = GetLinkPrefix('order');
 
 $listview = new TListView('comment_id');
 $listview->SetList($this->cls_list);
-$listview->SetPattern(1,  '<img src="' . UR_CM_PUB . 'images/comment%s.png" alt="[comment status]" />');
+$listview->SetPattern(1,  '<img src="' . UR_MP_ASSETS . 'images/comment%s.png" alt="[comment status]" />');
 $listview->AddColum('وضعیت', '%1comment_status', 2);
 $listview->AddColum('ip', '%icomment_ip', 3);
 $listview->AddColum('زمان', '%tcomment_time', 3);
 $listview->AddColum('ارسال کننده', 'manager_displayname,member_name', 3);
 $listview->AddColum('عنوان یادداشت', 'topic_title', 7);
 $listview->AddColum('', 'comment_text',16);
-$pattern = '<a class="button delete" href="' . UR_CM . 'Comment/Delete/%id%"> حذف </a>
-                <a class="button approve" href="' . UR_CM . 'Comment/Status/%id%/1"> تایید </a>
-                <a class="button unapprove" href="' . UR_CM . 'Comment/Status/%id%/2">  رد کردن   </a>
-                <a class="button penddling" href="' . UR_CM . 'Comment/Status/%id%/0"> بازگشت  به بررسی</a>
-                <a class="button reply" href="' . UR_CM . 'Comment/NewComment/%id%/%topic%">پاسخ</a>';
+$pattern = '<a class="button delete" href="' . UR_MP . 'Comment/Delete/%id%"> حذف </a>
+                <a class="button approve" href="' . UR_MP . 'Comment/Status/%id%/1"> تایید </a>
+                <a class="button unapprove" href="' . UR_MP . 'Comment/Status/%id%/2">  رد کردن   </a>
+                <a class="button penddling" href="' . UR_MP . 'Comment/Status/%id%/0"> بازگشت  به بررسی</a>
+                <a class="button reply" href="' . UR_MP . 'Comment/NewComment/%id%/%topic%">پاسخ</a>';
 $listview->AddAction($pattern, 8, 'comment_status');
 
 

@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'yekan';
+    src: url('../fonts/byekan.eot');
+    src: url('../fonts/byekan.eot') format('embedded-opentype'),
+        url('../fonts/byekan.woff') format('woff'),
+        url('../fonts/byekan.ttf') format('truetype'),
+        url('../fonts/byekan.svg#byekanRegular') format('svg');
+}
+
+
+body{
+    direction:rtl;
+    font-family: 'yekan',tahoma,arial;
+}
+
+input,textarea,select,button{
+    font-family: 'yekan',tahoma,arial;
+}
+
+#header #logo,
+#header #admin-bar,
+#header #nav-header{
+    float:right;
+}
+
+
+#header #admin-bar #admin-search,
+#header #admin-bar #you,
+#header #admin-bar .fa-angle-down{
+    float:left;
+}
+
+#header #admin-bar #you img{
+    float:right;
+    margin-left:5px;
+}
+
+
+#content {
+    margin-right:230px;
+    margin-left: 0;
+}
+
+#sidebar {
+    left:auto;
+    right:0;
+}
+
+
+
+#footer{
+    right:auto;
+    left:35%;
+}

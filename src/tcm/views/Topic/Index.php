@@ -7,8 +7,8 @@ $listview->SetList($this->cls_list);
 $listview->AddColum('عنوان', 'topic_title', 12);
 $listview->AddColum('وضعیت', 'topic_status', 2);
 $listview->AddColum('تعداد نمایش', 'topic_counter', 2);
-$pattern = '<a class="button delete" href="' . UR_CM . 'Topic/Delete/%id%"> حذف </a>
-            <a class="button" href="' . UR_CM . 'Topic/Edit/%id%"> ویرایش </a>';
+$pattern = '<a class="button delete" href="' . UR_MP . 'Topic/Delete/%id%"> حذف </a>
+            <a class="button" href="' . UR_MP . 'Topic/Edit/%id%"> ویرایش </a>';
 $listview->AddAction($pattern, 4, 'topic_status');
 
 $listview->AddFilter('پیش نویس', 'topic_status', '0');

@@ -11,7 +11,6 @@
 
 class Req extends Controller {
     
-    private static $_main_title ;
     function __construct() {
         
         parent::__construct() ;
@@ -31,14 +30,14 @@ class Req extends Controller {
 
     
     public function Edit($id) {
-        $this->view->navigator->AddItem(_lg('فهرست برنامه'), UR_CM . 'Req/Index');
+        $this->view->navigator->AddItem(_lg('فهرست برنامه'), UR_MP . 'Req/Index');
         $this->view->record = $this->model->GetRecord($id);
         $this->view->PageRender('Req/Edit',self::$_main_title . ' ویرایش  - ' .$this->view->record['req_title'] );
     }
     
     public function Update($id) {
         $this->model->Edit($id,$_POST);
-        Redirect(UR_CM . 'Req/Edit/' . $id);
+        Redirect(UR_MP . 'Req/Edit/' . $id);
     }
     
     /**

@@ -11,6 +11,7 @@
 class Controller extends Bootstarp {
 
     private $base;
+    protected static $_main_title = '';
 
     function __construct($base = '') {
 
@@ -54,7 +55,7 @@ class Controller extends Bootstarp {
      */
     public function Insert() {
         $id = $this->model->Create($_POST);
-        Redirect(UR_CM . $this->base . '/Edit/' . $id);
+        Redirect(UR_MP . $this->base . '/Edit/' . $id);
     }
 
     /**
@@ -72,7 +73,7 @@ class Controller extends Bootstarp {
      */
     public function Delete($id) {
         $this->model->Delete(intval($id));
-        GoBack();
+        GoBack('/delete');
     }
 
     /**
@@ -101,7 +102,31 @@ class Controller extends Bootstarp {
                 return 'error';
                 break;
         }
-        GoBack();
+        GoBack('/do');
+    }
+
+    /**
+     * add notifcation
+     * @param mixed $array_check array of argumans
+     */
+    public function _notifiControl($array_check) {
+        
+        if (isset($array_check[0])) {
+            if ($array_check[0] == 'delete') {
+                TNotification::Add(self::$_main_title . _lg(" has been delete"), 'success');
+            } elseif ($array_check[0] == 'do') {
+                TNotification::Add(_lg("Bulk action do successfully"), 'success');
+            } 
+        }
+        
+        
+        if (isset($array_check[1])) {
+            if ($array_check[1] == 'create') {
+                TNotification::Add(self::$_main_title . _lg(" has been create"), 'success');
+            } elseif ($array_check[1] == 'edit') {
+                TNotification::Add(self::$_main_title . _lg(" has been update"), 'success');
+            }
+        }
     }
 
 }

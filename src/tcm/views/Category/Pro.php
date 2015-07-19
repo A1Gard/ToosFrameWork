@@ -1,7 +1,7 @@
 
-<div class="pro-ol rtl"> 
+<div class="gray-ol rtl"> 
 
-    <form action="<?= UR_CM  ?>Category/Sync" method="post" id="sort_form">
+    <form action="<?php echo UR_MP ?>Category/Sync" method="post" id="sort_form">
 
         <?php echo $this->cat->CategoryOL(); ?>
 
@@ -15,14 +15,13 @@
 <script type="text/javascript">
 
 
-    $(function() {
-        
+    $(function () {
+
         var group = $(".drg").sortable({
             group: 'serialization',
             delay: 500
         });
-
-        $("#sort_form").bind('submit', function() {
+        $("#sort_form").bind('submit', function () {
 
             var data = group.sortable("serialize").get();
 
@@ -31,20 +30,12 @@
 
             $("#sorted").val(jsonString);
 
-            
             window.ret = false;
-            
+
             $.ajax({
                 type: 'POST',
                 data: $(this).serialize(),
-                url: $(this).attr('action'),
-                success: function(data) {
-                    window.ret = true;
-
-                },
-                error: function() {
-                    window.ret =  false;
-                }
+                url: $(this).attr('action')
             });
 
             return window.ret;

@@ -20,49 +20,49 @@ $frm->AddField('select', 'دسته دوم', $this->Setting['s']['2'], array('nam
 <div class="row autofit rtl" >
     <div class="grd-primary">
 
-        <form class="real" method="post" action="<?= UR_CM ?>/Index/SaveSetting" style="padding: 2em;">
+        <form class="real" method="post" action="<?php echo  UR_MP ?>/Index/SaveSetting" style="padding: 2em;">
             <label>
                 <span>
                     عنوان سایت
                 </span>
-                <input type="text" value="<?= $this->Setting['title'] ?>" name="title" />
+                <input type="text" value="<?php echo  $this->Setting['title'] ?>" name="title" />
             </label>
             <br />
             <label>
                 <span>
                     حداکثر تلاش
                 </span>
-                <input type="number" value="<?= $this->Setting['login_max_try'] ?>" name="login_max_try" />
+                <input type="number" value="<?php echo  $this->Setting['login_max_try'] ?>" name="login_max_try" />
             </label>
             <br />
             <label>
                 <span>
                     میزان محرومیت
                 </span>
-                <input type="number" value="<?= $this->Setting['login_ignore_time'] ?>" name="login_ignore_time" />
+                <input type="number" value="<?php echo  $this->Setting['login_ignore_time'] ?>" name="login_ignore_time" />
             </label>
             <br />
             <label>
                 <span>
                     پیوند ها: 
                 </span>
-                <textarea name="links" class="ckeditor" ><?= $this->Setting['links'] ?></textarea>
+                <textarea name="links" class="ckeditor" ><?php echo  $this->Setting['links'] ?></textarea>
             </label>
             <br />
             <label>
                 <span>
                     پانوشت: 
                 </span>
-                <textarea name="footer" class="ckeditor" ><?= $this->Setting['footer'] ?></textarea>
+                <textarea name="footer" class="ckeditor" ><?php echo  $this->Setting['footer'] ?></textarea>
             </label>
             <br />
             <label>
                 <span>
                     پیام خطای کابری: 
                 </span>
-                <textarea name="error" class="ckeditor" ><?= $this->Setting['error'] ?></textarea>
+                <textarea name="error" class="ckeditor" ><?php echo  $this->Setting['error'] ?></textarea>
             </label>
-            <?= $frm->FormBody(); ?>
+            <?php echo  $frm->FormBody(); ?>
             <br />
             <input type="submit" value="ذخیره" />
         </form>

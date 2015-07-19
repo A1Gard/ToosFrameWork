@@ -7,7 +7,7 @@ $topic_status  = array(
     2 => array('2', 'ویژه اعضا'),
     );
 
-$frm = new TForm(UR_CM . 'Topic/Insert', 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Topic/Insert', 'post', array('class' => 'form rtl'));
 
 $frm->AddField('text', 'عنوان ', null, array('name' => 'topic_title'));
 $frm->AddField('text', ' کلمه کلیدی', null, array('name' => 'topic_keyword'));
@@ -22,7 +22,7 @@ $frm->AddField('submit', '', 'ارسال');
 
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo  $this->title ?>
 </h2>
 <br />
 <br />

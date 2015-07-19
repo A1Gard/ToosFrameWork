@@ -6,7 +6,7 @@
  * @date : 22-March-2013 (2-1-1392) 
  * @time : 16:32 
  * @subpackage   Bootstrap super class
- * @todo : bootstrap class system content manage & bootsrap function. 
+ * @todo : bootstrap class system manager page & bootsrap function. 
  */
 
 
@@ -22,6 +22,7 @@ class Bootstarp {
     public static  $request = NULL ;
 
 
+    
     function __construct() {
         
         // get - load request to class
@@ -136,6 +137,11 @@ class Bootstarp {
         // load model if exists
         $this->controller->LoadModel($this->_url[0]) ;
         
+        
+        if (!method_exists($this->controller, $this->_url[1])) {
+            header("HTTP/1.0 404 Not Found");
+            exit();
+        }
         
         switch ($length) {
             /**

@@ -1,5 +1,5 @@
 <?php
-$frm = new TForm(UR_CM . 'Member/Insert', 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Member/Insert', 'post', array('class' => 'form rtl'));
 
 $frm->AddField('text', 'نام', null, array('name' => 'member_name'));
 $frm->AddField('email', 'ایمیل', null, array('name' => 'member_email'));
@@ -20,7 +20,7 @@ $frm->AddField('submit', '', 'ارسال');
 ?>
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo  $this->title ?>
 </h2>
 <br />
 <br />

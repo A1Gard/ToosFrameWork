@@ -10,7 +10,7 @@
  */
 class Widget extends Controller {
 
-    private static $_main_title;
+    
 
     function __construct() {
 

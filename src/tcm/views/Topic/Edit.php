@@ -1,6 +1,6 @@
 <?php
 //var_dump($this->record);
-$frm = new TForm(UR_CM . 'Topic/Update/' . $this->record['topic_id'], 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Topic/Update/' . $this->record['topic_id'], 'post', array('class' => 'form rtl'));
 
 
 
@@ -17,36 +17,44 @@ $frm->AddField('textarea', 'چکیده', $this->record['topic_abstract'], array(
 $frm->AddField('textarea', 'متن', $this->record['topic_text'], array('name' => 'topic_text', 'class' => 'ckeditor'));
 
 $frm->AddField('select', 'وضعیت', $this->record['topic_status'], array('name' => 'topic_status'), $topic_status);
-$frm->AddField('hiddem', '', $this->record['topic_icon'], array('name' => 'topic_icon','id'=>'topic_icon'));
+$frm->AddField('hidden', '', $this->record['topic_icon'], array('name' => 'topic_icon', 'id' => 'topic_icon'));
 $frm->AddField('submit', '', 'ویرایش یادداشت');
 ?>
 
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo $this->title ?>
 </h2>
 <br />
 <br />
-<?= $frm->FormHeader(); ?>
+<?php echo $frm->FormHeader(); ?>
 <div class="row">
     <div class="grd-primary">
-        <?= $frm->FormBody(); ?>
+        <?php echo $frm->FormBody(); ?>
     </div>
     <div class="grd-secondary" style="padding:1em;">
 
-        <input class="tags" value="<?= $this->tags; ?>" data-ajax="<?= UR_CM ?>Topic/Search" data-edit="<?= UR_CM ?>Topic/TagChange" >
-        <input id="id" type="hidden" value="<?= $this->record['topic_id'] ?>" />
+        <input id="id" type="hidden" value="<?php echo $this->record['topic_id'] ?>" />
 
         <div class="category">
             <h3>
                 دسته بندی
             </h3>
 
-            <?php
-            $cat = new TCategory();
-            echo $cat->GetCategories($this->record['topic_id']);
-            ?>
+            <div class="nice_scroll">
+                <?php
+                $cat = new TCategory();
+                echo $cat->GetCategories($this->record['topic_id']);
+                ?>
+            </div>
             <input type="hidden" name="category[]" value="0" />
+        </div>
+
+        <div>
+            <h3>
+                برچسب ها
+            </h3>
+            <input class="tags" value="<?php echo $this->tags; ?>" data-ajax="<?php echo UR_MP ?>Topic/Search" data-edit="<?php echo UR_MP ?>Topic/TagChange" >
         </div>
 
         <div class="attach">
@@ -58,22 +66,22 @@ $frm->AddField('submit', '', 'ویرایش یادداشت');
             if (count($this->attach) > 0) {
                 echo "<ul>";
                 foreach ($this->attach as $attached) {
-                    echo '<li><a class="delete" href="' . UR_CM . 'Upload/RemoveAttach/' .
+                    echo '<li><a class="delete" href="' . UR_MP . 'Upload/RemoveAttach/' .
                     $attached['attach_id'] . '/' . $this->record['topic_id'] . '">'
                     . $attached['attach_label'] . '</a></li>';
                 }
                 echo "</ul>";
             }
             ?>
-            <?= $frm->FormFooter(); ?>
+            <?php echo $frm->FormFooter(); ?>
             <br />
             <br />
             <h3>
                 افزودن پیوست
             </h3>
             <br />
-            <form action="<?= UR_CM ?>Upload/UploadAttach/attach/<?= $this->record['topic_id'] ?>" method='post' enctype='multipart/form-data'>
-                <input type="text"  name="label" maxlength="250" class="input" placeholder="<?= _lg('file label'); ?>"/> <br /><br />
+            <form action="<?php echo UR_MP ?>Upload/UploadAttach/attach/<?php echo $this->record['topic_id'] ?>" method='post' enctype='multipart/form-data'>
+                <input type="text"  name="label" maxlength="250" class="input" placeholder="<?php echo _lg('file label'); ?>"/> <br /><br />
 
                 <input type="file"  name="attach" /> <br />
                 <input type="submit"  value="پیوست کن" />
@@ -84,32 +92,32 @@ $frm->AddField('submit', '', 'ویرایش یادداشت');
             <h3>
                 تصویر شاخص
             </h3>
-            <img src="<?= $this->record['topic_image'] ?>" alt="[تصویر شاخص]" />
+            <img src="<?php echo $this->record['topic_image'] ?>" alt="[تصویر شاخص]" />
             <br />
-            <form action="<?= UR_CM ?>Topic/Image/<?= $this->record['topic_id'] ?>" method='post' enctype='multipart/form-data'>
+            <form action="<?php echo UR_MP ?>Topic/Image/<?php echo $this->record['topic_id'] ?>" method='post' enctype='multipart/form-data'>
                 <input type="file"  name="image" /> <br />
                 <input type="submit"  value="عکس را قرار بده" />
 
             </form>
 
         </div>
-        
+
         <div class="attach">
             <h3>
                 Icon
             </h3>
             <div class="text-center margin">
-                <i class="fa fa-4x <?= $this->record['topic_icon'] ?>" id="ico"></i>
+                <i class="fa fa-4x <?php echo $this->record['topic_icon'] ?>" id="ico"></i>
             </div>
             <br />
             <input type="button" class="input" value="select icon" onclick="$('#overlay').fadeIn(600)" />
 
         </div>
-        
+
     </div>
 </div>
 <div id="overlay">
-    <div class="awesome">
+    <div class="awesome nice_scroll">
         <input type="button" value="X" class="red" id="close-overlay" />
         <ul id="font-list">
             <li> <i class="fa fa-glass"></i> </li>

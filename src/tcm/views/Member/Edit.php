@@ -1,7 +1,7 @@
 <?php
 //var_dump($this->record);
 $date = TDate::GetInstance();
-$frm = new TForm(UR_CM . 'Member/Update/' . $this->record['member_id'], 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Member/Update/' . $this->record['member_id'], 'post', array('class' => 'form rtl'));
 $frm->AddField('text', 'نام', $this->record['member_name'], array('name' => 'member_name'));
 $frm->AddField('email', 'ایمیل', $this->record['member_email'], array('name' => 'member_email'));
 $frm->AddField('password', 'گذرواژه', null, array('name' => 'member_password'));
@@ -25,7 +25,7 @@ $frm->AddField('submit', '', 'ویرایش');
 ?>
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo  $this->title ?>
 </h2>
 <br />
 <br />
@@ -40,13 +40,13 @@ $frm->AddField('submit', '', 'ویرایش');
             <ul>
                 <?php
                 foreach ($this->reports as $rep) {
-                    echo '<li><a class="delete" href="' . UR_CM . 'Member/RemoveReport/' .
+                    echo '<li><a class="delete" href="' . UR_MP . 'Member/RemoveReport/' .
                     $rep['report_id'] . '">'
                     . $rep['report_title'] . '</a></li>';
                 }
                 ?>
                 <li>
-                    <a href="<?= UR_CM . 'Member/Report/'.$this->record['member_id'] ?>">
+                    <a href="<?php echo  UR_MP . 'Member/Report/'.$this->record['member_id'] ?>">
                         افزودن کارنامه
                     </a>
                 </li>

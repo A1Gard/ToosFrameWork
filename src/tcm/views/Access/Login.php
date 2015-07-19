@@ -13,7 +13,7 @@
     <head>
         <title><?php
             echo $this->title . " | ";
-            _lp('Toos Conetent mangement');
+            _lp('Toos Framework');
             ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
         <br />
         <section id="login-sec">
             <div id="brand">
-                <img src="<?= UR_CM_PUB ?>images/wlogo.png" alt="[logo]" class="center" />
+                <img src="<?php echo  UR_MP_ASSETS ?>images/wlogo.png" alt="[logo]" class="center" />
             </div>
             <div class="clearfix clr"></div>
             <div id="login">
@@ -61,7 +61,7 @@
                 }
                 ?>
 
-                <form action="<?php echo UR_CMT; ?>Access/Check" method="post">
+                <form action="<?php echo UR_MPT; ?>Access/Check" method="post">
                     <label>
                         <?php _lp('Username') ?>:
                         <br />

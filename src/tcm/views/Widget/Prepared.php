@@ -17,7 +17,7 @@ foreach ($this->prepared as $record) {
     $this->widget_prepared .= '<h3>' . $class->Title() . '</h3>';
     $this->widget_prepared .= '<div>';
     $this->widget_prepared .= '<form method="post" class="' . $cls . ' from ajax"'
-            . ' action="' . UR_CM .'Widget/Update/' . $record['widget_id'] . '">';
+            . ' action="' . UR_MP .'Widget/Update/' . $record['widget_id'] . '">';
     $this->widget_prepared .= $class->Detail();
     $this->widget_prepared .= '</form>';
     $this->widget_prepared .= '</div>';

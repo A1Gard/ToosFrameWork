@@ -12,7 +12,7 @@ global $browser_list, $os_list;
 
 <div class="row autofit rtl">
     <div class="grd24">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3>
                 بازدید و بازدید کننده 30 روز اخیر
@@ -26,76 +26,76 @@ global $browser_list, $os_list;
 
     </div>
     <div class="grd12">
-        <div class="temp " >
-            <div class="margin">
-                <br />
-                <h3> آمار فعایت
+        <div class="white-bg " >
 
-                </h3>
-                <br />
-                <ul class="state">
-                    <li>
-                        تعداد اعضا:
-                        <span>
-                            <?= $this->m; ?>
-                        </span>
-                    </li>
-                    <li>
-                        تعداد اعضا فعال: 
+            <br />
+            <h3> آمار فعایت
 
-                        <span>
-                            <?= $this->ma; ?>
-                        </span>
-                    </li>
-                    <li>
-                        تعداد  دیدگاه ها: 
+            </h3>
+            <br />
+            <ul class="state">
+                <li>
+                    تعداد اعضا:
+                    <span>
+                        <?php echo $this->m; ?>
+                    </span>
+                </li>
+                <li>
+                    تعداد اعضا فعال: 
 
-                        <span>
-                            <?= $this->com; ?>
-                        </span>
-                    </li>
-                    <li>
-                        تعداد  دیدگاه ها تایید شده: 
+                    <span>
+                        <?php echo $this->ma; ?>
+                    </span>
+                </li>
+                <li>
+                    تعداد  دیدگاه ها: 
 
-                        <span>
-                            <?= $this->acom; ?>
-                        </span>
+                    <span>
+                        <?php echo $this->com; ?>
+                    </span>
+                </li>
+                <li>
+                    تعداد  دیدگاه ها تایید شده: 
 
-                    </li>
-                    <li>
-                        تعداد  یادداشت  ها: 
+                    <span>
+                        <?php echo $this->acom; ?>
+                    </span>
 
-                        <span>
-                            <?= $this->top; ?>
-                        </span>
-                    </li>
-                    <li>
-                        تعداد  یادداشت های منشتر شده:
+                </li>
+                <li>
+                    تعداد  یادداشت  ها: 
 
-                        <span>
-                            <?= $this->topa; ?>
-                        </span>
+                    <span>
+                        <?php echo $this->top; ?>
+                    </span>
+                </li>
+                <li>
+                    تعداد  یادداشت های منشتر شده:
 
-                    </li>
-                    <li>
-                        تعداد  یادداشت های  ویژه:
+                    <span>
+                        <?php echo $this->topa; ?>
+                    </span>
 
-                        <span>
-                            <?= $this->tops; ?>
-                        </span>
+                </li>
+                <li>
+                    تعداد  یادداشت های  ویژه:
 
-                    </li>
+                    <span>
+                        <?php echo $this->tops; ?>
+                    </span>
 
-                </ul>
+                </li>
 
-                <br />
-            </div>
+            </ul>
+
+            <br />
+
 
 
         </div>
     </div>
     <div class="grd12">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3> 
                 آمار بازدید
@@ -105,28 +105,28 @@ global $browser_list, $os_list;
                 <li>
                     بازدید امروز:
                     <span>
-                        <?= $this->vis['visitcount']; ?>
+                        <?php echo $this->vis['visitcount']; ?>
                     </span>
                 </li>
                 <li>
                     بازدیدکننده امروز: 
 
                     <span>
-                        <?= $this->vis['visitorcount']; ?>
+                        <?php echo $this->vis['visitorcount']; ?>
                     </span>
                 </li>
                 <li>
                     بازدید دیروز: 
 
                     <span>
-                        <?= $this->vis['y']; ?>
+                        <?php echo $this->vis['y']; ?>
                     </span>
                 </li>
                 <li>
                     بازدید کننده امروز: 
 
                     <span>
-                        <?= $this->vis['ys']; ?>
+                        <?php echo $this->vis['ys']; ?>
                     </span>
 
                 </li>
@@ -134,14 +134,14 @@ global $browser_list, $os_list;
                     بازدید این ماه: 
 
                     <span>
-                        <?= $this->vis['m']; ?>
+                        <?php echo $this->vis['m']; ?>
                     </span>
                 </li>
                 <li>
                     بازدیدهای ماه گذشته:
 
                     <span>
-                        <?= $this->vis['lm']; ?>
+                        <?php echo $this->vis['lm']; ?>
                     </span>
 
                 </li>
@@ -149,7 +149,7 @@ global $browser_list, $os_list;
                     افراد آنلاین:
 
                     <span>
-                        <?= $this->vis['online']; ?>
+                        <?php echo $this->vis['online']; ?>
                     </span>
 
                 </li>
@@ -157,7 +157,7 @@ global $browser_list, $os_list;
                     بازدید کل:
 
                     <span>
-                        <?= $this->vis['total']; ?>
+                        <?php echo $this->vis['total']; ?>
                     </span>
 
                 </li>
@@ -167,7 +167,7 @@ global $browser_list, $os_list;
         </div>  
     </div>
     <div class="grd12">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3>
                 مرورگر ها
@@ -181,7 +181,7 @@ global $browser_list, $os_list;
 
     </div>
     <div class="grd12">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3>
                 سیستم عامل ها
@@ -195,7 +195,7 @@ global $browser_list, $os_list;
 
     </div>
     <div class="grd12">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3>
                 پر بازدید ترین ها
@@ -204,7 +204,7 @@ global $browser_list, $os_list;
             <br />
             <ul class="state">
                 <?php foreach ($this->topvisits as $topic): ?>
-                    <li> <?= $topic['topic_title'] ?> <span> (<?= $topic['topic_counter'] ?>) </span>  </li>
+                    <li> <?php echo $topic['topic_title'] ?> <span> (<?php echo $topic['topic_counter'] ?>) </span>  </li>
                 <?php endforeach; ?>
             </ul>
 
@@ -212,7 +212,7 @@ global $browser_list, $os_list;
 
     </div>
     <div class="grd12">
-        <div class="temp" >
+        <div class="white-bg" >
             <br />
             <h3>
                 آخرین کلمات جستجو شده
@@ -221,25 +221,19 @@ global $browser_list, $os_list;
             <br />
             <ul class="state">
                 <?php foreach ($this->lastsch as $topic): ?>
-                    <li>   <?= $topic['state_keyword'] ?>  </li>
+                    <li>   <?php echo $topic['state_keyword'] ?>  </li>
                 <?php endforeach; ?>
             </ul>
         </div>
     </div>
 
-
-
-    <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
 </div>
 <script type="text/javascript">
     var randomScalingFactor = function () {
     return Math.round(Math.random() * 100)
     };
             var lineChartData = {
-            labels: ["<?= implode($this->dayz, '","') ?>"],
+            labels: ["<?php echo implode($this->dayz, '","') ?>"],
                     datasets: [
                     {
                     label: "بازدید کننده",
@@ -249,7 +243,7 @@ global $browser_list, $os_list;
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: ["<?= implode($this->vit, '","') ?>"]
+                            data: ["<?php echo implode($this->vit, '","') ?>"]
                     },
                     {
                     label: "بازدید ",
@@ -259,7 +253,7 @@ global $browser_list, $os_list;
                             pointStrokeColor: "#fff",
                             pointHighlightFill: "#fff",
                             pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: ["<?= implode($this->viz, '","') ?>"]
+                            data: ["<?php echo implode($this->viz, '","') ?>"]
                     }
                     ]
 
@@ -273,10 +267,10 @@ foreach ($this->bw as $key => $bw):
     $i++;
     ?>
         {
-        value: <?= $bw ?>,
-                color: "<?= $this->cl1[$i]; ?>",
+        value: <?php echo $bw ?>,
+                color: "<?php echo $this->cl1[$i]; ?>",
                 highlight: "#777777",
-                label: "<?= $browser_list[$key] ?>"
+                label: "<?php echo $browser_list[$key] ?>"
         },
 <?php endforeach; ?>
 
@@ -289,10 +283,10 @@ foreach ($this->os as $key => $bw):
     $i++;
     ?>
                 {
-                value: <?= $bw ?>,
-                        color: "<?= $this->cl2[$i]; ?>",
+                value: <?php echo $bw ?>,
+                        color: "<?php echo $this->cl2[$i]; ?>",
                         highlight: "#777777",
-                        label: "<?= $os_list[$key] ?>"
+                        label: "<?php echo $os_list[$key] ?>"
                 },
 <?php endforeach; ?>
 

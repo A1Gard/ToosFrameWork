@@ -1,6 +1,6 @@
 <?php
     
-$frm = new TForm(UR_CM . 'Member/RIns', 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Member/RIns', 'post', array('class' => 'form rtl'));
 
 $frm->AddField('text', 'عنوان ', null, array('name' => 'report_title'));
 $frm->AddField('hidden', '', $this->id , array('name' => 'report_member_id'));
@@ -9,7 +9,7 @@ $frm->AddField('submit', '', 'ارسال');
 ?>
 <br />
 <h2 class="rtl">
-    <?= $this->title ?>
+    <?php echo  $this->title ?>
 </h2>
 <br />
 <br />

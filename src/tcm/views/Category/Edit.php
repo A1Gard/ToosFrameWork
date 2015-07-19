@@ -1,6 +1,6 @@
 <?php
 //var_dump($this->record);
-$frm = new TForm(UR_CM . 'Category/Update/' . $this->record['category_id'], 'post', array('class' => 'form rtl'));
+$frm = new TForm(UR_MP . 'Category/Update/' . $this->record['category_id'], 'post', array('class' => 'form rtl'));
 
 $frm->AddField('text', 'عنوان دسته ', $this->record['category_title'], array('name' => 'category_title', 'size' => 90));
 $frm->AddField('select', 'مادر', $this->record['category_parent'], array('name' => 'category_parent'),$this->cat->CategoryByExpect($this->record['category_id']));
@@ -12,8 +12,8 @@ $frm->AddField('submit', '', 'ارسال');
 
 <br />
 <h2 class="rtl">
-<?= $this->title ?>
-    <img alt="[category_image]" src="<?= UR_UPLOAD ?>category/<?= $this->record['category_id'] ?>.png" />
+<?php echo  $this->title ?>
+    <img alt="[category_image]" src="<?php echo  UR_UPLOAD ?>category/<?php echo  $this->record['category_id'] ?>.png" />
 </h2>
 <br />
 <br />

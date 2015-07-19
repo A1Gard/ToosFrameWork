@@ -10,12 +10,12 @@
  */
 class Member extends Controller {
 
-    private static $_main_title;
+    
 
     function __construct() {
 
         parent::__construct();
-        self::$_main_title = _lg('Member');
+        self::$_main_title = _lg('Members');
         $this->report = new Model('report', 'report_');
     }
 
@@ -31,18 +31,18 @@ class Member extends Controller {
     }
 
     public function NewMember() {
-        $this->view->navigator->AddItem('یادداشت ها', UR_CM . 'Member/Index');
+        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Member/Index');
         $this->view->PageRender('Member/NewMember', self::$_main_title . ' جدید ');
     }
 
     public function RIns() {
         $this->report->Create($_POST);
-        Redirect(UR_CM . 'Member/Edit/' . $_POST['report_member_id']);
+        Redirect(UR_MP . 'Member/Edit/' . $_POST['report_member_id']);
     }
 
     public function Report($id) {
-        $this->view->navigator->AddItem(_lg('Members'), UR_CM . 'Member/Index');
-        $this->view->navigator->AddItem('  بازگشت به صفحه عضو', UR_CM . 'Member/Edit/' . $id);
+        $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
+        $this->view->navigator->AddItem('  بازگشت به صفحه عضو', UR_MP . 'Member/Edit/' . $id);
         $this->view->id = $id;
         $this->view->PageRender('Member/Report', '  کارنامه جدید');
     }
@@ -53,11 +53,11 @@ class Member extends Controller {
         $_POST['member_register_time'] = time();
         $_POST['member_active_time'] = $date->Persi2Timestamp($_POST['member_active_time']);
         $id = $this->model->Create($_POST);
-        Redirect(UR_CM . 'Member/Edit/' . $id);
+        Redirect(UR_MP . 'Member/Edit/' . $id);
     }
 
     public function Edit($id) {
-        $this->view->navigator->AddItem(_lg('Members'), UR_CM . 'Member/Index');
+        $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
         $this->view->record = $this->model->GetRecord($id);
         $_GET['filter'] = 'report_member_id,'.$id;
         $this->view->reports = $this->report->Read('report_id,report_title', 99);
@@ -73,7 +73,7 @@ class Member extends Controller {
         $date = TDate::GetInstance();
         $_POST['member_active_time'] = $date->Persi2Timestamp($_POST['member_active_time']);
         $this->model->Edit($id, $_POST);
-        Redirect(UR_CM . 'Member/Edit/' . $id);
+        Redirect(UR_MP . 'Member/Edit/' . $id);
     }
     
       public function Search() {

@@ -8,9 +8,8 @@
  * @subpackage   index.php
  * @issue : index page link to all CM with bootstrap 
  */
-
 // is user in cm
-define('__CM__', TRUE);
+define('__MP__', TRUE);
 
 // define db & golobal
 $database_handle = null ;

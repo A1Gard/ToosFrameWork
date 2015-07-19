@@ -10,8 +10,6 @@
  */
 class Topic extends Controller {
 
-    private static $_main_title;
-
     function __construct() {
 
         parent::__construct('Topic');
@@ -22,7 +20,7 @@ class Topic extends Controller {
      * @todo Show index without any thing
      */
     public function Index() {
-
+        $this->_notifiControl(func_get_args());
         $this->view->cls_list = $this->model->Read('topic_id, topic_counter, '
                 . 'topic_title, topic_status');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
@@ -30,12 +28,13 @@ class Topic extends Controller {
     }
 
     public function NewTopic() {
-        $this->view->navigator->AddItem('یادداشت ها', UR_CM . 'Topic/Index');
+        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Topic/Index');
         $this->view->PageRender('Topic/NewTopic', self::$_main_title . ' جدید ');
     }
 
     public function Edit($id) {
-        $this->view->navigator->AddItem('یادداشت ها', UR_CM . 'Topic/Index');
+        $this->_notifiControl(func_get_args());
+        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Topic/Index');
         $this->view->record = $this->model->GetRecord($id);
         $tag = new TTag();
         $a = $tag->TList($this->view->record['topic_id'], RELATION_TAG);
@@ -53,7 +52,7 @@ class Topic extends Controller {
         $_POST['topic_time'] = time();
 
         $this->model->Edit($id, $_POST);
-        GoBack();
+        GoBack('/edit');
     }
 
     public function Search() {
@@ -79,7 +78,7 @@ class Topic extends Controller {
         $_POST['topic_owner_id'] = $_SESSION['MN_ID'];
         
         $id = $this->model->Create($_POST);
-        Redirect(UR_CM . 'Topic/Edit/' . $id);
+        Redirect(UR_MP . 'Topic/Edit/' . $id .'/create');
     }
 
     public function Image($id) {

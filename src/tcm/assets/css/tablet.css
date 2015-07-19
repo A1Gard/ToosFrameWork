@@ -1,0 +1,70 @@
+
+/* 
+    Created on : Mar 31, 2015, 9:23:22 PM
+    Author     : ToosCM team
+    todo       : tablet.css for tablet pc toos application css
+*/
+
+
+@media (max-width: 768px){
+
+    #header{
+        height: auto;
+        position: static;
+        overflow: visible;
+    }
+
+    #header #logo{
+        height:auto;
+        width:100%;
+        float: none;
+    }
+
+    #header #logo img{
+        padding: 5px 0;
+        max-height:30px;
+        margin: auto;
+    }
+
+    #header #nav-header{
+        height:auto;
+        width:100%;
+        float:none;
+    }
+
+    #header #admin-bar {
+        width:100%;
+        float: none;
+    }
+
+
+
+    #content {
+        margin-top: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #sidebar {
+        display:none;
+        padding-top:0;
+    }
+
+    #sidebar.show{
+        display:block;
+        z-index:99;
+    }
+
+    
+    
+        
+    #footer{
+        position: static;
+        opacity:1;
+    }
+    
+    
+    .mobile-visble{
+        display:inline-block !important; 
+    }
+    
+}

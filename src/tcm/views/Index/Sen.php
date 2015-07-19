@@ -12,7 +12,7 @@
 <div class="row autofit rtl" >
     <div class="grd-primary">
 
-        <form class="real" method="post" action="<?= UR_CM ?>/Index/SaveSentence" style="padding: 2em;">
+        <form class="real" method="post" action="<?php echo  UR_MP ?>/Index/SaveSentence" style="padding: 2em;">
 
             <?php
             if (count($this->sen) > 0) {

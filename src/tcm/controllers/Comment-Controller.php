@@ -11,7 +11,6 @@
 
 class Comment extends Controller {
     
-    private static $_main_title ;
     function __construct() {
         
         parent::__construct() ;
@@ -36,7 +35,7 @@ class Comment extends Controller {
     public function NewComment($parent,$topic_id) {
        $this->view->prn = $parent;
        $this->view->tid = $topic_id;
-       $this->view->navigator->AddItem('دیدگاه ها', UR_CM . 'Comment/Index');
+       $this->view->navigator->AddItem('دیدگاه ها', UR_MP . 'Comment/Index');
        $this->view->PageRender('Comment/NewComment',self::$_main_title . ' جدید '); 
     }
     
@@ -47,7 +46,7 @@ class Comment extends Controller {
         $_POST['comment_ip'] =  _ipi();
 
         $id = $this->model->Create($_POST);
-        Redirect(UR_CM . 'Comment/Index');
+        Redirect(UR_MP . 'Comment/Index');
     }
     /**
      * approve or unapprove comments

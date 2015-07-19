@@ -10,8 +10,6 @@
  */
 class Category extends Controller {
 
-    private static $_main_title;
-
     function __construct() {
 
         parent::__construct('category');
@@ -34,7 +32,7 @@ class Category extends Controller {
     }
 
     public function Edit($id) {
-        $this->view->navigator->AddItem(_lg('Categories'), UR_CM . 'Category/Index');
+        $this->view->navigator->AddItem(_lg('Categories'), UR_MP . 'Category/Index');
         $this->view->record = $this->model->GetRecord($id);
         $this->view->cat = $this->model->GetInstance();
         $this->view->PageRender('Category/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['category_title']);
@@ -46,12 +44,12 @@ class Category extends Controller {
     }
 
     public function Update($id) {
-        if ($_FILES['image']){
-            $up = new TUpload(UPLOAD_BY_OTHER,'category');
-            $up->Save('image',$id);
+        if ($_FILES['image']) {
+            $up = new TUpload(UPLOAD_BY_OTHER, 'category');
+            $up->Save('image', $id);
         }
         $this->model->Edit($id, $_POST, 'category_');
-        Redirect(UR_CM . 'Category/Edit/' . $id);
+        Redirect(UR_MP . 'Category/Edit/' . $id);
     }
 
     public function Delete($id) {
@@ -65,7 +63,7 @@ class Category extends Controller {
             $result[$obj->id] = $parent_id;
             if ($obj->children[0] != array()) {
                 $child = $this->_arrryCleaner($obj->children, $obj->id);
-                $result +=  $child;
+                $result += $child;
             }
         }
         return $result;
@@ -74,21 +72,28 @@ class Category extends Controller {
     public function Sync() {
         $array = json_decode($_POST['sorted']);
         $array = $this->_arrryCleaner($array);
-        $this->model->CategorySync($array);
-        
+        $result = array();
+        $result['success'] = $this->model->CategorySync($array);
+        if ($result['success']) {
+            $result['value'] = _lg('List order saved successfully');
+        } else {
+            $result['value'] = _lg('List order saved failed');
+        }
+
+        echo json_encode($result);
     }
 
     /**
       UPDATE categories
       SET order = CASE id
-        WHEN 1 THEN 3
-        WHEN 2 THEN 4
-        WHEN 3 THEN 5
+      WHEN 1 THEN 3
+      WHEN 2 THEN 4
+      WHEN 3 THEN 5
       END,
       title = CASE id
-        WHEN 1 THEN 'New Title 1'
-        
-        ELSE title
+      WHEN 1 THEN 'New Title 1'
+
+      ELSE title
       END
       WHERE id IN (1,2,3)
      * 
