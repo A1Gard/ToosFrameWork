@@ -18,13 +18,13 @@ class TForm {
     // create form
 
     function __construct($action = '', $method = 'post', $attr = array()) {
-        
+
         // Pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $action, $method, $attr);
-        
-        
+
+
         $this->property = ' action="' . $action . '" method="' . $method . '" '
-                . (($method == 'post')?' enctype="multipart/form-data" ':'') .
+                . (($method == 'post') ? ' enctype="multipart/form-data" ' : '') .
                 $this->_makeAttr($attr);
     }
 
@@ -40,8 +40,8 @@ class TForm {
     public function AddField($type, $label, $value = '', $attr = array(), $other = null) {
 
         // Pre hook
-        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $type, $label, $value ,$attr ,$other );
-        
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $type, $label, $value, $attr, $other);
+
 
         // add to field by field type
         switch ($type) {
@@ -79,33 +79,34 @@ class TForm {
         $select = '<select' . $this->_makeAttr($attr) .
                 ($type == 'list' ? 'multiple="multiple" ' : '' ) . '>';
 
+        if (is_array($items)):
+            // if have not defualt value
+            if ($value == null) {
 
-        // if have not defualt value
-        if ($value == null) {
-
-            foreach ($items as $data) {
-                $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
-            }
-        } else {  // have default value
-            foreach ($items as $data) {
-
-                // if equal default value
-                if ($data[0] == $value) {
-                    $select .= '<option selected="" value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
-                } else {
+                foreach ($items as $data) {
                     $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
                 }
-            }
-        }
+                
+            } else {  // have default value
+                foreach ($items as $data) {
 
+                    // if equal default value
+                    if ($data[0] == $value) {
+                        $select .= '<option selected="" value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                    } else {
+                        $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                    }
+                }
+            }
+        endif;
         $select .= '</select>';
-        
+
         // add label 
         $select = $this->_addLabel($label, $select);
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $select);
-        
+
         // append to form field
         $this->field .= $select;
     }
@@ -126,7 +127,7 @@ class TForm {
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $textarea);
-        
+
         // append to form field
         $this->field .= $textarea;
     }
@@ -142,7 +143,7 @@ class TForm {
     private function _addInput($type, $label, $attr, $value, $other = null) {
 
         $input = '';
-        if ($type == "radio") {
+        if ($type == "radio" && is_array($other)) {
             foreach ($other as $data) {
                 $input .= '<label><input type="radio" ' .
                         $this->_makeAttr($attr) . " value=" . $data[0] .
@@ -167,7 +168,7 @@ class TForm {
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $input);
-        
+
         // append to form field
         $this->field .= $input;
     }
@@ -183,10 +184,10 @@ class TForm {
 
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $label, $element, $type);
-        
+
         // check if radio or checkbox or others
         switch ($type) {
-            
+
             case 'other':
                 $result = '<label>  <span>' . $label . ' : </span> ' . $element . ' </label>' . PHP_EOL;
                 break;
@@ -205,10 +206,10 @@ class TForm {
                 $result = '<label>  <span>' . $label . ' : </span> ' . $element . ' </label>' . PHP_EOL;
                 break;
         }
-        
+
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result, $element);
-        
+
 
         return $result;
     }
@@ -222,13 +223,16 @@ class TForm {
 
         $result = ' ';
         // make all attributes
-        foreach ($attr as $name => $value) {
-            $result .= $name . '="' . $value . '" ';
+        if (is_array($attr)) {
+
+            foreach ($attr as $name => $value) {
+                $result .= $name . '="' . $value . '" ';
+            }
         }
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         return $result;
     }
 
@@ -243,35 +247,33 @@ class TForm {
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
-        
+
+
         echo $result;
     }
-    
+
     public function FormHeader() {
         $result = '<form ' . $this->property . '>' . PHP_EOL;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         return $result;
     }
-    
+
     public function FormBody() {
         $result = $this->field;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         return $result;
     }
-    
+
     public function FormFooter() {
         $result = '</form>' . PHP_EOL;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         return $result;
     }
-    
-    
 
 }
