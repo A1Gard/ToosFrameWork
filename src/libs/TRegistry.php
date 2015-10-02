@@ -99,11 +99,17 @@ class TRegistry {
             `registry_key` = '$key'");
     }
 
+    
+    /**
+     * is key Exists
+     * @param int $root root of key 
+     * @param string $key name
+     * @return bool
+     */
     public function Exists($root, $key) {
 
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key);
-
 
         // sql
         $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE 
@@ -112,7 +118,11 @@ class TRegistry {
         $result = $this->db->Select($sql, array('registry'), array('type' => 'is', ":registry_root" => $root,
             ":registry_key" => $key));
 
-        $result_ = $result[0]['count'];
+        if ($result[0]['count'] == 0) {
+            $result_ = false;
+        }else{
+            $result_ = true;
+        }
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
