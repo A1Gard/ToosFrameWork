@@ -9,26 +9,22 @@
  * @version 1.0
  * @todo : TRegistry system class
  */
-
 class TRegistry {
-    
 
     protected static $instance;
 
-    public static function GetInstance()
-    {
+    public static function GetInstance() {
         if (!isset(self::$instance))
-        self::$instance = new self();
+            self::$instance = new self();
         return self::$instance;
     }
-    
+
     function __construct() {
         global $database_handle;
-        $this->db =  $database_handle;
+        $this->db = $database_handle;
         //parent::__construct();
     }
-    
-    
+
     /**
      * @todo Select value from registry key
      * @param int $root root of key
@@ -38,21 +34,24 @@ class TRegistry {
     public function GetValue($root, $key) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key);
-        
+
         // sql
         $sql = "SELECT registry_value FROM %table% WHERE 
             registry_root = :registry_root AND registry_key = :registry_key ;";
         // select
-        $result = $this->db->Select($sql, array('registry'), 
-                array('type' => 'is',":registry_root" => $root,
-                      ":registry_key" => $key));
-        $result_ = $result[0]['registry_value'];
+        $result = $this->db->Select($sql, array('registry'), array('type' => 'is', ":registry_root" => $root,
+            ":registry_key" => $key));
+        if (isset($result[0]['registry_value'])) {
+            $result_ = $result[0]['registry_value'];
+        } else {
+            $result_ = null;
+        }
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
         // retrun result
         return $result_;
     }
-    
+
     /**
      * @todo Update registry key's value
      * @param int $root root of key
@@ -64,10 +63,9 @@ class TRegistry {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
         // update value by root & key
-        return $this->db->Update('registry',array('type' => 's',"registry_value" => $value) ,
-                    "registry_root = '$root' AND registry_key = '$key' ");
+        return $this->db->Update('registry', array('type' => 's', "registry_value" => $value), "registry_root = '$root' AND registry_key = '$key' ");
     }
-    
+
     /**
      * @todo add new key to registry
      * @param int $root root of key 
@@ -79,15 +77,15 @@ class TRegistry {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
         // make value
-        $data = array('type'=> 'iss',
+        $data = array('type' => 'iss',
             'registry_root' => $root,
-            'registry_key'  => $key,
-            'registry_value'=> $value);
-        
+            'registry_key' => $key,
+            'registry_value' => $value);
+
         // send to insert in regiery
-        return $this->db->Insert('registry',$data);
+        return $this->db->Insert('registry', $data);
     }
-    
+
     /**
      * @todo delete key from regitry
      * @param int $root root of key
@@ -100,6 +98,26 @@ class TRegistry {
         return $this->db->delete('registry', "`registry_root` = '$root' AND
             `registry_key` = '$key'");
     }
-    
+
+    public function Exists($root, $key) {
+
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key);
+
+
+        // sql
+        $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE 
+            registry_root = :registry_root AND registry_key = :registry_key ;";
+        // select
+        $result = $this->db->Select($sql, array('registry'), array('type' => 'is', ":registry_root" => $root,
+            ":registry_key" => $key));
+
+        $result_ = $result[0]['count'];
+
+        // result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
+        // retrun result
+        return $result_;
+    }
 
 }
