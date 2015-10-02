@@ -1,11 +1,16 @@
 #php error control
-php_flag display_errors on
+#php_flag display_errors on
+
+
+<IfModule mod_rewrite.c>
 
 # redirect Virtual address to index php.
 RewriteEngine on
-
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
 RewriteRule ^(.+)$ index.php?req=$1 [QSA,L]
+ 
+</IfModule>
