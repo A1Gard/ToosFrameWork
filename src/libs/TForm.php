@@ -56,7 +56,12 @@ class TForm {
             case 'list':
                 $this->_addSelect($type, $label, $attr, $other, $value);
                 break;
-
+            
+            case 'hr':
+            case 'spliter':
+                $this->_addSpliter($attr);
+                break;
+            
             // add all input type same as :
             //"Text", "Password", "Email", "URL", "Radio", "Checkbox", "Button",
             //"Range", "File", "Color", "Hidden", "Submit", "Reset", "Image" or etc
@@ -132,6 +137,14 @@ class TForm {
         $this->field .= $textarea;
     }
 
+    /**
+     * add spliter to form
+     * @param mixed $attr input's attribute's
+     */
+    private function _addSpliter($attr) {
+        $this->field .= "<hr ". $this->_makeAttr($attr) ." />" ;
+    }
+    
     /**
      * add input filed to form
      * @param string $type type of input
