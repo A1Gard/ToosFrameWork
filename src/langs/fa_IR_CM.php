@@ -116,6 +116,15 @@ $_LANG = array(
      #
     '',
     '',
+   
+    
+    #
+    'DropDown Menu',
+    'فهرست آبشاری',
+    
+     #
+    'Save',
+    'ذخیره',
 
     /* elements */
     

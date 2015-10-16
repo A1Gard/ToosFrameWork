@@ -19,7 +19,7 @@
                 'Category/Index', $index);
         $side_menu->AddItem(' فهرست حرفه ای دسته ها', UR_MP .
                 'Category/Pro', $index);
-        $side_menu->AddItem('منوی سایت', UR_MP .
+        $side_menu->AddItem('فهرست سایت', UR_MP .
                 'DropDownMenu/Index', 0, 'fa-ellipsis-h');
         $side_menu->AddItem(' تنظیمات سایت', UR_MP .
                 'Index/Setting', 0, 'fa-cogs');
