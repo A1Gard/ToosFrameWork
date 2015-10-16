@@ -8,7 +8,7 @@
  * @subpackage   Controller super class
  * @todo : Controller Super class
  */
-class Controller extends Bootstarp {
+class TController extends TBootstarp {
 
     private $base;
     protected static $_main_title = '';
@@ -21,7 +21,7 @@ class Controller extends Bootstarp {
 
         $this->base = $base;
         // every controller have view load view here
-        $this->view = new View();
+        $this->view = new TView();
 
 
         // check if not in login page 
@@ -34,7 +34,7 @@ class Controller extends Bootstarp {
     }
 
     /**
-     * @todo load controller model if exsits
+     * @todo load controllerUR_MP_ASSETS if exsits
      * @param string $name
      */
     public function LoadModel($name) {

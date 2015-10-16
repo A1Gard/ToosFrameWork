@@ -9,7 +9,7 @@
  * @version 0.8
  * @todo : Drop Down menu class
  */
-class TDropDownMenu extends Model {
+class TDropDownMenu extends TModel {
 
     function __construct($table_name = 'dropdown') {
         parent::__construct($table_name, 'dropdown_');

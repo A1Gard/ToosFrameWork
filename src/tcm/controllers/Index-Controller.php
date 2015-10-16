@@ -8,7 +8,7 @@
  * @subpackage   index-controller.php | dashboard controller
  * @todo : index page | dashboard 
  */
-class Index extends Controller {
+class Index extends TController {
 
     function __construct() {
 
@@ -116,5 +116,3 @@ class Index extends Controller {
     }
 
 }
-
-?>

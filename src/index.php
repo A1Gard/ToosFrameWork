@@ -9,8 +9,9 @@
  * @issue : index page link to all CM with bootstrap 
  */
 
-// is user in cm
-define('__CM__', FALSE);
+// is user in manager page
+define('__MP__', FALSE);
+    
 
 
 
@@ -21,17 +22,14 @@ require_once './inc/header.php';
 
 define('PAGE_C', 24);
 
-    require './api/general.php';
-    require './api/relation.php';
-    
-    require './tempp/topic.php';
-    
-    $a = GetTag();
-    
-    $a = GetRecord($ID);
-    var_dump($a);
-    
-die;
+require './api/general.php';
+require './api/relation.php';
+
+require './tempp/topic.php';
+
+$a = GetTag();
+
+$a = GetRecord($ID);
 
 
 $dt = new TDate();
@@ -83,7 +81,7 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
                 $smarty->display('header.tpl');
                 $smarty->display('404.tpl');
             } else {
-                $rm = new Model('report', 'report_');
+                $rm = new TModel('report', 'report_');
                 $report = $rm->GetRecord($url[1]);
                 print_r($_SESSION);
 //                print_r($report );
@@ -128,7 +126,7 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
                 $smarty->display('header.tpl');
                 $smarty->display('404.tpl');
             } else {
-                $m = new Model('req', 'req_');
+                $m = new TModel('req', 'req_');
                 $req = $m->GetRecord($url[1]);
                 if (($req == FALSE) || $req['req_status'] == 0) {
                     $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title);
@@ -149,16 +147,15 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
                 $smarty->display('header.tpl');
                 $smarty->display('404.tpl');
             } else {
-                $m = new Model('tag', 'tag_');
+                $m = new TModel('tag', 'tag_');
                 $tag = $m->GetRecord($url[1]);
                 if ($tag == FALSE) {
-                    
+
                     $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title);
                     $smarty->display('header.tpl');
                     $smarty->display('404.tpl');
-                    
                 } else {
-                   
+
                     $smarty->assign('title', $tag['tag_label'] . '-برچسب-' . $title);
                     $smarty->display('header.tpl');
                     require './inc/tag.php';
@@ -173,20 +170,18 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
 
                 $smarty->assign('msg', 'عبارت جستجو شده بسیار کوچک است');
                 $smarty->display('message.tpl');
-                
             } else {
 
                 $page_count = GetSreachPageCount($_GET['search']);
 
                 if ($page_count == 0) {
 
-                    $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title) ;
-                    $smarty->display('header.tpl') ;
-                    $smarty->display('404.tpl') ;
-                    
+                    $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title);
+                    $smarty->display('header.tpl');
+                    $smarty->display('404.tpl');
                 } else {
 
-                    $smarty->assign('title', 'جستجو برای "' . $_GET['search'] . '" - ' . $title) ;
+                    $smarty->assign('title', 'جستجو برای "' . $_GET['search'] . '" - ' . $title);
                     $smarty->display('header.tpl');
                     require './inc/search.php';
                     $smarty->display('list.tpl');
@@ -248,7 +243,7 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
                 $smarty->display('header.tpl');
                 $smarty->display('404.tpl');
             } else {
-                $m = new Model('member', 'member_');
+                $m = new TModel('member', 'member_');
                 $member = $m->GetRecord($url[1]);
                 if ($member == FALSE) {
                     $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title);
@@ -267,8 +262,8 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
             $smarty->display('error.tpl');
             break;
         case 'خروج':
-            
-            
+
+
             // failed
             $_GET['msg'] = 'خروج با موفقیت انجام شد';
             setcookie('mid', null, time() - 300);
@@ -277,11 +272,11 @@ if (isset($url[1]) && ($url[0] == 'form') && isset($_POST)) {
             setcookie('mact', null, time() - 300);
             $smarty->display('header.tpl');
             $smarty->display('message.tpl');
-            
+
             break;
-        
+
         default:
-            
+
             $st->Discount();
             $smarty->assign('title', '404 : چیزی  پیدا نشد  - ' . $title);
             $smarty->display('header.tpl');

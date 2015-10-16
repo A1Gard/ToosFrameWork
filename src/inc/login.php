@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['email']) && isset($_POST['password']) ){
-    $m = new Model('member');
+    $m = new TModel('member');
     $result = $m->db->Select('SELECT * FROM %table% WHERE member_email = :email AND member_password = :password AND member_type  > 0',
             array('member'),array(':email'=>$_POST['email'],':password' =>  Password($_POST['password'])));
     if($result != array()){

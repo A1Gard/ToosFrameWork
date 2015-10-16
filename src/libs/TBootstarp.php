@@ -9,77 +9,67 @@
  * @todo : bootstrap class system manager page & bootsrap function. 
  */
 
-
-
-/** 
+/**
  * @name Bootstarp 
  * @todo Bootstrap the system 
  */
-class Bootstarp {
+class TBootstarp {
 
     // user request detail
     private $_url = array();
-    public static  $request = NULL ;
+    public static $request = NULL;
 
-
-    
     function __construct() {
-        
+
         // get - load request to class
         $this->_GetRequest();
-        
+
         // load controller
-        $this->_Loader(count($this->_url)) ; 
-        
+        $this->_Loader(count($this->_url));
+
         // run debug system set 
         if (_DBG_) {
             error_reporting(E_ALL);
-        }  else {
+        } else {
             error_reporting(0);
         }
     }
-    
-    
-    
+
     /**
      * @name _getRequest 
      * @todo get reauest user and pass to class 
      */
     private function _GetRequest() {
-        
+
         /* @var $request string get apache request passed to index */
         if (isset($_REQUEST['req']) && $_REQUEST['req'] != '') {
-            
-            $request = rtrim( $_REQUEST['req'] , '/');
+
+            $request = rtrim($_REQUEST['req'], '/');
             $this->_url = explode('/', $request);
-            
-        }  else {
-            
+        } else {
+
             // set deafult index
             $this->_url = array(0 => 'index.php');
         }
-        
-        self::$request = implode(',', $this->_url ) ;   
+
+        self::$request = implode(',', $this->_url);
     }
-    
-    
-    
+
     /**
      * @name _loader 
      * @todo load cm controler
      * @param int $length url requset length array
      */
     private function _Loader($length) {
-        
+
         // check is requset any thing
         if (($length == 1) && ($this->_url[0] == 'index.php')) {
             // load index
             $this->_LoadDefaultController();
-        }  else {
+        } else {
             // load request controller
             $this->_LoadExistsController($length);
         }
-        
     }
 
     /**
@@ -88,102 +78,101 @@ class Bootstarp {
      * @return bool
      */
     private function _LoadDefaultController() {
-        
-        // default file ;
-        $filename = 'controllers/Index-Controller.php';
-        
-        // check file  inc file
-        if (file_exists($filename))
-            require $filename ;
-        else 
-           throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' "); 
 
-        $this->controller = new Index() ;
-        // load model if exists
-        $this->controller->LoadModel($this->_url[0]) ;
+        if (__MP__) {
+            // default file ;
+            $filename = 'controllers/Index-Controller.php';
+        } else {
+
+            $filename = 'controllers/Index-Controller.php';
+        }
+
+        // check file  inc file
+        if (file_exists($filename)) {
+            require $filename;
+        } else {
+            throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
+        }
+
+//        echo 1;
+        $this->controller = new Index();
+        // loadUR_MP_ASSETS if exists
+        $this->controller->LoadModel($this->_url[0]);
         // call deafult method
-        $this->controller->Index() ;
+        $this->controller->Index();
         return false;
     }
-    
-    
+
     /**
      * @name _LoadExistsController
      * @todo load MVC must do to user
      * @param int $length request array length
      * @return bool
      */
-    private function _LoadExistsController($length){
-        
-         // default file ;
+    private function _LoadExistsController($length) {
+
+        // default file ;
         $filename = 'controllers/' . $this->_url[0] . '-Controller.php';
 
         // check file  inc file
         if (file_exists($filename))
-            require $filename ;
-        else 
-             throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' "); 
+            require $filename;
+        else
+            throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
 
         if ($length == 1) {
-             $this->controller = new $this->_url[0]() ;
-             $this->controller->Index();
-             return false;
+            $this->controller = new $this->_url[0]();
+            $this->controller->Index();
+            return false;
         }
-        
+
         // else
-        
         // create from class 
-        $this->controller = new $this->_url[0]() ;
-        // load model if exists
-        $this->controller->LoadModel($this->_url[0]) ;
-        
-        
+        $this->controller = new $this->_url[0]();
+        // loadUR_MP_ASSETS if exists
+        $this->controller->LoadModel($this->_url[0]);
+
+
         if (!method_exists($this->controller, $this->_url[1])) {
             header("HTTP/1.0 404 Not Found");
             exit();
         }
-        
+
         switch ($length) {
             /**
              * controller->mothod();
              */
             case 2:
-                
-                $this->controller->{$this->_url[1]}();    
+
+                $this->controller->{$this->_url[1]}();
                 break;
             /**
              * controller->mothod($param1);
              */
             case 3:
-                $this->controller->{$this->_url[1]}($this->_url[2]);    
+                $this->controller->{$this->_url[1]}($this->_url[2]);
                 break;
             /**
              * controller->mothod($param1,$param2);
              */
             case 4:
-                $this->controller->{$this->_url[1]}($this->_url[2],$this->_url[3]);    
+                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
                 break;
             /**
              * controller->mothod($param1,$param2,$param3);
              */
             case 5:
-                $this->controller->{$this->_url[1]}($this->_url[2],$this->_url[3],$this->_url[4]);    
+                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
                 break;
             /**
              * controller->mothod($param1,$param2,$param3,$param4);
              */
             default:
-                $this->controller->{$this->_url[1]}($this->_url[2],$this->_url[3],$this->_url[4],$this->_url[5]); 
+                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5]);
                 break;
         }
-        
     }
 
-    
-    
 }
 
 #------------------------------------------------------------------------------
-
-
-?>

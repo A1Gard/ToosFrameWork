@@ -10,7 +10,7 @@
  * @todo : loging try to do : login - search - send comment & ...
  */
 
-class TTryLog extends Model {
+class TTryLog extends TModel {
 
     function __construct() {
         parent::__construct();

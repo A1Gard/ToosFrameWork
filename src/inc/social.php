@@ -5,10 +5,10 @@ if (!isset($_COOKIE['mid'])) {
 }
 
 $topix = GetTopicByLiker($_COOKIE['mid'], 10);
-$a = new Model('member','member_');
+$a = new TModel('member','member_');
 $mem = $a->GetRecord($_COOKIE['mid']);
 
-$rep = new Model('report', 'report_');
+$rep = new TModel('report', 'report_');
 $repz = $rep->Read('report_id,report_title',99,'report','report_');
 
 

@@ -25,9 +25,13 @@
         $public_libs->LoadPublicLibs();
         // style sheet
         $public_libs->LoadExtedentLib();
-        //$public_libs->LoadTemplateCMCSS(array('style', 'object', 'byekan'));
+//        $public_libs->LoadTemplateCMCSS(array('style', 'object', 'byekan'));
         // load js
         $public_libs->LoadCMJS(array('general', 'side-menu', 'jquery.pin', 'jquery.nicescroll.min'));
+
+        if (_lg("DIR") == "rtl") {
+                    $public_libs->LoadCMCSS(array('general-rtl', 'element-rtl', 'byekan'));
+        }
         // pakage load
         $public_libs->LoadPackageJS(array('ckeditor/ckeditor',
             'jquery-ui/jquery-ui.min', 'tagsinput/jquery.tagsinput',
@@ -58,16 +62,17 @@
                             <i class="notify"> 3 </i>
                         </li>
                         <li>
-                            <a href="<?php echo UR_MPT ?>Index/State">
+                            <a href="<?php echo UR_MP ?>Index/State">
                                 <span class="fa fa-bar-chart"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo UR_MPT . 'Comment/Index' ?>">
+                            <a href="<?php echo UR_MP . 'Comment/Index' ?>">
                                 <span class="fa fa-envelope-o"></span>
                             </a>
                             <?php $a = TSystem::GetInstance();
-                            echo $a->GetPenddlingCommentCount(); ?>
+                            echo $a->GetPenddlingCommentCount();
+                            ?>
                         </li>
 
                     </ul>
@@ -78,9 +83,10 @@
                         <img src="<?php echo UR_MP_ASSETS ?>img/anonymous.gif" alt="[your avatar]" />
                         <span class="hello">
                             <?php _lp('Hello'); ?>, 
-                            <?php $s = new TSystem();echo $s->GetField('manager', 
-                                    'manager_', 'manager_displayname', 
-                                    $_SESSION['MN_ID']) ?>
+                            <?php
+                            $s = new TSystem();
+                            echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
+                            ?>
                         </span>
                         <span class="fa fa-angle-down" ></span>
                         <ul class="mini-dropdown animate">
@@ -121,5 +127,5 @@
                     </div>
 
                     <div class="notification-bar">
-                        <?php TNotification::Show(); ?>
+<?php TNotification::Show(); ?>
                     </div>

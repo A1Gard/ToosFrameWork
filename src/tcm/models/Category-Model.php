@@ -6,7 +6,7 @@
  * @date : 9-Julay-2014 
  * @time : 16:32 
  * @subpackage   calss-model.php
- * @todo : calss model page page
+ * @todo : calssUR_MP_ASSETS page page
  */
 
 /**

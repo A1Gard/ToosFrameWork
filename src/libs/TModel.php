@@ -5,10 +5,10 @@
  * @author Phoenix Tech <info@pxt.ir> 
  * @date : 22-March-2013 (2-1-1392) 
  * @time : 16:32 
- * @subpackage   Model.php
- * @todo : Model Super class
+ * @subpackage   TModel.php
+ * @todo : TModel Super class
  */
-class Model {
+class TModel {
 
     // table name for general functopn in this class
     private $table_name = null;

@@ -8,7 +8,7 @@
  * @subpackage   Topic-controller.php | topics controller
  * @todo :   
  */
-class Topic extends Controller {
+class Topic extends TController {
 
     function __construct() {
 

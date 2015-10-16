@@ -9,7 +9,7 @@
  * @version 1.0
  * @todo :  State class
  */
-class TState extends Model {
+class TState extends TModel {
 
     function __construct() {
         

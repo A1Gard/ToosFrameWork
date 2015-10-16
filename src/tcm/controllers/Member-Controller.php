@@ -8,7 +8,7 @@
  * @subpackage   Member-controller.php | topics controller
  * @todo :   
  */
-class Member extends Controller {
+class Member extends TController {
 
     
 
@@ -16,7 +16,7 @@ class Member extends Controller {
 
         parent::__construct();
         self::$_main_title = _lg('Members');
-        $this->report = new Model('report', 'report_');
+        $this->report = new TModel('report', 'report_');
     }
 
     /**

@@ -4,7 +4,7 @@ if (!isset($_COOKIE['mid'])) {
     Redirect('/msg/شما وارد نشده اید');
 }
 
-$m = new Model('member', 'member_');
+$m = new TModel('member', 'member_');
 $record = $m->GetRecord($_COOKIE['mid']);
 
 

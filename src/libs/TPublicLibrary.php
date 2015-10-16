@@ -29,15 +29,19 @@ class TPublicLibrary {
     private function _loadInternalLibs() {
         // check for minified
         $this->minified_libs ? $suffix = '.min' : $suffix = '';
+        
         // jquery
-        echo '<script type="text/javascript" src="' . UR_PUB . 'js/jquery' . $suffix . '.js"></script>'
+        echo '<script type="text/javascript" src="' . UR_MP_ASSETS . 'js/jquery' . $suffix . '.js"></script>' . PHP_EOL
         . '
             <!--[if lte IE 9]>
-                <script src="' . UR_CM_PUB . 'js/iefix.js" type="text/javascript"></script>
-            <![endif]-->';
-        self::LoadCMCSS('top-grid');
+                <script src="' . UR_MP_ASSETS . 'js/iefix.js" type="text/javascript"></script>
+            <![endif]-->' . PHP_EOL;
+        echo "\n\t<!-- css self load--> \n";
+        self::LoadCMCSS('topstrap.min');
         self::LoadCMCSS('font-awesome.min');
-        
+        self::LoadCMCSS('genreal');
+        self::LoadCMCSS('element');
+        echo  PHP_EOL.PHP_EOL;
     }
 
     /**
@@ -55,10 +59,11 @@ class TPublicLibrary {
     public static function LoadCMJS($js_name) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $js_name);
-        $result = '';
+        $result = "\n\t<!-- js manager page load--> \n";
         foreach ($js_name as $name) {
-            $result .=  '<script type="text/javascript" src="' . UR_CM_PUB . 'js/' . $name . '.js"></script>'."\n";
+            $result .= "\t" . '<script type="text/javascript" src="' . UR_MP_ASSETS . 'js/' . $name . '.js"></script>' . PHP_EOL;
         }
+        $result .= PHP_EOL.PHP_EOL;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         echo $result;
@@ -70,18 +75,27 @@ class TPublicLibrary {
     public function LoadCMCSS($css_name) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $css_name);
-        echo '<link type="text/css" rel="stylesheet" href="' . UR_CM_PUB . 'css/' . $css_name . '.css" />';
+        if (is_array($css_name)) {
+            foreach ($css_name as $css) {
+                
+            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css . '.css" />' . PHP_EOL;
+            }
+        }  else {
+            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css_name . '.css" />' . PHP_EOL;
+        }
     }
+
     /**
      * @todo load js from package public dir
      */
     public static function LoadPackageJS($js_name) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $js_name);
-        $result = '';
+        $result = "\n\t<!-- js package load--> \n";
         foreach ($js_name as $name) {
-            $result .=  '<script type="text/javascript" src="' . UR_CM_PUB . 'package/' . $name . '.js"></script>'."\n";
+            $result .= "\t" . '<script type="text/javascript" src="' . UR_MP_ASSETS . 'package/' . $name . '.js"></script>' . PHP_EOL;
         }
+        $result .= PHP_EOL.PHP_EOL;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         echo $result;
@@ -93,36 +107,53 @@ class TPublicLibrary {
     public function LoadPackageCSS($css_name) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $css_name);
+        echo "\n\t<!-- css package load--> \n";
         foreach ($css_name as $name) {
-            echo '<link type="text/css" rel="stylesheet" href="' . UR_CM_PUB . 'package/' . $name . '.css" />';
+            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'package/' . $name . '.css" />' . PHP_EOL;
         }
+        echo  PHP_EOL.PHP_EOL;
     }
 
-    
     /**
      * @todo load js from cm public dir
      */
     public static function LoadTemplateCMJS($js_name) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $js_name);
-        echo '<script type="text/javascript" src="' . UR_CM_PUB . 'js/' . $js_name . '.js"></script>';
+        echo "\n\t<!-- css device load--> \n";
+        echo "\t" . '<script type="text/javascript" src="' . UR_MP_ASSETS . 'js/' . $js_name . '.js"></script>' . PHP_EOL;
     }
 
     /**
      * @todo load css from cm public dir
      */
     public function LoadTemplateCMCSS($css_name) {
-        
+
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $css_name);
-        
+
         $result = '';
         foreach ($css_name as $name) {
-             $result .= '<link type="text/css" rel="stylesheet" href="' . UR_CM_PUB . 'template/' . $this->template . '/css/' . $name . '.css" />'."\n";
+            $result .= "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'template/' . $this->template . '/css/' . $name . '.css" />' . PHP_EOL;
         }
+        $result .= PHP_EOL.PHP_EOL;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-       echo $result;
+        echo $result;
+    }
+
+    public function LoadExtedentLib() {
+        if (_lg('ltr') == 'rtl'):
+            echo "\n\t".'<!-- rtl -->
+        <link type="text/css" rel="stylesheet" href="'.UR_MP_ASSETS.'css/general-rtl.css" />
+        <link type="text/css" rel="stylesheet" href="'.UR_MP_ASSETS.'css/element-rtl.css" />' .PHP_EOL.PHP_EOL ;
+        
+        endif;
+        echo "\n\t<!-- css device load--> \n";
+        self::LoadCMCSS('huge');
+        self::LoadCMCSS('desktop');
+        self::LoadCMCSS('tablet');
+        self::LoadCMCSS('mobile');
     }
 
 }

@@ -15,13 +15,10 @@
  */
 function __autoload($class) {
 
+
     if (__MP__) {
-        if (file_exists(PA_CORE . $class . '.php')) {
-            require PA_CORE . $class . '.php';
-        } else {
-            require PA_LIBS_MP . $class . '.php';
-        }
-    }else{
+        require PA_LIBS_MP . $class . '.php';
+    } else {
         require 'libs/' . $class . '.php';
     }
 }
@@ -43,11 +40,10 @@ function GoBack($message = null) {
         Redirect($_SERVER["HTTP_REFERER"]);
     } else {
         $tmp = explode('/', $_SERVER["HTTP_REFERER"]);
-        $lst = array('create','edit','delete','do');
-        if (in_array($tmp[count($tmp)-1], $lst)) {
-            $red = substr($_SERVER["HTTP_REFERER"], 0,strlen($_SERVER["HTTP_REFERER"]) 
-                    - ( strlen($tmp[count($tmp)-1])+1)  );
-        }else{
+        $lst = array('create', 'edit', 'delete', 'do');
+        if (in_array($tmp[count($tmp) - 1], $lst)) {
+            $red = substr($_SERVER["HTTP_REFERER"], 0, strlen($_SERVER["HTTP_REFERER"]) - ( strlen($tmp[count($tmp) - 1]) + 1));
+        } else {
             $red = $_SERVER["HTTP_REFERER"];
         }
         Redirect($red . $message);

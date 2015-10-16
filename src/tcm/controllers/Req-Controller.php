@@ -9,7 +9,7 @@
  * @todo :   
  */
 
-class Req extends Controller {
+class Req extends TController {
     
     function __construct() {
         

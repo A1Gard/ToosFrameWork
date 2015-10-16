@@ -4,7 +4,7 @@ if(!isset($_COOKIE['mid'])){
     Redirect('/ورود');
 }
 
-$m = new model("member",'member_');
+$m = newUR_MP_ASSETS("member",'member_');
 $record = $m->GetRecord($_COOKIE['mid']);
 
 $frm = new TForm('', 'post', array('class' => 'form'));

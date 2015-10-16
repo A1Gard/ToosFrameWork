@@ -9,7 +9,7 @@
  * @todo : View
  */
 
-class View {
+class TView {
 
     function __construct() {
         // make Navigator in view
@@ -26,9 +26,9 @@ class View {
             // final page title add to Navigator
             $this->navigator->AddItem($title);
             
-            require 'views/header.php';
+            require 'views/Layout/header.php';
             require 'views/' . $file . '.php';
-            require 'views/footer.php';
+            require 'views/Layout/footer.php';
             
         } else {
             

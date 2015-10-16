@@ -237,7 +237,7 @@ class TMAC {
             // store session to after login
             self::StoreRequest();
 
-            Redirect(UR_CMT . 'Access/Login');
+            Redirect(UR_MP . 'Access/Login');
         } else {
             return TRUE;
         }

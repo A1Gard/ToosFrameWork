@@ -9,7 +9,7 @@
  * @todo :   
  */
 
-class Comment extends Controller {
+class Comment extends TController {
     
     function __construct() {
         

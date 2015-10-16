@@ -121,8 +121,10 @@ $(function () {
         var c = confirm("آیا برای حذف مطمئن هستید؟");
         if (c == false)
             return false;
-        else
-            $(this).remove();
+        else{
+             $(this).parent().remove();
+        }
+           
 
     });
 

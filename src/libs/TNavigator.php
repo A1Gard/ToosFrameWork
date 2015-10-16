@@ -59,7 +59,7 @@ class TNavigator {
     function __construct($root) {
         
         // add root in first
-        $this->_addItem($root, __CM__ ? UR_CMT : UR_BASE );
+        $this->_addItem($root, __MP__ ? UR_MP : UR_BASE );
     }
     
     /**

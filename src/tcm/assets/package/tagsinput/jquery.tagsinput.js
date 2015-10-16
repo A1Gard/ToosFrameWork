@@ -230,7 +230,7 @@
 
 			$(data.holder).css('width',settings.width);
 			$(data.holder).css('min-height',settings.height);
-			$(data.holder).css('height','100%');
+			$(data.holder).css('height','200px');
 	
 			if ($(data.real_input).val()!='') { 
 				$.fn.tagsInput.importTags($(data.real_input),$(data.real_input).val());

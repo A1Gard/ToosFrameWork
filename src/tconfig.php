@@ -14,22 +14,22 @@
  *      - general config
  */
 
-    
+
+
 /*
  * Paths & urls & server handler
  */
 define('APACHE_SVR' , true); // is apache server ?
-define('PA_CORE'    , 'tcore/'); // core path
 define('PA_LIBS'    , 'libs/'); // library path
-define('PA_LIBS_CM' , '../libs/'); // library path
-define('PA_CM'      , 'tcm') ; // content manage path
+define('PA_LIBS_MP' , '../libs/'); // library path
+define('PA_MP'      , 'tcm') ; // content manage path
 
 
 define('UR_BASE'    , 'http://toos.org/');  // base site url must be have "/" at end
 define('UR_PUB'     , UR_BASE . 'public/');  // public site url
-define('UR_CM'      , UR_BASE . PA_CM . '/'); // content manage url
-define('UR_CMT'     , UR_CM . (APACHE_SVR?'':'index.php?req=')) ;// content manage url total addersss
-define('UR_CM_PUB'  , UR_BASE . PA_CM . '/public/'); // content manage public url
+//define('UR_MP'      , UR_BASE . PA_MP . '/'); // content manage url
+define('UR_MP'     , UR_BASE . PA_MP . (APACHE_SVR? '/':'index.php?req=')) ;// content manage url total addersss
+define('UR_MP_ASSETS'  , UR_BASE . PA_MP . '/assets/'); // content manage public url
 define('UR_UPLOAD'  , UR_BASE . 'upload/'); // upload url
 
 # ------------------------------------------------------------------------------

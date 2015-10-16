@@ -8,7 +8,7 @@
  * @subpackage   index.php
  * @issue : index page link to all CM with bootstrap 
  */
-// is user in cm
+// is user in manger page?
 define('__MP__', TRUE);
 
 // define db & golobal
@@ -19,21 +19,17 @@ $hook_store = null;
 require '../tconfig.php';
 // include constant file 
 require '../tconstant.php';
-//  include bootstrap
-require PA_CORE . 'Bootstrap.php';
-//  include functions
-require PA_CORE . 'Function.php';
-//  include pluginloder
-require PA_CORE . 'PluginLoader.php';
+
+require PA_LIBS_MP . 'TFunction.php';
 // load plug-in's files
-$plugin_loader = new PluginLoader();
+$plugin_loader = new TPluginLoader();
 
 //  include magic functions
 require  '../libs/TMagicFunctions.php';
 
-
 // start applaction
-$application = new Bootstarp() ;
+$application = new TBootstarp() ;
+//die('1');
 
 
 ################################################################################

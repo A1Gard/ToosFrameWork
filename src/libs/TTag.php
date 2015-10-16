@@ -23,7 +23,7 @@
 //##############################################################################
 
 
-class TTag extends Model {
+class TTag extends TModel {
 
     private $last_tag_selected = null;
     private $table = null;

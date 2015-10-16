@@ -9,7 +9,7 @@
  * @todo :   
  */
 
-class Search extends Controller {
+class Search extends TController {
     
     function __construct() {
         

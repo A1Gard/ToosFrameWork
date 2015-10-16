@@ -1,17 +1,18 @@
 
 /**
+ * grid system
  * @package: TopStrap
- * @vertion: 1.1
+ * @vertion: 1.2
  * @author : A1Gard.
  * @time   : Mar 20, 2014, 9:55:43 AM
- * @update : 15 Oct 2014
+ * @update : 2 Oct 2016 
  * @pattern: SAMACSS
  **/
-
 
 /**
  * Base
  **/
+
 
 
 *,
@@ -182,16 +183,16 @@ button,input,textarea,select{
     text-align:justify;
 }
 .text-nowrap {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 .text-lowercase {
-  text-transform: lowercase;
+    text-transform: lowercase;
 }
 .text-uppercase {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 .text-capitalize {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .margin{
@@ -205,14 +206,16 @@ button,input,textarea,select{
     margin-right:1em;
     margin-left:1em;
 }
-.t-wrapper{
-    margin:0 auto;
+.wrapper{
+    margin-right:auto;
+    margin-left:auto;
     overflow:hidden;
     position:relative;
 }
 .std-wrapper{ /* standard topstrap width wrapper */
     max-width:1100px;
-    margin:0 auto;
+    margin-right:auto;
+    margin-left:auto;
     overflow:hidden;
     position:relative;
 }
@@ -268,30 +271,30 @@ button,input,textarea,select{
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  display: block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    width: 100% \9;
+    max-width: 100%;
+    height: auto;
 }
 .img-rounded {
-  border-radius: 6px;
+    border-radius: 6px;
 }
 .img-thumbnail {
-  display: inline-block;
-  width: 100% \9;
-  max-width: 100%;
-  height: auto;
-  padding: 4px;
-  line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
+    display: inline-block;
+    width: 100% \9;
+    max-width: 100%;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 .img-circle {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 
@@ -352,12 +355,12 @@ button,input,textarea,select{
     /*	If you need support for IE7 and lower make 
             sure the boxsizing.htc file is linked properly.
             More info here:  https://github.com/Schepp/box-sizing-polyfill */
-
+    box-sizing:border-box;
     font-size: medium;
     vertical-align: top;
 
 }
-
+ 
 
 /*******************************************************************************
 ********************************************************************************
@@ -388,6 +391,7 @@ button,input,textarea,select{
 .grd22 { width: 91.6666666667%; }
 .grd23 { width: 95.8333333333%; }
 .grd24 { width: 100%; }
+
 
 /* * Mediom = 767px - 480px*/
 /*-768 width*/
@@ -481,6 +485,68 @@ button,input,textarea,select{
 }
 
 
+
+/*******************************************************************************
+********************************************************************************
+*******************************************************************************/
+
+/*
+devices property
+*/
+
+.only-hug ,.only-desktop, .only-tablet, .only-mobile {
+    display:none;
+}
+
+.no-hug, .no-desktop, .no-tablet, .no-mobile{
+    display: block;
+}
+
+@media ( max-width : 480px ) {
+    .only-mobile{
+        display:block;
+    }
+    .no-mobile{
+        display:none;
+    }
+}
+@media screen and (min-width:501px) and (max-width:999px) {
+    .only-tablet{
+        display:block;
+    }
+    .no-tablet{
+        display: none;
+    }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)
+and (orientation : portrait) { 
+    .only-tablet{
+        display:block;
+    }
+    .no-tablet{
+        display: none;
+    }
+}
+@media screen and (min-width:1000px) and (max-width:1900px) {
+    .only-desktop{
+        display:block;
+    }
+
+    .no-desktop{
+        display: none;
+    }
+}
+@media ( min-width : 1901px ) {
+    .only-hug{
+        display: block;
+    }
+    .no-hug{
+        display: none;
+    }
+}
 
 /*******************************************************************************
 ********************************************************************************

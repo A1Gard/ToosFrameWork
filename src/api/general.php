@@ -39,7 +39,7 @@ function GetRecord($id = null) {
     $rule =  ' AND ' . GetRule();
     
     
-    $model = new Model($table, $prefix);
+    $model = new TModel($table, $prefix);
 
     $record = $model->GetRecord($id, $rule);
 

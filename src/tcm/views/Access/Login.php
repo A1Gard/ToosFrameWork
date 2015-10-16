@@ -61,7 +61,7 @@
                 }
                 ?>
 
-                <form action="<?php echo UR_MPT; ?>Access/Check" method="post">
+                <form action="<?php echo UR_MP; ?>Access/Check" method="post">
                     <label>
                         <?php _lp('Username') ?>:
                         <br />

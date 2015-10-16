@@ -8,7 +8,7 @@
  * @subpackage   PluginLoader
  * @todo : Load plug-in info
  */
-class PluginLoader {
+class TPluginLoader {
     // connect to db
     function __construct() {
         
@@ -43,9 +43,9 @@ class PluginLoader {
      */
     private function GetActivePlugins() {
         // get list of plugin in dir
-        require 'Model.php';
+//        require 'Model.php';
         global  $pdbc ; // set global to use all plugin jobs
-        $pdbc = new Model(); // plugin dbc connection
+        $pdbc = new TModel(); // plugin dbc connection
         
         $sql = "SELECT plugin_name FROM %table% ";
         

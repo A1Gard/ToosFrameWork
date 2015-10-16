@@ -9,7 +9,7 @@
  * @version 1.0
  * @todo : All Category mode managing class
  */
-class TCategory extends Model {
+class TCategory extends TModel {
 
     protected static $instance;
     private $sulg ;

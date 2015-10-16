@@ -10,7 +10,7 @@
  * @todo : use for realtionship info 
  */
 
-class TRelation extends Model {
+class TRelation extends TModel {
 
     function __construct() {
         parent::__construct('relation');

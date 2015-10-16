@@ -8,7 +8,7 @@
  * @subpackage   Game-controller.php | topics controller
  * @todo :   
  */
-class Widget extends Controller {
+class Widget extends TController {
 
     
 

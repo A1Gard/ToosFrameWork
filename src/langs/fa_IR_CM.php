@@ -23,7 +23,7 @@ $_LANG = array(
     
     # view/header.php:23
     'DIR',
-    'ltr',
+    'rtl',
     
     #
     'langname',
@@ -124,7 +124,23 @@ $_LANG = array(
     'آگاه سازی',
     
     #
-    '',
-    ''
+    'Check All',
+    'علامت گذاری همه',
+    #
+    'Check None',
+    'بی علامت کردن همه',
+    #
+    'Check Toggle',
+    'برعکس کردن علامت گذاری',
+    #
+    'Bulk apply',
+    'اعمال دسته جمع',
+    
+    #
+    'All',
+    'همه',
+    #
+    'Hello',
+    'درود'
 );
 ?>

@@ -6,13 +6,13 @@
  * @date : 22-March-2013 (2-1-1392) 
  * @time : 16:32 
  * @subpackage   access_model.php
- * @todo : access model page page
+ * @todo : accessUR_MP_ASSETS page page
  */
 
 /**
- * class for user access model
+ * class for user accessUR_MP_ASSETS
  */
-class AccessModel extends Model {
+class AccessModel extends TModel {
 
 
     function __construct() {

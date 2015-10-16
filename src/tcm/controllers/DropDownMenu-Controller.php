@@ -9,7 +9,7 @@
  * @todo :   
  */
 
-class DropDownMenu extends Controller {
+class DropDownMenu extends TController {
     
     function __construct() {
         

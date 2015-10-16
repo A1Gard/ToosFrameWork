@@ -9,9 +9,7 @@ $hook_store = null;
 // include config file to do 
 require 'tconfig.php';
 // include constant file 
-require PA_CM . '/' . PA_CORE . 'Function.php';
-require PA_CM . '/' . PA_CORE . 'Model.php';
-
+require  PA_LIBS . 'TFunction.php';
 
 /* @var $request string get apache request passed to index */
 if (isset($_REQUEST['req']) && $_REQUEST['req'] != '') {
@@ -30,8 +28,8 @@ require './libs/Smarty.class.php';
 require './libs/TDatabasePDO.php';
 
 
-$pdbc = new Model('topic','topic_');
-$model = new Model('topic','topic_');
+$pdbc = new TModel('topic','topic_');
+$model = new TModel('topic','topic_');
 
 require_once './libs/TMagicFunctions.php';
 

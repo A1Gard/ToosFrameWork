@@ -9,7 +9,7 @@
  * @todo :   
  */
 
-class Upload extends Controller {
+class Upload extends TController {
     
     function __construct() {
         

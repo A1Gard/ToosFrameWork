@@ -9,7 +9,7 @@
  * @version 0.4
  * @todo : TSystem system class
  */
-class TSystem extends Model {
+class TSystem extends TModel {
 
     function __construct() {
         parent::__construct('relation');
@@ -102,12 +102,33 @@ class TSystem extends Model {
      * get comment count
      * @return int
      */
-    public function GetPenddlingCommentCount() {
+    public function GetPenddlingCommentCount($number_only = false) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $number_only);
         $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE comment_status = "
                 . COMMENT_STATUS_PENDDLING;
         $result = $this->db->Select($sql, array('comment'));
         $result = $result[0]['count'];
+        if (!$number_only) {
+            if ($result == 0) {
+                $result = '';
+            } else {
+                $result = "<i class=\"notify\"> {$result} </i>";
+            }
+        }
 
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+        return $result;
+    }
+    
+    public function GetField($table,$prefix,$field,$id) {
+        
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $table, $prefix, $field, $id);
+        $sql = "SELECT $field AS 'field' FROM %table% WHERE {$prefix}id = "
+                . (int) $id;
+        $result = $this->db->Select($sql, array($table));
+        $result = $result[0]['field'];
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
         return $result;
     }

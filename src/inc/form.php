@@ -46,7 +46,7 @@ switch ($url[1]) {
         
 
 
-        $m = new Model('member', 'member_');
+        $m = new TModel('member', 'member_');
 
         $sql = "SELECT COUNT(*) AS 'count' FROM %table% "
             . "WHERE member_email = :mail  ";
@@ -83,7 +83,7 @@ switch ($url[1]) {
         } else {
 
 
-            $m = new Model('req', 'req_');
+            $m = new TModel('req', 'req_');
 
             $insert['req_member_id'] = $_COOKIE['mid'];
 
@@ -98,7 +98,7 @@ switch ($url[1]) {
         $valid = array('member_name', 'member_degree', 'member_field', 'member_number', 'member_city', 'member_status');
 
         $edit = promis($clean, $valid);
-        $m = new Model('member', 'member_');
+        $m = new TModel('member', 'member_');
 
         $m->Edit($_COOKIE['mid'], $edit);
 
@@ -187,7 +187,7 @@ switch ($url[1]) {
             $valid = array('comment_parent', 'comment_text', 'comment_topic_id');
 
             $edit = promis($clean, $valid);
-            $m = new Model('comment', 'comment_');
+            $m = new TModel('comment', 'comment_');
             $data = array('comment_parent' => $clean['comment_parent'],
                 'comment_text' => $clean['comment_text'],
                 'comment_topic_id' => $clean['comment_topic_id'],

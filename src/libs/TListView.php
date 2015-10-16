@@ -132,7 +132,7 @@ class TListView {
 
         // show form head here when have bulk action
         if ($this->bulk_action['title'] != array()) {
-            $result = '<form method="post" action="' . UR_CM . $location . '/BulkAction">';
+            $result = '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
         } else {
             $result = null;
         }

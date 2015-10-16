@@ -9,7 +9,7 @@
  * @todo : login | logout  
  */
 
-class Access extends Controller {
+class Access extends TController {
     
     
     function __construct() {
@@ -31,21 +31,21 @@ class Access extends Controller {
      * @todo Show index without any thing
      */
     public function Login() {
-        $this->view->navigator->AddItem(self::$_main_title ,UR_MPT . 'Access');
+        $this->view->navigator->AddItem(self::$_main_title ,UR_MP . 'Access');
         $this->view->PageRender('Access/Login',_lg('Login'),FALSE);
     }
     
     public function Check() {
         $login_result = $this->model->Check();
         
-        $loaction =  UR_MPT; 
+        $loaction =  UR_MP; 
         
         // check if logined go dashoard or not go back or default login page and show message
         switch ($login_result[0]) {
             // login ssuccess
             case 1:
                 // get last page try to do
-                $loaction = (TMAC::GetSession('request') === true)? TMAC::GetSession('redirect'): UR_MPT; 
+                $loaction = (TMAC::GetSession('request') === true)? TMAC::GetSession('redirect'): UR_MP; 
                 Redirect($loaction);
                 break;
             // login failed
