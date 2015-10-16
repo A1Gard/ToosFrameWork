@@ -2,13 +2,17 @@
 <div class="row">
     <div class="grd24"  style="min-height:200px;margin-bottom:40px" >
 
-        <form action="<?php echo  UR_MP ?>DropDownMenu/Sync" method="post" id="sort_form" onsubmit="return false;" >
+        <form action="<?php echo UR_MP ?>DropDownMenu/Sync" method="post" id="sort_form" onsubmit="return false;" >
 
             <?php echo $this->dropdown->DropDownOl(); ?>
 
             <input type="hidden" id="sorted" name="sorted" />
-            <br />
-            <button type="submit" > <?php _lp('Save'); ?> </button>
+
+            <button type="submit" > 
+                <span class="fa fa-save"></span> 
+                &nbsp;
+                <?php _lp('Save'); ?> 
+            </button>
         </form>
 
         <!--        <ol class="drg drop-down-menu" id="drop-down-menu">
@@ -39,7 +43,7 @@
     </div>
     <div class="grd12">
         <h4 class="text-center"><?php _lp('Menu Widget') ?></h4>
-        <div class="margin grdx3">
+        <div class="margin grdx3 widget">
 
             <ol class="drga" id="un">
                 <li id="preview">
@@ -48,7 +52,10 @@
             </ol>
 
             <label>
-                <?php _lp('Item mode') ?>:
+                <span>
+
+                    <?php _lp('Item mode') ?>:
+                </span>
 
                 <select name="dropown_mode" id="mode">
                     <option value="0"> <?php _lp('Direct Link') ?> </option>
@@ -61,15 +68,25 @@
                 </select>
             </label>
             <label>
-                <?php _lp('title') ?>:
+                <span>
+
+                    <?php _lp('Title') ?>:
+
+                </span>
                 <input type="text" maxlength="255" name="dropdown_title" id="title" />
             </label>
             <label>
-                <?php _lp('search') ?>:
+                <span>
+
+                    <?php _lp('Search') ?>:
+                </span>
                 <input type="text" maxlength="255"  id="term"   disabled="" class="autocomplete"/>
             </label>
             <label>
-                <?php _lp('link') ?>:
+                <span>
+
+                    <?php _lp('Link') ?>:
+                </span>
                 <input type="text" maxlength="4096" name="dropdown_link" id="link" />
             </label>
         </div>
@@ -78,10 +95,22 @@
         <h4 class="text-center"><?php _lp('Trash') ?></h4>
         <div class="trash">
             <ol class="grdx3 trsh" style="list-style: none">
-                <li>Drop here for remove item</li>
+                <li>
+                    <i class="fa fa-trash-o fa-5x"></i>
+                    <br />
+                    <br />
+                    <?php _lp("Drop to remove item") ?>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                </li>
             </ol>
         </div>
     </div>
+    <input type="hidden" id="no-result" value="true" />
     <script type="text/javascript">
         $(function () {
 
@@ -140,7 +169,7 @@
                             ajax: 1,
                             dropdown_title: newtxt
                         },
-                        url: '<?php echo  UR_MP ?>DropDownMenu/Update/' + id,
+                        url: '<?php echo UR_MP ?>DropDownMenu/Update/' + id,
                         success: function (e) {
                             //console.log(e);
                             //return true;
@@ -198,7 +227,7 @@
                             data: {
                                 ajax: 1
                             },
-                            url: '<?php echo  UR_MP ?>DropDownMenu/Delete/' + id,
+                            url: '<?php echo UR_MP ?>DropDownMenu/Delete/' + id,
                             success: function (e) {
                                 //console.log(e);
                                 //return true;
@@ -250,7 +279,7 @@
                                 dropdown_sort_index: sort,
                                 dropdown_parent: parent
                             },
-                            url: '<?php echo  UR_MP ?>DropDownMenu/Insert',
+                            url: '<?php echo UR_MP ?>DropDownMenu/Insert',
                             success: function (e) {
                                 //console.log(e);
                                 //return true;
@@ -285,19 +314,19 @@
                 $(this).toggleClass('gray-ol');
                 $(this).toggleClass('highlite');
             });
-            
-            
+
+
             $(".autocomplete").autocomplete({
                 source: function (request, response) {
 
-                    var rmode = <?php echo  SEARCH_MODE_CATEGORY ?>;
+                    var rmode = <?php echo SEARCH_MODE_CATEGORY ?>;
                     if ($("#mode").val() == 1) {
-                        rmode = <?php echo  SEARCH_MODE_TOPIC ?>;
+                        rmode = <?php echo SEARCH_MODE_TOPIC ?>;
                     } else if ($("#mode").val() == 2) {
-                        rmode = <?php echo  SEARCH_MODE_TAG ?>;
+                        rmode = <?php echo SEARCH_MODE_TAG ?>;
                     }
                     $.ajax({
-                        url: "<?php echo  UR_MP ?>Search/AjaxSearchAll",
+                        url: "<?php echo UR_MP ?>Search/AjaxSearchAll",
                         dataType: "json",
                         data: {
                             q: request.term,

@@ -21,9 +21,12 @@ $(function () {
             return false;
         }
         $(".preloader").delay(100).fadeOut(220);
-        if ($("#no-result").val() == 'ture') {
+        if ($("#no-result").val() == 'true') {
             return  false;
         }
+        
+        console.log($("#no-result").val() );
+        
         
         $("#ajax-result span").fadeOut();
         try {

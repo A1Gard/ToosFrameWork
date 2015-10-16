@@ -52,3 +52,7 @@ input,textarea,select,button{
     right:auto;
     left:35%;
 }
+
+.widget span{
+    text-align: left;
+}

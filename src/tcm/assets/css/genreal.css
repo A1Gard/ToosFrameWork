@@ -180,6 +180,13 @@ a:hover,a:visited:hover{
 }
 
 
+#preview{
+    background: #007fba;
+    padding:6px 7px;
+    cursor:move;
+}
+
+
 .suggest-bg{
     background: #f8ab6b !important; 
 }
@@ -222,4 +229,35 @@ ul.state li span{
 
 .mobile-visble{
     display: none !important; 
+}
+
+.trash{
+    background: #13a7c7;
+    text-align: center;
+    padding:2em;
+    color: white;
+    margin:1em;
+}
+
+.widget{
+    background: #13a7c7;
+    text-align: center;
+    padding:2em;
+    color: white;
+    margin:1em;
+}
+
+.widget li{
+    list-style:none;
+}
+
+.widget input,.widget select{
+    padding:7px 2px;
+    width:70%;;
+}
+
+.widget span{
+    display:inline-block;
+    width:27%;
+    text-align: right;
 }

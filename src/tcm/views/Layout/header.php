@@ -30,7 +30,7 @@
         $public_libs->LoadCMJS(array('general', 'side-menu', 'jquery.pin', 'jquery.nicescroll.min'));
 
         if (_lg("DIR") == "rtl") {
-                    $public_libs->LoadCMCSS(array('general-rtl', 'element-rtl', 'byekan'));
+            $public_libs->LoadCMCSS(array('general-rtl', 'element-rtl', 'byekan'));
         }
         // pakage load
         $public_libs->LoadPackageJS(array('ckeditor/ckeditor',
@@ -59,7 +59,7 @@
                             <a href="#">
                                 <span class="fa fa-bell-o"></span>
                             </a>
-                            <i class="notify"> 3 </i>
+<!--                            <i class="notify"> 3 </i>-->
                         </li>
                         <li>
                             <a href="<?php echo UR_MP ?>Index/State">
@@ -70,7 +70,8 @@
                             <a href="<?php echo UR_MP . 'Comment/Index' ?>">
                                 <span class="fa fa-envelope-o"></span>
                             </a>
-                            <?php $a = TSystem::GetInstance();
+                            <?php
+                            $a = TSystem::GetInstance();
                             echo $a->GetPenddlingCommentCount();
                             ?>
                         </li>
