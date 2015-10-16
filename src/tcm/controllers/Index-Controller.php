@@ -28,8 +28,22 @@ class Index extends TController {
         $this->view->PageRender('Index/Sen', 'جملات انگیزشی');
     }
 
+    public function Sentence1() {
+        $this->view->sen = $this->model->Sentence1();
+//        var_dump($this->view->sen);
+        $this->view->senx = $this->view->sen['txt'];
+        unset($this->view->sen['txt']);
+        $this->view->PageRender('Index/Sen1', 'notification');
+    }
+
     public function SaveSentence() {
         $this->model->SaveSentence();
+        GoBack();
+    }
+
+    public function SaveSentence1() {
+
+        $this->model->SaveSentence1();
         GoBack();
     }
 
@@ -41,6 +55,10 @@ class Index extends TController {
     public function Setting() {
         $this->view->Setting = $this->model->Setting();
         $this->view->PageRender('Index/Setting', 'تنظیمات سایت ');
+    }
+    public function Time() {
+        $this->view->Time = $this->model->Time();
+        $this->view->PageRender('Index/Time', ' وقت ها ');
     }
 
     public function State() {
@@ -103,7 +121,7 @@ class Index extends TController {
         while (($key = array_search('0', $this->view->bw)) !== false) {
             unset($this->view->bw[$key]);
         }
-        
+
         $this->view->cl1 = $sys->GetRedToGreen(count($this->view->bw));
         $this->view->cl2 = $sys->GetRedToGreen(count($this->view->os));
 
@@ -114,5 +132,25 @@ class Index extends TController {
         $this->view->vis = $viss;
         $this->view->PageRender('Index/State', 'آمار سایت ');
     }
+
+    public function Slider() {
+        $this->view->Val = $this->model->All("slider");
+        $this->view->PageRender('Index/Slider', ' اسلایدر ');
+    }
+
+    public function Save($setting) {
+        $this->model->Save($setting);
+    }
+    
+     public function Titles() {
+        $this->view->Val = $this->model->All("titles");
+        $this->view->PageRender('Index/titles', ' عنوانین ');
+    }
+    
+      public function Pricing() {
+        $this->view->Val = $this->model->All("prcing");
+        $this->view->PageRender('Index/prcing', ' عنوانین ');
+    }
+
 
 }
