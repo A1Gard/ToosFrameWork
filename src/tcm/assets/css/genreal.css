@@ -18,6 +18,11 @@ body{
     font-family:tahoma,arial;
 }
 
+body.login{
+    background: #32323a;
+    overflow: hidden;
+}
+
 a,a:visited{
     color: #007fba;
 }
@@ -186,6 +191,49 @@ a:hover,a:visited:hover{
     cursor:move;
 }
 
+
+#login{
+    max-width:400px;
+    margin:15vh auto;
+    text-align: center;
+}
+
+#login form{
+    background: #007fba;
+    padding:20px;
+    border-radius:10px;
+    overflow:hidden;
+    text-align: right;
+    margin-bottom:1.5em;
+}
+
+#login .btn{
+    background: #ff9900 ;
+}
+#login .btn:hover{
+    background: orangered;
+}
+#login b{
+    display:block;
+    font-weight:normal;
+    margin-bottom:-10px;
+    margin-top:15px;
+}
+#login input{
+    padding:5px;
+    text-align:center;
+}
+
+#login .logo{
+    background: #13a7c7;
+    text-align: center;
+    margin:-20px;
+    margin-bottom:10px;
+}
+#login .logo img{
+    height:65px;
+    margin:15px;
+}
 
 .suggest-bg{
     background: #f8ab6b !important; 

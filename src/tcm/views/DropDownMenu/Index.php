@@ -53,7 +53,6 @@
 
             <label>
                 <span>
-
                     <?php _lp('Item mode') ?>:
                 </span>
 

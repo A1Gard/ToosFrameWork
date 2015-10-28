@@ -698,6 +698,8 @@ ul.sidebar-menu li a.active i {
 
 
 input{
+    background:#eee;
+    color:black;
     padding: 2px;
     margin:auto;
     border: 1px solid transparent;
