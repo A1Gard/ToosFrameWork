@@ -150,6 +150,12 @@ $_LANG = array(
     'Category & subtopic',
     'سر فصل و یادداشت زیر مجموعه',
      #
+    '404, Sorry we can\'t found any thing for your request.',
+    '404, پوزش می طلبیم، برای آنچه درخواست کرده اید چیزی یافت نشد',
+     #
+    'Not found...',
+    'چیزی پیدا نشد',
+     #
     'Title',
     'عنوان',
      #
