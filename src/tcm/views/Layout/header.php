@@ -62,7 +62,7 @@
 <!--                            <i class="notify"> 3 </i>-->
                         </li>
                         <li>
-                            <a href="<?php echo UR_MP ?>Index/State">
+                            <a href="<?php echo UR_MP ?>Index/Statistic">
                                 <span class="fa fa-bar-chart"></span>
                             </a>
                         </li>

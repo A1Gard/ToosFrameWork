@@ -33,7 +33,7 @@ $a = GetRecord($ID);
 
 
 $dt = new TDate();
-$st = new TState();
+$st = new TStatistic();
 $st->Count();
 
 $viss['visitcount'] = $st->VisitCount($dt->Today(), time());

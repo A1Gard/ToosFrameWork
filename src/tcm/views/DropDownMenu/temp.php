@@ -40,8 +40,8 @@
             // drop able  prepread from template
             $("#prepared").droppable({
                 // class chnage
-                activeClass: "ui-state-defaolt",
-                hoverClass: "ui-state-hover",
+                activeClass: "ui-statistic-defaolt",
+                hoverClass: "ui-statistic-hover",
                 accept: ":not(.ui-sortable-helper)",
                 drop: function(event, ui) {
                     //get ajax info.

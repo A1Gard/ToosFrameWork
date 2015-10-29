@@ -771,6 +771,9 @@ select{
     min-width:200px;
     background:#fff;
     color:black;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:border-box;
 }
 
 .grd-primary input[type='text'],
@@ -796,6 +799,9 @@ label > .cke_reset{
     max-width: 100%;
     /* margin-right: 0; */
     min-width: 100%;
+}
+.cke_maximized{
+    max-width:none !important;
 }
 
 

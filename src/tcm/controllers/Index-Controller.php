@@ -62,9 +62,9 @@ class Index extends TController {
         $this->view->PageRender('Index/Time', ' وقت ها ');
     }
 
-    public function State() {
+    public function Statistic() {
         $sys = new TSystem();
-        $st = new TState();
+        $st = new TStatistic();
         $dt = new TDate();
         $this->view->m = $sys->GetRcordCount('member');
         $this->view->ma = $sys->GetRcordCount('member', 'member_type = 1');
@@ -111,10 +111,10 @@ class Index extends TController {
         $this->view->os = array();
 
         for ($i = 0; $i < count($browser_list); $i++) {
-            $this->view->bw[$i] = $sys->GetRcordCount('state', 'state_browser = ' . $i);
+            $this->view->bw[$i] = $sys->GetRcordCount('statistic', 'statistic_browser = ' . $i);
         }
         for ($i = 0; $i < count($os_list); $i++) {
-            $this->view->os[$i] = $sys->GetRcordCount('state', 'state_os = ' . $i);
+            $this->view->os[$i] = $sys->GetRcordCount('statistic', 'statistic_os = ' . $i);
         }
         while (($key = array_search('0', $this->view->os)) !== false) {
             unset($this->view->os[$key]);
@@ -129,9 +129,9 @@ class Index extends TController {
 
 
         $this->view->topvisits = $sys->GetRecordByOrd('topic', 'topic_counter', '1', 'DESC');
-        $this->view->lastsch = $sys->GetRecordByOrd('state', 'state_id', ' CHAR_LENGTH(state_keyword) > 2 ', 'DESC');
+        $this->view->lastsch = $sys->GetRecordByOrd('statistic', 'statistic_id', ' CHAR_LENGTH(statistic_keyword) > 2 ', 'DESC');
         $this->view->vis = $viss;
-        $this->view->PageRender('Index/State', 'آمار سایت ');
+        $this->view->PageRender('Index/Statistic', 'آمار سایت ');
     }
 
     public function Slider() {

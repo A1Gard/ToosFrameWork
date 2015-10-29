@@ -5,11 +5,11 @@
  * @author Phoenix Tech <info@pxt.ir> 
  * @date : 20-Sep-2014
  * @time : 15:41 
- * @subpackage TState
+ * @subpackage TStatistic
  * @version 1.0
- * @todo :  State class
+ * @todo :  Statistic class
  */
-class TState extends TModel {
+class TStatistic extends TModel {
 
     function __construct() {
         
@@ -19,7 +19,7 @@ class TState extends TModel {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $visit_long, $online_long);
         
-        parent::__construct('state');
+        parent::__construct('statistic');
         define('VISIT_LONG', $visit_long); // on hour
         define('ONLINE_LONG', $online_long ); // 5 min
     }
@@ -41,25 +41,25 @@ class TState extends TModel {
         //$this->FileLog("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] \n", 'fff.txt');
 
         // if is visited count 
-        $rs = $this->db->Select('SELECT state_id FROM %table% WHERE state_ip = ' .
-                _ipi() . ' AND state_last_visit > ' . (time() - VISIT_LONG), array('state'));
+        $rs = $this->db->Select('SELECT statistic_id FROM %table% WHERE statistic_ip = ' .
+                _ipi() . ' AND statistic_last_visit > ' . (time() - VISIT_LONG), array('statistic'));
 
         if (is_array($rs) && count($rs) > 0) {
 
-            $this->db->Select('UPDATE %table%  SET state_visit = state_visit + 1'
-                    . ', state_last_visit = ' . time() . ' WHERE state_id = ' .
-                    $rs[0]['state_id'], array('state'));
+            $this->db->Select('UPDATE %table%  SET statistic_visit = statistic_visit + 1'
+                    . ', statistic_last_visit = ' . time() . ' WHERE statistic_id = ' .
+                    $rs[0]['statistic_id'], array('statistic'));
         } else {
             //
             $data = array(
-                'state_time' => time(),
-                'state_last_visit' => time(),
-                'state_os' => TVisitor::DetectOSI(),
-                'state_browser' => TVisitor::DetectBrowserI(),
-                'state_verstion' => (int) TVisitor::BrowserVersion(),
-                'state_ip' => _ipi(),
-                'state_referer' => Referer(),
-                'state_keyword' => TVisitor::GetKeyword()
+                'statistic_time' => time(),
+                'statistic_last_visit' => time(),
+                'statistic_os' => TVisitor::DetectOSI(),
+                'statistic_browser' => TVisitor::DetectBrowserI(),
+                'statistic_verstion' => (int) TVisitor::BrowserVersion(),
+                'statistic_ip' => _ipi(),
+                'statistic_referer' => Referer(),
+                'statistic_keyword' => TVisitor::GetKeyword()
             );
             $this->Create($data);
         }
@@ -74,14 +74,14 @@ class TState extends TModel {
 
 
         // if is visited count 
-        $rs = $this->db->Select('SELECT state_id FROM %table% WHERE state_ip = ' .
-                _ipi() . ' AND state_last_visit > ' . (time() - VISIT_LONG), array('state'));
+        $rs = $this->db->Select('SELECT statistic_id FROM %table% WHERE statistic_ip = ' .
+                _ipi() . ' AND statistic_last_visit > ' . (time() - VISIT_LONG), array('statistic'));
 
         if (is_array($rs) && count($rs) > 0) {
 
-            $this->db->Select('UPDATE %table%  SET state_visit = state_visit - 1'
-                    . ', state_last_visit = ' . time() . ' WHERE state_id = ' .
-                    $rs[0]['state_id'], array('state'));
+            $this->db->Select('UPDATE %table%  SET statistic_visit = statistic_visit - 1'
+                    . ', statistic_last_visit = ' . time() . ' WHERE statistic_id = ' .
+                    $rs[0]['statistic_id'], array('statistic'));
         }
         return TRUE;
     }
@@ -100,8 +100,8 @@ class TState extends TModel {
         if ($end == 'now'){
             $end = time();
         }
-        $rs = $this->db->Select("SELECT SUM(state_visit) AS 'sum' FROM %table% WHERE state_time"
-                . " BETWEEN " . $start . " AND " . $end . " ;", array('state'));
+        $rs = $this->db->Select("SELECT SUM(statistic_visit) AS 'sum' FROM %table% WHERE statistic_time"
+                . " BETWEEN " . $start . " AND " . $end . " ;", array('statistic'));
         $result = (int) $rs[0]['sum'];
         
         
@@ -121,8 +121,8 @@ class TState extends TModel {
         if ($end == 'now'){
             $end = time();
         }
-        $rs = $this->db->Select("SELECT COUNT(state_id) AS 'count' FROM %table% WHERE state_time"
-                . " BETWEEN " . $start . " AND " . $end . " ;", array('state'));
+        $rs = $this->db->Select("SELECT COUNT(statistic_id) AS 'count' FROM %table% WHERE statistic_time"
+                . " BETWEEN " . $start . " AND " . $end . " ;", array('statistic'));
         $result = $rs[0]['count'];
         
         // result hook
@@ -139,7 +139,7 @@ class TState extends TModel {
 
         
         $rs = $this->db->Select("SELECT COUNT(*) AS 'count' FROM %table% WHERE 
-            state_last_visit > " . (time() - ONLINE_LONG), array('state'));
+            statistic_last_visit > " . (time() - ONLINE_LONG), array('statistic'));
         $result = $rs[0]['count'];
         
                 // result hook

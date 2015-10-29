@@ -221,7 +221,7 @@ global $browser_list, $os_list;
             <br />
             <ul class="state">
                 <?php foreach ($this->lastsch as $topic): ?>
-                    <li>   <?php echo $topic['state_keyword'] ?>  </li>
+                    <li>   <?php echo $topic['statistic_keyword'] ?>  </li>
                 <?php endforeach; ?>
             </ul>
         </div>
