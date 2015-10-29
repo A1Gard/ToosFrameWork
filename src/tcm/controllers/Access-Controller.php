@@ -46,6 +46,7 @@ class Access extends TController {
             case 1:
                 // get last page try to do
                 $loaction = (TMAC::GetSession('request') === true)? TMAC::GetSession('redirect'): UR_MP; 
+                
                 Redirect($loaction);
                 break;
             // login failed

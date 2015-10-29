@@ -30,6 +30,8 @@ class TMAC {
     public static function GetSession($key) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $key);
+
+        // check isset sesstion for return
         if (isset($_SESSION[$key])) {
             $result = $_SESSION[$key];
 
@@ -197,7 +199,7 @@ class TMAC {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
         // check if not post any think and not reqest set before than restore request
-        if ((!isset($_POST)) && self::GetSession('request' === true)) {
+        if ((!isset($_POST) || count($_POST == 0 )) && self::GetSession('request')  == true) {
             $_POST = self::GetSession('post');
             self::DestroySession('request');
             self::DestroySession('post');
