@@ -711,6 +711,10 @@ input{
 }
 input[type='text']:focus ,
 input[type='password']:focus,
+input[type='email']:focus ,
+input[type='url']:focus ,
+input[type='number']:focus ,
+input[type='color']:focus ,
 textarea:focus,
 select:focus{
     border: 1px solid aqua;
@@ -769,7 +773,13 @@ select{
     color:black;
 }
 
-.grd-primary input[type='text'],.grd-primary textarea{
+.grd-primary input[type='text'],
+.grd-primary input[type='password'],
+.grd-primary input[type='email'],
+.grd-primary input[type='url'],
+.grd-primary input[type='number'],
+.grd-primary input[type='color'],
+.grd-primary textarea{
     width:70%;
     margin-bottom: 3px;
     padding: 3px !important;

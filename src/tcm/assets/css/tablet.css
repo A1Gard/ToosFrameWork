@@ -99,8 +99,12 @@
     }
 
 
-    input[type='text'] ,
-    input[type='password'],
+    input[type='text'],
+    input[type='password'],  
+    input[type='email'],
+    input[type='url'],
+    input[type='number'],
+    input[type='color'],
     textarea,
     select{
         width:100% !important;
@@ -125,8 +129,8 @@
         margin-bottom:5px;
     }
 
-    
-    
+
+
     label > .cke_reset {
         margin:0 !important;
         width:100%;
