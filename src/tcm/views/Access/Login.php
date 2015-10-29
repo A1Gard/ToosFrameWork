@@ -17,6 +17,7 @@
             ?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex, nofollow">
         <?php
         $public_libs = new TPublicLibrary();
         $public_libs->LoadPublicLibs();
@@ -40,6 +41,29 @@
                 <div class="logo">
                     <img src="<?= UR_MP_ASSETS ?>img/wlogo.png" alt="[]" />
                 </div>
+                <span class="notification-bar">  
+                    <?php
+// if is set
+                    if (isset($_GET['msg_id']) && isset($_GET['ni'])) {
+                        $msg = TLanguage::Index($_GET['msg_id']);
+                        ?>
+                        <p class="notification error text-center">
+                            <!--<span class="fa fa-times-circle"></span>-->
+                            <?php
+                            // check array for show with argumans or not
+                            if (isset($_GET['args'])) {
+                                // show with argumans
+                                $args = explode(',', $_GET['args']);
+                                vprintf($msg, $args);
+                            } else {
+                                echo $msg;
+                            }
+                            ?>
+                        </p>
+                        <?php
+                    }
+                    ?>
+                </span>
                 <label>
                     <b>
                         <?php _lp('Username') ?>:
@@ -62,7 +86,8 @@
                 <a href="?" class="text-center" style="color:black;display: block"><?php _lp('Forget your password ?') ?></a>
             </form>
             <span style="color:white;">  
-                <?php _lp('Powered by ');
+                <?php
+                _lp('Powered by ');
                 _lp('Toos Framework');
                 ?>  2013 &copy; <?php echo date('Y') ?>
             </span>
@@ -76,27 +101,7 @@
                     </div>
                     <div class="clearfix clr"></div>
                     <div id="login">
-        <?php
-// if is set
-        if (isset($_GET['msg_id']) && isset($_GET['ni'])) {
-            $msg = TLanguage::Index($_GET['msg_id']);
-            ?>
-                                            <p class="error">
-            <?php
-            // check array for show with argumans or not
-            if (isset($_GET['args'])) {
-                // show with argumans
-                $args = explode(',', $_GET['args']);
-                vprintf($msg, $args);
-            } else {
-                echo $msg;
-            }
-            ?>
-                                                <a class="alert-close" href="#"></a>
-                                            </p>
-            <?php
-        }
-        ?>
+        
         
                         <form action="<?php echo UR_MP; ?>Access/Check" method="post">
                             <label>
