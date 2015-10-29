@@ -21,12 +21,12 @@ class THash {
      */
     public static function Create($algo, $data) {
         // pre hook
-        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $algo, $data);
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $algo, $data);
         $context = hash_init($algo, HASH_HMAC, HASH_KEY);
         hash_update($context, $data);
         $result = hash_final($context);
         // result hook
-        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
         
     }
