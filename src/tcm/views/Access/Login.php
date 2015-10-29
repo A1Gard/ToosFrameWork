@@ -92,36 +92,5 @@
                 ?>  2013 &copy; <?php echo date('Y') ?>
             </span>
         </section> <!-- section login end -->
-
-        <!--        
-                
-                <section id="login-sec">
-                    <div id="brand">
-                        <img src="<?php echo UR_MP_ASSETS ?>images/wlogo.png" alt="[logo]" class="center" />
-                    </div>
-                    <div class="clearfix clr"></div>
-                    <div id="login">
-        
-        
-                        <form action="<?php echo UR_MP; ?>Access/Check" method="post">
-                            <label>
-<?php _lp('Username') ?>:
-                                <br />
-                                <input type="text" name="manager_username" placeholder="<?php _lp('Username') ?>" class="full-width"/>
-                            </label>
-                            <label>
-<?php _lp('Password') ?>:
-                                <br />
-                                <input type="password" name="manager_password" placeholder="<?php _lp('Password') ?>" class="full-width"/>
-                            </label>
-        
-                            <label> <input type="checkbox" name="remenber"  /> <?php _lp('Remenber me') ?> </label>
-                            <label><input type="submit" value="<?php _lp('log in') ?>" class="full-width" /></label>
-        
-                        </form>
-                        <br />
-                        
-                    </div>
-                </section>-->
     </body>
 </html>
