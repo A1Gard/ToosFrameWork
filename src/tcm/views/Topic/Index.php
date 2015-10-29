@@ -14,6 +14,7 @@ $listview->AddAction($pattern, 4, 'topic_status');
 $listview->AddFilter('پیش نویس', 'topic_status', '0');
 $listview->AddFilter(' انتشار عمومی', 'topic_status', '1');
 $listview->AddFilter(' ویژه اعضا', 'topic_status', '2');
+$listview->AddFilter(' قابل نمایش', 'topic_status', '0','gt');
 
 $listview->AddBulkAcction(' پیش نویس کردن', 'Edit', 'topic_status,0');
 $listview->AddBulkAcction(' انتشار جمعی', 'Edit', 'topic_status,1');

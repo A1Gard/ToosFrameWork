@@ -159,6 +159,9 @@ $_LANG = array(
     'Title',
     'عنوان',
      #
+    'Filter',
+    'صافی',
+     #
     'Search',
     'جستجو',
      #

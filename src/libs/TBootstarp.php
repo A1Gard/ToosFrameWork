@@ -136,13 +136,12 @@ class TBootstarp {
         }
 
 
+        
         // else
         // create from class 
         $this->controller = new $this->_url[0]();
         // loadUR_MP_ASSETS if exists
         $this->controller->LoadModel($this->_url[0]);
-
-
 
         if (!method_exists($this->controller, $this->_url[1])) {
             $filename = 'controllers/Index-Controller.php';

@@ -72,7 +72,18 @@ $(function () {
     $(".nice_scroll").niceScroll({railalign: align});
 
     $('.pre-actived').bind('click', function () {
-        $(this).toggleClass('actived');
+        $(this).addClass('actived');
+        $(document).bind('click.close-pre', function (e) {
+            //console.log(e);
+           
+            if ($(e.target).closest('.pre-actived').length === 0 && 
+                    !$(e.target).is('.pre-actived') &&
+                    $(".pre-actived").hasClass('actived')) {
+                // do something
+                $(".pre-actived").removeClass('actived');
+                $(document).unbind('click.close-pre');
+            }
+        });
     });
 
     $('.notification .fa-close').bind('click', function () {

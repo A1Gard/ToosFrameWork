@@ -211,6 +211,8 @@ ul.sidebar-menu li a.active i {
     overflow: hidden;
     padding-bottom: 0;
     border: 1px solid #13a7c7;
+    /* min-height: 45px; */
+    position: relative;
 }
 
 .navigation .crust {
@@ -503,6 +505,7 @@ ul.sidebar-menu li a.active i {
     top:104%;
     opacity: 0.9;
     height:auto;
+    z-index: 99;
 }
 
 .mini-dropdown li{
@@ -533,6 +536,7 @@ ul.sidebar-menu li a.active i {
 
 
 .notification-bar{
+    /* overflow: hidden; */
 
 }
 .notification-bar .notification{
@@ -676,6 +680,7 @@ ul.sidebar-menu li a.active i {
 .bulk-action{
     background: #0066cc;
     padding:10px 2em;
+    overflow: hidden;
 }
 .bulk-action select{
     padding: 2px;
@@ -698,7 +703,7 @@ ul.sidebar-menu li a.active i {
 
 
 input{
-    background:#eee;
+    background:#fff;
     color:black;
     padding: 2px;
     margin:auto;
@@ -722,6 +727,8 @@ input[type='button'] {
     color: #FFFFFF !important;
     padding: 5px 10px;
     display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .button:hover,
@@ -748,6 +755,8 @@ input[type='checkbox']{
 textarea{
     min-height: 100px;
     max-width: 80%;
+    background:#fff;
+    color:black;
 }
 
 
@@ -756,6 +765,8 @@ select{
     background:white;
     padding:4px;
     min-width:200px;
+    background:#fff;
+    color:black;
 }
 
 .grd-primary input[type='text'],.grd-primary textarea{

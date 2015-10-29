@@ -87,15 +87,38 @@ class TListView {
      * add a filter use in view 
      * @param string $title filter title show to manager
      * @param string $key database column name 
-     * @param string $value database value must be equal 
+     * @param string $value database value must be equal or opration act 
+     * @param string $opr opartion for filter null -> equal , gt -> greater than
+     *          lt -> less than , lk -> like , rg regix
      */
-    public function AddFilter($title, $key, $value) {
+    public function AddFilter($title, $key, $value, $opr = '') {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title, $key, $value);
 
+        switch ($opr) {
+            case '':
+                $prefix = '';
+                break;
+            case 'gt':
+                $prefix = '>';
+                break;
+            case 'lt':
+                $prefix = '<';
+                break;
+            case 'lk':
+                $prefix = '%';
+                break;
+            case 'rg':
+                $prefix = '$';
+                break;
+
+            default:
+                break;
+        }
+
         $this->filter['title'][] = $title;
         $this->filter['key'][] = $key;
-        $this->filter['value'][] = $value;
+        $this->filter['value'][] = $prefix . $value;
     }
 
     /**
@@ -106,7 +129,7 @@ class TListView {
      */
     public function AddBulkAcction($title, $function, $value) {
 
-        
+
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title, $function, $value);
 
@@ -122,10 +145,10 @@ class TListView {
      */
     public function Render($location = '') {
 
-        $date_format = 'Y/m/d H:i' ;
-        
+        $date_format = 'Y/m/d H:i';
+
         // pre hook
-        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $location,$date_format);
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $location, $date_format);
 
 
         $date = TDate::GetInstance();
@@ -146,11 +169,11 @@ class TListView {
             // get prefix
             $prefix = GetLinkPrefix('filter');
             // show title and no filter item named "All";
-            $result .= '<span> ' . _lg('Filter') . ': </span> <a href="' . $prefix . '"> ' . _lg('All') . '</a>';
+            $result .= '<span> ' . _lg('Filter') . ': </span> <a class="button" href="' . $prefix . '"> ' . _lg('All') . '</a>';
 
             // show filter lisr
             foreach ($this->filter['title'] as $key => $value) {
-                $result .= '<a href="' . $prefix . 'filter=' .
+                $result .= '<a class="button" href="' . $prefix . 'filter=' .
                         $this->filter['key'][$key] . ',' .
                         $this->filter['value'][$key] . '">' . $value . '</a>';
             }
@@ -288,9 +311,9 @@ class TListView {
             $result .= '</select>';
             $result .= '<input type="submit" value="' . _lg('Bulk apply') . '" />'
                     . '<div class="left" > '
-                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall" data-chekbox="listview-checkbox" /> &nbsp;'
-                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone" data-chekbox="listview-checkbox" /> &nbsp;'
-                    . '<input type="button" value="' . _lg('Check Toggle') . '" class="chktoggle" data-chekbox="listview-checkbox" /> &nbsp;'
+                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check Toggle') . '" class="chktoggle" data-chekbox="listview-checkbox" /> '
                     . '</div>'
                     . '</div>'
                     . '</form>';
@@ -298,7 +321,7 @@ class TListView {
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         echo $result;
     }
 

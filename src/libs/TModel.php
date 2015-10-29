@@ -19,9 +19,9 @@ class TModel {
         // set etable name
         $this->table_name = $table_name;
         // set prefix
-        if ($prefix == null){
+        if ($prefix == null) {
             $this->prefix = $table_name . '_';
-        }  else {
+        } else {
             $this->prefix = $prefix;
         }
         // singlton .
@@ -68,7 +68,7 @@ class TModel {
      * @category general
      */
     public function Read($colums, $limit = null, $table_name = null, $prefix = null) {
-        
+
         if ($limit == null) {
             // set defualt limit 
             $registry = TRegistry::GetInstance();
@@ -99,19 +99,44 @@ class TModel {
         if (!isset($_GET['filter'])) {
 
             $sql = "SELECT $colums FROM %table% ORDER BY {$order} "
-            . " LIMIT $start,$limit;";
+                    . " LIMIT $start,$limit;";
 
             $result = $this->db->Select($sql, array($table_name));
-            
         } else {
-            // else have filter apply fillter
             $filter = explode(',', $_GET['filter']);
+            // else have filter apply fillter
+            $term = substr($filter[1], 1);
+            
+//           die($term);
+
+            switch ($filter[1][0]) {
+
+                case '<':
+                    $cond = " {$filter[0]}  <  :{$filter[0]}  ";
+                    break;
+                case '>':
+                    $cond = " {$filter[0]}  >  :{$filter[0]}  ";
+                    break;
+                case '%':
+                    $term = '%' . $term . '%';
+                    $cond = " {$filter[0]}  LIKE  :{$filter[0]}  ";
+                    break;
+                case '$':
+                    $term = '^.*' . $term . '.*$';
+                    $cond = " {$filter[0]}   REGEXP   :{$filter[0]}  ";
+                    break;
+
+                default:
+                    $term = $filter[1];
+                    $cond = " {$filter[0]}  =  :{$filter[0]}  ";
+                    break;
+            }
             $sql = "SELECT $colums FROM %table% WHERE "
-                    . " {$filter[0]} =  :{$filter[0]} ORDER BY {$order} "
-            . " LIMIT $start,$limit";
+                    . " $cond ORDER BY {$order} "
+                    . " LIMIT $start,$limit";
 //    print_r($sql);die;
             // get count
-            $result = $this->db->Select($sql, array($this->table_name), array($filter[0] => $filter[1]));
+            $result = $this->db->Select($sql, array($this->table_name), array($filter[0] => $term));
         }
         return $result;
     }
@@ -134,13 +159,13 @@ class TModel {
      * @return acctioted array reorod data
      * @category general
      */
-    public function GetRecord($id,$where = null) {
+    public function GetRecord($id, $where = null) {
         $sql = "SELECT * FROM %table% WHERE {$this->prefix}id = :id $where";
-       
+
         $result = $this->db->Select($sql, array($this->table_name), array('type' => 'i', ":id" => $id));
-        if (isset($result[0])){
+        if (isset($result[0])) {
             return $result[0];
-        }else{
+        } else {
             return FALSE;
         }
     }
