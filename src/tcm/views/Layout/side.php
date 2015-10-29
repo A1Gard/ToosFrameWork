@@ -9,30 +9,30 @@
 
         $index = $side_menu->AddItem('یادداشت ها', '#', 0, 'fa-bullhorn');
         $side_menu->AddItem('فهرست یادداشت ها', UR_MP .
-                'Topic/Index', $index);
+                'Topic', $index);
         $side_menu->AddItem('یادداشت جدید', UR_MP .
                 'Topic/NewTopic', $index);
 
 
         $index = $side_menu->AddItem('دسته ها', '#', 0, 'fa-book');
         $side_menu->AddItem('فهرست کلاسیک دسته ها', UR_MP .
-                'Category/Index', $index);
+                'Category', $index);
         $side_menu->AddItem(' فهرست حرفه ای دسته ها', UR_MP .
                 'Category/Pro', $index);
         $side_menu->AddItem('فهرست سایت', UR_MP .
-                'DropDownMenu/Index', 0, 'fa-ellipsis-h');
+                'DropDownMenu', 0, 'fa-ellipsis-h');
         $side_menu->AddItem(' تنظیمات سایت', UR_MP .
                 'Index/Setting', 0, 'fa-cogs');
         $side_menu->AddItem(' جملات انگیزشی', UR_MP .
                 'Index/Sentence', 0, 'fa-star');
         $side_menu->AddItem(' دیدگاه', UR_MP .
-                'Comment/Index', 0, 'fa-comments');
+                'Comment', 0, 'fa-comments');
 //        $side_menu->AddItem(' برنامه فردی', UR_MP .
-//                'Req/Index', 0, 'fa-comments');
+//                'Req', 0, 'fa-comments');
 
         $index = $side_menu->AddItem('اعضا ', '#', 0, 'fa-group');
         $side_menu->AddItem('فهرست  اعضا', UR_MP .
-                'Member/Index', $index);
+                'Member', $index);
         $side_menu->AddItem(' ثبت عضو جدید', UR_MP .
                 'Member/NewMember', $index);
         $side_menu->AddItem('   جستجوی اعضا', UR_MP .

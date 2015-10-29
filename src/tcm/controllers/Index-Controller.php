@@ -14,7 +14,8 @@ class Index extends TController {
 
         parent::__construct();
     }
-
+    
+    
     /**
      * @todo Show index without any thing
      */
@@ -152,5 +153,9 @@ class Index extends TController {
         $this->view->PageRender('Index/prcing', ' عنوانین ');
     }
 
+    
+    public function e404() {
+        $this->view->PageRender('Index/404', _lg('Not found...'));
+    }
 
 }

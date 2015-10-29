@@ -62,6 +62,7 @@ class TBootstarp {
      */
     private function _Loader($length) {
 
+
         // check is requset any thing
         if (($length == 1) && ($this->_url[0] == 'index.php')) {
             // load index
@@ -91,8 +92,11 @@ class TBootstarp {
         if (file_exists($filename)) {
             require $filename;
         } else {
-            throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
+            if (_DBG_) {
+                throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
+            }
         }
+
 
 //        echo 1;
         $this->controller = new Index();
@@ -117,14 +121,20 @@ class TBootstarp {
         // check file  inc file
         if (file_exists($filename))
             require $filename;
-        else
-            throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
-
-        if ($length == 1) {
-            $this->controller = new $this->_url[0]();
-            $this->controller->Index();
-            return false;
+        else {
+            $filename = 'controllers/Index-Controller.php';
+            require $filename;
+            $_404 = new Index();
+            $_404->e404();
+            exit();
         }
+
+        // set default method loader
+        if (!isset($this->_url[1])) {
+            $this->_url[1] = "Index";
+            $length = 2;
+        }
+
 
         // else
         // create from class 
@@ -133,8 +143,12 @@ class TBootstarp {
         $this->controller->LoadModel($this->_url[0]);
 
 
+
         if (!method_exists($this->controller, $this->_url[1])) {
-            header("HTTP/1.0 404 Not Found");
+            $filename = 'controllers/Index-Controller.php';
+            require $filename;
+            $_404 = new Index();
+            $_404->e404();
             exit();
         }
 
@@ -143,32 +157,15 @@ class TBootstarp {
              * controller->mothod();
              */
             case 2:
-
                 $this->controller->{$this->_url[1]}();
                 break;
             /**
-             * controller->mothod($param1);
-             */
-            case 3:
-                $this->controller->{$this->_url[1]}($this->_url[2]);
-                break;
-            /**
-             * controller->mothod($param1,$param2);
-             */
-            case 4:
-                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
-                break;
-            /**
-             * controller->mothod($param1,$param2,$param3);
-             */
-            case 5:
-                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
-                break;
-            /**
-             * controller->mothod($param1,$param2,$param3,$param4);
+             * controller->mothod($param1,...);
              */
             default:
-                $this->controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4], $this->_url[5]);
+                $passing_array = array_slice($this->_url, 2);
+
+                call_user_func_array(array($this->controller, $this->_url[1]), $passing_array);
                 break;
         }
     }
