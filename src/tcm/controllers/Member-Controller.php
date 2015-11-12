@@ -31,7 +31,7 @@ class Member extends TController {
     }
 
     public function NewMember() {
-        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Member/Index');
+        $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
         $this->view->PageRender('Member/NewMember', self::$_main_title . ' جدید ');
     }
 
