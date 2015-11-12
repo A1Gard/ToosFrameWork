@@ -56,12 +56,12 @@ class TForm {
             case 'list':
                 $this->_addSelect($type, $label, $attr, $other, $value);
                 break;
-            
+
             case 'hr':
             case 'spliter':
                 $this->_addSpliter($attr);
                 break;
-            
+
             // add all input type same as :
             //"Text", "Password", "Email", "URL", "Radio", "Checkbox", "Button",
             //"Range", "File", "Color", "Hidden", "Submit", "Reset", "Image" or etc
@@ -84,26 +84,22 @@ class TForm {
         $select = '<select' . $this->_makeAttr($attr) .
                 ($type == 'list' ? 'multiple="multiple" ' : '' ) . '>';
 
-        if (is_array($items)):
-            // if have not defualt value
-            if ($value == null) {
+        if (is_array($items)): // is array
 
-                foreach ($items as $data) {
-                    $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
-                }
-                
-            } else {  // have default value
-                foreach ($items as $data) {
 
-                    // if equal default value
-                    if ($data[0] == $value) {
-                        $select .= '<option selected="" value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
-                    } else {
-                        $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
-                    }
-                }
+            reset($items);
+            // check is default format ?
+            if (is_array(current($items))) {
+                $select .= $this->_makeDefOptions($items, $value);
+            } else {
+                // or custom format
+                $is_string_key = gettype(key($items)) == 'string';
+                $select .= $this->_makeCustomOptions($items, $value, $is_string_key);
             }
-        endif;
+
+
+
+        endif; // is array
         $select .= '</select>';
 
         // add label 
@@ -114,6 +110,70 @@ class TForm {
 
         // append to form field
         $this->field .= $select;
+    }
+
+    /**
+     * make custom options of listbox and combobox 
+     * @param mixed $items option items
+     * @param var $value value for selcet default
+     * @param bool $is_string_key is string key or not
+     * @return string
+     */
+    private function _makeCustomOptions($items, $value, $is_string_key) {
+        $select = null;
+        if ($is_string_key == true) {
+            $items = array_flip($items);
+        }
+        if ($value == null): // is null
+            foreach ($items as $k => $v) {
+                $select .= '<option value="' . $k . '" >' . _lg($v) . '</option>' . PHP_EOL;
+            }
+        else:
+            foreach ($items as $k => $v) {
+
+                if ($value == $k) {
+                    
+                    $select .= '<option selected="" value="' . $k . '" >' . _lg($v) . '</option>' . PHP_EOL;
+                    continue;
+                }
+                $select .= '<option value="' . $k . '" >' . _lg($v) . '</option>' . PHP_EOL;
+            }
+
+        endif; // is null
+        
+        return $select;
+    }
+
+    
+    /**
+     * make default options of listbox and combobox
+     * @param mixed $items option items
+     * @param var $value value for selcet default
+     * @return string
+     */
+    private function _makeDefOptions($items, $value) {
+
+        $select = '';
+        // if have not defualt value
+        if ($value == null) :
+
+            foreach ($items as $data) {
+                $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+            }
+
+        else:  // have default value
+            foreach ($items as $data) {
+
+                // if equal default value
+                if ($data[0] == $value) {
+                    $select .= '<option selected="" value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                    continue;
+                }
+                $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+            }
+        endif; // if have not defualt value
+
+        return $select;
     }
 
     /**
@@ -142,9 +202,9 @@ class TForm {
      * @param mixed $attr input's attribute's
      */
     private function _addSpliter($attr) {
-        $this->field .= "<hr ". $this->_makeAttr($attr) ." />" ;
+        $this->field .= "<hr " . $this->_makeAttr($attr) . " />";
     }
-    
+
     /**
      * add input filed to form
      * @param string $type type of input
@@ -206,7 +266,7 @@ class TForm {
                 break;
 
             case 'checkbox':
-                $result = '<label> ' . $label . $element . ' </label>' . PHP_EOL;
+                $result = '<label> <span></span>'  . $element . $label . ' </label>' . PHP_EOL;
                 break;
             case 'radio':
                 $result = '<span class="label"> ' . $label . ' : ' . $element . ' </span>' . PHP_EOL;
