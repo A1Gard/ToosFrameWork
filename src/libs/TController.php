@@ -110,16 +110,16 @@ class TController extends TBootstarp {
      * @param mixed $array_check array of argumans
      */
     public function _notifiControl($array_check) {
-        
+
         if (isset($array_check[0])) {
             if ($array_check[0] == 'delete') {
                 TNotification::Add(self::$_main_title . _lg(" has been delete"), 'success');
             } elseif ($array_check[0] == 'do') {
                 TNotification::Add(_lg("Bulk action do successfully"), 'success');
-            } 
+            }
         }
-        
-        
+
+
         if (isset($array_check[1])) {
             if ($array_check[1] == 'create') {
                 TNotification::Add(self::$_main_title . _lg(" has been create"), 'success');
@@ -127,6 +127,41 @@ class TController extends TBootstarp {
                 TNotification::Add(self::$_main_title . _lg(" has been update"), 'success');
             }
         }
+    }
+
+    /**
+     * extension loader | load in every page for
+     *      maker menu and or etc.
+     * @return boolean
+     */
+    public static function Loader() {
+        
+        return true;
+    }
+
+    /**
+     * extension initializer | run once on extension installing
+     * @return boolean
+     */
+    public static function Initializer() {
+
+        $registry = TRegistry::GetInstance();
+        if ($registry->Exists(ROOT_EXTENSION, __CLASS__)) {
+            return FALSE;
+        }
+        $registry->SetValue(ROOT_EXTENSION, __CLASS__, 1);
+        return true;
+    }
+
+    /**
+     * extension finalizer | run once on extension unstialling 
+     * @return boolean
+     */
+    public static function Finalizer() {
+        
+        $registry = TRegistry::GetInstance();
+        $registry->RemoveValue(ROOT_EXTENSION, __CLASS__);
+        return true;
     }
 
 }

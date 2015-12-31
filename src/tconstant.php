@@ -36,6 +36,8 @@ define('ROOT_SYSTEM', 1);
 define('ROOT_SERVER', 2);
 // plugins root keys
 define('ROOT_PLUGIN', 3);
+// extension root keys
+define('ROOT_EXTENSION', 4);
 
 
 

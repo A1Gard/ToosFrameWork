@@ -62,6 +62,8 @@ class TBootstarp {
      */
     private function _Loader($length) {
 
+        // loading extension loaders
+        $this->_ExtensionLoader();
 
         // check is requset any thing
         if (($length == 1) && ($this->_url[0] == 'index.php')) {
@@ -71,6 +73,7 @@ class TBootstarp {
             // load request controller
             $this->_LoadExistsController($length);
         }
+        
     }
 
     /**
@@ -90,7 +93,7 @@ class TBootstarp {
 
         // check file  inc file
         if (file_exists($filename)) {
-            require $filename;
+            require_once  $filename;
         } else {
             if (_DBG_) {
                 throw new Exception(" requere file '$filename' in 'Bootstrap->_LoadDefaultController()' ");
@@ -120,10 +123,10 @@ class TBootstarp {
 
         // check file  inc file
         if (file_exists($filename))
-            require $filename;
+            require_once $filename;
         else {
             $filename = 'controllers/Index-Controller.php';
-            require $filename;
+            require_once  $filename;
             $_404 = new Index();
             $_404->e404();
             exit();
@@ -145,7 +148,7 @@ class TBootstarp {
 
         if (!method_exists($this->controller, $this->_url[1])) {
             $filename = 'controllers/Index-Controller.php';
-            require $filename;
+            require_once  $filename;
             $_404 = new Index();
             $_404->e404();
             exit();
@@ -168,7 +171,15 @@ class TBootstarp {
                 break;
         }
     }
-
+    
+    private function _ExtensionLoader() {
+        $path = './controllers/';
+        foreach (glob($path.'*.php') as $controller) {
+            include_once $controller;
+            $cls = substr($controller, strlen($path), -15);
+            $cls::Loader();
+        }
+    }
 }
 
 #------------------------------------------------------------------------------

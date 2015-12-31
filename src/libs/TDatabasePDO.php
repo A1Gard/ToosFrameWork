@@ -25,6 +25,7 @@ class TDatabase extends PDO {
         }
 
         $this->query("SET CHARACTER SET UTF8");
+        $this->query("SET NAMES utf8");
     }
 
     public static function GetInstance($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, 

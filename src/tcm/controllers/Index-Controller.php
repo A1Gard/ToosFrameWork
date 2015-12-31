@@ -14,8 +14,7 @@ class Index extends TController {
 
         parent::__construct();
     }
-    
-    
+
     /**
      * @todo Show index without any thing
      */
@@ -57,6 +56,7 @@ class Index extends TController {
         $this->view->Setting = $this->model->Setting();
         $this->view->PageRender('Index/Setting', 'تنظیمات سایت ');
     }
+
     public function Time() {
         $this->view->Time = $this->model->Time();
         $this->view->PageRender('Index/Time', ' وقت ها ');
@@ -142,20 +142,28 @@ class Index extends TController {
     public function Save($setting) {
         $this->model->Save($setting);
     }
-    
-     public function Titles() {
+
+    public function Titles() {
         $this->view->Val = $this->model->All("titles");
         $this->view->PageRender('Index/titles', ' عنوانین ');
     }
-    
-      public function Pricing() {
+
+    public function Pricing() {
         $this->view->Val = $this->model->All("prcing");
         $this->view->PageRender('Index/prcing', ' عنوانین ');
     }
 
-    
     public function e404() {
         $this->view->PageRender('Index/404', _lg('Not found...'));
+    }
+
+    public static function Loader() {
+        global $side_menu;
+        $side_menu->AddItem(_lg('Desktop'), UR_MP, 0, 'fa-dashboard', -9999);
+        $side_menu->AddItem(' تنظیمات سایت', UR_MP .
+                'Index/Setting', 0, 'fa-cogs');
+        $side_menu->AddItem(' جملات انگیزشی', UR_MP .
+                'Index/Sentence', 0, 'fa-star');
     }
 
 }

@@ -74,6 +74,13 @@ class Access extends TController {
         TMAC::TakeAccess();
         Redirect(UR_MP.'Access/Login');
     }
+    
+     public static function Loader() {
+        global $side_menu;
+        $side_menu->AddItem('خروج', UR_MP . 'Access/Logout', 0, 'fa-user',999);
+    }
+    
+
 
 }
 

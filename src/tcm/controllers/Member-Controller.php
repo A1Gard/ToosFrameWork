@@ -10,8 +10,6 @@
  */
 class Member extends TController {
 
-    
-
     function __construct() {
 
         parent::__construct();
@@ -59,7 +57,7 @@ class Member extends TController {
     public function Edit($id) {
         $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
         $this->view->record = $this->model->GetRecord($id);
-        $_GET['filter'] = 'report_member_id,'.$id;
+        $_GET['filter'] = 'report_member_id,' . $id;
         $this->view->reports = $this->report->Read('report_id,report_title', 99);
         $this->view->PageRender('Member/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['member_name']);
     }
@@ -75,9 +73,9 @@ class Member extends TController {
         $this->model->Edit($id, $_POST);
         Redirect(UR_MP . 'Member/Edit/' . $id);
     }
-    
-      public function Search() {
-         $this->view->PageRender('Member/Search', self::$_main_title . ' جستجو   ');
+
+    public function Search() {
+        $this->view->PageRender('Member/Search', self::$_main_title . ' جستجو   ');
     }
 
     /**
@@ -99,6 +97,19 @@ class Member extends TController {
     public function RemoveReport($id) {
         $this->report->Delete($id);
         GoBack();
+    }
+
+    public static function Loader() {
+        global $side_menu;
+
+        $index = $side_menu->AddItem('اعضا ', '#', 0, 'fa-group');
+
+        $side_menu->AddItem('فهرست  اعضا', UR_MP .
+                'Member', $index);
+        $side_menu->AddItem(' ثبت عضو جدید', UR_MP .
+                'Member/NewMember', $index);
+        $side_menu->AddItem('   جستجوی اعضا', UR_MP .
+                'Member/Search', $index);
     }
 
 }

@@ -83,6 +83,16 @@ class Category extends TController {
         echo json_encode($result);
     }
 
+    public static function Loader() {
+        global $side_menu;
+        
+        $index = $side_menu->AddItem('دسته ها', '#', 0, 'fa-book');
+        $side_menu->AddItem('فهرست کلاسیک دسته ها', UR_MP .
+                'Category', $index);
+        $side_menu->AddItem(' فهرست حرفه ای دسته ها', UR_MP .
+                'Category/Pro', $index);
+    }
+
     /**
       UPDATE categories
       SET order = CASE id

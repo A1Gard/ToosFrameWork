@@ -29,6 +29,7 @@ class TDatabase extends mysqli
         }
         
         $this->query("SET CHARACTER SET utf8");
+        $this->query("SET NAMES utf8");
     }
     
     /**

@@ -12,7 +12,7 @@
 define('__MP__', TRUE);
 
 // define db & golobal
-$database_handle = null ;
+$database_handle = null;
 $hook_store = null;
 
 // include config file to do 
@@ -24,11 +24,15 @@ require PA_LIBS_MP . 'TFunction.php';
 // load plug-in's files
 $plugin_loader = new TPluginLoader();
 
+
 //  include magic functions
-require  '../libs/TMagicFunctions.php';
+require '../libs/TMagicFunctions.php';
+
+// add side menu global
+$side_menu = new TMenu();
 
 // start applaction
-$application = new TBootstarp() ;
+$application = new TBootstarp();
 //die('1');
 
 

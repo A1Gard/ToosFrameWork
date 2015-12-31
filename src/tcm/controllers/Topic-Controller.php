@@ -76,9 +76,9 @@ class Topic extends TController {
     public function Insert() {
         $_POST['topic_time'] = time();
         $_POST['topic_owner_id'] = $_SESSION['MN_ID'];
-        
+
         $id = $this->model->Create($_POST);
-        Redirect(UR_MP . 'Topic/Edit/' . $id .'/create');
+        Redirect(UR_MP . 'Topic/Edit/' . $id . '/create');
     }
 
     public function Image($id) {
@@ -87,6 +87,16 @@ class Topic extends TController {
         $url = str_replace('../upload/', UR_UPLOAD, $result['value']['path']);
         $this->model->Edit($id, array('topic_image' => $url));
         GoBack();
+    }
+
+    public static function Loader() {
+        global $side_menu;
+
+        $index = $side_menu->AddItem('یادداشت ها', '#', 0, 'fa-bullhorn',-112);
+        $side_menu->AddItem('فهرست یادداشت ها', UR_MP .
+                'Topic', $index);
+        $side_menu->AddItem('یادداشت جدید', UR_MP .
+                'Topic/NewTopic', $index);
     }
 
 }

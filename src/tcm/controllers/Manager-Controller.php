@@ -10,8 +10,6 @@
  */
 class Manager extends TController {
 
-    
-
     function __construct() {
 
         parent::__construct();
@@ -34,7 +32,6 @@ class Manager extends TController {
         $this->view->navigator->AddItem(_lg('Managers'), UR_MP . 'Manager/Index');
         $this->view->PageRender('Manager/NewManager', self::$_main_title . ' جدید ');
     }
-
 
     public function Insert() {
         $_POST['manager_password'] = Password($_POST['manager_password']);
@@ -60,5 +57,16 @@ class Manager extends TController {
         $this->model->Edit($id, $_POST);
         Redirect(UR_MP . 'Manager/Edit/' . $id);
     }
-    
+
+    public static function Loader() {
+        global $side_menu;
+
+
+        $index = $side_menu->AddItem('مدیران ', '#', 0, 'fa-user');
+        $side_menu->AddItem('فهرست  مدیران', UR_MP .
+                'Manager', $index);
+        $side_menu->AddItem(' ثبت مدیر جدید', UR_MP .
+                'Manager/NewManager', $index);
+    }
+
 }

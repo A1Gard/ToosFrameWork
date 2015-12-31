@@ -17,7 +17,7 @@ class TMenu {
     private $menu_link = array();
     private $menu_icon = array();
     // item insert pinter
-    private $pointer = 1;
+    private $pointer = 1000;
     // sub item classes | parent
     private $sub_class = 'sub';
     private $parent_class = 'sub-menu';
@@ -99,13 +99,18 @@ class TMenu {
      * @param string $link 
      * @param int $parent parent of item ( 0 = no parent)
      * @param string $icon awsome icon of item
+     * @param int $pointer offset of this item [+/-] 
      * @return int inserted item id
      */
-    public function AddItem($title, $link = '#', $parent = 0, $icon = null) {
+    public function AddItem($title, $link = '#', $parent = 0, $icon = null, $pointer = null) {
 
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title, $link, $parent, $icon);
 
+        if ($pointer != null) {
+            $tmp = $this->pointer;
+            $this->pointer = $this->pointer + $pointer;
+        }
         $this->menu_title[$this->pointer] = $title;
         $this->menu_link[$this->pointer] = $link;
         $this->menu_parent[$this->pointer] = $parent;
@@ -113,7 +118,10 @@ class TMenu {
 
         $result = $this->pointer;
 
-        $this->pointer++;
+
+
+        $this->pointer = (isset($tmp) ? $tmp + 1 : $this->pointer + 1);
+
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
@@ -141,7 +149,6 @@ class TMenu {
             $this->menu_title[$index] = ($title == null ? $this->menu_title[$index] : $title );
             $this->menu_link[$index] = ($link == null ? $this->menu_link[$index] : $link );
             $this->menu_parent[$index] = ($parent == null ? $this->menu_parent[$index] : $parent );
-            ;
             $this->menu_icon[$index] = ($icon == null ? $this->menu_icon[$index] : $icon );
 
             $result = TRUE;
@@ -207,8 +214,11 @@ class TMenu {
         foreach ($this->menu_parent as $key => $parent) {
             $tmp[$parent][] = $key;
         }
-
-        $this->item_array = $tmp;
+        $this->item_array = array();
+        foreach ($tmp as $k => $arr) {
+            sort($arr);
+            $this->item_array[$k] = $arr;
+        }
         return TRUE;
     }
 
@@ -224,8 +234,8 @@ class TMenu {
             // if has child show childs
             if (isset($this->item_array[$value])) {
 
-                $result .= '<li class="' . $this->parent_class . '" ><a href="'
-                        . $this->menu_link[$value] . '">' .
+                $result .= '<li class="' . $this->parent_class . ' item-' .
+                        $value . '" ><a href="' . $this->menu_link[$value] . '">' .
                         // icon show
                         ($this->menu_icon[$value] != null ? ( '<i class="fa ' .
                                 $this->menu_icon[$value] . '"></i>') : '' ) .
@@ -241,7 +251,7 @@ class TMenu {
                 $result .= "</li> \n";
             } else {
 
-                $result .= '<li><a href="' . $this->menu_link[$value] . '">' .
+                $result .= '<li class="item-' . $value . '"><a href="' . $this->menu_link[$value] . '">' .
                         // icon show
                         ($this->menu_icon[$value] != null ? ( '<i class="fa ' .
                                 $this->menu_icon[$value] . '"></i>') : '' ) .
@@ -258,8 +268,8 @@ class TMenu {
      * @param string $class menu classes
      */
     public function Render($id = 'TMenu', $class = '') {
-        
-        
+
+
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $id, $class);
 
@@ -276,7 +286,7 @@ class TMenu {
 
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
+
         return $result;
     }
 
