@@ -31,9 +31,8 @@ function _lg($string) {
  * magic hooking function 
  * @param string $effect 
  */
-function _hk($effect,$cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 = null,
-        &$a5 = null, &$a6 = null, &$a7 = null) {
-    
+function _hk($effect, $cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 = null, &$a5 = null, &$a6 = null, &$a7 = null) {
+
 
     // plugin db connection from PluginLoader
     global $pdbc, $hook_store;
@@ -84,9 +83,7 @@ function _hk($effect,$cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 = 
                 break;
         }
     }
-    
 }
-
 
 /**
  * return ip
@@ -113,3 +110,41 @@ function _ips($ip) {
     return long2ip($ip);
 }
 
+/**
+ * dubug with var_dump
+ * @param variable $var
+ */
+function _vd($var) {
+    echo '<pre>';
+    $backtrace = debug_backtrace();
+    $last = $backtrace[0];
+    echo "called from {$last['file']} line {$last['line']}\r\n";
+    var_dump($var);
+    echo '</pre>';
+}
+
+/**
+ * dubug with var_export
+ * @param variable $var
+ */
+function _ve($var) {
+    echo '<pre>';
+    $backtrace = debug_backtrace();
+    $last = $backtrace[0];
+    echo "called from {$last['file']} line {$last['line']}\r\n";
+    var_export($var);
+    echo '</pre>';
+}
+
+/**
+ * dubug with print_r
+ * @param variable $var
+ */
+function _pr($var) {
+    echo '<pre>';
+    $backtrace = debug_backtrace();
+    $last = $backtrace[0];
+    echo "called from {$last['file']} line {$last['line']}\r\n";
+    print_r($var);
+    echo '</pre>';
+}
