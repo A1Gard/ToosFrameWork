@@ -47,6 +47,7 @@ function GoBack($message = null) {
     if ($message == null) {
         Redirect($_SERVER["HTTP_REFERER"]);
     } else {
+        $message = trim($message,'/');
         $tmp = explode('/', $_SERVER["HTTP_REFERER"]);
         $lst = array('create', 'edit', 'delete', 'do');
         if (in_array($tmp[count($tmp) - 1], $lst)) {
@@ -54,7 +55,7 @@ function GoBack($message = null) {
         } else {
             $red = $_SERVER["HTTP_REFERER"];
         }
-        Redirect($red . $message);
+        Redirect($red . '#' . $message);
     }
 }
 

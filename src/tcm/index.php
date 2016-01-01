@@ -21,12 +21,12 @@ require '../tconfig.php';
 require '../tconstant.php';
 
 require PA_LIBS_MP . 'TFunction.php';
-// load plug-in's files
-$plugin_loader = new TPluginLoader();
-
 
 //  include magic functions
 require '../libs/TMagicFunctions.php';
+// load plug-in's files
+$plugin_loader = new TPluginLoader();
+
 
 // add side menu global
 $side_menu = new TMenu();

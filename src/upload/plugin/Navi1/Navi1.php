@@ -1,7 +1,6 @@
 <?php
 
-
-class Navi {
+class Navi1 {
     public static $version = '0.1';
     public static $author = 'ToosFW Team';
     public static $url = 'http://localhost';
@@ -13,12 +12,12 @@ class Navi {
         
         
         $data['hook_effect'] = 'P:TNavigator:AddItem';
-        $data['hook_function_name'] = 'LinkEditor';
+        $data['hook_function_name'] = 'LinkEditor1';
         $data['hook_plugin'] = __CLASS__ ;
         $p_model->Create($data);
         
         $data['hook_effect'] = 'R:TNavigator:Render';
-        $data['hook_function_name'] = 'RenderEditor';
+        $data['hook_function_name'] = 'RenderEditor1';
         $data['hook_plugin'] = __CLASS__ ;
         $p_model->Create($data);
     }
@@ -38,12 +37,11 @@ class Navi {
 
 }
 
-
-function LinkEditor($class,&$text, &$link) {
+function LinkEditor1($class,&$text, &$link) {
     $link .= '#God';
     $text .= ' p ';
 }
 
-function RenderEditor($class,&$navi) {
+function RenderEditor1($class,&$navi) {
     $navi .= ' by ';
 }

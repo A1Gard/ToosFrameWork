@@ -29,7 +29,8 @@ function _lg($string) {
 
 /**
  * magic hooking function 
- * @param string $effect 
+ * @param string $effect
+ * @param class handle $cls_handle class handle fore use in plugin  
  */
 function _hk($effect, $cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 = null, &$a5 = null, &$a6 = null, &$a7 = null) {
 
@@ -41,20 +42,15 @@ function _hk($effect, $cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 =
     if (isset($hook_store[$effect])) {
         $hooks = $hook_store[$effect];
     } else {
-        // get hooks with called effect
-        $sql = "SELECT hook_function_name FROM %table% WHERE "
-                . "hook_effect = :hook_effect ";
-
-        $hooks = null;
-        $hooks = $pdbc->db->Select($sql, array('hook'), array('type' => 's',
-            ":hook_effect" => $effect));
-        $hook_store[$effect] = $hooks;
+        return FALSE;
     }
-
     // do all effect
     foreach ($hooks as $hook) {
         // get function name
-        $fnc = $hook['hook_function_name'];
+        if (!function_exists($hook)) {
+            continue;
+        }
+        $fnc = $hook;
         switch (func_num_args()) {
             case 3:
                 $fnc($cls_handle, $a1);
@@ -83,6 +79,7 @@ function _hk($effect, $cls_handle, &$a1 = null, &$a2 = null, &$a3 = null, &$a4 =
                 break;
         }
     }
+    
 }
 
 /**
@@ -147,4 +144,31 @@ function _pr($var) {
     echo "called from {$last['file']} line {$last['line']}\r\n";
     print_r($var);
     echo '</pre>';
+}
+
+/**
+ * var echo error 
+ * @param unknow $var
+ * @param bool $is_die is die after error report ;
+ */
+function _err($var, $is_die = true) {
+    echo '<pre>';
+    $backtrace = debug_backtrace();
+    foreach ($backtrace as $bt) {
+        if ($bt['file'] != LIBS_DIR . 'TBootstarp.php' && $bt['file'] != MP_DIR . 'index.php') {
+            echo $bt['file'] . ':' . $bt['line'] . '(' . $bt['function'] . ')' . PHP_EOL;
+        }
+    }
+    if (is_string($var)) {
+
+        echo PHP_EOL . '<b>' . $var . '</b>';
+    } else {
+        foreach ($var as $val) {
+            echo PHP_EOL . '<b>' . $val . '</b>';
+        }
+    }
+    echo '</pre>';
+    if ($is_die) {
+        die;
+    }
 }

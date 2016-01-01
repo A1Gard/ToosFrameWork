@@ -19,18 +19,29 @@
 /*
  * Paths & urls & server handler
  */
+
+// server config
 define('APACHE_SVR' , true); // is apache server ?
-define('PA_LIBS'    , 'libs/'); // library path
-define('PA_LIBS_MP' , '../libs/'); // library path
-define('PA_MP'      , 'tcm') ; // content manage path
+
+// path and driectory 
+define("BASE_DIR", pathinfo(__FILE__,PATHINFO_DIRNAME).'/');
+
+define('PA_UPLOAD'    , 'upload/'); // upload path
+define('PA_PLUGIN'    , PA_UPLOAD . 'plugin/'); // plugin path
+define('PA_LIBS'      , 'libs/'); // library path
+define('PA_LIBS_MP'   , '../libs/'); // library path
+define('PA_MP'        , 'tcm') ; // content manage path
+define('PLUGIN_DIR'   , BASE_DIR . PA_PLUGIN) ; // plugin dir
+define('LIBS_DIR'      , BASE_DIR . PA_LIBS) ; // lib dir
+define('MP_DIR'      , BASE_DIR . PA_MP . '/') ; // manager dir
 
 
-define('UR_BASE'    , 'http://toos.org/');  // base site url must be have "/" at end
-define('UR_PUB'     , UR_BASE . 'public/');  // public site url
-//define('UR_MP'      , UR_BASE . PA_MP . '/'); // content manage url
+define('UR_BASE'   , 'http://toos.org/');  // base site url must be have "/" at end
 define('UR_MP'     , UR_BASE . PA_MP . (APACHE_SVR? '/':'index.php?req=')) ;// content manage url total addersss
 define('UR_MP_ASSETS'  , UR_BASE . PA_MP . '/assets/'); // content manage public url
-define('UR_UPLOAD'  , UR_BASE . 'upload/'); // upload url
+define('UR_UPLOAD'  , UR_BASE . PA_UPLOAD); // upload url
+define('UR_PLUGIN', UR_UPLOAD . 'plugin/') ; // plugin dir
+
 
 # ------------------------------------------------------------------------------
 

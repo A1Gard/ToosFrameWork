@@ -105,7 +105,7 @@ class TMenu {
     public function AddItem($title, $link = '#', $parent = 0, $icon = null, $pointer = null) {
 
         // pre hook
-        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title, $link, $parent, $icon);
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title, $link, $parent, $icon, $pointer);
 
         if ($pointer != null) {
             $tmp = $this->pointer;
