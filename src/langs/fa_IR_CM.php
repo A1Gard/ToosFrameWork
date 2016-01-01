@@ -144,6 +144,9 @@ $_LANG = array(
     'Managers',
     'مدیران',
      #
+    'Plugin',
+    'افزونه',
+     #
     'Protected',
     'محاظفت شده',
      #
@@ -180,6 +183,24 @@ $_LANG = array(
     'Search',
     'جستجو',
      #
+    'Delete',
+    'حذف',
+     #
+    'Upload',
+    'بارگزاری',
+     #
+    'Active',
+    'فعال کردن',
+     #
+    'Deactive',
+    'غیر فعال کردن',
+     #
+    'Actived',
+    'فعال شده',
+     #
+    'Deactived',
+    'غیر فعال',
+     #
     'Link',
     'پیوند',
      #
@@ -195,8 +216,29 @@ $_LANG = array(
     'Action result',
     'نتیجه عملکرد',
      #
+    'Upload new plugin',
+    'افزودن افزونه جدید',
+     #
     'No parent',
     'بدون مادر',
+     #
+    'zip file',
+    'فایل زیپ',
+     #
+    'no.',
+    'شماره',
+     #
+    'plugin name',
+    'نام افزونه',
+     #
+    'plugin author',
+    'نویسنده افزونه',
+     #
+    'url',
+    'تارنما',
+     #
+    'status',
+    'وضعیت',
 
     /* elements */
     

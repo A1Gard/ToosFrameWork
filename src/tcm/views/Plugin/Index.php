@@ -3,10 +3,10 @@ $prefix = GetLinkPrefix('order');
 
 $listview = new TListView('plugin_id');
 $listview->SetList($this->plugins);
-$listview->AddColum(' plugin name', 'plugin_name', 10);
-$listview->AddColum(' plugin author', 'plugin_author', 10);
+$listview->AddColum(_lg('plugin name'), 'plugin_name', 10);
+$listview->AddColum(_lg('plugin author'), 'plugin_author', 10);
 $listview->SetPattern(1, '<img src="' . UR_MP_ASSETS . 'images/active%s.png" alt="[plugin status]" />');
-$listview->AddColum('status', '%1plugin_status', 2);
+$listview->AddColum(_lg('status'), '%1plugin_status', 2);
 $listview->AddColum('', 'plugin_discrption', 16);
 $pattern = '<a class="button delete" href="' . UR_MP . 'Plugin/Delete/%id%"> ' . _lg('Delete') . ' </a>
                 <a class="button active" href="' . UR_MP . 'Plugin/Status/%id%/1"> ' . _lg('Active') . ' </a>
@@ -14,8 +14,8 @@ $pattern = '<a class="button delete" href="' . UR_MP . 'Plugin/Delete/%id%"> ' .
 $listview->AddAction($pattern, 6, 'plugin_status');
 
 
-$listview->AddFilter(_lg('Deactive'), 'plugin_status', '0');
-$listview->AddFilter(_lg('Active'), 'plugin_status', '1');
+$listview->AddFilter(_lg('Deactived'), 'plugin_status', '0');
+$listview->AddFilter(_lg('Actived'), 'plugin_status', '1');
 
 $listview->AddBulkAcction(_lg('Deactive'), 'Edit', 'plugin_status,0');
 $listview->AddBulkAcction(_lg('Active'), 'Edit', 'plugin_status,1');
