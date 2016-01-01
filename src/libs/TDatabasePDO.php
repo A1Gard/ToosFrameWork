@@ -13,8 +13,7 @@ class TDatabase extends PDO {
 
     public $last_insert_id;
 
-    public function __construct($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, 
-            $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASSWORD) {
+    public function __construct($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASSWORD) {
 
         try {
             parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"));
@@ -28,13 +27,12 @@ class TDatabase extends PDO {
         $this->query("SET NAMES utf8");
     }
 
-    public static function GetInstance($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, 
-            $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASSWORD) {
+    public static function GetInstance($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASSWORD) {
         if (!isset(self::$instance))
-            self::$instance = new self($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER , $DB_PASS );
+            self::$instance = new self($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS);
         return self::$instance;
     }
-    
+
     /**
      * select
      * @todo Select from database
@@ -45,6 +43,13 @@ class TDatabase extends PDO {
      * @return mixed
      */
     public function Select($sql, $tables = array(), $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+
+
+        // normalize string input
+        if (!is_array($tables) && is_string($tables)) {
+            $tables = array($tables);
+        }
+
         // make tables to select
         $tbl = NULL;
         foreach ($tables as $table) {
@@ -72,10 +77,7 @@ class TDatabase extends PDO {
 
         // dubug unsuccess
         if ((_DBG_) && (!$success)) {
-
-            foreach ($stmt->errorInfo() as $error) {
-                echo "<br /> " . $error;
-            }
+            _err(array_merge($stmt->errorInfo(), array($sql)));
         }
 
         return $stmt->fetchAll($fetchMode);
@@ -97,9 +99,7 @@ class TDatabase extends PDO {
         // dubug unsuccess
         if ((_DBG_) && (!$success)) {
 
-            foreach ($stmt->errorInfo() as $error) {
-                echo "<br /> " . $error;
-            }
+            _err(array_merge($stmt->errorInfo(), array($sql)));
         }
 
         return $stmt->fetchAll($fetchMode);
@@ -126,8 +126,9 @@ class TDatabase extends PDO {
         $fieldNames = implode('`, `', array_keys($data));
         $fieldValues = ':' . implode(', :', array_keys($data));
 
+        $sql = "INSERT INTO " . DB_PREFIX . "$table (`$fieldNames`) VALUES ($fieldValues)";
         // send sql
-        $stmt = $this->prepare("INSERT INTO " . DB_PREFIX . "$table (`$fieldNames`) VALUES ($fieldValues)");
+        $stmt = $this->prepare($sql);
 
         // send param
         foreach ($data as $key => $value) {
@@ -139,9 +140,7 @@ class TDatabase extends PDO {
         // dubug unsuccess
         if ((_DBG_) && (!$success)) {
 
-            foreach ($stmt->errorInfo() as $error) {
-                echo "<br /> " . $error;
-            }
+            _err(array_merge($stmt->errorInfo(), array($sql)));
         }
         $this->last_insert_id = $this->lastInsertId();
         return $success;
@@ -170,9 +169,12 @@ class TDatabase extends PDO {
             $fieldDetails .= "`$key`=:$key,";
         }
         $fieldDetails = rtrim($fieldDetails, ',');
+
+        $sql = "UPDATE " . DB_PREFIX . "$table SET $fieldDetails WHERE $where";
+
         // send sql
-        $stmt = $this->prepare("UPDATE " . DB_PREFIX . "$table SET $fieldDetails WHERE $where");
-       
+        $stmt = $this->prepare($sql);
+
         // send params
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", $value);
@@ -183,14 +185,12 @@ class TDatabase extends PDO {
         // dubug unsuccess
         if ((_DBG_) && (!$success)) {
 
-            foreach ($stmt->errorInfo() as $error) {
-                echo "<br /> " . $error;
-            }
+            _err(array_merge($stmt->errorInfo(), array($sql)));
         }
         return $success;
     }
-    
-     /**
+
+    /**
      * custom query
      * @todo Select from database
      * @param string $sql An SQL string
@@ -216,13 +216,11 @@ class TDatabase extends PDO {
         // dubug unsuccess
         if ((_DBG_) && (!$success)) {
 
-            foreach ($stmt->errorInfo() as $error) {
-                echo "<br /> " . $error;
-            }
+            _err(array_merge($stmt->errorInfo(), array($sql)));
+            
         }
 
         return $stmt->fetchAll($fetchMode);
-        
     }
 
     /**
