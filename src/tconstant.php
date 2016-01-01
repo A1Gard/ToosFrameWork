@@ -17,7 +17,7 @@
  */
 
 // verstion 
-define('VERSION', '0.9');
+define('VERSION', '0.7');
 // build no
 define('BUILD', '20160102');
 
