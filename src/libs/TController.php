@@ -109,8 +109,8 @@ class TController extends TBootstarp {
      * add notifcation
      * @param mixed $array_check array of argumans
      */
-    public function _notifiControl($array_check) {
-
+    public function _notifiControl() {
+        return FALSE;
         if (isset($array_check[0])) {
             if ($array_check[0] == 'delete') {
                 TNotification::Add(self::$_main_title . _lg(" has been delete"), 'success');
