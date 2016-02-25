@@ -1,0 +1,50 @@
+body{
+    background: #1E2A36;
+}
+
+#main{
+    background:  white;
+    max-width:900px;
+    margin:10vh auto;
+}
+
+#main h1{
+    background: #017AD7;
+    color:white;
+    padding:0.5em 3em;
+    text-align: center;
+}
+
+button{
+    background: #01BCF3 ;
+    border: 1px solid dodgerblue;
+    color: #FFF ;
+    padding:.3em 2em;
+    border-radius:3px;
+}
+
+table{
+    width:100%;
+}
+
+form table tr td:first-child{
+    text-align: right;
+    width:30%;
+}
+
+form table tr td{
+    padding-bottom: 20px;
+}
+
+input{
+    padding:4px 10px;
+    border-radius:3px;
+    border: 1px solid #1a5186;
+    min-width:80%;
+    margin-left:10px;
+}
+input:focus{
+    border: 1px solid #017AD7;
+    outline: none;
+    box-shadow:0 0 2px #017AD7;
+}
