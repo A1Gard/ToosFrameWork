@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title> Toos system install - Index </title>
         <link type="text/css" rel="stylesheet" href="assets/css/install.css" />
+        <link type="text/css" rel="stylesheet" href="../tcm/assets/css/element.css" />
         <script type="text/javascript" src="../tcm/assets/js/jquery.min.js"></script>
     </head>
     <body>
@@ -11,7 +12,10 @@
             <h1>
                 wellcome to install page
             </h1>
-            <form action="action" method="post" id="install-form">
+            <div class="notification-bar">
+                
+            </div>
+            <form action="action" method="post" id="install-form" class="notification">
                 <table>
                     <tr>
                         <td>Database Host:</td>
@@ -40,7 +44,7 @@
                     <tr>
                         <td>Database Prefix:</td>
                         <td>
-                            <input type="text" id="dbprt" name="dbpre" value="3306" />
+                            <input type="text" id="dbprt" name="dbpre" value="ts_" />
                         </td>
                     </tr>
                     <tr>

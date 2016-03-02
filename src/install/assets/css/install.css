@@ -3,9 +3,11 @@ body{
 }
 
 #main{
-    background:  white;
+    background: #20c0e3;
     max-width:900px;
     margin:10vh auto;
+    border-radius: 20px;
+    overflow:hidden;
 }
 
 #main h1{
@@ -21,6 +23,10 @@ button{
     color: #FFF ;
     padding:.3em 2em;
     border-radius:3px;
+}
+
+button:disabled{
+    background: gray !important;
 }
 
 table{

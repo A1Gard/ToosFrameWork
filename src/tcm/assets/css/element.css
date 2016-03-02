@@ -707,7 +707,7 @@ input{
     color:black;
     padding: 2px;
     margin:auto;
-    border: 1px solid transparent;
+    border: 1px solid #CF0;
 }
 input[type='text']:focus ,
 input[type='password']:focus,
