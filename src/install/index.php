@@ -44,7 +44,7 @@
                     <tr>
                         <td>Database Prefix:</td>
                         <td>
-                            <input type="text" id="dbprt" name="dbpre" value="ts_" />
+                            <input type="text" id="dbprf" name="dbprf" value="ts_" />
                         </td>
                     </tr>
                     <tr>
