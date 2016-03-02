@@ -9,10 +9,8 @@
  * @todo : THash creator in cm 
  * @author jessy -> http://jream.com/ | modifed by Toos FrameWork
  */
-
-
 class THash {
-    
+
     /**
      *
      * @param string $algo The algorithm (md5, sha1, whirlpool, etc)
@@ -28,8 +26,21 @@ class THash {
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
-        
     }
-    
+
+    /**
+     * slat genetator
+     * @param int $length salt lenth
+     * @return string 
+     */
+    public static function SaltGenerator($length) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%^&*-';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
 }
-?>
