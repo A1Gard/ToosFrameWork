@@ -18,8 +18,8 @@ class TPublicLibrary {
     function __construct() {
         // Get setting from registry 
         $registry = TRegistry::GetInstance();
-        $this->extrenal_libs = $registry->GetValue(ROOT_SYSTEM, 'ExtenalLibs');
-        $this->minified_libs = $registry->GetValue(ROOT_SYSTEM, 'MinifiedLibs');
+        $this->extrenal_libs = 0 ;
+        $this->minified_libs = 1;
         $this->template = $registry->GetValue(ROOT_SYSTEM, 'template');
     }
 

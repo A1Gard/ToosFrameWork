@@ -162,8 +162,7 @@ class Index extends TController {
         $side_menu->AddItem(_lg('Desktop'), UR_MP, 0, 'fa-dashboard', -9999);
         $side_menu->AddItem(' تنظیمات سایت', UR_MP .
                 'Index/Setting', 0, 'fa-cogs');
-        $side_menu->AddItem(' جملات انگیزشی', UR_MP .
-                'Index/Sentence', 0, 'fa-star');
+
     }
 
 }
