@@ -15,7 +15,7 @@
             <div class="notification-bar">
                 
             </div>
-            <form action="action" method="post" id="install-form" class="notification">
+            <form action="configWriter.php" method="post" id="install-form" class="notification">
                 <table>
                     <tr>
                         <td>Database Host:</td>
@@ -48,11 +48,18 @@
                         </td>
                     </tr>
                     <tr>
+                        <td> Website URL:</td>
+                        <td>
+                            <input type="text" id="url" name="url" value="http://<?php echo substr($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],0,-9) ?>" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td>
 
                         </td>
                         <td>
                             <button id="dbchecker" type="button">Check Database connect</button>
+                            <button type="submit" id="submit" class="hidden">Next</button>
                         </td>
                     </tr>
 
