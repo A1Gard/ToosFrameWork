@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php 
+
+session_start();
+if (!isset($_SESSION['install'])) {
+    header("location:index.php");
+}
+
+
+?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">

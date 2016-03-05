@@ -1,5 +1,12 @@
 <?php
+
+session_start();
 ob_start();
+
+if (!isset($_SESSION['install'])) {
+    header("location:index.php");
+}
+
 
 global $database_handle;
 define('__MP__', FALSE);

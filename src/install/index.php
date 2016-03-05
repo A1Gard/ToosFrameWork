@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -13,7 +15,20 @@
                 wellcome to install page
             </h1>
             <div class="notification-bar">
+                <?php if(file_exists('../tconfig.php')): ?>
+                <div class="notification error">
+                    The system installed, and config file exists.
+                </div>
+                <br />
+                <br />
+
+                <?php die;
                 
+                else:
+                    
+                    $_SESSION['install'] = true;
+                
+                endif; ?>
             </div>
             <form action="configWriter.php" method="post" id="install-form" class="notification">
                 <table>

@@ -1,6 +1,10 @@
 <?php
-
+session_start();
 ob_start();
+
+if (!isset($_SESSION['install'])) {
+    header("location:index.php");
+}
 
 // include all required libs
 include_once '../libs/THash.php';
