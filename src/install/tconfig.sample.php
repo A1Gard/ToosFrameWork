@@ -102,6 +102,8 @@ define('LOGIN_KEY'  , '%salt2%') ;
 define('LANG' , 'fa_IR') ;
 // debug system
 define('_DBG_', false ) ;
+// developer mode 
+define('_DEVELOPER_', false);
 // max file upload size = MB
 define('MAX_UPLOAD_SIZE', 3 * ( 1024 * 1024 ) );
 
