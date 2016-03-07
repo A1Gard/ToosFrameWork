@@ -1,9 +1,9 @@
 <?php
 $frm = new TForm(UR_MP . 'Category/Insert', 'post', array('class' => 'form rtl'));
 
-$frm->AddField('text', 'عنوان دسته ', null, array('name' => 'category_title', 'size' => 90));
+$frm->AddField('text', 'عنوان دسته ', null, array('name' => 'category_title','class'=>'full-width'));
 $frm->AddField('select', 'مادر', null, array('name' => 'category_parent'), $this->cat->CategoryByExpect());
-$frm->AddField('textarea', 'توضیح', null, array('name' => 'category_description', 'cols' => '90', "rows" => '10', 'class' => 'ckeditor'));
+$frm->AddField('textarea', 'توضیح', null, array('name' => 'category_description', "rows" => '10', 'class' => 'ckeditor'));
 $frm->AddField('submit', '', 'ارسال');
 ?>
 
@@ -11,6 +11,8 @@ $frm->AddField('submit', '', 'ارسال');
 <div class="row">
 
     <div class="grd12">
+        <div class="margin">
+            
         <ul class="listview">
             <li class="pinned animate"> 
                 <div  class="row">
@@ -34,9 +36,12 @@ $frm->AddField('submit', '', 'ارسال');
                 </li>
             <?php endforeach; ?>
         </ul>
+        </div>
     </div>
     <div class="grd12 em-padding">
-        <?php $frm->Render(); ?>
+        <div style="padding:1em">
+            <?php $frm->Render(); ?>
+        </div>
     </div>
 </div>
 

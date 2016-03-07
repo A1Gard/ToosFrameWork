@@ -235,6 +235,30 @@ a:hover,a:visited:hover{
     margin:15px;
 }
 
+#message{
+    background: #007fba;
+    padding:40px 20px;
+    border-radius:10px;
+    margin: auto;
+    margin-bottom:1.5em;
+    margin-top:20vh;
+    max-width:960px;
+    color:white;
+    position:relative ;
+}
+
+#message:before{
+    background:#13a7c7;
+    position:absolute;
+    top:-10px;
+    padding:7px;
+    border-radius:4px;
+    left:25px;
+    right:25px;
+    text-align: center;
+    border: 1px solid silver;
+}
+
 .suggest-bg{
     background: #f8ab6b !important; 
 }

@@ -9,12 +9,10 @@
  * @version 1.0
  * @todo : language class for trasnlates 
  */
-
 class TLanguage {
-    
-    private static $_lang = array() ;
 
-    
+    private static $_lang = array();
+
     /**
      * @name _init
      * @todo load lang file if language not loaded before than
@@ -22,38 +20,38 @@ class TLanguage {
      */
     private static function _init() {
         // check loaded or not
-        if (count(self::$_lang) == 0){
+        if (count(self::$_lang) == 0) {
             // load
             require '../langs/' . LANG . '_CM.php';
-            self::$_lang = $_LANG ;
-        }  else {
+            self::$_lang = $_LANG;
+        } else {
             return false;
         }
     }
-    
+
     /**
      * @todo echo trasnlated input string
      * @param string $string input straing for translate
      * @return bool
      */
     public static function Prints($string) {
-        
+
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $string);
         self::_init();
         // seach in array ;
-        $key = array_search($string, self::$_lang) ;
-        $result = self::$_lang[$key+1];
-        $result = self::$_lang[$key+1];
-        if ($key === FALSE){
+        $key = array_search($string, self::$_lang);
+        $result = self::$_lang[$key + 1];
+        $result = self::$_lang[$key + 1];
+        if ($key === FALSE) {
             $result = $string;
         }
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
-        
+
         return print $result;
     }
-    
+
     /**
      * @todo translate find and retrun
      * @param string $string input to translate
@@ -62,18 +60,20 @@ class TLanguage {
     public static function Get($string) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $string);
-        self::_init();
-        $key = array_search($string, self::$_lang) ;
         
-        $result = self::$_lang[$key+1];
-        if ($key === FALSE){
+        self::_init();
+        $key = array_search($string, self::$_lang);
+
+        if ($key === FALSE) {
             $result = $string;
+        }else{
+            $result = self::$_lang[$key + 1];
         }
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
     }
-    
+
     /**
      * @todo translate find key and retrun
      * @param string $string input to translate
@@ -83,13 +83,13 @@ class TLanguage {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $string);
         self::_init();
-        $key = array_search($string, self::$_lang) ;
-        $result = ($key+1);
+        $key = array_search($string, self::$_lang);
+        $result = ($key + 1);
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
     }
-    
+
     /**
      * @todo get value by key
      * @param int $key key of request
@@ -98,7 +98,7 @@ class TLanguage {
     public static function Index($key) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $key);
-        
+
         $result = self::$_lang[$key];
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
