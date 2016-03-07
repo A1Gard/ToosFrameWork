@@ -64,6 +64,10 @@ class TSystem extends TModel {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $count);
 
+        // not devition to 0
+        if ($count == 0) {
+            return  "#fe3fe6";;
+        }
         $red = 255; //i.e. FF
         $green = 0;
         $result = array();
