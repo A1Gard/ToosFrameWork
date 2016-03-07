@@ -15,8 +15,15 @@ define('__MP__', TRUE);
 $database_handle = null;
 $hook_store = null;
 
-// include config file to do 
-require '../tconfig.php';
+
+// if system not install redirect to install page
+if (file_exists('../tconfig.php')) {
+    // include config file to do 
+    require '../tconfig.php';
+}else{
+    header('location:../install');
+    exit;
+}
 // include constant file 
 require '../tconstant.php';
 
