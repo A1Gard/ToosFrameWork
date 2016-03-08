@@ -31,6 +31,14 @@ require PA_LIBS_MP . 'TFunction.php';
 
 //  include magic functions
 require '../libs/TMagicFunctions.php';
+
+
+// check install directory
+if (file_exists('../install') && _DEVELOPER_ == false) {
+    Redirect(UR_MP . 'message.php?title='.urlencode('Security Mode').'&text='.urlencode('Login disabled, Please remove install directory before login'));
+}
+
+
 // load plug-in's files
 $plugin_loader = new TPluginLoader();
 
