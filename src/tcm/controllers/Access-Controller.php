@@ -77,7 +77,7 @@ class Access extends TController {
     
      public static function Loader() {
         global $side_menu;
-        $side_menu->AddItem('خروج', UR_MP . 'Access/Logout', 0, 'fa-user',999);
+        $side_menu->AddItem(_lg('Logout'), UR_MP . 'Access/Logout', 0, 'fa-user',999);
     }
     
 

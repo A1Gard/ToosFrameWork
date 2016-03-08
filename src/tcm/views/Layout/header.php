@@ -110,7 +110,7 @@
                             </li>
                         </ul>
                     </div>
-                    <input type="text" id="admin-search" placeholder="search..."
+                    <input type="text" id="admin-search" placeholder="<?php _lp('Search') ?>..."
                            class="animate-slow"/>
                 </div>
             </section>

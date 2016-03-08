@@ -86,10 +86,10 @@ class Category extends TController {
     public static function Loader() {
         global $side_menu;
         
-        $index = $side_menu->AddItem('دسته ها', '#', 0, 'fa-book');
-        $side_menu->AddItem('فهرست کلاسیک دسته ها', UR_MP .
+        $index = $side_menu->AddItem(_lg('Categories'), '#', 0, 'fa-book');
+        $side_menu->AddItem(_lg('Categories classic list'), UR_MP .
                 'Category', $index);
-        $side_menu->AddItem(' فهرست حرفه ای دسته ها', UR_MP .
+        $side_menu->AddItem(_lg('Categories node list'), UR_MP .
                 'Category/Pro', $index);
     }
 

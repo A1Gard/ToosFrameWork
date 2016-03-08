@@ -281,6 +281,51 @@ $_LANG = array(
     'All',
     'همه',
     #
+    #
+    'Security Mode',
+    'حالت ایمنی',
+    #
+    #
+    'Login disabled, Please remove install directory before login',
+    'ورود به سیستم معطوف به حذف کردن پوشه  install می باشد لطفا پس از حذف این پوشه تلاش کنید.',
+    #
+    #
+    'Members',
+    'اعضا',
+    #
+    #
+    'Avatar',
+    'آواتار',
+    #
+    #
+    'Search',
+    'جستجو',
+    #
+    #
+    'Logout',
+    'خروج از سامانه',
+    #
+    #
+    'Categories',
+    'دسته بندی',
+    #
+    #
+    'Categories classic list',
+    'فهرست کلاسیک دسته ها',
+    #
+    'Categories node list',
+    'فهرست گره دسته ها',
+    #
+    'Comment',
+    'دیدگاه',
+    #
+    'Comments',
+    'دیدگاه ها',
+    #
+    #
+    'All',
+    'همه',
+    #
     'Hello',
     'درود'
 );

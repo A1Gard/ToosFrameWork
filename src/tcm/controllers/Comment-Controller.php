@@ -66,7 +66,7 @@ class Comment extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $side_menu->AddItem(' دیدگاه', UR_MP .
+        $side_menu->AddItem(_lg('Comments'), UR_MP .
                 'Comment', 0, 'fa-comments');
     }
 
