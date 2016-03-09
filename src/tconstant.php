@@ -20,7 +20,8 @@
 define('VERSION', '0.7');
 // build no
 define('BUILD', '20160305');
-
+// database version
+define('DB_VERSION', 'unstable');
 
 # ------------------------------------------------------------------------------
 
