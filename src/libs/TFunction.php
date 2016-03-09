@@ -24,7 +24,7 @@ function __autoload($class) {
 
     if (file_exists($file)) {
         require $file;
-    }else{
+    } else {
         if (_DBG_) {
             echo "require autoload error for '$file'";
         }
@@ -47,7 +47,7 @@ function GoBack($message = null) {
     if ($message == null) {
         Redirect($_SERVER["HTTP_REFERER"]);
     } else {
-        $message = trim($message,'/');
+        $message = trim($message, '/');
         $tmp = explode('/', $_SERVER["HTTP_REFERER"]);
         $lst = array('create', 'edit', 'delete', 'do');
         if (in_array($tmp[count($tmp) - 1], $lst)) {
@@ -105,15 +105,23 @@ function Password($password) {
 
 /**
  * get link prefix use in classes same as pagination
- * @param string $item_change array key need to be delete from GET
+ * @param string $item_change array key(s) need to be delete from GET
  * @return string prefix link
  */
 function GetLinkPrefix($item_change) {
 
     $get_request = $_GET;
-
-    if (isset($get_request[$item_change])) {
-        unset($get_request[$item_change]);
+    $is_array = explode(',', $item_change);
+    if (count($is_array) == 1) {
+        if (isset($get_request[$item_change])) {
+            unset($get_request[$item_change]);
+        }
+    } else {
+        foreach ($is_array as $value) {
+            if (isset($get_request[$value])) {
+                unset($get_request[$value]);
+            }
+        }
     }
     $prefix = '?' . http_build_query($get_request) . '&';
     return $prefix;
