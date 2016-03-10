@@ -90,7 +90,11 @@ class TModel {
         }
 
         if (isset($_GET['order']) && strpos($colums, $_GET['order']) !== false) {
-            $order = $_GET['order'] . ' ASC';
+            if (isset($_GET['desc'])) {
+                $order = $_GET['order'] . ' DESC';
+            }else {
+                $order = $_GET['order'] . ' ASC';  
+            }
         } else {
             $order = $prefix . 'id DESC';
         }

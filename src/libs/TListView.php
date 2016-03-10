@@ -23,7 +23,8 @@ class TListView {
     private $action = array();
     // private pattren
     private $pattren = array();
-
+    // private serach
+    private $search = null ;
     /**
      * 
      * @param string $id table column id name
@@ -150,17 +151,12 @@ class TListView {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $location, $date_format);
 
-
+        
         $date = TDate::GetInstance();
-
-        // show form head here when have bulk action
-        if ($this->bulk_action['title'] != array()) {
-            $result = '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
-        } else {
-            $result = null;
-        }
-
-
+        
+        $result = null;
+        
+        
         // show all filter here
         if ($this->filter['title'] != array()) {
 
@@ -182,13 +178,13 @@ class TListView {
         }
 
         // get order by column 
-        $prefix = GetLinkPrefix('order');
+        $prefix = GetLinkPrefix('order,desc');
 
         // get id order and choose good value for this
         if (isset($_GET['order']) && $_GET['order'] == $this->id) {
             $id_order = $prefix;
         } else {
-            $id_order = $prefix . 'order=' . $this->id;
+            $id_order = $prefix . 'order=' . $this->id ;
         }
 
 
@@ -199,20 +195,19 @@ class TListView {
     <li class="pinned animate"> 
         <div  class="row">
             <div class="grd1"> &nbsp; </div>
-            <a href="' . $id_order . '"><div class="grd2"> ' . _lg('no.') . ' </div></a>';
+            <a href="' . $id_order . '"><div class="grd2 header"> ' . _lg('no.') . ' </div></a>';
         // show header column title
         foreach ($this->column['title'] as $key => $value) {
 
             if (substr($this->column['key'][$key], 0, 1) == '%') {
-
-                $result .= '<a href="' . $prefix . 'order=' .
-                        substr($this->column['key'][$key], 2) . '"><div class="grd' .
-                        $this->column['size'][$key] . '">' . $value . '</div></a>';
+                $col_name = substr($this->column['key'][$key], 2) ;
             } else {
-                $result .= '<a href="' . $prefix . 'order=' .
-                        $this->column['key'][$key] . '"><div class="grd' .
-                        $this->column['size'][$key] . '">' . $value . '</div></a>';
+                $col_name = $this->column['key'][$key] ;
             }
+                $result .= '<a href="' . $prefix . 'order=' .$col_name 
+                        .(!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order']
+                        == $col_name ? '&desc=1':''  ). '"><div class="grd' .
+                        $this->column['size'][$key] . '">' . $value . '</div></a>';
         }
         // action haader
         $result .= '<div class="grd' . $this->action['size'] . '"> &nbsp; </div>';
@@ -296,6 +291,11 @@ class TListView {
 
         $result .= '<ul>' . PHP_EOL;
 
+                // show form head here when have bulk action
+        if ($this->bulk_action['title'] != array()) {
+            $result .= '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
+        } 
+
         // if have bulk action show this after list view
         if ($this->bulk_action['title'] != array()) {
             $result .= '<div class="bulk-action">
@@ -323,6 +323,10 @@ class TListView {
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
 
         echo $result;
+    }
+    
+    function AddSearch($fields) {
+        $this->search = $fields;
     }
 
 }
