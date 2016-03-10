@@ -21,6 +21,8 @@ $listview->AddBulkAcction(' انتشار جمعی', 'Edit', 'topic_status,1');
 $listview->AddBulkAcction(' ویژه اعضا کردن جمعی', 'Edit', 'topic_status,2');
 $listview->AddBulkAcction(' حذف', 'Delete', null);
 
+$listview->AddSearch('topic_title,topic_text');
+
 $listview->Render('Topic');
 
 $this->pagination->Render();

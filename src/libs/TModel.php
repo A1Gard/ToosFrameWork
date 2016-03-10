@@ -92,56 +92,66 @@ class TModel {
         if (isset($_GET['order']) && strpos($colums, $_GET['order']) !== false) {
             if (isset($_GET['desc'])) {
                 $order = $_GET['order'] . ' DESC';
-            }else {
-                $order = $_GET['order'] . ' ASC';  
+            } else {
+                $order = $_GET['order'] . ' ASC';
             }
         } else {
             $order = $prefix . 'id DESC';
         }
 
+         $cond = '1';
         // if not have filter
-        if (!isset($_GET['filter'])) {
-
-            $sql = "SELECT $colums FROM %table% ORDER BY {$order} "
-                    . " LIMIT $start,$limit;";
-
-            $result = $this->db->Select($sql, array($table_name));
+        if (!isset($_GET['filter'], $_GET['search'])) {
+            $where = array();
         } else {
             $filter = explode(',', $_GET['filter']);
             // else have filter apply fillter
             $term = substr($filter[1], 1);
-            
+
 //           die($term);
 
             switch ($filter[1][0]) {
 
                 case '<':
-                    $cond = " {$filter[0]}  <  :{$filter[0]}  ";
+                    $cond .= " AND {$filter[0]}  <  :{$filter[0]}  ";
                     break;
                 case '>':
-                    $cond = " {$filter[0]}  >  :{$filter[0]}  ";
+                    $cond .= " AND {$filter[0]}  >  :{$filter[0]}  ";
                     break;
                 case '%':
                     $term = '%' . $term . '%';
-                    $cond = " {$filter[0]}  LIKE  :{$filter[0]}  ";
+                    $cond .= " AND {$filter[0]}  LIKE  :{$filter[0]}  ";
                     break;
                 case '$':
                     $term = '^.*' . $term . '.*$';
-                    $cond = " {$filter[0]}   REGEXP   :{$filter[0]}  ";
+                    $cond .= " AND {$filter[0]}   REGEXP   :{$filter[0]}  ";
                     break;
 
                 default:
                     $term = $filter[1];
-                    $cond = " {$filter[0]}  =  :{$filter[0]}  ";
+                    $cond .= " AND {$filter[0]}  =  :{$filter[0]}  ";
                     break;
             }
-            $sql = "SELECT $colums FROM %table% WHERE "
-                    . " $cond ORDER BY {$order} "
-                    . " LIMIT $start,$limit";
-//    print_r($sql);die;
-            // get count
-            $result = $this->db->Select($sql, array($this->table_name), array($filter[0] => $term));
+            $where[$filter[0]] = $term;
         }
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+
+            $prf = 'AND ( ';
+            foreach (explode(',', $_GET['fields']) as $col) {
+                $term = '^.*' . $_GET['search'] . '.*$';
+                $cond .= " {$prf}  {$col}   REGEXP   :{$col}  ";
+                $where[$col] = $term;
+                $prf = 'OR';
+            }
+            $cond .= ')';
+        }
+//        print_r($where);
+        $sql = "SELECT $colums FROM %table% WHERE "
+                . " $cond ORDER BY {$order} "
+                . " LIMIT $start,$limit";
+//    print_r($sql);die;
+        // get count
+        $result = $this->db->Select($sql, array($this->table_name), $where);
         return $result;
     }
 
@@ -207,20 +217,58 @@ class TModel {
             $registry = TRegistry::GetInstance();
             $limit = $registry->GetValue(ROOT_SYSTEM, 'record_list_limit');
         }
+        
+         $cond = '1';
         // if not have filter
-        if (!isset($_GET['filter'])) {
-
-            $sql = "SELECT COUNT(*) AS 'count' FROM %table% ";
-            // get count
-            $result = $this->db->Select($sql, array($this->table_name));
+        if (!isset($_GET['filter'], $_GET['search'])) {
+            $where = array();
         } else {
-            //  else have filter apply filter
             $filter = explode(',', $_GET['filter']);
-            $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE "
-                    . " {$filter[0]} =  :{$filter[0]} ";
-            // get count
-            $result = $this->db->Select($sql, array($this->table_name), array($filter[0] => $filter[1]));
+            // else have filter apply fillter
+            $term = substr($filter[1], 1);
+
+//           die($term);
+
+            switch ($filter[1][0]) {
+
+                case '<':
+                    $cond .= " AND {$filter[0]}  <  :{$filter[0]}  ";
+                    break;
+                case '>':
+                    $cond .= " AND {$filter[0]}  >  :{$filter[0]}  ";
+                    break;
+                case '%':
+                    $term = '%' . $term . '%';
+                    $cond .= " AND {$filter[0]}  LIKE  :{$filter[0]}  ";
+                    break;
+                case '$':
+                    $term = '^.*' . $term . '.*$';
+                    $cond .= " AND {$filter[0]}   REGEXP   :{$filter[0]}  ";
+                    break;
+
+                default:
+                    $term = $filter[1];
+                    $cond .= " AND {$filter[0]}  =  :{$filter[0]}  ";
+                    break;
+            }
+            $where[$filter[0]] = $term;
         }
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+
+            $prf = 'AND ( ';
+            foreach (explode(',', $_GET['fields']) as $col) {
+                $term = '^.*' . $_GET['search'] . '.*$';
+                $cond .= " {$prf}  {$col}   REGEXP   :{$col}  ";
+                $where[$col] = $term;
+                $prf = 'OR';
+            }
+            $cond .= ')';
+        }
+        $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE "
+                . " $cond ";
+//    print_r($sql);die;
+        // get count
+        $result = $this->db->Select($sql, array($this->table_name), $where);
 
         $mod = $result[0]['count'] % $limit;
         // page count

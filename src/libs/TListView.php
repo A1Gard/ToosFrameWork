@@ -24,7 +24,8 @@ class TListView {
     // private pattren
     private $pattren = array();
     // private serach
-    private $search = null ;
+    private $search = null;
+
     /**
      * 
      * @param string $id table column id name
@@ -151,12 +152,35 @@ class TListView {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $location, $date_format);
 
-        
+
         $date = TDate::GetInstance();
-        
+
         $result = null;
-        
-        
+
+                // show search here
+        if ($this->filter['title'] != null) {
+            
+//            die($prefix);
+            
+            $result .= '<form class="listview-search" action="' . UR_MP . $location .'" >';
+
+
+            $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
+            $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
+            if (isset($_GET['filter'])) {
+                $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
+                
+            }
+            $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+            if (isset($_GET['search']) && $_GET['search'] != '') {
+                $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
+                
+            }
+
+            $result .= '</form>';
+        }
+
+
         // show all filter here
         if ($this->filter['title'] != array()) {
 
@@ -184,7 +208,7 @@ class TListView {
         if (isset($_GET['order']) && $_GET['order'] == $this->id) {
             $id_order = $prefix;
         } else {
-            $id_order = $prefix . 'order=' . $this->id ;
+            $id_order = $prefix . 'order=' . $this->id;
         }
 
 
@@ -200,14 +224,13 @@ class TListView {
         foreach ($this->column['title'] as $key => $value) {
 
             if (substr($this->column['key'][$key], 0, 1) == '%') {
-                $col_name = substr($this->column['key'][$key], 2) ;
+                $col_name = substr($this->column['key'][$key], 2);
             } else {
-                $col_name = $this->column['key'][$key] ;
+                $col_name = $this->column['key'][$key];
             }
-                $result .= '<a href="' . $prefix . 'order=' .$col_name 
-                        .(!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order']
-                        == $col_name ? '&desc=1':''  ). '"><div class="grd' .
-                        $this->column['size'][$key] . '">' . $value . '</div></a>';
+            $result .= '<a href="' . $prefix . 'order=' . $col_name
+                    . (!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order'] == $col_name ? '&desc=1' : '' ) . '"><div class="grd' .
+                    $this->column['size'][$key] . '">' . $value . '</div></a>';
         }
         // action haader
         $result .= '<div class="grd' . $this->action['size'] . '"> &nbsp; </div>';
@@ -291,10 +314,10 @@ class TListView {
 
         $result .= '<ul>' . PHP_EOL;
 
-                // show form head here when have bulk action
+        // show form head here when have bulk action
         if ($this->bulk_action['title'] != array()) {
             $result .= '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
-        } 
+        }
 
         // if have bulk action show this after list view
         if ($this->bulk_action['title'] != array()) {
@@ -324,7 +347,7 @@ class TListView {
 
         echo $result;
     }
-    
+
     function AddSearch($fields) {
         $this->search = $fields;
     }

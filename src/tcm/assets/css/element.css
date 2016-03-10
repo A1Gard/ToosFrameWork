@@ -661,6 +661,16 @@ ul.sidebar-menu li a.active i {
     color: #0066cc;
 }
 
+.listview-search{
+    background: #20c0e3 ;
+    padding: 5px;
+}
+.listview-search .search-box{
+    padding:5px;
+}
+.listview-search{
+    margin-top:2px;
+}
 
 .filter{
     background: #0066cc;

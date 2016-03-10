@@ -123,7 +123,11 @@ function GetLinkPrefix($item_change) {
             }
         }
     }
+    if (isset($get_request['req']) && APACHE_SVR) {
+        unset($get_request['req']);
+    }
     $prefix = '?' . http_build_query($get_request) . '&';
+    
     return $prefix;
 }
 
