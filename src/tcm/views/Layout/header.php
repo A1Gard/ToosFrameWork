@@ -77,7 +77,7 @@
                         </li>
                         <li>
                             <a href="<?php echo UR_BASE  ?>" target="_blank">
-                                <span class="fa fa-html5"></span>
+                                <span class="fa fa-firefox"></span>
                             </a>
                             <?php
                             $a = TSystem::GetInstance();
