@@ -22,6 +22,7 @@ $listview->AddBulkAcction(' ویژه اعضا کردن جمعی', 'Edit', 'topic
 $listview->AddBulkAcction(' حذف', 'Delete', null);
 
 $listview->AddSearch('topic_title,topic_text');
+$listview->AddRelation('category_id','category_title','category','2','book');
 
 $listview->Render('Topic');
 

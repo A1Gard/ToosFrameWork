@@ -25,6 +25,8 @@ class TListView {
     private $pattren = array();
     // private serach
     private $search = null;
+    // private relation
+    private $relation = array();
 
     /**
      * 
@@ -157,27 +159,59 @@ class TListView {
 
         $result = null;
 
-                // show search here
-        if ($this->filter['title'] != null) {
-            
+        // show saerch or item 
+        if ($this->filter['title'] != null || $this->filter != array()) {
+
+            $result .= '<div class="listview-search row" action="' . UR_MP . $location . '" >';
+            // show search here
+            if ($this->filter['title'] != null) {
+
 //            die($prefix);
-            
-            $result .= '<form class="listview-search" action="' . UR_MP . $location .'" >';
 
+                $result .= '<form class="grd12"  action="' . UR_MP . $location . '">';
 
-            $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
-            $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
-            if (isset($_GET['filter'])) {
-                $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
-                
+                $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
+                $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
+                if (isset($_GET['filter'])) {
+                    $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
+                }
+                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                if (isset($_GET['search']) && $_GET['search'] != '') {
+                    $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
+                }
+                $result .= '</form>';
             }
-            $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
-            if (isset($_GET['search']) && $_GET['search'] != '') {
-                $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
-                
+
+            // relation info
+            if ($this->relation != array()) {
+
+                $md = new TModel($this->relation['table']);
+                $result .= '<form class="grd12 "  action="' . UR_MP . $location . '">'.
+                        ($this->relation['ico'] != ''?'<span class="fa fa-'.
+                        $this->relation['ico'] .'"></span>':'')
+                        . '<select name="rel" class="rel">';
+
+
+                foreach ($md->Selectable($this->relation['title'], $this->relation['value']) as $item) {
+                    
+                   
+                    $result .= '<option value="' . $item[0] . '" '.
+                            (isset($_GET['rel']) && $_GET['rel'] == $item[0]?'selected="selected"':'').' >' .
+                            $item[1]
+                            . '</option>';
+                }
+                $result .= '</select>';
+                $result .= '<input type="hidden" name="typ" class="rel-type" value="'.
+                        $this->relation['rel_type'].'" />';
+
+                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                if (isset($_GET['rel']) && $_GET['rel'] != '') {
+                    $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
+                }
+                $result .= '</form>';
             }
 
-            $result .= '</form>';
+            $result .= '</div>';
         }
 
 
@@ -348,8 +382,17 @@ class TListView {
         echo $result;
     }
 
+    /**
+     * search in loading item.
+     * @param string $fields imploded string for search
+     */
     function AddSearch($fields) {
         $this->search = $fields;
+    }
+
+    function AddRelation($base_id, $base_title, $base_table, $rel_type, $rel_icon = '') {
+
+        $this->relation = array('value' => $base_id, 'title' => $base_title, 'table' => $base_table, 'rel_type' =>  $rel_type, 'ico' => $rel_icon);
     }
 
 }
