@@ -17,9 +17,9 @@
  */
 
 // verstion 
-define('VERSION', '0.7');
+define('VERSION', '0.8');
 // build no
-define('BUILD', '20160313');
+define('BUILD', '20160314');
 // database version
 define('DB_VERSION', 'unstable');
 
