@@ -38,7 +38,7 @@ class TPublicLibrary {
             <![endif]-->' . PHP_EOL;
         echo "\n\t<!-- css self load--> \n";
         self::LoadCMCSS('topstrap.min');
-        self::LoadCMCSS('font-awesome.min');
+        self::LoadCMCSS('font-awesome.min','awesome-font');
         self::LoadCMCSS('genreal');
         self::LoadCMCSS('element');
         echo  PHP_EOL.PHP_EOL;
@@ -71,17 +71,19 @@ class TPublicLibrary {
 
     /**
      * @todo load css from cm public dir
+     * @param (mixed|string) $css_name
+     * @param string $id if need id for csss
      */
-    public function LoadCMCSS($css_name) {
+    public function LoadCMCSS($css_name,$id = null) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $css_name);
         if (is_array($css_name)) {
             foreach ($css_name as $css) {
-                
-            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css . '.css" />' . PHP_EOL;
+            
+            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css . '.css"  '.($id != null? 'id="'.$id.'" ' : '' ).'  />' . PHP_EOL;
             }
         }  else {
-            echo "\t" . '<link type="text/css" rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css_name . '.css" />' . PHP_EOL;
+            echo "\t" . '<link type="text/css"  rel="stylesheet" href="' . UR_MP_ASSETS . 'css/' . $css_name . '.css" '.($id != null? 'id="'.$id.'" ' : '' ).'  />' . PHP_EOL;
         }
     }
 
