@@ -99,11 +99,12 @@ class TModel {
             $order = $prefix . 'id DESC';
         }
 
-         $cond = '1';
+        $cond = '1';
         // if not have filter
         if (!isset($_GET['filter'], $_GET['search'])) {
             $where = array();
-        } else {
+        } 
+        if (isset($_GET['filter'])) {
             $filter = explode(',', $_GET['filter']);
             // else have filter apply fillter
             $term = substr($filter[1], 1);
@@ -146,9 +147,19 @@ class TModel {
             $cond .= ')';
         }
 //        print_r($where);
-        $sql = "SELECT $colums FROM %table% WHERE "
-                . " $cond ORDER BY {$order} "
-                . " LIMIT $start,$limit";
+        if (isset($_GET['rel'], $_GET['typ'])) {
+            $sql = "SELECT $colums 
+        FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
+        ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ORDER BY {$order}  LIMIT $start,$limit";
+//            die($sql);
+            $where[':s'] = $_GET['rel'];
+            $where[':t'] = $_GET['typ'];
+        } else {
+
+            $sql = "SELECT $colums FROM %table% WHERE "
+                    . " $cond ORDER BY {$order} "
+                    . " LIMIT $start,$limit";
+        }
 //    print_r($sql);die;
         // get count
         $result = $this->db->Select($sql, array($this->table_name), $where);
@@ -217,12 +228,13 @@ class TModel {
             $registry = TRegistry::GetInstance();
             $limit = $registry->GetValue(ROOT_SYSTEM, 'record_list_limit');
         }
-        
-         $cond = '1';
+
+        $cond = '1';
         // if not have filter
         if (!isset($_GET['filter'], $_GET['search'])) {
             $where = array();
-        } else {
+        } 
+        if (isset($_GET['filter'])) {
             $filter = explode(',', $_GET['filter']);
             // else have filter apply fillter
             $term = substr($filter[1], 1);
@@ -264,8 +276,18 @@ class TModel {
             }
             $cond .= ')';
         }
-        $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE "
-                . " $cond ";
+
+        if (isset($_GET['rel'],$_GET['typ'])) {
+            $sql = "SELECT COUNT(*) AS 'count' 
+        FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
+        ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ";
+            $where[':s'] = $_GET['rel'];
+            $where[':t'] = $_GET['typ'];
+        } else {
+
+            $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE "
+                    . " $cond ";
+        }
 //    print_r($sql);die;
         // get count
         $result = $this->db->Select($sql, array($this->table_name), $where);
@@ -277,6 +299,32 @@ class TModel {
         if ($mod > 0) {
             $result++;
         }
+        return $result;
+    }
+
+    /**
+     * get filed for select element
+     * @param string $title field for title of <option> ;
+     * @param string $value field for value of <option> ;
+     * @param string $where cond for select items 
+     * @return type
+     */
+    function Selectable($title, $value, $where = '1') {
+        $sql = "SELECT $value AS '0',$title AS '1' FROM %table% WHERE "
+                . " $where ";
+        $result = $this->db->Select($sql, array($this->table_name));
+        return $result;
+    }
+
+    /**
+     * Read Extdent not apply filter, search or relation
+     * @param string $fields imploded fields
+     * @param string $where 
+     * @param mixed $params array of paramters
+     * @return mixed
+     */
+    function ReadEx($fields, $where = '1', $params = array()) {
+        $result = $this->db->Select("SELECT $fields FROM %table% WHERE $where", array($this->table_name), $params);
         return $result;
     }
 
