@@ -147,7 +147,7 @@ class TModel {
             $cond .= ')';
         }
 //        print_r($where);
-        if (isset($_GET['rel'], $_GET['typ'])) {
+        if (isset($_GET['rel'], $_GET['typ']) && $_GET['rel'] != 0  ) {
             $sql = "SELECT $colums 
         FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
         ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ORDER BY {$order}  LIMIT $start,$limit";
@@ -277,7 +277,7 @@ class TModel {
             $cond .= ')';
         }
 
-        if (isset($_GET['rel'],$_GET['typ'])) {
+        if ( isset($_GET['rel'],$_GET['typ']) && $_GET['rel'] != 0 ) {
             $sql = "SELECT COUNT(*) AS 'count' 
         FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
         ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ";

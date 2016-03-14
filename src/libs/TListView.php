@@ -190,7 +190,8 @@ class TListView {
                         ($this->relation['ico'] != ''?'<span class="fa fa-'.
                         $this->relation['ico'] .'"></span>':'')
                         . '<select name="rel" class="rel">';
-
+                
+                $result .= '<option value="0" >' . _lg('Select an item to search'). '</option>';
 
                 foreach ($md->Selectable($this->relation['title'], $this->relation['value']) as $item) {
                     
