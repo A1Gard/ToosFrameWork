@@ -29,7 +29,7 @@ class TPluginLoader {
         
         // load all active hook 
         $h_model = new TModel('hook');
-        foreach ($h_model->Read('hook_effect,hook_function_name') as $hook) {
+        foreach ($h_model->ReadEx('hook_effect,hook_function_name') as $hook) {
             $hook_store[$hook['hook_effect']][] = $hook['hook_function_name'] ;
         }
     }
