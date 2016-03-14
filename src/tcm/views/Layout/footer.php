@@ -35,5 +35,14 @@
                 </div>
             </div>
         </div>
+        <div class="overlay">
+        <div class="awesome nice_scroll">
+            <input type="button" value="X" class="close-overlay" />
+            <ul id="font-list">
+            </ul>
+        </div>
+</div>
+
+
     </body>
 </html>

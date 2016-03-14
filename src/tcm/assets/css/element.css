@@ -994,7 +994,7 @@ ol.drg li.placeholder:before {
 
 
 /*other id*/ 
-#overlay{
+.overlay{
     width:100%;
     height:100vh;
     position: fixed;

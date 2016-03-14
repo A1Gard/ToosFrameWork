@@ -16,18 +16,18 @@ $(function () {
         $(".preloader").fadeIn(200);
 
     });
-    $(document).ajaxComplete(function(event, XMLHttpRequest, ajaxOptions){
-        if (XMLHttpRequest.status >= 400 ) {
+    $(document).ajaxComplete(function (event, XMLHttpRequest, ajaxOptions) {
+        if (XMLHttpRequest.status >= 400) {
             return false;
         }
         $(".preloader").delay(100).fadeOut(220);
         if ($("#no-result").val() == 'true') {
             return  false;
         }
-        
-        console.log($("#no-result").val() );
-        
-        
+
+        console.log($("#no-result").val());
+
+
         $("#ajax-result span").fadeOut();
         try {
             var result = JSON.parse(XMLHttpRequest.responseText);
@@ -75,8 +75,8 @@ $(function () {
         $(this).addClass('actived');
         $(document).bind('click.close-pre', function (e) {
             //console.log(e);
-           
-            if ($(e.target).closest('.pre-actived').length === 0 && 
+
+            if ($(e.target).closest('.pre-actived').length === 0 &&
                     !$(e.target).is('.pre-actived') &&
                     $(".pre-actived").hasClass('actived')) {
                 // do something
@@ -94,22 +94,40 @@ $(function () {
         $(this).slideUp(200);
     });
 
-    $("#close-overlay").bind('click', function () {
-        $("#overlay").fadeOut(600);
+    $(".close-overlay").bind('click', function () {
+        $(this).parent().parent().fadeOut(600);
     });
 
-    $('#overlay').on('click', function (e) {
+    $('.overlay').on('click', function (e) {
         if (e.target != this)
             return;
-        $("#overlay").fadeOut(600);
+        $(this).fadeOut(600);
     });
 
-    $("#font-list li").bind('click', function () {
-        var cls = $(this).find("i").clone().removeClass('fa').attr('class');
-        $("#ico").attr("class", 'fa fa-4x ' + cls);
-        $("#topic_icon").val(cls);
-        $("#overlay").fadeOut(600);
+
+    $(".awesome-select").bind('click', function () {
+        window.awesome_target = $(this).attr('data-awesome');
+        window.awesome_view = $(this).attr('data-view');
+        if ($("#font-list li").length == 0) {
+            $.get($("#awesome-font").attr('href'), function (e) {
+//                console.log(e);
+                x = e.toString();
+                z = x.match(/(\.)(fa\-)([a-z]+|\-)(\:before\{)/g);
+                $(z).each(function (k, v) {
+                    $("#font-list").append('<li><i class="fa ' + v.substr(1, v.length - 9) + '"></i></li>');
+                });
+
+                $("#font-list li").bind('click', function () {
+                    var cls = $(this).find("i").clone().removeClass('fa').attr('class');
+                    $(window.awesome_view).attr("class", 'fa fa-4x ' + cls);
+                    $(window.awesome_target).val(cls);
+                    $(".overlay").fadeOut(600);
+                });
+            });
+        }
     });
+
+
 
     $(document).on('click', "#drop-down-menu li .fa", function (e) {
         $(this).parent().toggleClass('active');
@@ -135,10 +153,10 @@ $(function () {
         var c = confirm("آیا برای حذف مطمئن هستید؟");
         if (c == false)
             return false;
-        else{
-             $(this).parent().remove();
+        else {
+            $(this).parent().remove();
         }
-           
+
 
     });
 
@@ -203,23 +221,23 @@ $(function () {
 function onAddTag(tag) {
     $.post(window.ajax_tag_url,
             {tag: tag, action: 0, id: $("#id").val()},
-    function (e) {
-        var result = JSON.parse(e);
-        if (result.success == false) {
-            alert(result.value);
-        }
-    });
+            function (e) {
+                var result = JSON.parse(e);
+                if (result.success == false) {
+                    alert(result.value);
+                }
+            });
 }
 // remove tags
 function onRemoveTag(tag) {
     $.post(window.ajax_tag_url,
             {tag: tag, action: 2, id: $("#id").val()},
-    function (e) {
-        var result = JSON.parse(e);
-        if (result.success == false) {
-            alert(result.value);
-        }
-    });
+            function (e) {
+                var result = JSON.parse(e);
+                if (result.success == false) {
+                    alert(result.value);
+                }
+            });
 }
 
 
