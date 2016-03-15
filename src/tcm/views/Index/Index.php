@@ -13,13 +13,22 @@ echo "This a message to show {$this->msg}";
 <div class="row autofit">
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" >
+
+            <input type="text" class="datepicker" />
+        </div></div>
+    <div class="grd6"><div class="temp" >
+                           <input type="text" class="Pdatepicker" />
+
+           </div></div>
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
-    <div class="grd6"><div class="temp" ></div></div>
+    <div class="grd6"><div class="temp" >
+            <input type="text" class="jqdatepicker" />
+
+        </div></div>
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>
     <div class="grd6"><div class="temp" ></div></div>

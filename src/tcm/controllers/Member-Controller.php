@@ -58,7 +58,7 @@ class Member extends TController {
         $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
         $this->view->record = $this->model->GetRecord($id);
         $_GET['filter'] = 'report_member_id,' . $id;
-        $this->view->reports = $this->report->Read('report_id,report_title', 99);
+//        $this->view->reports = $this->report->Read('report_id,report_title', 99);
         $this->view->PageRender('Member/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['member_name']);
     }
 

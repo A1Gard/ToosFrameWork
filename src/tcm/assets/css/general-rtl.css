@@ -56,3 +56,9 @@ input,textarea,select,button{
 .widget span{
     text-align: left;
 }
+.pdp-default *{
+    font-family:'yekan' !important;
+}
+.Zebra_DatePicker_Icon_Inside_Right{
+    opacity:0.4;
+}

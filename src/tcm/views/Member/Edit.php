@@ -6,7 +6,7 @@ $frm->AddField('text', 'نام', $this->record['member_name'], array('name' => '
 $frm->AddField('email', 'ایمیل', $this->record['member_email'], array('name' => 'member_email'));
 $frm->AddField('password', 'گذرواژه', null, array('name' => 'member_password'));
 $frm->AddField('text', 'استاتوس', $this->record['member_status'], array('name' => 'member_status'));
-$frm->AddField('text', 'زمان تمدید', $date->PDate('Y/m/d', $this->record['member_active_time']), array('name' => 'member_active_time'));
+$frm->AddField('text', 'زمان تمدید', $date->PDate('Y/m/d', $this->record['member_active_time']), array('name' => 'member_active_time','class'=>'Pdatepicker'));
 $frm->AddField('file', 'آواتار', $this->record['member_id'], array('name' => 'member_avatar'));
 
 $frm->AddField('text', 'مقطع', $this->record['member_degree'], array('name' => 'member_degree'));

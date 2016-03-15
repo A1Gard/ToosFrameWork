@@ -35,9 +35,9 @@
         // pakage load
         $public_libs->LoadPackageJS(array('ckeditor/ckeditor',
             'jquery-ui/jquery-ui.min', 'tagsinput/jquery.tagsinput',
-            'sortable/jquery-sortable-min', 'chart/Chart'));
+            'sortable/jquery-sortable-min', 'chart/Chart', 'datepicker/js/zebra_datepicker', 'datepicker/js/persianDatepicker.min'));
         $public_libs->LoadPackageCSS(array('jquery-ui/jquery-ui.min',
-            'tagsinput/jquery.tagsinput'));
+            'tagsinput/jquery.tagsinput', 'datepicker/css/persianDatepicker-default', 'datepicker/css/default'));
         ?>
 
 
@@ -76,7 +76,7 @@
                             ?>
                         </li>
                         <li>
-                            <a href="<?php echo UR_BASE  ?>" target="_blank">
+                            <a href="<?php echo UR_BASE ?>" target="_blank">
                                 <span class="fa fa-firefox"></span>
                             </a>
                             <?php
@@ -137,5 +137,5 @@
                     </div>
 
                     <div class="notification-bar">
-<?php TNotification::Show(); ?>
+                        <?php TNotification::Show(); ?>
                     </div>

@@ -215,6 +215,26 @@ $(function () {
         return window.ret;
     });
 
+    try {
+
+        $('.jdatpicker').datepicker();
+
+    } catch (e) {
+        console.log('jquery ui date picker error');
+    }
+    try {
+        $('.datepicker').Zebra_DatePicker();
+
+    } catch (e) {
+        console.log('zebra date picker error');
+    }
+    try {
+        $('.Pdatepicker').persianDatepicker({formatDate: "YYYY/MM/DD"});
+
+    } catch (e) {
+        console.log('persian date picker error');
+    }
+
 });
 
 // add tag
