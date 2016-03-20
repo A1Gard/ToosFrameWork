@@ -21,11 +21,10 @@ class TNotification {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $text, $type);
 
-        global $notifications;
         $notify['text'] = $text;
         $notify['type'] = $type;
 
-        $notifications[] = $notify;
+        $_SESSION['notification'][] = $notify;
     }
 
     /**
@@ -40,15 +39,16 @@ class TNotification {
         $icons['info'] = 'fa-info-circle';
         $icons['success'] = 'fa-check-circle';
         $icons[''] = 'fa-dot-circle-o';
-        global $notifications;
-        if (is_array($notifications)) {
+
+        if (isset($_SESSION['notification']) && is_array($_SESSION['notification'])) {
             $result = null;
-            foreach ($notifications as $notify) {
+            foreach ($_SESSION['notification'] as $k => $notify) {
                 $result .= "\t" . '<div class="notification ' . $notify['type'] . '">
                             <span class="fa ' . $icons[$notify['type']] . '"></span>
                             ' . $notify['text'] . '
                             <span class="fa fa-close"></span>
                         </div>';
+                unset($_SESSION['notification'][$k]);
             }
         }
         // result hook

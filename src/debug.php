@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+//unset($_SESSION['notification']);
 require_once './tconfig.php';
 
 if (_DBG_):
