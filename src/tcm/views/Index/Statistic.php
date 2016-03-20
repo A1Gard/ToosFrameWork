@@ -15,8 +15,7 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3>
-                بازدید و بازدید کننده 30 روز اخیر
-
+                <?php _lp("The lastest 30 days statics") ?>
             </h3>
             <br />
             <div style="margin:5%;">
@@ -29,33 +28,37 @@ global $browser_list, $os_list;
         <div class="white-bg " >
 
             <br />
-            <h3> آمار فعایت
-
+            <h3>
+                <?php _lp("Activtion statics") ?>
             </h3>
             <br />
             <ul class="state">
                 <li>
-                    تعداد اعضا:
+                    <?php _lp("Member Count") ?>
+                    :
                     <span>
                         <?php echo $this->m; ?>
                     </span>
                 </li>
                 <li>
-                    تعداد اعضا فعال: 
+                    <?php _lp("Active members count") ?>
+                    :
 
                     <span>
                         <?php echo $this->ma; ?>
                     </span>
                 </li>
                 <li>
-                    تعداد  دیدگاه ها: 
+                    <?php _lp("Comments count") ?>
+                    : 
 
                     <span>
                         <?php echo $this->com; ?>
                     </span>
                 </li>
                 <li>
-                    تعداد  دیدگاه ها تایید شده: 
+                    <?php _lp("Approved commenst count") ?>
+                    : 
 
                     <span>
                         <?php echo $this->acom; ?>
@@ -63,14 +66,16 @@ global $browser_list, $os_list;
 
                 </li>
                 <li>
-                    تعداد  یادداشت  ها: 
+                    <?php _lp("Topics count") ?>
+                    : 
 
                     <span>
                         <?php echo $this->top; ?>
                     </span>
                 </li>
                 <li>
-                    تعداد  یادداشت های منشتر شده:
+                    <?php _lp("Published topics count") ?>
+                    :
 
                     <span>
                         <?php echo $this->topa; ?>
@@ -78,7 +83,9 @@ global $browser_list, $os_list;
 
                 </li>
                 <li>
-                    تعداد  یادداشت های  ویژه:
+                    
+                    <?php _lp("Special topics count") ?>
+                    :
 
                     <span>
                         <?php echo $this->tops; ?>
@@ -98,47 +105,51 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3> 
-                آمار بازدید
+               <?php _lp("Visit statics") ?>
             </h3>
             <br />
             <ul class="state">
                 <li>
-                    بازدید امروز:
+                    <?php _lp("Today visits") ?>
+                    :
                     <span>
                         <?php echo $this->vis['visitcount']; ?>
                     </span>
                 </li>
                 <li>
-                    بازدیدکننده امروز: 
+                   <?php _lp("Today vistors") ?>
+                    : 
 
                     <span>
                         <?php echo $this->vis['visitorcount']; ?>
                     </span>
                 </li>
                 <li>
-                    بازدید دیروز: 
+                    <?php _lp("Yesterday visits") ?>
+                    : 
 
                     <span>
                         <?php echo $this->vis['y']; ?>
                     </span>
                 </li>
                 <li>
-                    بازدید کننده امروز: 
-
+                    <?php _lp("Yesterday visitors") ?>
+                       :
                     <span>
                         <?php echo $this->vis['ys']; ?>
                     </span>
 
                 </li>
                 <li>
-                    بازدید این ماه: 
-
+                    <?php _lp("This month visits") ?>
+                    :
                     <span>
                         <?php echo $this->vis['m']; ?>
                     </span>
                 </li>
                 <li>
-                    بازدیدهای ماه گذشته:
+                    <?php _lp("Last month visits") ?>
+                    :
 
                     <span>
                         <?php echo $this->vis['lm']; ?>
@@ -146,7 +157,8 @@ global $browser_list, $os_list;
 
                 </li>
                 <li>
-                    افراد آنلاین:
+                    <?php _lp("Onlines") ?>
+                    :
 
                     <span>
                         <?php echo $this->vis['online']; ?>
@@ -154,7 +166,8 @@ global $browser_list, $os_list;
 
                 </li>
                 <li>
-                    بازدید کل:
+                    <?php _lp("Total visits") ?>
+                    :
 
                     <span>
                         <?php echo $this->vis['total']; ?>
@@ -170,8 +183,8 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3>
-                مرورگر ها
-
+                <?php _lp("Browsers") ?>
+                :
             </h3>
             <br />
             <div id="canvas-holder" class="text-center">
@@ -184,7 +197,8 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3>
-                سیستم عامل ها
+                <?php _lp("OSes") ?>
+                :
 
             </h3>
             <br />
@@ -198,7 +212,7 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3>
-                پر بازدید ترین ها
+                <?php _lp("Most visited topics") ?>
 
             </h3>
             <br />
@@ -215,7 +229,7 @@ global $browser_list, $os_list;
         <div class="white-bg" >
             <br />
             <h3>
-                آخرین کلمات جستجو شده
+                <?php _lp("The lastest searched words") ?>
 
             </h3>
             <br />
@@ -236,7 +250,7 @@ global $browser_list, $os_list;
             labels: ["<?php echo implode($this->dayz, '","') ?>"],
                     datasets: [
                     {
-                    label: "بازدید کننده",
+                    label: "<?php _lp("Visitors") ?>",
                             fillColor: "rgba(200,40,40,0.2)",
                             strokeColor: "rgba(200,0,0,.6)",
                             pointColor: "rgba(255,100,100,1)",
@@ -246,7 +260,7 @@ global $browser_list, $os_list;
                             data: ["<?php echo implode($this->vit, '","') ?>"]
                     },
                     {
-                    label: "بازدید ",
+                    label: "<?php _lp("Vistis") ?> ",
                             fillColor: "rgba(220,220,220,0.4)",
                             strokeColor: "rgba(20,20,20,1)",
                             pointColor: "rgba(0,0,0,1)",
