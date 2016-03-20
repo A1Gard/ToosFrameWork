@@ -375,6 +375,67 @@ class TVisitor {
         return $result;
     }
 
-    
+    /**
+     * @param string $class alternative class
+     * return vistor os icon
+     * @uses awesome font
+     */
+    static public function GetOSIcon($class = '') {
+        // get os 
+        $os_int = self::DetectOSI();
+
+        $win = range(1, 16);
+        $linux = range(17, 19);
+        $osx = array(20, 21);
+        $android = array(25);
+        $searchbot = array(27);
+        $other = array(0, 22, 23, 24, 26);
+
+        switch (true) {
+            case in_array($os_int, $win):
+                $icon = 'windows';
+                break;
+            case in_array($os_int, $linux):
+                $icon = 'linux';
+                break;
+            case in_array($os_int, $osx):
+                $icon = 'apple';
+                break;
+
+            case in_array($os_int, $android):
+                $icon = 'android';
+                break;
+
+            case in_array($os_int, $searchbot):
+                $icon = 'google';
+                break;
+            default:
+                $icon = 'question';
+                break;
+        }
+
+        $result = '<span class="fa fa-' . $icon . ' ' . $class . '" title="' 
+                . self::DetectOS() . '" ></span>';
+        //result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+    /**
+     * @param string $class alternative class
+     * return vistor browser icon
+     * @uses awesome font
+     */
+    static public function GetBrowerIcon($class = '') {
+        // get os 
+        $bowser = self::DetectBrowser();
+
+       
+
+        $result = '<span class="fa fa-' . strtolower($bowser) . ' ' . $class . '" title="' 
+                . self::DetectBrowser() . '" ></span>';
+        //result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
 
 }
