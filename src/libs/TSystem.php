@@ -66,7 +66,8 @@ class TSystem extends TModel {
 
         // not devition to 0
         if ($count == 0) {
-            return  "#fe3fe6";;
+            return "#fe3fe6";
+            ;
         }
         $red = 255; //i.e. FF
         $green = 0;
@@ -124,9 +125,9 @@ class TSystem extends TModel {
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
         return $result;
     }
-    
-    public function GetField($table,$prefix,$field,$id) {
-        
+
+    public function GetField($table, $prefix, $field, $id) {
+
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $table, $prefix, $field, $id);
         $sql = "SELECT $field AS 'field' FROM %table% WHERE {$prefix}id = "
@@ -134,6 +135,54 @@ class TSystem extends TModel {
         $result = $this->db->Select($sql, array($table));
         $result = $result[0]['field'];
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+        return $result;
+    }
+
+    static public function GetServerOS() {
+        $result = PHP_OS;
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+
+    static public function GetServerIP() {
+        $result = $_SERVER['SERVER_ADDR'];
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+
+    static public function GetWebServer() {
+        $tmp = explode(' ', $_SERVER['SERVER_SOFTWARE']);
+        $result = $tmp[0];
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+
+    static public function GetPHPVersion() {
+        $result = PHP_VERSION;
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+
+    static public function GetServerCPUUsage() {
+        $array = sys_getloadavg();
+        $result = round(array_sum($array) / count($array), 2);
+
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
+    }
+
+    static public function GetServerMemUsage() {
+
+        $free = shell_exec('free');
+        $free = (string) trim($free);
+        $free_arr = explode("\n", $free);
+        $mem = explode(" ", $free_arr[1]);
+        $mem = array_filter($mem);
+        $mem = array_merge($mem);
+        $result = round($mem[2] / $mem[1] * 100,2);
+
+
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
     }
 
