@@ -92,13 +92,15 @@ define('TRY_2', 5);
  */
 
 // ok icon
-define('NI_SUCCESS', 0);
+define('NF_SUCCESS', 'success');
 // info icon
-define('NI_INFO', 1);
+define('NF_INFO', 'info');
 // warning icon
-define('NI_WARNING', 2);
+define('NF_WARNING', 'warning');
 // error icon
-define('NI_ERROR', 3);
+define('NF_ERROR', 'error');
+// other icon
+define('NF_Other', '');
 
 $notfi = array('success', 'info', 'warning', 'error');
 
@@ -235,40 +237,48 @@ define("MONTH", 30 * DAY);
 // not all browser famus browsers
 $browser_list = array(
     // Match user agent string with browser
-    '(Deepnet)',
-    '(Flock)',
-    '(Maxthon)',
-    '(Avant)',
-    '(AOL)',
-    '(MSIE)',
-    '(Opera)',
-    '(Firefox)',
-    '(Chrome)',
-    '(Safari)'
+    'Unknow',
+    'Deepnet',
+    'Flock',
+    'Maxthon',
+    'Avant',
+    'AOL',
+    'MSIE',
+    'Opera',
+    'Firefox',
+    'Edge',
+    'Chrome',
+    'Safari'
 );
 
 $os_list = array(
     'Unknow',
-    '(Windows 95)',
-    '(Windows 98)',
-    '(Windows 2000)',
-    '(Windows XP)',
-    'Server 2003',
-    'Vista',
-    'Seven',
-    'Win 8 | 8.1',
-    ' Maybe 10',
-    '(Windows NT)',
+    'Windows 3.11',
+    'Windows 95',
+    'Windows 98',
+    'Windows 2000',
+    'Windows XP',
+    'Windows Server 2003',
+    'Windows Vista | WinServer 2008',
+    'Windows 7 | WinServer 2008 R2',
+    'Windows 8',
+    'Windows Phone 8',
+    'Windows 8.1',
+    'Windows Phone 8.1',
+    'Windows 10',
+    'Windows Phone 10',
+    'Windows NT 4.0',
     'Windows ME',
-    'OpenBSD',
-    'SunOS',
-    '(Linux)',
-    '(Macintosh)',
+    'Open BSD',
+    'Sun OS',
+    'Linux',
+    'iPhone | iPad Osx',
+    'Mac OS',
     'QNX',
     'BeOS',
     'OS/2',
-    '(android)',
-    '(symbian)',
-    'SearchBot'
+    'android',
+    'symbian',
+    'Search Bot'
 );
 

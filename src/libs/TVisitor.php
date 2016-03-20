@@ -22,11 +22,10 @@ class TVisitor {
     public static function DetectOSI() {
 
         if (!isset($_SERVER['HTTP_USER_AGENT']))
-            return 'error';
-
+            return '0';
         $os_list = array(
             // Match user agent string with operating systems
-            'Win16',
+            '(Win16)',
             '(Windows 95)|(Win95)|(Windows_95)',
             '(Windows 98)|(Win98)',
             '(Windows NT 5.0)|(Windows 2000)',
@@ -35,29 +34,36 @@ class TVisitor {
             '(Windows NT 6.0)',
             '(Windows NT 6.1)',
             '(Windows NT 6.2)',
+            '(Windows Phone 8)',
             '(Windows NT 6.3)',
+            '(Windows Phone 8.1)',
+            '(Windows NT 10)',
+            '(Windows Phone 10)',
             '(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)',
             'Windows ME',
             'OpenBSD',
             'SunOS',
             '(Linux)|(X11)',
+            '(iPhone)|(iPad)',
             '(Mac_PowerPC)|(Macintosh)',
             'QNX',
             'BeOS',
-            'OS/2',
+            'OS\/2',
             '(android)',
             '(symbian)',
-            '(nuhk)|(Googlebot)|(Yammybot)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves/Teoma)|(ia_archiver)'
+            '(nuhk)|(Googlebot)|(Yammybot)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
         );
 
+
         // reset ret
-        $result = "Unknown";
+        $result = "0";
         // Loop through the array of user agents and matching operating systems
         foreach ($os_list as $current_os => $match) {
             // Find a match
+
             if (preg_match("/" . $match . "/", $_SERVER['HTTP_USER_AGENT'])) {
                 // We found the correct match
-                $result = $current_os;
+                $result = $current_os + 1;
                 break;
             }
         }
@@ -86,19 +92,24 @@ class TVisitor {
             'Windows Vista | WinServer 2008' => '(Windows NT 6.0)',
             'Windows 7 | WinServer 2008 R2' => '(Windows NT 6.1)',
             'Windows 8' => '(Windows NT 6.2)',
-            'Windows Maybe 9' => '(Windows NT 6.3)',
+            'Windows Phone 8' => '(Windows Phone 8)',
+            'Windows 8.1' => '(Windows NT 6.3)',
+            'Windows Phone 8.1' => '(Windows Phone 8.1)',
+            'Windows 10' => '(Windows NT 10)',
+            'Windows Phone 10' => '(Windows Phone 10)',
             'Windows NT 4.0' => '(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)',
             'Windows ME' => 'Windows ME',
             'Open BSD' => 'OpenBSD',
             'Sun OS' => 'SunOS',
             'Linux' => '(Linux)|(X11)',
+            'iPhone | iPad Osx' => '(iPhone)|(iPad)',
             'Mac OS' => '(Mac_PowerPC)|(Macintosh)',
             'QNX' => 'QNX',
             'BeOS' => 'BeOS',
-            'OS/2' => 'OS/2',
+            'OS/2' => 'OS\/2',
             'android' => '(android)',
             'symbian' => '(symbian)',
-            'Search Bot' => '(nuhk)|(Googlebot)|(Yammybot)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves/Teoma)|(ia_archiver)'
+            'Search Bot' => '(nuhk)|(Googlebot)|(Yammybot)|(Openbot)|(Slurp)|(MSNBot)|(Ask Jeeves\/Teoma)|(ia_archiver)'
         );
 
         // reset ret
@@ -128,7 +139,7 @@ class TVisitor {
 
         $is_mobile = FALSE;
 
-        if (preg_match('/(android|up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+        if (preg_match('/(android|up.browser|up.link|mmp|symbian|smartphone|midp|wap|iphone|phone)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
             $is_mobile = true;
         }
 
@@ -186,6 +197,7 @@ class TVisitor {
             'InternetExplorer' => '(MSIE)',
             'Opera' => '(Opera)',
             'FireFox' => '(Firefox)',
+            'Edge' => '(Edge)',
             'Chrome' => '(Chrome)',
             'Safari' => '(Safari)'
         );
@@ -227,18 +239,19 @@ class TVisitor {
             '(MSIE)',
             '(Opera)',
             '(Firefox)',
+            '(Edge)',
             '(Chrome)',
             '(Safari)'
         );
 
         // reset ret
-        $result = 10;
+        $result = 0;
         // Loop through the array of user agents and matching operating systems
         foreach ($browser_list as $current_browser => $match) {
             // Find a match
             if (preg_match("/" . $match . "/", $_SERVER['HTTP_USER_AGENT'])) {
                 // We found the correct match
-                $result = $current_browser;
+                $result = $current_browser+1;
                 break;
             }
         }
@@ -358,8 +371,10 @@ class TVisitor {
         }
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
-        
+
         return $result;
     }
+
+    
 
 }

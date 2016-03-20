@@ -19,7 +19,60 @@ class Index extends TController {
      * @todo Show index without any thing
      */
     public function Index() {
-        $this->view->msg = "We are in index...";
+        $sys = new TSystem();
+        $st = new TStatistic();
+        $dt = new TDate();
+        $viss['visitcount'] = $st->VisitCount($dt->Today(), time());
+        $viss['visitorcount'] = $st->VisitorCount($dt->Today(), time());
+
+
+        $t = time();
+        $s = $dt->Yesterday();
+        $e = $dt->Today() - 1;
+        $dayz = array();
+        $viz = array();
+        $vit = array();
+        $viz[0] = $viss['visitcount'];
+        $vit[0] = $viss['visitorcount'];
+        for ($index = 0; $index < 30; $index++) {
+
+            $mod = ($index * DAY);
+            $dayz[$index] = $dt->SDate('d', $t - $mod);
+            $viz[$index + 1] = $st->VisitCount($s - $mod, $e - $mod);
+            $vit[$index + 1] = $st->VisitorCount($s - $mod, $e - $mod);
+        }
+
+        unset($viz[$index + 1]);
+        unset($vit[$index + 1]);
+
+        $this->view->dayz = array_reverse($dayz);
+        $this->view->viz = array_reverse($viz);
+        $this->view->vit = array_reverse($vit);
+
+        global $browser_list, $os_list;
+
+        $this->view->bw = array();
+        $this->view->os = array();
+
+        for ($i = 0; $i < count($browser_list); $i++) {
+            $this->view->bw[$i] = $sys->GetRcordCount('statistic', 'statistic_browser = ' . $i);
+        }
+        for ($i = 0; $i < count($os_list); $i++) {
+            $this->view->os[$i] = $sys->GetRcordCount('statistic', 'statistic_os = ' . $i);
+        }
+        while (($key = array_search('0', $this->view->os)) !== false) {
+            unset($this->view->os[$key]);
+        }
+        while (($key = array_search('0', $this->view->bw)) !== false) {
+            unset($this->view->bw[$key]);
+        }
+
+        $this->view->cl1 = $sys->GetRedToGreen(count($this->view->bw));
+        $this->view->cl2 = $sys->GetRedToGreen(count($this->view->os));
+
+        $this->view->lastsch = $sys->GetRecordByOrd('statistic', 'statistic_id', ' CHAR_LENGTH(statistic_keyword) > 2 ', 'DESC');
+
+        $this->view->vis = $viss;
         $this->view->PageRender('Index/Index', _lg('Desktop'));
     }
 
@@ -126,10 +179,9 @@ class Index extends TController {
         $this->view->cl1 = $sys->GetRedToGreen(count($this->view->bw));
         $this->view->cl2 = $sys->GetRedToGreen(count($this->view->os));
 
-
-
         $this->view->topvisits = $sys->GetRecordByOrd('topic', 'topic_counter', '1', 'DESC');
         $this->view->lastsch = $sys->GetRecordByOrd('statistic', 'statistic_id', ' CHAR_LENGTH(statistic_keyword) > 2 ', 'DESC');
+
         $this->view->vis = $viss;
         $this->view->PageRender('Index/Statistic', 'آمار سایت ');
     }
@@ -162,7 +214,6 @@ class Index extends TController {
         $side_menu->AddItem(_lg('Desktop'), UR_MP, 0, 'fa-dashboard', -9999);
         $side_menu->AddItem(' تنظیمات سایت', UR_MP .
                 'Index/Setting', 0, 'fa-cogs');
-
     }
 
 }
