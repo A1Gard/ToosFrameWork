@@ -54,8 +54,12 @@ class Manager extends TController {
         } else {
             $_POST['manager_password'] = Password($_POST['manager_password']);
         }
-        $this->model->Edit($id, $_POST);
-        Redirect(UR_MP . 'Manager/Edit/' . $id);
+        if ($this->model->Edit($id, $_POST)) {
+            Redirect(UR_MP . 'Manager/Edit/' . $id);
+        }else{
+            TNotification::Add(_lg("You can't edit this manager this protected"),NF_WARNING);
+            Redirect(UR_MP . 'Manager/Edit/' . $id);
+        }
     }
 
     public static function Loader() {

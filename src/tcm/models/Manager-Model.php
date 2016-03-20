@@ -18,6 +18,22 @@ class ManagerModel extends TModel {
         parent::__construct('manager','manager_');
     }    
     
+    
+    /**
+     * @todo edit an reocrd with id 
+     * @param int $id
+     * @param array $data
+     * @param string $prefix prifex id
+     * @category general
+     */
+    public function Edit($id, $data, $prefix = null) {
+        $on_edit =  $this->GetRecord($id);
+        if ($on_edit['manager_protected'] && $_SESSION['MN_ID'] == $on_edit['manager_id']) {
+            parent::Edit($id, $data, $prefix);
+            return true;
+        }
+        return false;
+    }
 } 
 
 ?>
