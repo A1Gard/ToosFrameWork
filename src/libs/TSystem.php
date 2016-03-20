@@ -164,9 +164,10 @@ class TSystem extends TModel {
     }
 
     static public function GetServerCPUUsage() {
-        $array = sys_getloadavg();
-        $result = round(array_sum($array) / count($array), 2);
-
+        $loads = sys_getloadavg();
+        $core_nums = trim(shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
+        $load = round($loads[0] / ($core_nums + 1) * 100, 2);
+        $result = $load ;
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
     }
@@ -179,7 +180,7 @@ class TSystem extends TModel {
         $mem = explode(" ", $free_arr[1]);
         $mem = array_filter($mem);
         $mem = array_merge($mem);
-        $result = round($mem[2] / $mem[1] * 100,2);
+        $result = round($mem[2] / $mem[1] * 100, 2);
 
 
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
