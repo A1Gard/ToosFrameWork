@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS `%prefix%registry` (
   PRIMARY KEY (`registry_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='system registry same as windows registry';
 
+ALTER TABLE `%prefix%registry`
+	ADD UNIQUE INDEX `registry_root_registry_key` (`registry_root`, `registry_key`);
 
 CREATE TABLE IF NOT EXISTS `%prefix%relation` (
   `src` bigint(20) unsigned NOT NULL COMMENT 'source',

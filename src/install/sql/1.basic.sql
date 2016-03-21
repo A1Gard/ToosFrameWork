@@ -20,6 +20,10 @@ CREATE TABLE IF NOT EXISTS `%prefix%manager` (
   PRIMARY KEY (`manager_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='cms manager table';
 
+ALTER TABLE `%prefix%manager`
+	ADD UNIQUE INDEX `manager_username` (`manager_username`),
+	ADD UNIQUE INDEX `manager_email` (`manager_email`);
+
 
 CREATE TABLE IF NOT EXISTS `%prefix%tag` (
   `tag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,

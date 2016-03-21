@@ -56,6 +56,8 @@ CREATE TABLE IF NOT EXISTS `%prefix%member` (
   PRIMARY KEY (`member_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
 
+ALTER TABLE `%prefix%member`
+	ADD UNIQUE INDEX `member_email` (`member_email`);
 CREATE TABLE IF NOT EXISTS `%prefix%statistic` (
   `statistic_id` int(11) NOT NULL AUTO_INCREMENT,
   `statistic_time` int(12) NOT NULL,
