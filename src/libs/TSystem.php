@@ -164,23 +164,33 @@ class TSystem extends TModel {
     }
 
     static public function GetServerCPUUsage() {
-        $loads = sys_getloadavg();
-        $core_nums = trim(shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
-        $load = round($loads[0] / ($core_nums + 1) * 100, 2);
-        $result = $load ;
+
+        try {
+            $loads = sys_getloadavg();
+            $core_nums = trim(shell_exec("grep -P '^processor' /proc/cpuinfo|wc -l"));
+            $load = round($loads[0] / ($core_nums + 1) * 100, 2);
+            $result = $load;
+        } catch (Exception $exc) {
+            $result = 0;
+        }
+
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
     }
 
     static public function GetServerMemUsage() {
 
-        $free = shell_exec('free');
-        $free = (string) trim($free);
-        $free_arr = explode("\n", $free);
-        $mem = explode(" ", $free_arr[1]);
-        $mem = array_filter($mem);
-        $mem = array_merge($mem);
-        $result = round($mem[2] / $mem[1] * 100, 2);
+        try {
+            $free = shell_exec('free');
+            $free = (string) trim($free);
+            $free_arr = explode("\n", $free);
+            $mem = explode(" ", $free_arr[1]);
+            $mem = array_filter($mem);
+            $mem = array_merge($mem);
+            $result = round($mem[2] / $mem[1] * 100, 2);
+        } catch (Exception $exc) {
+            $result = 0;
+        }
 
 
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
