@@ -23,16 +23,20 @@ class TController extends TBootstarp {
         // every controller have view load view here
         $this->view = new TView();
 
-
+        $not_login_need = array(
+            'Access,Login' ,
+            'Access,Check',
+            'Access,Forget'
+        ); 
         // check if not in login page 
-        if (!(parent::$request == 'Access,Login' || parent::$request == 'Access,Check')) {
+        if (!in_array(parent::$request, $not_login_need) ) {
             // manger access controller
             TMAC::Init();
             TMAC::CheckLogin();
             TMAC::RestoreRequest();
         }
     }
-
+            
     /**
      * @todo load controllerUR_MP_ASSETS if exsits
      * @param string $name
