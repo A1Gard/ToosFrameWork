@@ -37,6 +37,10 @@ $_LANG = array(
     'Toos',
     ' توس ',
     
+    # 
+    'Toos Framework',
+    ' توس ',
+    
     # view/header.php:16
     'Toos Conetent mangement',
     ' سامانه مدیریت محتوا توس  ',
@@ -337,6 +341,51 @@ $_LANG = array(
     'All',
     'همه',
     #
+    'The lastest 30 days statics',
+    'آمار ۳۰ روز گذشته',
+    #
+    'Information',
+    'اطلاعات',
+    #
+    'Browsers',
+    'مرورگر ها',
+    #
+    'OSes',
+    'سیستم عامل ها',
+    #
+    'The lastest searched words',
+    'آخرین کلمات جستجو شده',
+    #
+    'Your browser',
+    'مرورگر شما',
+    #
+    'Your browser version',
+    'نسخه مرورگر شما',
+    #
+    'Your OS',
+    'سیستم عامل شما',
+    #
+    'Your IP',
+    'IP شما',
+    #
+    'WebServer',
+    'webserver سرور',
+    #
+    'Server OS',
+    'سیستم عامل سرور',
+    #
+    'Server IP',
+    'IP سرور',
+    #
+    'PHP version',
+    'نسخه  PHP',
+    #
+    'Server CPU usage',
+    'میزان مصرف پردازنده سرور',
+    #
+    'Server Memory usage',
+    'میزان مصرف حافظه سرور',
+    #
     'Send new password failed: Username or email is incorrect.',
     'ارسال گذرواژه نا موفق بود: نام کاربری یا رایانه ی شما اشتباه است',
     #
@@ -346,8 +395,8 @@ $_LANG = array(
     'Password sent, please check your mail. [dev] Password is: %s',
     'گذرواژه جدید  ارسال شد  گذرواژه %s، لطفا ایمیل خود را چک کنید',
     #
-    'All',
-    'همه',
+    'Powered by ',
+    'قدرت گرفته از ',
     #
     'Hello',
     'درود'
