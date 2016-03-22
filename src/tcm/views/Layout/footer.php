@@ -12,7 +12,9 @@
                 </div>
             </section>
             <section id="footer" class="animate">
-                <?php _lp('Powered by '); _lp('Toos Framework'); ?>  2013 &copy; <?php echo date('Y') ?>
+                <a href="https://github.com/A1Gard/ToosFrameWork" target="_blank"> 
+                    <?php _lp('Powered by '); _lp('Toos Framework'); ?>  2013 &copy; <?php echo date('Y') ?>
+                </a>
             </section>
             <div class="preloader">
                 <img src="<?php echo  UR_MP_ASSETS ?>img/preloader.gif" alt="[pre loader]" />
