@@ -85,8 +85,6 @@
 
                 <a href="<?php echo UR_MP ?>Access/Login" class="text-center" style="color:black;display: block"><?php _lp('Login') ?></a>
         
-
-                
             </form>
             <span style="color:white;">  
                 <?php
