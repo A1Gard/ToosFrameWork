@@ -79,8 +79,8 @@ define('TRY_LOGIN', 1);
 define('TRY_SEARCH', 2);
 // comment try
 define('TRY_COMMENT', 3);
-//  try
-define('TRY_1', 4);
+//  try new password
+define('TRY_PASSWORD', 4);
 //  try
 define('TRY_2', 5);
 

@@ -37,7 +37,7 @@
 
         <!-- section login start -->
         <section id="login">
-            <form action="<?php echo UR_MP; ?>Access/Check" method="post">
+            <form action="<?php echo UR_MP; ?>Access/ChangePasswd" method="post">
                 <div class="logo">
                     <img src="<?= UR_MP_ASSETS ?>img/wlogo.png" alt="[]" />
                 </div>
@@ -46,8 +46,9 @@
 // if is set
                     if (isset($_GET['msg_id']) && isset($_GET['ni'])) {
                         $msg = TLanguage::Index($_GET['msg_id']);
+                        $icon = explode('_', $_GET['ni']);
                         ?>
-                        <p class="notification error text-center">
+                    <p class="notification <?php echo strtolower($icon[1]); ?> text-center">
                             <!--<span class="fa fa-times-circle"></span>-->
                             <?php
                             // check array for show with argumans or not
@@ -73,17 +74,19 @@
                 </label>
                 <label>
                     <b>
-                        <?php _lp('Password') ?>:
+                        <?php _lp('Email') ?>:
                     </b>
                     <br />
-                    <input type="password" name="manager_password" placeholder="<?php _lp('Password') ?>" class="full-width"/>
+                    <input type="email" name="manager_email" placeholder="<?php _lp('Email') ?>" class="full-width"/>
                 </label>
 
-                <label> <input type="checkbox" name="remenber"  /> <?php _lp('Remenber me') ?> </label>
-                <label><input type="submit" value="<?php _lp('log in') ?>" class="full-width btn" /></label>
+                <label><input type="submit" value="<?php _lp('Send new password') ?>" class="full-width btn" /></label>
                 <br />
 
-                <a href="<?php echo UR_MP ?>Access/Forget" class="text-center" style="color:black;display: block"><?php _lp('Forget your password ?') ?></a>
+                <a href="<?php echo UR_MP ?>Access/Login" class="text-center" style="color:black;display: block"><?php _lp('Login') ?></a>
+        
+
+                
             </form>
             <span style="color:white;">  
                 <?php

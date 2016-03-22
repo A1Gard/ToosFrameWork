@@ -26,7 +26,8 @@ class TController extends TBootstarp {
         $not_login_need = array(
             'Access,Login' ,
             'Access,Check',
-            'Access,Forget'
+            'Access,Forget',
+            'Access,ChangePasswd'
         ); 
         // check if not in login page 
         if (!in_array(parent::$request, $not_login_need) ) {

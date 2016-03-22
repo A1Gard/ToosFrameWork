@@ -106,7 +106,7 @@ $_LANG = array(
     'ورود به سیستم',
     
      # controller/access-controller.php:51
-    'Login failed : Username or password incorrect.',
+    'Login failed : Username or password is incorrect.',
     'ورود ناموفق : نام کاربری یا گذرواژه شما اشتباه است.',
     
      # controller/access-controller.php:57
@@ -298,6 +298,10 @@ $_LANG = array(
     'آواتار',
     #
     #
+    'Email',
+    'رایانامه (ایمیل)',
+    #
+    #
     'Search',
     'جستجو',
     #
@@ -313,6 +317,13 @@ $_LANG = array(
     'Categories classic list',
     'فهرست کلاسیک دسته ها',
     #
+    'Remenber password',
+    'یاد آوری گذرواژه',
+    #
+    #
+    'Send new password',
+    'ارسال گذرواژه جدید',
+    #
     'Categories node list',
     'فهرست گره دسته ها',
     #
@@ -322,6 +333,18 @@ $_LANG = array(
     'Comments',
     'دیدگاه ها',
     #
+    #
+    'All',
+    'همه',
+    #
+    'Send new password failed: Username or email is incorrect.',
+    'ارسال گذرواژه نا موفق بود: نام کاربری یا رایانه ی شما اشتباه است',
+    #
+    'Password sent, please check your mail.',
+    'گذرواژه جدید  ارسال شد، لطفا ایمیل خود را چک کنید',
+    #
+    'Password sent, please check your mail. [dev] Password is: %s',
+    'گذرواژه جدید  ارسال شد  گذرواژه %s، لطفا ایمیل خود را چک کنید',
     #
     'All',
     'همه',
