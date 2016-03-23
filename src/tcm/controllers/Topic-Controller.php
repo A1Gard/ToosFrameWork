@@ -29,7 +29,7 @@ class Topic extends TController {
 
     public function NewTopic() {
         $this->view->navigator->AddItem(_lg('Topics'), UR_MP . 'Topic/Index');
-        $this->view->PageRender('Topic/NewTopic', self::$_main_title . ' جدید ');
+        $this->view->PageRender('Topic/NewTopic',_lg("New Topic") );
     }
 
     public function Edit($id) {
@@ -41,7 +41,7 @@ class Topic extends TController {
         $this->view->tags = implode($a, ',');
 
         $this->view->attach = $this->model->GetAttached($id);
-        $this->view->PageRender('Topic/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['topic_title']);
+        $this->view->PageRender('Topic/Edit',  _lg('Edit') . ' - ' . $this->view->record['topic_title']);
     }
 
     public function Update($id) {
