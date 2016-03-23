@@ -171,11 +171,11 @@ class TListView {
                 $result .= '<form class="grd12"  action="' . UR_MP . $location . '">';
 
                 $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
-                $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
+                $result .= '<input type="hidden" name="fields" class="search-fields"  value="' . $this->search . '"  />';
                 if (isset($_GET['filter'])) {
                     $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
                 }
-                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button title="'. _lg('Search') .'"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
@@ -205,7 +205,7 @@ class TListView {
                 $result .= '<input type="hidden" name="typ" class="rel-type" value="'.
                         $this->relation['rel_type'].'" />';
 
-                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button title="'. _lg('Search') .'"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
