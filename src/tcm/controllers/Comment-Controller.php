@@ -34,7 +34,7 @@ class Comment extends TController {
     public function NewComment($parent, $topic_id) {
         $this->view->prn = $parent;
         $this->view->tid = $topic_id;
-        $this->view->navigator->AddItem('دیدگاه ها', UR_MP . 'Comment/Index');
+        $this->view->navigator->AddItem(_lg('Comments'), UR_MP . 'Comment/Index');
         $this->view->PageRender('Comment/NewComment', self::$_main_title . ' جدید ');
     }
 

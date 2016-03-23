@@ -28,13 +28,13 @@ class Topic extends TController {
     }
 
     public function NewTopic() {
-        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Topic/Index');
+        $this->view->navigator->AddItem(_lg('Topics'), UR_MP . 'Topic/Index');
         $this->view->PageRender('Topic/NewTopic', self::$_main_title . ' جدید ');
     }
 
     public function Edit($id) {
         $this->_notifiControl(func_get_args());
-        $this->view->navigator->AddItem('یادداشت ها', UR_MP . 'Topic/Index');
+        $this->view->navigator->AddItem(_lg('Topics'), UR_MP . 'Topic/Index');
         $this->view->record = $this->model->GetRecord($id);
         $tag = new TTag();
         $a = $tag->TList($this->view->record['topic_id'], RELATION_TAG);
@@ -92,10 +92,10 @@ class Topic extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $index = $side_menu->AddItem('یادداشت ها', '#', 0, 'fa-bullhorn',-112);
-        $side_menu->AddItem('فهرست یادداشت ها', UR_MP .
+        $index = $side_menu->AddItem(_lg('Topics'), '#', 0, 'fa-bullhorn',-112);
+        $side_menu->AddItem(_lg("Topics list"), UR_MP .
                 'Topic', $index);
-        $side_menu->AddItem('یادداشت جدید', UR_MP .
+        $side_menu->AddItem(_lg("New Topic"), UR_MP .
                 'Topic/NewTopic', $index);
     }
 

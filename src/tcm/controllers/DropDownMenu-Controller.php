@@ -91,7 +91,7 @@ class DropDownMenu extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $side_menu->AddItem('فهرست سایت', UR_MP .
+        $side_menu->AddItem(_lg('DropDown Menu'), UR_MP .
                 'DropDownMenu', 0, 'fa-ellipsis-h');
     }
 

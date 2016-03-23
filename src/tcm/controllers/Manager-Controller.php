@@ -66,10 +66,10 @@ class Manager extends TController {
         global $side_menu;
 
 
-        $index = $side_menu->AddItem('مدیران ', '#', 0, 'fa-user');
-        $side_menu->AddItem('فهرست  مدیران', UR_MP .
+        $index = $side_menu->AddItem(_lg('Managers'), '#', 0, 'fa-user');
+        $side_menu->AddItem(_lg('Managers list'), UR_MP .
                 'Manager', $index);
-        $side_menu->AddItem(' ثبت مدیر جدید', UR_MP .
+        $side_menu->AddItem(_lg('New Manager'), UR_MP .
                 'Manager/NewManager', $index);
     }
 

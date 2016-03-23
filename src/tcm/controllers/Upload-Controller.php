@@ -14,7 +14,7 @@ class Upload extends TController {
     function __construct() {
         
         parent::__construct() ;
-        self::$_main_title = _lg('Topic') ;
+        self::$_main_title = _lg('Upload') ;
     }
     
    

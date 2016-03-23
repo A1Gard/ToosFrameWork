@@ -102,14 +102,12 @@ class Member extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $index = $side_menu->AddItem('اعضا ', '#', 0, 'fa-group');
+        $index = $side_menu->AddItem(_lg('Members'), '#', 0, 'fa-group');
 
-        $side_menu->AddItem('فهرست  اعضا', UR_MP .
+        $side_menu->AddItem(_lg('Members list'), UR_MP .
                 'Member', $index);
-        $side_menu->AddItem(' ثبت عضو جدید', UR_MP .
+        $side_menu->AddItem(_lg("New member"), UR_MP .
                 'Member/NewMember', $index);
-        $side_menu->AddItem('   جستجوی اعضا', UR_MP .
-                'Member/Search', $index);
     }
 
 }

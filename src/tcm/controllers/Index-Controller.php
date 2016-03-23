@@ -76,10 +76,6 @@ class Index extends TController {
         $this->view->PageRender('Index/Index', _lg('Desktop'));
     }
 
-    public function Sentence() {
-        $this->view->sen = $this->model->Sentence();
-        $this->view->PageRender('Index/Sen', 'جملات انگیزشی');
-    }
 
     public function Sentence1() {
         $this->view->sen = $this->model->Sentence1();
@@ -107,12 +103,7 @@ class Index extends TController {
 
     public function Setting() {
         $this->view->Setting = $this->model->Setting();
-        $this->view->PageRender('Index/Setting', 'تنظیمات سایت ');
-    }
-
-    public function Time() {
-        $this->view->Time = $this->model->Time();
-        $this->view->PageRender('Index/Time', ' وقت ها ');
+        $this->view->PageRender('Index/Setting', _lg('Setting'));
     }
 
     public function Statistic() {
@@ -183,12 +174,12 @@ class Index extends TController {
         $this->view->lastsch = $sys->GetRecordByOrd('statistic', 'statistic_id', ' CHAR_LENGTH(statistic_keyword) > 2 ', 'DESC');
 
         $this->view->vis = $viss;
-        $this->view->PageRender('Index/Statistic', 'آمار سایت ');
+        $this->view->PageRender('Index/Statistic', _lg('Statistic'));
     }
 
     public function Slider() {
         $this->view->Val = $this->model->All("slider");
-        $this->view->PageRender('Index/Slider', ' اسلایدر ');
+        $this->view->PageRender('Index/Slider', _lg('Silder'));
     }
 
     public function Save($setting) {
@@ -212,7 +203,7 @@ class Index extends TController {
     public static function Loader() {
         global $side_menu;
         $side_menu->AddItem(_lg('Desktop'), UR_MP, 0, 'fa-dashboard', -9999);
-        $side_menu->AddItem(' تنظیمات سایت', UR_MP .
+        $side_menu->AddItem(_lg('Setting'), UR_MP .
                 'Index/Setting', 0, 'fa-cogs');
     }
 
