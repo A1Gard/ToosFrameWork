@@ -36,6 +36,13 @@ objects ->
     padding: 5px 0 15px 5px  !important;
 }
 /*---*/
+ul.sidebar-menu{
+    -o-transition:.6s;
+    -ms-transition:.6s;
+    -moz-transition:.6s;
+    -webkit-transition:.6s;
+    transition:.6s;
+}
 .nav-collapse.collapse {
     display: inline;
 }

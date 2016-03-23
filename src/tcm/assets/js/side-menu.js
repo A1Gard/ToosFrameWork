@@ -74,6 +74,7 @@ $(function () {
         if ($(el).hasClass('sAct')) {
             $(this).removeClass('expand');
             $(el).removeClass('sAct');
+            $("#nav-accordion").css("margin-top",0);
         } else { // else slide down
             $(el).slideDown(defaults.speed, function () {
                 if (elementInViewport($(el)[0]) === false) {
