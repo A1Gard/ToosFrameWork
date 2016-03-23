@@ -6,7 +6,7 @@ $frm->AddField('text', 'نام', $this->record['member_name'], array('name' => '
 $frm->AddField('email', 'ایمیل', $this->record['member_email'], array('name' => 'member_email'));
 $frm->AddField('password', 'گذرواژه', null, array('name' => 'member_password'));
 $frm->AddField('text', 'استاتوس', $this->record['member_status'], array('name' => 'member_status'));
-$frm->AddField('text', 'زمان تمدید', $date->PDate('Y/m/d', $this->record['member_active_time']), array('name' => 'member_active_time','class'=>'Pdatepicker'));
+$frm->AddField('text', 'زمان تمدید', $date->PDate('Y/m/d', $this->record['member_active_time']), array('name' => 'member_active_time','class'=>  _lg('datepicker')));
 $frm->AddField('file', 'آواتار', $this->record['member_id'], array('name' => 'member_avatar'));
 
 $frm->AddField('text', 'مقطع', $this->record['member_degree'], array('name' => 'member_degree'));
@@ -34,16 +34,17 @@ $frm->AddField('submit', '', 'ویرایش');
         <?php $frm->Render(); ?>
     </div>
     <div class="grd-secondary">
-        <div class="attach" dir="rtl">
+        <div class="temp"></div>
+<!--        <div class="attach" dir="rtl">
             <b>لیست کارنامه ها:</b>
 
             <ul>
                 <?php
-                foreach ($this->reports as $rep) {
-                    echo '<li><a class="delete" href="' . UR_MP . 'Member/RemoveReport/' .
-                    $rep['report_id'] . '">'
-                    . $rep['report_title'] . '</a></li>';
-                }
+//                foreach ($this->reports as $rep) {
+//                    echo '<li><a class="delete" href="' . UR_MP . 'Member/RemoveReport/' .
+//                    $rep['report_id'] . '">'
+//                    . $rep['report_title'] . '</a></li>';
+//                }
                 ?>
                 <li>
                     <a href="<?php echo  UR_MP . 'Member/Report/'.$this->record['member_id'] ?>">
@@ -51,7 +52,7 @@ $frm->AddField('submit', '', 'ویرایش');
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
     </div>
 </div>
 

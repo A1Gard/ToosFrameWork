@@ -50,6 +50,9 @@ $_LANG = array(
     'بستن',
     
     #
+    'datepicker',
+    'Pdatepicker',
+    #
     '',
     '',
 /*  pages  */
@@ -461,11 +464,23 @@ $_LANG = array(
     'Set for members',
     'ویژه اعضا کردن',
     #
-    't',
-    '',
+    'Pending',
+    'در انتظار تایید',
     #
-    't',
-    '',
+    'Approved',
+    'تایید شده',
+    #
+    'Approving',
+    'تایید کردن',
+    #
+    'Banned',
+    'اخراج شده',
+    #
+    'Banning',
+    'اخراج کردن',
+    #
+    'Name',
+//    'نام',
     #
     't',
     '',
