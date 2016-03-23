@@ -2,31 +2,29 @@
 
 $prefix = GetLinkPrefix('order');
 
-$listview = new TListView('topic_id');
+$listview = new TListView('member_id');
 $listview->SetList($this->cls_list);
-$listview->AddColum(_lg('Title'), 'topic_title', 12);
-$listview->AddColum(_lg('Status'), 'topic_status', 2);
-$listview->AddColum(_lg('View Counter'), 'topic_counter', 2);
-$pattern = '<a class="button delete" href="' . UR_MP . 'Topic/Delete/%id%"> ' . 
+$listview->AddColum(_lg('Name'), 'member_name', 8);
+$listview->AddColum(_lg('Email'), 'member_email', 4);
+$listview->AddColum(_lg('Status'), 'member_type', 2);
+$pattern = '<a class="button delete" href="' . UR_MP . 'Member/Delete/%id%"> ' . 
         _lg('Delete') . ' </a>
-            <a class="button" href="' . UR_MP . 'Topic/Edit/%id%"> ' . 
+            <a class="button" href="' . UR_MP . 'Member/Edit/%id%"> ' . 
         _lg('Edit') . ' </a>';
-$listview->AddAction($pattern, 4, 'topic_status');
+$listview->AddAction($pattern, 4, 'member_type');
 
-$listview->AddFilter(_lg('Drafted'), 'topic_status', '0');
-$listview->AddFilter(_lg('Published'), 'topic_status', '1');
-$listview->AddFilter(_lg('For members'), 'topic_status', '2');
-$listview->AddFilter(_lg("Viewable"), 'topic_status', '0','gt');
+$listview->AddFilter(_lg('Pending'), 'member_type', '0');
+$listview->AddFilter(_lg('Approved'), 'member_type', '1');
+$listview->AddFilter(_lg('Banned'), 'member_type', '2');
 
-$listview->AddBulkAcction(_lg('Drafting'), 'Edit', 'topic_status,0');
-$listview->AddBulkAcction(_lg('Publishing'), 'Edit', 'topic_status,1');
-$listview->AddBulkAcction(_lg('Set for members'), 'Edit', 'topic_status,2');
+$listview->AddBulkAcction(_lg('Pending'), 'Edit', 'member_type,0');
+$listview->AddBulkAcction(_lg('Approving'), 'Edit', 'member_type,1');
+$listview->AddBulkAcction(_lg('Banning'), 'Edit', 'member_type,2');
 $listview->AddBulkAcction(_lg('Delete'), 'Delete', null);
 
-$listview->AddSearch('topic_title,topic_text');
-$listview->AddRelation('category_id','category_title','category','2','book');
+$listview->AddSearch('member_name,member_email,member_number');
 
-$listview->Render('Topic');
+$listview->Render('Member');
 
 $this->pagination->Render();
 
