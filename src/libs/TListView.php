@@ -160,22 +160,22 @@ class TListView {
         $result = null;
 
         // show saerch or item 
-        if ($this->filter['title'] != null || $this->filter != array()) {
+        if ($this->search != null || $this->relation != array() ) {
 
             $result .= '<div class="listview-search row" action="' . UR_MP . $location . '" >';
             // show search here
-            if ($this->filter['title'] != null) {
+            if ($this->search != null) {
 
 //            die($prefix);
 
                 $result .= '<form class="grd12"  action="' . UR_MP . $location . '">';
 
                 $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
-                $result .= '<input type="hidden" name="fields" class="search-fields"  value="' . $this->search . '"  />';
+                $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
                 if (isset($_GET['filter'])) {
                     $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
                 }
-                $result .= '&nbsp;<button title="'. _lg('Search') .'"><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
@@ -205,7 +205,7 @@ class TListView {
                 $result .= '<input type="hidden" name="typ" class="rel-type" value="'.
                         $this->relation['rel_type'].'" />';
 
-                $result .= '&nbsp;<button title="'. _lg('Search') .'"><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
@@ -391,6 +391,14 @@ class TListView {
         $this->search = $fields;
     }
 
+    /**
+     * add relationship
+     * @param string $base_id base list id in db table for show in select
+     * @param string $base_title base tatile in db table for show in select
+     * @param string $base_table base table name
+     * @param int $rel_type relationship type int
+     * @param string $rel_icon awesome icon show
+     */
     function AddRelation($base_id, $base_title, $base_table, $rel_type, $rel_icon = '') {
 
         $this->relation = array('value' => $base_id, 'title' => $base_title, 'table' => $base_table, 'rel_type' =>  $rel_type, 'ico' => $rel_icon);
