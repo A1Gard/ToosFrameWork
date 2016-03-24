@@ -309,7 +309,13 @@ class TModel {
      * @param string $where cond for select items 
      * @return type
      */
-    function Selectable($title, $value, $where = '1') {
+    function Selectable($title = null, $value = null, $where = '1') {
+        if ($title == null) {
+            $title = $this->prefix . 'title' ;
+        }
+        if ($value == null) {
+            $value = $this->prefix . 'id' ;
+        }
         $sql = "SELECT $value AS '0',$title AS '1' FROM %table% WHERE "
                 . " $where ";
         $result = $this->db->Select($sql, array($this->table_name));
