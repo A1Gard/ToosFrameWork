@@ -12,6 +12,7 @@
 class TLanguage {
 
     private static $_lang = array();
+    private static $_lang_search = array();
 
     /**
      * @name _init
@@ -24,6 +25,7 @@ class TLanguage {
             // load
             require '../langs/' . LANG . '_CM.php';
             self::$_lang = $_LANG;
+            self::$_lang_search = array_map('strtolower', $_LANG);
         } else {
             return false;
         }
@@ -40,8 +42,7 @@ class TLanguage {
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $string);
         self::_init();
         // seach in array ;
-        $key = array_search($string, self::$_lang);
-        $result = self::$_lang[$key + 1];
+        $key = array_search(strtolower($string), self::$_lang_search );
         $result = self::$_lang[$key + 1];
         if ($key === FALSE) {
             $result = $string;
@@ -62,7 +63,7 @@ class TLanguage {
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $string);
         
         self::_init();
-        $key = array_search($string, self::$_lang);
+        $key = array_search(strtolower($string), self::$_lang_search );
 
         if ($key === FALSE) {
             $result = $string;
