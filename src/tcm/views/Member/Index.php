@@ -2,11 +2,16 @@
 
 $prefix = GetLinkPrefix('order');
 
+global  $m_type ;
+$m_type = array(0 => 'تایید نشده',
+    1  => 'تایید شده',
+    2  => 'اخراجی');
+
 $listview = new TListView('member_id');
 $listview->SetList($this->cls_list);
 $listview->AddColum(_lg('Name'), 'member_name', 8);
 $listview->AddColum(_lg('Email'), 'member_email', 4);
-$listview->AddColum(_lg('Status'), 'member_type', 2);
+$listview->AddColum(_lg('Status'), '%am_type|member_type', 2);
 $pattern = '<a class="button delete" href="' . UR_MP . 'Member/Delete/%id%"> ' . 
         _lg('Delete') . ' </a>
             <a class="button" href="' . UR_MP . 'Member/Edit/%id%"> ' . 

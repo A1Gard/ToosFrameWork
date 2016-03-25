@@ -300,6 +300,15 @@ class TListView {
                             $result .= $date->PDate($date_format, $record[$a]);
 
                             break;
+                        // show array
+                        case '%a':
+                            $a = substr($value, 2);
+                            $v = explode('|', $a);
+                            $arr = $v[0];
+                            global  $$arr;
+                            $array = $$arr ;
+                            $result .= $array[$record[$v[1]]];
+                            break;
                         case '%1':
                         case '%2':
                         case '%3':
