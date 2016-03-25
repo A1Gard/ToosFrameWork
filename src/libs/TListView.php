@@ -247,6 +247,11 @@ class TListView {
         }
 
 
+             // show form head here when have bulk action
+        if ($this->bulk_action['title'] != array()) {
+            $result .= '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
+        }
+
 
         //start render listview header
         // start with bulk action checkbox and id header
@@ -277,8 +282,10 @@ class TListView {
             //start with bulk action checkbox and id
             $result .= '<li> 
         <div  class="row">';
-            $result .= '<div class="grd1"> <input type="checkbox" '
-                    . 'class="listview-checkbox" name="id[]" value="' . $record[$this->id] . '" /> </div>';
+            $result .= '<div class="grd1">'. PHP_EOL
+                    . ' <input type="checkbox" '
+                    . 'class="listview-checkbox" name="id[]" value="' . $record[$this->id] . '" />'. PHP_EOL
+                    . ' </div>'. PHP_EOL;
 
             $result .= '<div class="grd2"> ' . $record[$this->id] . ' </div>';
 
@@ -286,8 +293,8 @@ class TListView {
             foreach ($this->column['key'] as $key => $value) {
                 if (strpos($value, ',') == false) {
 
-                    $result .= '<div class="grd' .
-                            $this->column['size'][$key] . '">';
+                    $result .=  PHP_EOL . '<div class="grd' .
+                            $this->column['size'][$key] . '">'. PHP_EOL;
 
                     switch (substr($value, 0, 2)) {
                         case '%i':
@@ -329,21 +336,21 @@ class TListView {
                     }
 
 
-                    $result .= '</div>';
+                    $result .= '</div>' . PHP_EOL;
                 } else {
                     $temp = explode(',', $value);
-                    $result .= '<div class="grd' .
+                    $result .=  PHP_EOL . '<div class="grd' .
                             $this->column['size'][$key] . '">';
                     foreach ($temp as $col) {
 
                         $result .= $record[$col] . PHP_EOL;
                     }
-                    $result .= '</div>';
+                    $result .= '</div>' . PHP_EOL;
                 }
             }
 
             // add action to record
-            $result .= '<div class="grd' . $this->action['size'] . ' c' . ($this->action['class'] == '' ? '' : $record[$this->action['class']]) . '">';
+            $result .= PHP_EOL . '<div class="grd' . $this->action['size'] . ' c' . ($this->action['class'] == '' ? '' : $record[$this->action['class']]) . '">';
             $tmp = str_replace("%id%", $record[$this->id], $this->action['pattern']);
 
             if ($this->id == 'comment_id') {
@@ -351,18 +358,14 @@ class TListView {
             } else {
                 $result .= $tmp;
             }
-            $result .= '</div>';
-            $result .= '</div>
-    </li>';
+            $result .= '</div>'. PHP_EOL;
+            $result .= '</div>'. PHP_EOL
+                    . '</li>'. PHP_EOL;
         }
 
-        $result .= '<ul>' . PHP_EOL;
+        $result .= '</ul>' . PHP_EOL;
 
-        // show form head here when have bulk action
-        if ($this->bulk_action['title'] != array()) {
-            $result .= '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
-        }
-
+   
         // if have bulk action show this after list view
         if ($this->bulk_action['title'] != array()) {
             $result .= '<div class="bulk-action">
