@@ -307,7 +307,7 @@ class TModel {
      * @param string $title field for title of <option> ;
      * @param string $value field for value of <option> ;
      * @param string $where cond for select items 
-     * @return type
+     * @return mixed
      */
     function Selectable($title = null, $value = null, $where = '1') {
         if ($title == null) {
@@ -319,6 +319,28 @@ class TModel {
         $sql = "SELECT $value AS '0',$title AS '1' FROM %table% WHERE "
                 . " $where ";
         $result = $this->db->Select($sql, array($this->table_name));
+        return $result;
+    }
+    /**
+     * get normal array for display in TListview
+     * @param string $title field for title of <option> ;
+     * @param string $value field for value of <option> ;
+     * @param string $where cond for select items 
+     * @return mixed
+     */
+    function NormalArray($title = null, $value = null, $where = '1') {
+        if ($title == null) {
+            $title = $this->prefix . 'title' ;
+        }
+        if ($value == null) {
+            $value = $this->prefix . 'id' ;
+        }
+        $sql = "SELECT $value ,$title FROM %table% WHERE "
+                . " $where ";
+        $res = $this->db->Select($sql, array($this->table_name));
+        foreach ($res as  $record) {
+            $result[$value] = $record[$title];
+        }
         return $result;
     }
 
