@@ -339,7 +339,7 @@ class TModel {
                 . " $where ";
         $res = $this->db->Select($sql, array($this->table_name));
         foreach ($res as  $record) {
-            $result[$value] = $record[$title];
+            $result[$record[$value]] = $record[$title];
         }
         return $result;
     }
