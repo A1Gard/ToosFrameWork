@@ -297,6 +297,7 @@ $(window).load(function () {
         });
 
     });
+
     $(".chknone").click(function () {
         var chclass = $(this).attr('data-chekbox');
         $("." + chclass).each(function () {
@@ -313,6 +314,13 @@ $(window).load(function () {
         });
 
     });
+
+    $(".checkall").bind("click chanage", function () {
+        $(this).closest('ul')
+                .find("input[type='checkbox']")
+                .prop('checked', this.checked);
+    });
+
 // checkbox group select end
 
     $(".tags").each(function () {

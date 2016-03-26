@@ -258,7 +258,7 @@ class TListView {
         $result .= '<ul class="listview">
     <li class="pinned animate"> 
         <div  class="row">
-            <div class="grd1"> &nbsp; </div>
+            <div class="grd1"> <input type="checkbox" class="checkall" />  </div>
             <a href="' . $id_order . '"><div class="grd2 header"> ' . _lg('no.') . ' </div></a>';
         // show header column title
         foreach ($this->column['title'] as $key => $value) {
