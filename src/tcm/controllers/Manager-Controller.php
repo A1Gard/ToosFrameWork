@@ -54,6 +54,10 @@ class Manager extends TController {
         } else {
             $_POST['manager_password'] = Password($_POST['manager_password']);
         }
+        if ( isset($_POST['allow'])) {
+            $_POST['manager_permission'] = implode(',', $_POST['allow']);
+            unset($_POST['allow']);
+        }
         if ($this->model->Edit($id, $_POST)) {
             Redirect(UR_MP . 'Manager/Edit/' . $id);
         }else{
