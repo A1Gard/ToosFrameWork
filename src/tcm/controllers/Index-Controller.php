@@ -200,6 +200,10 @@ class Index extends TController {
         $this->view->PageRender('Index/404', _lg('Not found...'));
     }
 
+    public function e403() {
+        $this->view->PageRender('Index/403', _lg('Access denied...'));
+    }
+
     public static function Loader() {
         global $side_menu;
         $side_menu->AddItem(_lg('Desktop'), UR_MP, 0, 'fa-dashboard', -9999);

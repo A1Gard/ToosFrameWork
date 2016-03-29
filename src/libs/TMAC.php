@@ -111,6 +111,7 @@ class TMAC {
         self::SetSession('MN_ID', $user_details['manager_id']);
         self::SetSession('MN_TYPE', $user_details['manager_type']);
         self::SetSession('MN_UA', md5($_SERVER['HTTP_USER_AGENT']));
+        self::SetSession('MN_PR', explode(',', $user_details['manager_permission']));
         self::SetSession('MN_LK', LOGIN_KEY);
 
         // set cookie if need 
@@ -123,6 +124,7 @@ class TMAC {
             self::SetCookie('MN_ID', $UserDetails['manager_id'], $min);
             self::SetCookie('MN_TYPE', $UserDetails['manager_type'], $min);
             self::SetCookie('MN_UA', md5($_SERVER['HTTP_USER_AGENT']), $min);
+            self::SetCookie('MN_PR', explode(',', $user_details['manager_permission']), $min);
             self::SetCookie('MN_LK', LOGIN_KEY, $min);
         }
     }
@@ -138,11 +140,13 @@ class TMAC {
         self::DestroySession('MN_ID');
         self::DestroySession('MN_TYPE');
         self::DestroySession('MN_UA');
+        self::DestroySession('MN_PR');
         self::DestroySession('MN_LK');
 
         self::SetCookie('MN_ID', '', time() - 1);
         self::SetCookie('MN_TYPE', '', time() - 1);
         self::SetCookie('MN_UA', '', time() - 1);
+        self::SetCookie('MN_PR', '', time() - 1);
         self::SetCookie('MN_LK', '', time() - 1);
 
         return TRUE;
@@ -226,11 +230,28 @@ class TMAC {
                 self::SetSession('MN_ID', $_COOKIE['MN_ID']);
                 self::SetSession('MN_TYPE', $_COOKIE['MN_TYPE']);
                 self::SetSession('MN_UA', $_COOKIE['MN_UA']);
+                self::SetSession('MN_PR', $_COOKIE['MN_PR']);
                 self::SetSession('MN_LK', $_COOKIE['MN_LK']);
                 $result = true;
             }
         }
 
+        global  $MANAGER_TYPE ;
+        // check permissions
+        $typ = self::GetSession('MN_TYPE');
+        if ($typ != $MANAGER_TYPE['OWNER'] && $typ != $MANAGER_TYPE['ADMIN'] && $typ == $MANAGER_TYPE['DEFINED']) {
+            if (!in_array(CURRENT_EXTENSION,  self::GetSession('MN_PR') )) {
+                $allow = array(
+                    'Index/e403',
+                    'Access/Logout'
+                );
+                if ( !in_array($_GET['req'], $allow) ) {
+                    Redirect(UR_MP . 'Index/e403');
+                    exit();
+                }
+            }
+        }
+        
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         
@@ -243,6 +264,7 @@ class TMAC {
         } else {
             return TRUE;
         }
+        
     }
 
     /**
