@@ -174,11 +174,13 @@ class TBootstarp {
     }
     
     private function _ExtensionLoader() {
+        global $loaded_extensions;
         $path = './controllers/';
         foreach (glob($path.'*.php') as $controller) {
             include_once $controller;
             $cls = substr($controller, strlen($path), -15);
             $cls::Loader();
+            $loaded_extensions[] = $cls ;
         }
     }
 }
