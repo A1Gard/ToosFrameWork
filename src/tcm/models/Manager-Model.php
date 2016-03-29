@@ -28,7 +28,7 @@ class ManagerModel extends TModel {
      */
     public function Edit($id, $data, $prefix = null) {
         $on_edit =  $this->GetRecord($id);
-        if ($on_edit['manager_protected'] && $_SESSION['MN_ID'] == $on_edit['manager_id']) {
+        if ($on_edit['manager_protected']  && $_SESSION['MN_ID'] == $on_edit['manager_id'] ||$on_edit['manager_protected'] == 0 ) {
             parent::Edit($id, $data, $prefix);
             return true;
         }
