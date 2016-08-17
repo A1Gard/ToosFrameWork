@@ -7,6 +7,7 @@
  * @time : 16:32 
  * @subpackage   Function.php
  * @todo : system function to use
+ * @author : Toos team , Farzad Membari <farzad@live.se>
  */
 
 /**
@@ -127,7 +128,7 @@ function GetLinkPrefix($item_change) {
         unset($get_request['req']);
     }
     $prefix = '?' . http_build_query($get_request) . '&';
-    
+
     return $prefix;
 }
 
@@ -179,4 +180,32 @@ function XssClean($data) {
 
     // we are done...
     return $data;
+}
+
+
+/**
+ * make url term for use in URI benefit  to SEO
+ * @param string $name 
+ * @param char $replace_char replacment char
+ * @return string
+ * @author Farzad Membari <farzad@live.se>
+ */
+function UrlTerm($name,$replace_char = '-') {
+    // allowed rangez
+    $allow = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'), array('-', '_', '~', '.'));
+
+    // get allowed asccii code 
+    foreach ($allow as $ch) {
+        $alw[] = ord($ch);
+    }
+    $result = '';
+    // replace and make term
+    for ($i = 0; $i < strlen($name); $i++) {
+        if (in_array(ord($name[$i]), $alw)) {
+            $result .= $name[$i];
+        } else {
+            $result .= $replace_char;
+        }
+    }
+    return $result;
 }
