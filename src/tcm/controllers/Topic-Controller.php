@@ -50,6 +50,7 @@ class Topic extends TController {
             $this->CatSync($id);
         }
         $_POST['topic_time'] = time();
+        $_POST['topic_term'] = UrlTerm($_POST['topic_title']);
 
         $this->model->Edit($id, $_POST);
         GoBack('/edit');
@@ -75,6 +76,7 @@ class Topic extends TController {
 
     public function Insert() {
         $_POST['topic_time'] = time();
+        $_POST['topic_term'] = UrlTerm($_POST['topic_title']);
         $_POST['topic_owner_id'] = $_SESSION['MN_ID'];
 
         $id = $this->model->Create($_POST);

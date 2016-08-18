@@ -229,7 +229,7 @@ $(function () {
         console.log('zebra date picker error');
     }
     try {
-        $('.Pdatepicker').persianDatepicker({formatDate: "YYYY/MM/DD"});
+        $('.Pdatepicker').persianDatepicker({formatDate: "YYYY/0M/0D"});
 
     } catch (e) {
         console.log('persian date picker error');

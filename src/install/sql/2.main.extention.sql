@@ -85,5 +85,6 @@ CREATE TABLE IF NOT EXISTS `%prefix%topic` (
   `topic_counter` int(10) unsigned NOT NULL DEFAULT '0',
   `topic_type` tinyint(3) unsigned NOT NULL,
   `topic_icon` varchar(255) DEFAULT NULL,
+  `topic_term` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`topic_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
