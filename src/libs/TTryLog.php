@@ -27,11 +27,11 @@ class TTryLog extends TModel {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $type, $last_mins);
         $sql = "SELECT COUNT(`trylog_id`) AS 'count' FROM %table% WHERE 
-            `trylog_ip` = " . _ipi() . " 
+            `trylog_ip` = '" . _ipi() . "' 
              AND `trylog_time` > " . (time()- ($last_mins * 60) );
         $result = $this->db->Select($sql, array('trylog'),array('type'=>''));
         
-        $result_ = $result[0]['count'];
+        $result_ = $result[0]['count'] ;
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
         // retrun count
