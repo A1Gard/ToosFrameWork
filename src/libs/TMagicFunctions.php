@@ -95,7 +95,7 @@ function _ip() {
  * @return int
  */
 function _ipi() {
-    return ip2long($_SERVER['REMOTE_ADDR']);
+    return (int) ip2long($_SERVER['REMOTE_ADDR']);
 }
 
 /**
