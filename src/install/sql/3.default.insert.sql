@@ -11,3 +11,6 @@ INSERT INTO `%prefix%registry` ( `registry_root`, `registry_key`, `registry_valu
 	(1, 'system_time_type', '');
 
 
+INSERT INTO `%prefix%category` (`category_title`, `category_description`) 
+VALUES ('sample category', 'category description');
+

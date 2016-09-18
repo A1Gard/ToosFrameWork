@@ -8,7 +8,9 @@ CREATE TABLE IF NOT EXISTS `%prefix%category` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS `%prefix%manager` (
+
+
+CREATE TABLE `%prefix%manager` (
   `manager_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `manager_username` varchar(65) NOT NULL,
   `manager_email` varchar(65) DEFAULT NULL,
@@ -17,9 +19,8 @@ CREATE TABLE IF NOT EXISTS `%prefix%manager` (
   `manager_lastlogin` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'last login time time stamp',
   `manager_type` tinyint(4) NOT NULL DEFAULT '0',
   `manager_protected` bit(1) NOT NULL DEFAULT b'0',
-  `manager_permission` TEXT NULL DEFAULT,
   PRIMARY KEY (`manager_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='cms manager table';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT=' manager table';
 
 ALTER TABLE `%prefix%manager`
 	ADD UNIQUE INDEX `manager_username` (`manager_username`),

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `%prefix%hook` (
   `hook_effect` varchar(255) DEFAULT NULL COMMENT 'hook effect is echo where is need act this hook',
   `hook_plugin` varchar(150) DEFAULT NULL COMMENT 'name of hook parent',
   PRIMARY KEY (`hook_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='here is all hooks in actived plugin';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='here is all hooks in actived plugin';
 
 CREATE TABLE IF NOT EXISTS `%prefix%plugin` (
   `plugin_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `%prefix%plugin` (
   `plugin_discrption` text,
   PRIMARY KEY (`plugin_id`),
   KEY `plugin_name` (`plugin_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='active plugin list';
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='active plugin list';
 
 
 CREATE TABLE IF NOT EXISTS `%prefix%registry` (
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `%prefix%registry` (
   `registry_key` varchar(128) NOT NULL COMMENT 'key name',
   `registry_value` longtext COMMENT 'vlaue of key',
   PRIMARY KEY (`registry_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='system registry same as windows registry';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='system registry same as windows registry';
 
 ALTER TABLE `%prefix%registry`
 	ADD UNIQUE INDEX `registry_root_registry_key` (`registry_root`, `registry_key`);

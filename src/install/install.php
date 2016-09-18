@@ -63,7 +63,13 @@ $sqls = glob('./sql/*.sql');
                             $sql_queries = explode(';', $sql);
 
                             foreach ($sql_queries as $query) {
-                                $database_handle->query($query . ';');
+                                if (strlen(trim($query)) == 0) {
+                                    continue;
+                                }
+                                $result_sql = $database_handle->query($query . ';') ;
+                                if (!$result_sql) {
+                                    print_r($database_handle->errorInfo());
+                                }
                             }
                             ?>
                             Executed : <b> <?php echo basename($sql_file) ?></b>
