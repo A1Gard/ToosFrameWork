@@ -37,7 +37,7 @@ class Manager extends TController {
         $_POST['manager_password'] = Password($_POST['manager_password']);
         $date = TDate::GetInstance();
 //        $_POST['manager_register_time'] = time();
-//        $_POST['manager_active_time'] = $date->Persi2Timestamp($_POST['manager_active_time']);
+//        $_POST['manager_active_time'] = $date->Parsi2Timestamp($_POST['manager_active_time']);
         $id = $this->model->Create($_POST);
         Redirect(UR_MP . 'Manager/Edit/' . $id);
     }

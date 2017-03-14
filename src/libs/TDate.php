@@ -805,7 +805,7 @@ class TDate {
      * @param string $time time clock
      * @return type
      */
-    public function Persi2Timestamp($date = null, $time = '00:00:00') {
+    public function Parsi2Timestamp($date = null, $time = '00:00:00') {
 
         // Pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $date, $time);
@@ -1183,7 +1183,7 @@ class TDate {
     public function PThisMonthStart() {
         // get this month
         $this_month = $this->PDate('Y/n/') . '1';
-        $result = $this->Persi2Timestamp($this_month);
+        $result = $this->Parsi2Timestamp($this_month);
         return $result;
     }
 
@@ -1196,7 +1196,7 @@ class TDate {
         $last_day = $this->_pGetMonthDayCount($this->PDate('n'), $this->PDate('Y'));
 
         $this_month = $this->PDate('Y/n/' . $last_day);
-        $result = $this->Persi2Timestamp($this_month, '23:59:59');
+        $result = $this->Parsi2Timestamp($this_month, '23:59:59');
         return $result;
     }
 

@@ -49,7 +49,7 @@ class Member extends TController {
         $_POST['member_password'] = Password($_POST['member_password']);
         $date = TDate::GetInstance();
         $_POST['member_register_time'] = time();
-        $_POST['member_active_time'] = $date->Persi2Timestamp($_POST['member_active_time']);
+        $_POST['member_active_time'] = $date->Parsi2Timestamp($_POST['member_active_time']);
         $id = $this->model->Create($_POST);
         Redirect(UR_MP . 'Member/Edit/' . $id);
     }
@@ -69,7 +69,7 @@ class Member extends TController {
             $_POST['member_password'] = Password($_POST['member_password']);
         }
         $date = TDate::GetInstance();
-        $_POST['member_active_time'] = $date->Persi2Timestamp($_POST['member_active_time']);
+        $_POST['member_active_time'] = $date->Parsi2Timestamp($_POST['member_active_time']);
         $this->model->Edit($id, $_POST);
         Redirect(UR_MP . 'Member/Edit/' . $id);
     }
