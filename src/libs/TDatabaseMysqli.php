@@ -247,6 +247,44 @@ class TDatabase extends mysqli
         }
         return $success;
     }
+    /**
+     * replace
+     * @todo  replace value to one table
+     * @param string $table A name of table to insert into
+     * @param array $data An associative array
+     * @return bool success
+     */
+    public function Replace($table, $data=array()) {
+        
+        // save types
+        $this->_type = $data['type'];
+        unset($data['type']);
+        
+        // made array and key for each
+        $fieldNames = implode('`, `', array_keys($data));
+        $fieldValues = str_repeat('?,', count($data));
+        
+        $fieldValues = rtrim($fieldValues, ',');
+        
+        if (count($data) > 0)
+        // send sql 
+        $stmt = $this->prepare("REPLACE INTO " . DB_PREFIX . "$table (`$fieldNames`) VALUES ($fieldValues);");
+        
+        // send params
+        call_user_func_array(array($stmt, 'bind_param'), $this->_MakeValues($data));
+        
+        // run sql
+        $success = $stmt->execute();
+                
+        // dubug unsuccess
+        if ((_DBG_) && (!$success) ) {
+            
+            foreach ($stmt->error_list as $error) {
+                echo "<br /> " . $error;
+            }
+        }
+        return $success;
+    }
     
     /**
      * update

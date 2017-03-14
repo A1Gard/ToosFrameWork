@@ -145,6 +145,46 @@ class TDatabase extends PDO {
         $this->last_insert_id = $this->lastInsertId();
         return $success;
     }
+    /**
+     * replace
+     * @todo  replace value to one table
+     * @param string $table A name of table to insert into
+     * @param array $data An associative array
+     * @return bool success
+     */
+    public function Replace($table, $data = array()) {
+
+        $this->query("SET CHARACTER SET utf8");
+        // sort array by keys
+        ksort($data);
+        //remove type
+        if (isset($data['type'])) {
+            unset($data['type']);
+        }
+
+        // make array and key for each
+        $fieldNames = implode('`, `', array_keys($data));
+        $fieldValues = ':' . implode(', :', array_keys($data));
+
+        $sql = "REPLACE INTO " . DB_PREFIX . "$table (`$fieldNames`) VALUES ($fieldValues)";
+        // send sql
+        $stmt = $this->prepare($sql);
+
+        // send param
+        foreach ($data as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+        // run sql
+        $success = $stmt->execute();
+
+        // dubug unsuccess
+        if ((_DBG_) && (!$success)) {
+
+            _err(array_merge($stmt->errorInfo(), array($sql)));
+        }
+        $this->last_insert_id = $this->lastInsertId();
+        return $success;
+    }
 
     /**
      * update
