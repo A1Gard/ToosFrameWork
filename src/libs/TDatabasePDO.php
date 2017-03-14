@@ -114,7 +114,6 @@ class TDatabase extends PDO {
      */
     public function Insert($table, $data = array()) {
 
-        $this->query("SET CHARACTER SET utf8");
         // sort array by keys
         ksort($data);
         //remove type
@@ -154,7 +153,6 @@ class TDatabase extends PDO {
      */
     public function Replace($table, $data = array()) {
 
-        $this->query("SET CHARACTER SET utf8");
         // sort array by keys
         ksort($data);
         //remove type
