@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 30-March-2014 (11-1-1392) 
  * @time : 22:39 
  * @subpackage   PluginLoader

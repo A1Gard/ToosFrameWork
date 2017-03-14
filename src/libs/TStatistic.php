@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 20-Sep-2014
  * @time : 15:41 
  * @subpackage TStatistic

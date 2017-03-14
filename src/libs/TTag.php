@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 7-July-2014
  * @time : 00:41 
  * @subpackage   TTag.php

@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 10-July-2014 (19 - 04 - 93)
  * @time : 15:39 
  * @subpackage   TMail

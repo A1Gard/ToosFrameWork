@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 24-March-2014 (4-1-1393) 
  * @time : 16:32 
  * @subpackage   MagicFunction

@@ -2,7 +2,7 @@
 
 /**
  * @package Toos FrameWork
- * @author Phoenix Tech <info@pxt.ir> 
+ * @author A1Gard <a1gard@4xmen.ir>
  * @date : 02-Jan-2016 (10-12-1394) 
  * @time : 01:39 
  * @todo : path file directory functions
