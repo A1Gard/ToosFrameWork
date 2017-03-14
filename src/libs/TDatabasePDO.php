@@ -23,8 +23,8 @@ class TDatabase extends PDO {
                 throw new Exception("Fatal Toos Error : PDO Connect Error <!-- {$e->getMessage()} --> ");
         }
 
-        $this->query("SET CHARACTER SET UTF8");
-        $this->query("SET NAMES utf8");
+        $this->exec("SET CHARACTER SET UTF8");
+//        $this->exec("SET NAMES utf8");
     }
 
     public static function GetInstance($DB_TYPE = DB_TYPE, $DB_HOST = DB_HOST, $DB_NAME = DB_NAME, $DB_USER = DB_USER, $DB_PASS = DB_PASSWORD) {
@@ -144,6 +144,7 @@ class TDatabase extends PDO {
         $this->last_insert_id = $this->lastInsertId();
         return $success;
     }
+
     /**
      * replace
      * @todo  replace value to one table
@@ -255,7 +256,6 @@ class TDatabase extends PDO {
         if ((_DBG_) && (!$success)) {
 
             _err(array_merge($stmt->errorInfo(), array($sql)));
-            
         }
 
         return $stmt->fetchAll($fetchMode);
