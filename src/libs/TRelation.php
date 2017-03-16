@@ -66,14 +66,16 @@ class TRelation extends TModel {
      * @param int $source
      * @param int $destination
      * @param int $type
+     * @return boolean if add relation true or remove false
      */
-    
     function Toggle($source, $destination, $type) {
 
         if ($this->Has($source, $destination, $type)) {
             $this->Remove($source, $destination, $type);
+            return FALSE;
         } else {
             $this->Add($source, $destination, $type);
+            return true;
         }
     }
 
