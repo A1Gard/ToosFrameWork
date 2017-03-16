@@ -9,7 +9,6 @@
  * @version 1.0
  * @todo : use for realtionship info 
  */
-
 class TRelation extends TModel {
 
     function __construct() {
@@ -61,6 +60,23 @@ class TRelation extends TModel {
         return $result;
     }
 
+    
+    /**
+     * toggle relation
+     * @param int $source
+     * @param int $destination
+     * @param int $type
+     */
+    
+    function Toggle($source, $destination, $type) {
+
+        if ($this->Has($source, $destination, $type)) {
+            $this->Remove($source, $destination, $type);
+        } else {
+            $this->Add($source, $destination, $type);
+        }
+    }
+
     public function RemoveBySource($source, $type) {
         // and remove from realationship
         $result = $this->db->delete('relation', " src = '" .
@@ -93,7 +109,6 @@ class TRelation extends TModel {
         return $result;
     }
 
-
     public function GetSourceCount($source, $type) {
 
         // else search in relation for tag
@@ -123,7 +138,7 @@ class TRelation extends TModel {
 
         return $result;
     }
-    
+
     public function GetDestinationCount($destination, $type) {
 
         // else search in relation for tag
