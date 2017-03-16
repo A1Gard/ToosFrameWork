@@ -6,8 +6,8 @@
  * @date : 10-July-2014
  * @time : 03:41 
  * @subpackage   TRelation
- * @version 1.0
- * @todo : use for realtionship info 
+ * @version 1.1
+ * @todo : use for relationship info 
  */
 class TRelation extends TModel {
 
@@ -23,6 +23,13 @@ class TRelation extends TModel {
         return self::$instance;
     }
 
+    /**
+     * add relation
+     * @param int $source
+     * @param int $destination
+     * @param int $type
+     * @return boolean if add relation true or not false
+     */
     public function Add($source, $destination, $type) {
 
         // insert relation
@@ -33,6 +40,13 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * remove relation
+     * @param int $source
+     * @param int $destination
+     * @param int $type
+     * @return boolean if add remove true or not false
+     */
     public function Remove($source, $destination, $type) {
         // and remove from realationship
         $result = $this->db->delete('relation', " src = '" .
@@ -42,6 +56,13 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * check has  relation or not
+     * @param int $source
+     * @param int $destination
+     * @param int $type
+     * @return boolean 
+     */
     public function Has($source, $destination, $type) {
 
         // else search in relation for tag
@@ -60,7 +81,6 @@ class TRelation extends TModel {
         return $result;
     }
 
-    
     /**
      * toggle relation
      * @param int $source
@@ -79,6 +99,12 @@ class TRelation extends TModel {
         }
     }
 
+    /**
+     * remover relation by source
+     * @param int $source
+     * @param int $type
+     * @return bool
+     */
     public function RemoveBySource($source, $type) {
         // and remove from realationship
         $result = $this->db->delete('relation', " src = '" .
@@ -87,6 +113,12 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * remover relation by destination
+     * @param int $destination
+     * @param int $type
+     * @return bool
+     */
     public function RemoveByDestination($destination, $type) {
         // and remove from realationship
         $result = $this->db->delete('relation', " dst = '" . ( (int) $destination ) .
@@ -94,6 +126,12 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * get all relation by source
+     * @param int $source
+     * @param int $type
+     * @return array
+     */
     public function GetBySource($source, $type) {
 
         // else search in relation for tag
@@ -111,6 +149,12 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * get count relation by source
+     * @param int $source
+     * @param int $type
+     * @return int
+     */
     public function GetSourceCount($source, $type) {
 
         // else search in relation for tag
@@ -124,6 +168,12 @@ class TRelation extends TModel {
         return $sql_result[0]['count'];
     }
 
+    /**
+     * get all destination  by source
+     * @param int $destination
+     * @param int $type
+     * @return array
+     */
     public function GetByDestination($destination, $type) {
 
         // else search in relation for tag
@@ -141,6 +191,12 @@ class TRelation extends TModel {
         return $result;
     }
 
+    /**
+     * get count destination  by source
+     * @param int $destination
+     * @param int $type
+     * @return int
+     */
     public function GetDestinationCount($destination, $type) {
 
         // else search in relation for tag
@@ -154,6 +210,13 @@ class TRelation extends TModel {
         return $sql_result[0]['count'];
     }
 
+    /**
+     *  sync source and destinations for one type
+     * @param array $sources
+     * @param array $destination
+     * @param int $type
+     * @return boolean
+     */
     public function Sync($sources, $destination, $type) {
 
 
