@@ -176,6 +176,17 @@ class TModel {
         $result = $this->db->Insert($this->table_name, $data);
         return $this->db->last_insert_id;
     }
+    
+    /**
+     * @todo replace data to table width array
+     * @param array $data 
+     * @return int inserted id
+     * @category general
+     */
+    public function Recreate($data) {
+        $result = $this->db->Replace($this->table_name, $data);
+        return $this->db->last_insert_id;
+    }
 
     /**
      * @todo get record data from table
