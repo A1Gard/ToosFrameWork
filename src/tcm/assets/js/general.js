@@ -92,5 +92,10 @@ $(function () {
         mousescrollstep: 80,
         horizrailenabled: false
     });
+    nice = $("#side-bar").niceScroll({
+        scrollspeed: 60,
+        mousescrollstep: 80,
+        horizrailenabled: false
+    });
 
 });
