@@ -184,7 +184,11 @@ class TDate {
                     $out.=$date['mday'] + 1;
                     break;
                 case'w':
-                    $out.=$date['mday'];
+                    $x .= date('w',$time_stamp) + 1;
+                    if ($x == 7) {
+                        $x = 0 ;
+                    }
+                    $out = $x;
                     break;
                 case'z':
                     $mmm = (int) $date['mon'];
@@ -199,10 +203,10 @@ class TDate {
                     }
                     $out.= $o;
                     break;
-                //week
+               //week
                 case'W':
                     $yday = $this->j_days_sum_month[(int) ( $date['mon'] - 1)] + $date['mday'];
-                    $out.=( (int) $yday / 7);
+                    $out .= ( (int) $yday / 7);
                     break;
                 //month
                 case'f':
