@@ -1,0 +1,128 @@
+/**
+
+
+
+
+
+################################################################################
+sematic ui modif :
+--------------------------------------------------------------------------------
+.pushable -> remove
+background:#545454!important
+.ui.sidebar ->remove
+overflow-y:auto!important
+--------------------------------------------------------------------------------
+
+*/
+
+@import url(vazir.css);
+
+body{
+    background-color : #444851 ;
+    color: #eeeeee;
+    background-image: url(../img/bg.jpg) ;
+    background-size:  100% auto;
+    background-attachment: fixed;
+}
+
+*{
+    font-family: 'Vazir';
+}
+
+#header{
+    z-index: 999 !important;
+    position: relative;
+    background: transparent ;
+    margin-bottom: 0;
+}
+
+#header #menu-control{
+    display: none;
+}
+
+
+#body-content{
+    /*margin-left: 260px;*/
+    min-height: calc(100vh - 60px);
+    border-radius: 5px;
+}
+#body-content .pusher{
+    background: #444851 ;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:border-box;
+}
+
+
+#side-bar{
+    overflow: visible;
+}
+#side-bar.visible{
+    z-index: 99;
+}
+#side-bar .ui.header{
+    margin-top: 75px;
+    color: #eeeeee;
+    padding-left: 1em;
+    font-size: 14pt;
+    -o-transition:.6s;
+    -ms-transition:.6s;
+    -moz-transition:.6s;
+    -webkit-transition:.6s;
+    transition:.6s;
+}
+#side-bar.scrolled .ui.header{
+    margin-top: 1em;
+}
+
+#side-bar .ui.header .item .content{
+    font-size: 10pt;
+    line-height: 1.5em;
+
+}
+
+#side-bar .ui.header .item .content .description{
+    color: #eeeeee;
+}
+
+
+
+#side-bar .corner.label{
+    font-size:8px;
+}
+
+
+.viewport{
+    padding: 1em;
+    background: #444851 ;
+}
+
+
+.pusher{
+    max-width: calc(100% - 270px);
+}
+
+/*
+--------------------------------------------------------------------------------
+                                        collpase menu
+--------------------------------------------------------------------------------
+*/
+.collapse-menu #header #menu-control{
+    display: flex;
+}
+
+.collapse-menu  .pusher,.pusher .pusher{
+    background: transparent !important ;
+    max-width: none;
+}
+
+
+/*
+--------------------------------------------------------------------------------
+                                   semantics paches
+--------------------------------------------------------------------------------
+*/
+body.pushable>.pusher{
+    background: transparent !important ;
+}
+

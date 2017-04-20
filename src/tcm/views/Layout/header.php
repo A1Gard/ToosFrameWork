@@ -7,135 +7,113 @@
  * @subpackage   header.php
  * @todo : cotntrol panel header
  */
+$is_rtl = (_lg('dir') == 'rtl');
+//$is_rtl = false;
 ?><!DOCTYPE html>
 <html>
     <head>
-        <title>  
-            <?php
-            echo $this->title . " | ";
-            _lp('Toos Framework');
-            ?> 
+        <title>
+<?php
+echo $this->title . " | ";
+_lp('Toos Framework');
+?>
         </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <?php
-        // load js libs
-        $public_libs = new TPublicLibrary();
-        $public_libs->LoadPublicLibs();
-        // style sheet
-        $public_libs->LoadExtedentLib();
-//        $public_libs->LoadTemplateCMCSS(array('style', 'object', 'byekan'));
-        // load js
-        $public_libs->LoadCMJS(array('general', 'side-menu', 'jquery.pin', 'jquery.nicescroll.min'));
-
-        if (_lg("DIR") == "rtl") {
-            $public_libs->LoadCMCSS(array('general-rtl', 'element-rtl', 'byekan'));
-        }
-        // pakage load
-        $public_libs->LoadPackageJS(array('ckeditor/ckeditor',
-            'jquery-ui/jquery-ui.min', 'tagsinput/jquery.tagsinput',
-            'sortable/jquery-sortable-min', 'chart/Chart', 'datepicker/js/zebra_datepicker', 'datepicker/js/persianDatepicker.min'));
-        $public_libs->LoadPackageCSS(array('jquery-ui/jquery-ui.min',
-            'tagsinput/jquery.tagsinput', 'datepicker/css/persianDatepicker-default', 'datepicker/css/default'));
-        ?>
+<?php if ($is_rtl): ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+        <?php else: ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
+        <?php endif; ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
 
 
+<?php if ($is_rtl): ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general-rtl.css" />
+
+<?php endif; ?>
+
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-migrate-1.4.1.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
     </head>
-    <body>
-        <div>
-            <section id="header">
+    <body> <!--  class="collapse-menu non-menu" -->
 
-                <div id="logo"></div>
-
-                <div id="nav-header">
-                    <ul>
-                        <li class="suggest-bg mobile-visble">
-                            <a href="#" id="sidemenu-show">
-                                <span class="fa fa-bars"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-bell-o"></span>
-                            </a>
-<!--                            <i class="notify"> 3 </i>-->
-                        </li>
-                        <li>
-                            <a href="<?php echo UR_MP ?>Index/Statistic">
-                                <span class="fa fa-bar-chart"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo UR_MP . 'Comment/Index' ?>">
-                                <span class="fa fa-envelope-o"></span>
-                            </a>
-                            <?php
-                            $a = TSystem::GetInstance();
-                            echo $a->GetPenddlingCommentCount();
-                            ?>
-                        </li>
-                        <li>
-                            <a href="<?php echo UR_BASE ?>" target="_blank">
-                                <span class="fa fa-firefox"></span>
-                            </a>
-                            <?php
-                            $a = TSystem::GetInstance();
-                            echo $a->GetPenddlingCommentCount();
-                            ?>
-                        </li>
-
-                    </ul>
-
+        <div class="ui inverted menu" id="header">
+            <div class="ui container">
+                <a href="#" class="item" id="menu-control">  
+                    <i class="icon bars"></i>
+                </a>
+                <a href="#" class="header item">
+                    <img class="logo" src="assets/img/wlogo.png" alt="logo">
+<?php
+_lp('Toos Framework');
+?>
+                </a>
+                <a href="#" class="item">Home</a>
+                <div class="ui simple dropdown item">
+                    Dropdown <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#">Link Item</a>
+                        <a class="item" href="#">Link Item</a>
+                        <div class="divider"></div>
+                        <div class="header">Header Item</div>
+                        <div class="item">
+                            <i class="dropdown icon"></i>
+                            Sub Menu
+                            <div class="menu">
+                                <a class="item" href="#">Link Item</a>
+                                <a class="item" href="#">Link Item</a>
+                            </div>
+                        </div>
+                        <a class="item" href="#">Link Item</a>
+                    </div>
                 </div>
-                <div id="admin-bar">
-                    <div id="you" class="pre-actived">
-                        <img src="<?php echo UR_MP_ASSETS ?>img/anonymous.gif" alt="[your avatar]" />
-                        <span class="hello">
-                            <?php _lp('Hello'); ?>, 
-                            <?php
-                            $s = new TSystem();
-                            echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
-                            ?>
-                        </span>
-                        <span class="fa fa-angle-down" ></span>
-                        <ul class="mini-dropdown animate">
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-android"></span>
-                                    text1
+            </div>
+        </div>
+        <div id="body-content">
+            <aside id="side-bar" class="ui sidebar inverted left">
+                <div class="ui header">
+                    <div class="ui list">
+                        <div class="item">
+                            <img class="ui avatar image" src="assets/img/avatar.jpg"> 
+                            <div class="content">
+                                <a class="header">
+<?php _lp('Hello'); ?>, 
+                                    <?php
+                                    $s = new TSystem();
+                                    echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
+                                    ?>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="fa fa-bell-o"></span>
-                                    text2
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    text3
-                                </a>
-                            </li>
-                        </ul>
+                                <div class="description"> last visit: 2017-02-16 </div>
+                            </div>
+                        </div>
                     </div>
-                    <input type="text" id="admin-search" placeholder="<?php _lp('Search') ?>..."
-                           class="animate-slow"/>
                 </div>
-            </section>
-            <?php
-            // include side bar
-            require 'side.php';
-            ?>
-            <section id="content">
-                <div class="view-port">
-                    <div class="navigation animate-fast" >
-                        <?php
-                        // render Navigator for view to user
-                        $this->navigator->Render();
-                        ?>              
-                    </div>
 
-                    <div class="notification-bar">
-                        <?php TNotification::Show(); ?>
-                    </div>
+<?php
+// include side bar
+require 'side.php';
+?>
+            </aside>
+
+            <div class="pusher">
+
+                <div class="viewport">
+
+                <div class="navigation animate-fast" >
+<?php
+// render Navigator for view to user
+$this->navigator->Render();
+?>              
+                </div>
+
+                <div class="notification-bar">
+<?php TNotification::Show(); ?>
+                </div>
+

@@ -42,6 +42,8 @@ ul.sidebar-menu{
     -moz-transition:.6s;
     -webkit-transition:.6s;
     transition:.6s;
+    background: rgba(68, 72, 81, 0.40);
+
 }
 .nav-collapse.collapse {
     display: inline;
@@ -68,7 +70,7 @@ ul.sidebar-menu, ul.sidebar-menu ul {
     display: block;
 }
 ul.sidebar-menu li ul.sub li {
-    background-color: #28282e;
+    background-color: rgba(68, 72, 81, 0.75) ;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -93,7 +95,7 @@ ul.sidebar-menu li ul.sub li a:hover,ul.sidebar-menu li ul.sub li.active a {
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
     display: block;
-    background-color: #202025;
+    background-color: #333;
 }
 ul.sidebar-menu li {
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -1015,44 +1017,3 @@ ol.drg li.placeholder:before {
     margin-right: 10px;
 }
 
-
-
-/*other id*/ 
-.overlay{
-    width:100%;
-    height:100vh;
-    position: fixed;
-    left:0;
-    right:0;
-    top:0;
-    background:rgba(255,255,255,0.6);
-    z-index:99999;
-    display:none;
-}
-
-#ajax-result{
-    border: 10px solid  #0066cc;
-    border: 10px solid  rgba(0, 0, 0, 0.43);
-    position:fixed;
-    right:20%;
-    left:20%;
-    top:45%;
-    background: rgba(255,255,255,0.8);
-    text-align: center;
-    display:none;
-}
-
-#ajax-result h4{
-    padding:7px;
-    background: #13a7c7;
-    color: white;
-}
-#ajax-result span{
-    display:inline-block;
-    padding:4px;
-}
-
-
-#ajax-result div{
-    padding:1em 2em;
-}

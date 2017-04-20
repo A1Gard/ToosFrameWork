@@ -1,64 +1,21 @@
-@font-face {
-    font-family: 'yekan';
-    src: url('../fonts/byekan.eot');
-    src: url('../fonts/byekan.eot') format('embedded-opentype'),
-        url('../fonts/byekan.woff') format('woff'),
-        url('../fonts/byekan.ttf') format('truetype'),
-        url('../fonts/byekan.svg#byekanRegular') format('svg');
-}
 
 
 body{
-    direction:rtl;
-    font-family: 'yekan',tahoma,arial;
+    direction: rtl;
 }
 
-input,textarea,select,button{
-    font-family: 'yekan',tahoma,arial;
-}
-
-#header #logo,
-#header #admin-bar,
-#header #nav-header{
-    float:right;
+#side-bar .ui.header{
+    padding-left: 0;
+    padding-right: 1em;
 }
 
 
-#header #admin-bar #admin-search,
-#header #admin-bar #you,
-#header #admin-bar .fa-angle-down{
-    float:left;
-}
+/*
+--------------------------------------------------------------------------------
+                                        collpase menu
+--------------------------------------------------------------------------------
+*/
 
-#header #admin-bar #you img{
-    float:right;
-    margin-left:5px;
-}
-
-
-#content {
-    margin-right:230px;
-    margin-left: 0;
-}
-
-#sidebar {
-    left:auto;
-    right:0;
-}
-
-
-
-#footer{
-    right:auto;
-    left:35%;
-}
-
-.widget span{
-    text-align: left;
-}
-.pdp-default *{
-    font-family:'yekan' !important;
-}
-.Zebra_DatePicker_Icon_Inside_Right{
-    opacity:0.4;
+.collapse-menu #body-content{
+    margin-right: 0;
 }
