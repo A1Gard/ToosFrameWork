@@ -95,6 +95,8 @@ body{
 .viewport{
     padding: 1em;
     background: #444851 ;
+    min-height: calc(100vh - 60px);
+    overflow: hidden;
 }
 
 

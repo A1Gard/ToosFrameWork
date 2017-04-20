@@ -14,6 +14,7 @@ $frm->AddField('text', ' کلمه کلیدی', null, array('name' => 'topic_keyw
 
 $frm->AddField('textarea', 'چکیده', null, array('name' => 'topic_abstract'));
 $frm->AddField('textarea', 'متن', null, array('name' => 'topic_text', 'class' => 'ckeditor'));
+$frm->AddField('spliter', 'تست اسپیلتر');
 
 $frm->AddField('select', 'وضعیت', null, array('name' => 'topic_status'), $topic_status);
 $frm->AddField('submit', '', 'ارسال');

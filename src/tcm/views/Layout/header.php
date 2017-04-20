@@ -28,6 +28,7 @@ _lp('Toos Framework');
         <?php endif; ?>
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
 
 
 <?php if ($is_rtl): ?>
@@ -50,7 +51,7 @@ _lp('Toos Framework');
                     <i class="icon bars"></i>
                 </a>
                 <a href="#" class="header item">
-                    <img class="logo" src="assets/img/wlogo.png" alt="logo">
+                    <img class="logo" src="<?php echo UR_MP ?>assets/img/wlogo.png" alt="logo">
 <?php
 _lp('Toos Framework');
 ?>
@@ -81,7 +82,7 @@ _lp('Toos Framework');
                 <div class="ui header">
                     <div class="ui list">
                         <div class="item">
-                            <img class="ui avatar image" src="assets/img/avatar.jpg"> 
+                            <img class="ui avatar image" src="<?php echo UR_MP ?>assets/img/avatar.jpg"> 
                             <div class="content">
                                 <a class="header">
 <?php _lp('Hello'); ?>, 

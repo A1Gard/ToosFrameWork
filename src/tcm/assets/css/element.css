@@ -635,7 +635,7 @@ ul.sidebar-menu li a.active i {
 
 
 /*listview*/
-
+/*
 .listview{
     list-style: none;
 }
@@ -658,15 +658,15 @@ ul.sidebar-menu li a.active i {
 .listview li div > div {
     padding: 5px 10px;
     font-size: 9pt !important;
-    /* font-family: tahoma; */
+     font-family: tahoma; 
 }
 
 .listview li > div:hover{
     background-color: #CF0;
 }
-/*.listview li  div:first-child,.listview li  div:nth-child(1){
+.listview li  div:first-child,.listview li  div:nth-child(1){
     text-align: center;
-}*/
+}
 
 .listview li:first-child div{
     background: silver;
@@ -729,144 +729,7 @@ ul.sidebar-menu li a.active i {
 .delete:focus
 {
     background-color: red !important;
-}
-
-/* forms  */
-
-
-input{
-    background:#fff;
-    color:black;
-    padding: 2px;
-    margin:auto;
-}
-input[type='text'] ,
-input[type='password'],
-input[type='email'] ,
-input[type='url'] ,
-input[type='number'] ,
-input[type='color'] ,
-input[type='file'] ,
-textarea,
-select{
-    border: 1px solid #CF0;
-}
-input[type='text']:focus ,
-input[type='password']:focus,
-input[type='email']:focus ,
-input[type='url']:focus ,
-input[type='number']:focus ,
-input[type='color']:focus ,
-input[type='file']:focus ,
-textarea:focus,
-select:focus{
-    border: 1px solid aqua;
-    box-shadow: 0px 0px 8px #20A2DF;
-    outline-style: none;
-}
-
-.button,
-button ,
-input[type='submit'] ,
-input[type='reset'] ,
-input[type='button'] {
-    background: #20A2DF;
-    color: #FFFFFF !important;
-    padding: 5px 10px;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.button:hover,
-.button:active,
-.button:focus,
-button:hover ,
-button:active ,
-button:focus ,
-input[type='submit']:hover ,
-input[type='reset']:hover ,
-input[type='button']:hover,
-input[type='submit']:active ,
-input[type='reset']:active ,
-input[type='button']:active, 
-input[type='submit']:focus ,
-input[type='reset']:focus ,
-input[type='button']:focus {
-    box-shadow: 0px 0px 4px #20A2DF;
-    cursor: pointer;
-    background: #13a7c7;
-}
-
-
-input[type='checkbox']{
-    margin-right:7px;
-    margin-left:7px;
-}
-input[type='checkbox']:focus{
-    outline:2px outset #0073ea;
-}
-
-
-textarea{
-    min-height: 100px;
-    max-width: 80%;
-    background:#fff;
-    color:black;
-}
-
-
-select{
-    border:1px solid #13a7c7;
-    background:white;
-    padding:4px;
-    min-width:200px;
-    background:#fff;
-    color:black;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing:border-box;
-}
-
-.grd-primary input[type='text'],
-.grd-primary input[type='password'],
-.grd-primary input[type='email'],
-.grd-primary input[type='url'],
-.grd-primary input[type='number'],
-.grd-primary input[type='color'],
-.grd-primary textarea{
-    width:70%;
-    margin-bottom: 3px;
-    padding: 3px !important;
-    border:1px solid #CF0;
-}
-
-
-label > .cke_reset{
-    /* max-width: 70%; */
-    margin-left:100px;
-
-}
-.cke_reset .cke_reset{
-    max-width: 100%;
-    /* margin-right: 0; */
-    min-width: 100%;
-}
-.cke_maximized{
-    max-width:none !important;
-}
-
-
-form label > span,form .label > span{
-    display: inline-block;
-    min-width: 100px;
-    text-align: left;
-}
-label, .label{
-    display: block;
-    margin: 15px auto;
-    /* max-width: 80%; */
-}
+}*/
 
 
 
@@ -1017,3 +880,10 @@ ol.drg li.placeholder:before {
     margin-right: 10px;
 }
 
+
+
+/*listview*/
+
+.listview{
+    background: #202025 ;
+}
