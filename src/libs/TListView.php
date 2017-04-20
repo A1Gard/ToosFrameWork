@@ -168,18 +168,18 @@ class TListView {
 
 //            die($prefix);
 
-                $result .= '<form class="grd12"  action="' . UR_MP . $location . '">';
+                $result .= '<div class="grd12"><form class="ui form "  action="' . UR_MP . $location . '">';
 
                 $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
                 $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
                 if (isset($_GET['filter'])) {
                     $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
                 }
-                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button class="ui button"><span class="icon search"></span></button>';
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
-                $result .= '</form>';
+                $result .= '</form></div>';
             }
 
             // relation info
@@ -189,7 +189,7 @@ class TListView {
                 $result .= '<form class="grd12 "  action="' . UR_MP . $location . '">'.
                         ($this->relation['ico'] != ''?'<span class="fa fa-'.
                         $this->relation['ico'] .'"></span>':'')
-                        . '<select name="rel" class="rel">';
+                        . '<select name="rel" class="rel ui dropdown">';
                 
                 $result .= '<option value="0" >' . _lg('Select an item to search'). '</option>';
 
@@ -205,7 +205,7 @@ class TListView {
                 $result .= '<input type="hidden" name="typ" class="rel-type" value="'.
                         $this->relation['rel_type'].'" />';
 
-                $result .= '&nbsp;<button><span class="fa fa-search"></span></button>';
+                $result .= '&nbsp;<button  class="ui button"><span class="icon search"></span></button>';
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
@@ -224,11 +224,11 @@ class TListView {
             // get prefix
             $prefix = GetLinkPrefix('filter');
             // show title and no filter item named "All";
-            $result .= '<span> ' . _lg('Filter') . ': </span> <a class="button" href="' . $prefix . '"> ' . _lg('All') . '</a>';
+            $result .= '<span> ' . _lg('Filter') . ': </span> <a class="ui button" href="' . $prefix . '"> ' . _lg('All') . '</a>';
 
             // show filter lisr
             foreach ($this->filter['title'] as $key => $value) {
-                $result .= '<a class="button" href="' . $prefix . 'filter=' .
+                $result .= '<a class="button ui" href="' . $prefix . 'filter=' .
                         $this->filter['key'][$key] . ',' .
                         $this->filter['value'][$key] . '">' . $value . '</a>';
             }
@@ -369,7 +369,7 @@ class TListView {
         // if have bulk action show this after list view
         if ($this->bulk_action['title'] != array()) {
             $result .= '<div class="bulk-action">
-                    <select name="action">';
+                    <select name="action" class=" ui dropdown">';
 
             // list of bulk actions
             foreach ($this->bulk_action['function'] as $key => $value) {
@@ -379,11 +379,11 @@ class TListView {
             }
 
             $result .= '</select>';
-            $result .= '<input type="submit" value="' . _lg('Bulk apply') . '" />'
+            $result .= '<input class="ui button" type="submit" value="' . _lg('Bulk apply') . '" />'
                     . '<div class="left" > '
-                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall" data-chekbox="listview-checkbox" /> '
-                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone" data-chekbox="listview-checkbox" /> '
-                    . '<input type="button" value="' . _lg('Check Toggle') . '" class="chktoggle" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall ui button" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone ui button" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check Toggle') . '" class="chktoggle ui button" data-chekbox="listview-checkbox" /> '
                     . '</div>'
                     . '</div>'
                     . '</form>';
