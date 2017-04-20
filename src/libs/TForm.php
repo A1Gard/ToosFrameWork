@@ -23,6 +23,11 @@ class TForm {
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $action, $method, $attr);
 
 
+        if (isset($attr['class'])) {
+            $attr['class'] .= ' ui form';
+        } else {
+            $attr['class'] = 'ui form';
+        }
         $this->property = ' action="' . $action . '" method="' . $method . '" '
                 . (($method == 'post') ? ' enctype="multipart/form-data" ' : '') .
                 $this->_makeAttr($attr);
@@ -59,7 +64,7 @@ class TForm {
 
             case 'hr':
             case 'spliter':
-                $this->_addSpliter($attr);
+                $this->_addSpliter($label);
                 break;
 
             // add all input type same as :
@@ -80,6 +85,13 @@ class TForm {
      * @param string $value default value
      */
     private function _addSelect($type, $label, $attr, $items, $value = null) {
+
+        if (isset($attr['class'])) {
+            $attr['class'] .= ' ui dropdown';
+        } else {
+            $attr['class'] = 'ui dropdown';
+        }
+
 
         $select = '<select' . $this->_makeAttr($attr) .
                 ($type == 'list' ? 'multiple="multiple" ' : '' ) . '>';
@@ -132,7 +144,7 @@ class TForm {
             foreach ($items as $k => $v) {
 
                 if ($value == $k) {
-                    
+
                     $select .= '<option selected="" value="' . $k . '" >' . _lg($v) . '</option>' . PHP_EOL;
                     continue;
                 }
@@ -140,11 +152,10 @@ class TForm {
             }
 
         endif; // is null
-        
+
         return $select;
     }
 
-    
     /**
      * make default options of listbox and combobox
      * @param mixed $items option items
@@ -198,11 +209,14 @@ class TForm {
     }
 
     /**
-     * add spliter to form
-     * @param mixed $attr input's attribute's
      */
-    private function _addSpliter($attr) {
-        $this->field .= "<hr " . $this->_makeAttr($attr) . " />";
+
+    /**
+     * add spliter to form
+     * @param type $text text
+     */
+    private function _addSpliter($text) {
+        $this->field .= '<h4 class="ui dividing header inverted">' . $text . '</h4> ';
     }
 
     /**
@@ -230,6 +244,17 @@ class TForm {
                     ' value="' . $value . '"' .
                     ( (isset($other['checked']) && $other['checked'] == 1 ) ?
                             ' checked="" ' : '') . '/>';
+        } elseif ($type == 'submit' || $type == 'button' || $type == 'reset') {
+            if (isset($attr['class'])) {
+                $attr['class'] .= ' ui button';
+            } else {
+                $attr['class'] = 'ui button';
+            }
+
+            // normal input genarate
+            $input = '<input  type="' . $type .
+                    '" ' . $this->_makeAttr($attr) . " " .
+                    ($value == 'null' ? '' : 'value="' . $value . '"') . '/>';
         } else { // normal input genarate
             $input = '<input placeholder="' . $label . '" type="' . $type .
                     '" ' . $this->_makeAttr($attr) . " " .
@@ -266,7 +291,7 @@ class TForm {
                 break;
 
             case 'checkbox':
-                $result = '<label> <span></span>'  . $element . $label . ' </label>' . PHP_EOL;
+                $result = '<label> <span></span>' . $element . $label . ' </label>' . PHP_EOL;
                 break;
             case 'radio':
                 $result = '<span class="label"> ' . $label . ' : ' . $element . ' </span>' . PHP_EOL;
