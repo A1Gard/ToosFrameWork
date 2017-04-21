@@ -26,6 +26,7 @@ _lp('Toos Framework');
         <?php else: ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
         <?php endif; ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />

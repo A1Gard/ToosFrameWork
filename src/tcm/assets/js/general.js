@@ -41,11 +41,13 @@ $(function () {
 
     $('.ui.rating').rating();
 
-    $('.menu.tabing .item')
-            .tab()
-            ;
+    $('.menu.tabing .item').tab();
 
 
+    $('.ui.checkbox').checkbox();
+
+
+    $('.ui.radio.checkbox').checkbox();
 
 
 
