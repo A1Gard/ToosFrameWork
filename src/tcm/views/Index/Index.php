@@ -32,9 +32,12 @@ $frm->AddField('text', 'رشته تحصیلی', null, array('name' => 'member_fi
 $frm->AddField('text', 'شماره تماس', null, array('name' => 'member_number'));
 $frm->AddField('text', 'شهر', null, array('name' => 'member_city'));
 $frm->AddField('endgroup');
+$frm->AddField('startgroup');
 $frm->AddField('select', 'نوع', null, array('name' => 'member_type'), array(0 => array('0', 'تایید نشده'),
     1 => array('1', 'تایید شده'),
     2 => array('2', 'اخراجی')));
+$frm->AddField('text', 'مبلغ', null, array('name' => 'member_city','class' => 'currency'));
+$frm->AddField('endgroup');
 $frm->AddField('checkbox', 'چک باکس', null, array('name' => 'member_degree'));
 $frm->AddField('radio', 'نوع', null, array('name' => 'member_type'), array(0 => array('0', 'تایید نشده'),
     1 => array('1', 'تایید شده'),

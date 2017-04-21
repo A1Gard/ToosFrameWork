@@ -57,6 +57,22 @@ $(function () {
 //                               class control
 //#############################################################################
 
+    $(".currency").each(function () {
+        $(this).val(commafy($(this).val()));
+    });
+
+    $(document).on('keyup focus','.currency', function () {
+        $(this).val(commafy($(this).val()));
+    });
+//    $(".currency").bind('blur', function () {
+//        $(this).val(nocomma($(this).val()));
+//    });
+
+    $(document).on('submit','form', function () {
+        $(this).find(".currency").each(function () {
+            $(this).val(nocomma($(this).val()));
+        });
+    });
 
 
 //sematic ui
