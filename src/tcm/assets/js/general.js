@@ -263,31 +263,5 @@ $(function () {
 
 // after load complete
 $(window).load(function () {
-    window.ajax_tag_url = $(".tags").attr('data-edit');
-    $(".tags").each(function () {
-
-        var attr = $(this).attr('data-edit');
-        // For some browsers, `attr` is undefined; for others,
-        // `attr` is false.  Check for both.
-        if (typeof attr !== typeof undefined && attr !== false) {
-            var url = $(this).attr('data-ajax');
-            $(this).tagsInput({
-                width: 'auto'
-                , autocomplete_url: url// jquery ui autocomplete requires a json endpoint
-                , onAddTag: onAddTag
-                , onRemoveTag: onRemoveTag
-                , ajaxChange: $(this).attr('data-edit')
-            });
-
-
-        } else {
-
-
-            var url = $(this).attr('data-ajax');
-            $(this).tagsInput({
-                width: 'auto'
-                , autocomplete_url: url// jquery ui autocomplete requires a json endpoint
-            });
-        }
-    });
+ 
 });
