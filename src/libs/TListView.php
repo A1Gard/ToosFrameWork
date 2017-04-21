@@ -160,9 +160,9 @@ class TListView {
         $result = null;
 
         // show saerch or item 
-        if ($this->search != null || $this->relation != array() ) {
+        if ($this->search != null || $this->relation != array()) {
 
-            $result .= '<div class="listview-search row" action="' . UR_MP . $location . '" >';
+            $result .= '<div class="listview-search" ><div class="row">';
             // show search here
             if ($this->search != null) {
 
@@ -170,12 +170,14 @@ class TListView {
 
                 $result .= '<div class="grd12"><form class="ui form "  action="' . UR_MP . $location . '">';
 
-                $result .= '<input type="text" name="search" class="search-box" placeholder="' . _lg('Search') . '..." />';
+                $result .= '<div class="ui icon input">
+                                <input type="text" name="search" placeholder="' . _lg('Search') . '..."  class="search-box" >
+                            </div>';
                 $result .= '<input type="hidden" name="fields" class="search-fields" value="' . $this->search . '"  />';
                 if (isset($_GET['filter'])) {
                     $result .= '<input type="hidden" name="filter" value="' . $_GET['filter'] . '"  />';
                 }
-                $result .= '&nbsp;<button class="ui button"><span class="icon search"></span></button>';
+                $result .= '&nbsp;<button class="ui button"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['search']) && $_GET['search'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
@@ -186,40 +188,40 @@ class TListView {
             if ($this->relation != array()) {
 
                 $md = new TModel($this->relation['table']);
-                $result .= '<form class="grd12 "  action="' . UR_MP . $location . '">'.
-                        ($this->relation['ico'] != ''?'<span class="fa fa-'.
-                        $this->relation['ico'] .'"></span>':'')
+                $result .= '<form class="grd12 "  action="' . UR_MP . $location . '">' .
+                        ($this->relation['ico'] != '' ? '<span class="fa fa-' .
+                                $this->relation['ico'] . '"></span>&nbsp;&nbsp;' : '')
                         . '<select name="rel" class="rel ui dropdown">';
-                
-                $result .= '<option value="0" >' . _lg('Select an item to search'). '</option>';
+
+                $result .= '<option value="0" >' . _lg('Select an item to search') . '</option>';
 
                 foreach ($md->Selectable($this->relation['title'], $this->relation['value']) as $item) {
-                    
-                   
-                    $result .= '<option value="' . $item[0] . '" '.
-                            (isset($_GET['rel']) && $_GET['rel'] == $item[0]?'selected="selected"':'').' >' .
+
+
+                    $result .= '<option value="' . $item[0] . '" ' .
+                            (isset($_GET['rel']) && $_GET['rel'] == $item[0] ? 'selected="selected"' : '') . ' >' .
                             $item[1]
                             . '</option>';
                 }
                 $result .= '</select>';
-                $result .= '<input type="hidden" name="typ" class="rel-type" value="'.
-                        $this->relation['rel_type'].'" />';
+                $result .= '<input type="hidden" name="typ" class="rel-type" value="' .
+                        $this->relation['rel_type'] . '" />';
 
-                $result .= '&nbsp;<button  class="ui button"><span class="icon search"></span></button>';
+                $result .= '&nbsp;<button  class="ui button"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
                     $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
                 $result .= '</form>';
             }
 
-            $result .= '</div>';
+            $result .= '</div></div>';
         }
 
 
         // show all filter here
         if ($this->filter['title'] != array()) {
 
-            $result .= '<div class="filter">';
+            $result .= '<div class="listview-filter">';
 
             // get prefix
             $prefix = GetLinkPrefix('filter');
@@ -247,19 +249,19 @@ class TListView {
         }
 
 
-             // show form head here when have bulk action
+        // show form head here when have bulk action
         if ($this->bulk_action['title'] != array()) {
-            $result .= '<form method="post" action="' . UR_MP . $location . '/BulkAction">';
+            $result .= '<form class="listview-form" method="post" action="' . UR_MP . $location . '/BulkAction">';
         }
 
 
         //start render listview header
         // start with bulk action checkbox and id header
         $result .= '<ul class="listview">
-    <li class="pinned animate"> 
+    <li class="list-header"> 
         <div  class="row">
-            <div class="grd1"> <input type="checkbox" class="checkall" />  </div>
-            <a href="' . $id_order . '"><div class="grd2 header"> ' . _lg('no.') . ' </div></a>';
+            <div class="grd1 head"> <input type="checkbox" class="checkall" />  </div>
+            <a href="' . $id_order . '" class="grd2 head"> ' . _lg('no.') . '</a>';
         // show header column title
         foreach ($this->column['title'] as $key => $value) {
 
@@ -269,11 +271,11 @@ class TListView {
                 $col_name = $this->column['key'][$key];
             }
             $result .= '<a href="' . $prefix . 'order=' . $col_name
-                    . (!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order'] == $col_name ? '&desc=1' : '' ) . '"><div class="grd' .
-                    $this->column['size'][$key] . '">' . $value . '</div></a>';
+                    . (!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order'] == $col_name ? '&desc=1' : '' ) . '"  class="grd' .
+                    $this->column['size'][$key] . ' head" >' . $value . '</a>';
         }
         // action haader
-        $result .= '<div class="grd' . $this->action['size'] . '"> &nbsp; </div>';
+        $result .= '<div class="grd' . $this->action['size'] . ' head"> &nbsp; </div>';
         $result .= '</div>
     </li>';
 
@@ -282,19 +284,19 @@ class TListView {
             //start with bulk action checkbox and id
             $result .= '<li> 
         <div  class="row">';
-            $result .= '<div class="grd1">'. PHP_EOL
+            $result .= '<div class="grd1  text-center">' . PHP_EOL
                     . ' <input type="checkbox" '
-                    . 'class="listview-checkbox" name="id[]" value="' . $record[$this->id] . '" />'. PHP_EOL
-                    . ' </div>'. PHP_EOL;
+                    . 'class="listview-checkbox" name="id[]" value="' . $record[$this->id] . '" />' . PHP_EOL
+                    . ' </div>' . PHP_EOL;
 
-            $result .= '<div class="grd2"> ' . $record[$this->id] . ' </div>';
+            $result .= '<div class="grd2 text-center"> ' . $record[$this->id] . ' </div>';
 
             // show record columns added before by size
             foreach ($this->column['key'] as $key => $value) {
                 if (strpos($value, ',') == false) {
 
-                    $result .=  PHP_EOL . '<div class="grd' .
-                            $this->column['size'][$key] . '">'. PHP_EOL;
+                    $result .= PHP_EOL . '<div class="grd' .
+                            $this->column['size'][$key] . '">' . PHP_EOL;
 
                     switch (substr($value, 0, 2)) {
                         case '%i':
@@ -312,8 +314,8 @@ class TListView {
                             $a = substr($value, 2);
                             $v = explode('|', $a);
                             $arr = $v[0];
-                            global  $$arr;
-                            $array = $$arr ;
+                            global $$arr;
+                            $array = $$arr;
                             $result .= $array[$record[$v[1]]];
                             break;
                         case '%1':
@@ -339,7 +341,7 @@ class TListView {
                     $result .= '</div>' . PHP_EOL;
                 } else {
                     $temp = explode(',', $value);
-                    $result .=  PHP_EOL . '<div class="grd' .
+                    $result .= PHP_EOL . '<div class="grd' .
                             $this->column['size'][$key] . '">';
                     foreach ($temp as $col) {
 
@@ -358,17 +360,17 @@ class TListView {
             } else {
                 $result .= $tmp;
             }
-            $result .= '</div>'. PHP_EOL;
-            $result .= '</div>'. PHP_EOL
-                    . '</li>'. PHP_EOL;
+            $result .= '</div>' . PHP_EOL;
+            $result .= '</div>' . PHP_EOL
+                    . '</li>' . PHP_EOL;
         }
 
         $result .= '</ul>' . PHP_EOL;
 
-   
+
         // if have bulk action show this after list view
         if ($this->bulk_action['title'] != array()) {
-            $result .= '<div class="bulk-action">
+            $result .= '<div class="listview-bulk-action">
                     <select name="action" class=" ui dropdown">';
 
             // list of bulk actions
@@ -378,11 +380,11 @@ class TListView {
                         . $this->bulk_action['title'][$key] . '</option>';
             }
 
-            $result .= '</select>';
+            $result .= '</select> &nbsp;';
             $result .= '<input class="ui button" type="submit" value="' . _lg('Bulk apply') . '" />'
                     . '<div class="left" > '
-                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall ui button" data-chekbox="listview-checkbox" /> '
-                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone ui button" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check All') . '" class="chkall ui button positive" data-chekbox="listview-checkbox" /> '
+                    . '<input type="button" value="' . _lg('Check None') . '" class="chknone ui button orange" data-chekbox="listview-checkbox" /> '
                     . '<input type="button" value="' . _lg('Check Toggle') . '" class="chktoggle ui button" data-chekbox="listview-checkbox" /> '
                     . '</div>'
                     . '</div>'
@@ -413,7 +415,7 @@ class TListView {
      */
     function AddRelation($base_id, $base_title, $base_table, $rel_type, $rel_icon = '') {
 
-        $this->relation = array('value' => $base_id, 'title' => $base_title, 'table' => $base_table, 'rel_type' =>  $rel_type, 'ico' => $rel_icon);
+        $this->relation = array('value' => $base_id, 'title' => $base_title, 'table' => $base_table, 'rel_type' => $rel_type, 'ico' => $rel_icon);
     }
 
 }

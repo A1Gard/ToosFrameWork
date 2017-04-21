@@ -6,12 +6,12 @@ $listview = new TListView('topic_id');
 $listview->SetList($this->cls_list);
 $listview->AddColum(_lg('Title'), 'topic_title', 12);
 $listview->AddColum(_lg('Status'), 'topic_status', 2);
-$listview->AddColum(_lg('View Counter'), 'topic_counter', 2);
-$pattern = '<a class="button delete" href="' . UR_MP . 'Topic/Delete/%id%"> ' . 
+$listview->AddColum(_lg('VC'), 'topic_counter', 2);
+$pattern = '<a class="button ui delete red" href="' . UR_MP . 'Topic/Delete/%id%"> ' . 
         _lg('Delete') . ' </a>
-            <a class="button" href="' . UR_MP . 'Topic/Edit/%id%"> ' . 
+            <a class="button ui blue" href="' . UR_MP . 'Topic/Edit/%id%"> ' . 
         _lg('Edit') . ' </a>';
-$listview->AddAction($pattern, 4, 'topic_status');
+$listview->AddAction($pattern, 5, 'topic_status');
 
 $listview->AddFilter(_lg('Drafted'), 'topic_status', '0');
 $listview->AddFilter(_lg('Published'), 'topic_status', '1');

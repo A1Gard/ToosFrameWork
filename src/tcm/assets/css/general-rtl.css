@@ -9,6 +9,12 @@ body{
     padding-right: 1em;
 }
 
+.general-form .grd-secondary{
+    padding: 0;
+    padding-right: 0em;
+    padding-left: 1em;
+}
+
 
 /*
 --------------------------------------------------------------------------------

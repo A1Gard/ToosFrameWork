@@ -47,7 +47,7 @@ _lp('Toos Framework');
     <body> <!--  class="collapse-menu non-menu" -->
 
         <div class="ui inverted menu" id="header">
-            <div class="ui container">
+            <div class="ui container" style="max-width: none;width:100%;">
                 <a href="#" class="item" id="menu-control">  
                     <i class="icon bars"></i>
                 </a>

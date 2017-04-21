@@ -885,5 +885,76 @@ ol.drg li.placeholder:before {
 /*listview*/
 
 .listview{
-    background: #202025 ;
+    /*background: #202025 ;*/
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.listview .row div, .listview .row a{
+    padding: 8px;
+    font-size: 9pt;
+}
+.listview .row div{
+    
+    color: #bbbbbb;
+}
+
+.listview li .row{
+    -o-transition:.6s;
+    -ms-transition:.6s;
+    -moz-transition:.6s;
+    -webkit-transition:.6s;
+    transition:.6s;
+}
+
+.listview li:nth-child(even) .row{
+    background:  #3d3e3f ;
+}
+
+.listview li:hover .row{
+    background:  #0e566c ;
+}
+
+.listview li .row .button{
+    font-size: 7.5pt;
+}
+.listview .list-header,.listview .list-header .row:hover{
+    background:  #222 ;
+
+}
+.listview .list-header .head{
+    background:  #222 !important;
+    padding: 8px;
+    text-align: center;
+    font-weight: 900;
+    border-right: 1px solid #333;
+}
+
+.listview-bulk-action{
+    padding: 1em;
+    background:   #2185d0 ;
+    border-radius: 0 0 5px 5px;
+}
+
+.listview-search {
+    margin-top: 2em;
+    padding: 1em;
+    background:  #1a69a4 ;
+    border-radius: 5px 5px 0 0;
+}
+.listview-search input{
+    font-size: 9pt !important;
+}
+
+.listview-filter{
+    padding: 1em;
+    background: #007fba ;
+
+}
+
+.listview-form{
+    padding: 0;
+    background:  #28282e ;
+    border-radius: 0 0 5px 5px;
 }

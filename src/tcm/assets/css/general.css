@@ -23,6 +23,7 @@ body{
     background-image: url(../img/bg.jpg) ;
     background-size:  100% auto;
     background-attachment: fixed;
+    font-size: 9pt;
 }
 
 *{
@@ -99,9 +100,22 @@ body{
     overflow: hidden;
 }
 
+.viewport h2{
+    background: #333 ;
+    padding: .5em 1em;
+    text-align: center;
+    margin: 1em 0;
+    font-size: 12pt;
+    border-radius: 3px;
+}
 
 .pusher{
     max-width: calc(100% - 270px);
+}
+
+.general-form .grd-secondary{
+    padding: 0;
+    padding-right: 1em;
 }
 
 /*
@@ -128,3 +142,9 @@ body.pushable>.pusher{
     background: transparent !important ;
 }
 
+.ui.button,input,select,textarea,button,.listview-search .dropdown,.listview-bulk-action .dropdown{
+    font-size: 9pt;
+}
+.button.ui .fa,button .fa,.button.ui .icon,button .icon{
+    font-size:14px;
+}
