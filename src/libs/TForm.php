@@ -24,9 +24,9 @@ class TForm {
 
 
         if (isset($attr['class'])) {
-            $attr['class'] .= ' ui form';
+            $attr['class'] .= ' ui form inverted';
         } else {
-            $attr['class'] = 'ui form';
+            $attr['class'] = 'ui form inverted';
         }
         $this->property = ' action="' . $action . '" method="' . $method . '" '
                 . (($method == 'post') ? ' enctype="multipart/form-data" ' : '') .
@@ -42,7 +42,7 @@ class TForm {
      * @param mixed $other other passed value same as select option
      * @todo add field to form 
      */
-    public function AddField($type, $label, $value = '', $attr = array(), $other = null) {
+    public function AddField($type, $label = '', $value = '', $attr = array(), $other = null) {
 
         // Pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $type, $label, $value, $attr, $other);
@@ -65,6 +65,12 @@ class TForm {
             case 'hr':
             case 'spliter':
                 $this->_addSpliter($label);
+                break;
+            case 'startgroup':
+                $this->_addStartGroup($label);
+                break;
+            case 'endgroup':
+                $this->_addEndGrpup();
                 break;
 
             // add all input type same as :
@@ -220,6 +226,22 @@ class TForm {
     }
 
     /**
+     * add spliter to form
+     * @param type $text text
+     */
+    private function _addStartGroup() {
+        $this->field .= '<div class="two fields">';
+    }
+
+    /**
+     * add spliter to form
+     * @param type $text text
+     */
+    private function _addEndGrpup() {
+        $this->field .= '</div>';
+    }
+
+    /**
      * add input filed to form
      * @param string $type type of input
      * @param string $label input's label
@@ -232,10 +254,10 @@ class TForm {
         $input = '';
         if ($type == "radio" && is_array($other)) {
             foreach ($other as $data) {
-                $input .= '<label><input type="radio" ' .
+                $input .= ' <div class="ui radio checkbox"> <input type="radio" ' .
                         $this->_makeAttr($attr) . " value=" . $data[0] .
-                        ($value == $data[0] ? ' checked="" ' : '') . ' />' .
-                        $data[1] . '</label>';
+                        ($value == $data[0] ? ' checked="" ' : '') . ' /> <label>' .
+                        $data[1] . '</label> </div>  &nbsp;&nbsp; &nbsp;';
             }
             // checkbox event   
         } elseif ($type == 'checkbox') {
@@ -287,21 +309,21 @@ class TForm {
         switch ($type) {
 
             case 'other':
-                $result = '<label>  <span>' . $label . ' : </span> ' . $element . ' </label>' . PHP_EOL;
+                $result = ' <div class="field"> <label>  ' . $label . '  </label> ' . $element . ' </div>' . PHP_EOL;
                 break;
 
             case 'checkbox':
-                $result = '<label> <span></span>' . $element . $label . ' </label>' . PHP_EOL;
+                $result = '<div class="inline field"> <div class="ui checkbox"> ' . $element . '<label>' . $label . ' </label> </div></div> ' . PHP_EOL;
                 break;
             case 'radio':
-                $result = '<span class="label"> ' . $label . ' : ' . $element . ' </span>' . PHP_EOL;
+                $result = '<div class="inline fields">  <div class="field">' . $label . ' : ' . $element . ' </div></div>' . PHP_EOL;
                 break;
             case 'hidden':
                 $result = $element . PHP_EOL;
                 break;
 
             default:
-                $result = '<label>  <span>' . $label . ' : </span> ' . $element . ' </label>' . PHP_EOL;
+                $result = '<div class="field"> <label>  ' . $label . ' </label> ' . $element . ' </div>' . PHP_EOL;
                 break;
         }
 
