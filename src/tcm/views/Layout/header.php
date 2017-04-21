@@ -13,16 +13,16 @@ $is_rtl = (_lg('dir') == 'rtl');
 <html>
     <head>
         <title>
-<?php
-echo $this->title . " | ";
-_lp('Toos Framework');
-?>
+            <?php
+            echo $this->title . " | ";
+            _lp('Toos Framework');
+            ?>
         </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<?php if ($is_rtl): ?>
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+        <?php if ($is_rtl): ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
         <?php else: ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
         <?php endif; ?>
@@ -32,17 +32,18 @@ _lp('Toos Framework');
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
 
 
-<?php if ($is_rtl): ?>
+        <?php if ($is_rtl): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element-rtl.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general-rtl.css" />
 
-<?php endif; ?>
+        <?php endif; ?>
 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-migrate-1.4.1.min.js"></script>
 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs//ckeditor/ckeditor.js"></script> 
     </head>
     <body> <!--  class="collapse-menu non-menu" -->
 
@@ -53,9 +54,9 @@ _lp('Toos Framework');
                 </a>
                 <a href="#" class="header item">
                     <img class="logo" src="<?php echo UR_MP ?>assets/img/wlogo.png" alt="logo">
-<?php
-_lp('Toos Framework');
-?>
+                    <?php
+                    _lp('Toos Framework');
+                    ?>
                 </a>
                 <a href="#" class="item">Home</a>
                 <div class="ui simple dropdown item">
@@ -86,7 +87,7 @@ _lp('Toos Framework');
                             <img class="ui avatar image" src="<?php echo UR_MP ?>assets/img/avatar.jpg"> 
                             <div class="content">
                                 <a class="header">
-<?php _lp('Hello'); ?>, 
+                                    <?php _lp('Hello'); ?>, 
                                     <?php
                                     $s = new TSystem();
                                     echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
@@ -98,24 +99,24 @@ _lp('Toos Framework');
                     </div>
                 </div>
 
-<?php
+                <?php
 // include side bar
-require 'side.php';
-?>
+                require 'side.php';
+                ?>
             </aside>
 
             <div class="pusher">
 
                 <div class="viewport">
 
-                <div class="navigation animate-fast" >
-<?php
+                    <div class="navigation animate-fast" >
+                        <?php
 // render Navigator for view to user
-$this->navigator->Render();
-?>              
-                </div>
+                        $this->navigator->Render();
+                        ?>              
+                    </div>
 
-                <div class="notification-bar">
-<?php TNotification::Show(); ?>
-                </div>
+                    <div class="notification-bar">
+                        <?php TNotification::Show(); ?>
+                    </div>
 

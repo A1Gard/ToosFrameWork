@@ -63,7 +63,7 @@ $frm->AddField('submit', '', 'ویرایش یادداشت');
                         برچسب ها
 
                     </div>
-                    <div class="active content category">
+                    <div class="active content" style="min-height:150px">
 
                         <input class="tags" value="<?php echo $this->tags; ?>" data-ajax="<?php echo UR_MP ?>Topic/Search" data-edit="<?php echo UR_MP ?>Topic/TagChange" >
                     </div>
