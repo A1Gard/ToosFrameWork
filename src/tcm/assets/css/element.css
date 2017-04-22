@@ -222,10 +222,10 @@ ul.sidebar-menu li a.active i {
     height: 36px ;
     padding: 1px;
     overflow: hidden;
-    padding-bottom: 0;
     border: 1px solid #13a7c7;
     /* min-height: 45px; */
     position: relative;
+    border-radius: 4px;
 }
 
 .navigation .crust {
