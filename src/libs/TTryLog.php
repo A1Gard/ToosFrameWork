@@ -37,6 +37,31 @@ class TTryLog extends TModel {
         return $result_;
     }
 
+    
+    
+    /**
+     * @todo check how many tyried in last seconds
+     * @param int $type type of try
+     * @param  $last_sec in last seconds 
+     * @return int how many request in test time
+     */
+    public function CheckSec($type = 0, $last_sec = 60) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $type, $last_sec);
+        $sql = "SELECT COUNT(`trylog_id`) AS 'count' FROM %table% WHERE 
+            `trylog_ip` = '" . _ipi() . "' 
+             AND `trylog_time` > " . (time() - ($last_sec) ) . ' AND trylog_type = :type';
+        ;
+        $result = $this->db->Select($sql, array('trylog'), array(':type' => $type));
+
+        $result_ = $result[0]['count'];
+        // result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
+        // retrun count
+        return $result_;
+    }
+    
+    
     /**
      * @todo log try
      * @param int $type type of try
