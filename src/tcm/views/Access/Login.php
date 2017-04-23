@@ -7,6 +7,7 @@
  * @subpackage   login.php 
  * @todo : login view page
  */
+$is_rtl = (_lg('dir') == 'rtl');
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,79 +19,152 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="noindex, nofollow">
-        <?php
-        $public_libs = new TPublicLibrary();
-        $public_libs->LoadPublicLibs();
-        // style sheet
-        $public_libs->LoadExtedentLib();
-//        $public_libs->LoadTemplateCMCSS(array('style', 'object', 'byekan'));
-        // load js
-        $public_libs->LoadCMJS(array('general', 'side-menu', 'jquery.pin', 'jquery.nicescroll.min'));
 
-        if (_lg("DIR") == "rtl") {
-            $public_libs->LoadCMCSS(array('general-rtl', 'element-rtl', 'byekan'));
-        }
-        ?>
+
+        <?php if ($is_rtl): ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+        <?php else: ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
+        <?php endif; ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
+
+
+        <?php if ($is_rtl): ?>
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general-rtl.css" />
+
+        <?php endif; ?>
+
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-migrate-1.4.1.min.js"></script>
+
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
+
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <style type="text/css">
+            body > .grid {
+                height: 100%;
+            }
+            .image {
+                margin-top: -100px;
+            }
+            .column {
+                max-width: 450px;
+            }
+
+            input{
+                font-size: 11pt;
+            }
+
+            .text-left{
+                text-align: left;
+            }
+            .text-right{
+                text-align: right;
+            }
+
+            .header .content{
+                color: #fff; 
+            }
+
+        </style>
+        <script>
+            $(document)
+                    .ready(function () {
+                        $('.ui.form')
+                                .form({
+                                    fields: {
+                                        username: {
+                                            identifier: 'manager_username',
+                                            rules: [
+                                                {
+                                                    type: 'empty',
+                                                    prompt: 'Please enter your username'
+                                                },
+                                                {
+                                                    type: 'length[3]',
+                                                    prompt: 'Your username must be at least 3 characters'
+                                                }
+                                            ]
+                                        },
+                                        password: {
+                                            identifier: 'password',
+                                            rules: [
+                                                {
+                                                    type: 'empty',
+                                                    prompt: 'Please enter your password'
+                                                },
+                                                {
+                                                    type: 'length[6]',
+                                                    prompt: 'Your password must be at least 6 characters'
+                                                }
+                                            ]
+                                        }
+                                    }
+                                })
+                                ;
+                    })
+                    ;
+        </script>
     </head>
-    <body class="login">
+    <body>
 
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header ">
+                    <img src="<?= UR_MP_ASSETS ?>img/wlogo.png" alt="[]" class="image" />
+                    <div class="content">
+                        <?php echo _lp('Log-in to your account'); ?>
+                    </div>
+                </h2>
+                <form class="ui large form" action="<?php echo UR_MP; ?>Access/Check" method="post">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="manager_username" class="input" placeholder="<?php _lp('Username') ?>">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="manager_password" name="password"  class="input" placeholder="<?php _lp('Password') ?>">
+                            </div>
+                        </div>
+                        <div class="field <?php _lp('text-left'); ?>">
+                            <div class="ui checkbox toggle">
+                                <input tabindex="0" type="checkbox" name="remenber" class="hidden" />
+                                <label>
+                                    <?php _lp('Remenber me') ?>
+                                </label>
+                            </div>
+                            <label> 
 
-        <!-- section login start -->
-        <section id="login">
-            <form action="<?php echo UR_MP; ?>Access/Check" method="post">
-                <div class="logo">
-                    <img src="<?= UR_MP_ASSETS ?>img/wlogo.png" alt="[]" />
+                            </label>
+                        </div>
+                        <div class="ui fluid large teal submit button"><?php _lp('Login') ?></div>
+                    </div>
+
+                    <div class="ui error message"></div>
+
+                </form>
+
+                <div class="ui message">
+                    <a href="<?php echo UR_MP ?>Access/Forget" class="text-center" style="color:black;display: block"><?php _lp('Forget your password ?') ?></a>
                 </div>
-                <span class="notification-bar">  
+                <div class="copyright">
                     <?php
-// if is set
-                    if (isset($_GET['msg_id']) && isset($_GET['ni'])) {
-                        $msg = TLanguage::Index($_GET['msg_id']);
-                        ?>
-                        <p class="notification error text-center">
-                            <!--<span class="fa fa-times-circle"></span>-->
-                            <?php
-                            // check array for show with argumans or not
-                            if (isset($_GET['args'])) {
-                                // show with argumans
-                                $args = explode(',', $_GET['args']);
-                                vprintf($msg, $args);
-                            } else {
-                                echo $msg;
-                            }
-                            ?>
-                        </p>
-                        <?php
-                    }
-                    ?>
-                </span>
-                <label>
-                    <b>
-                        <?php _lp('Username') ?>:
-                    </b>
-                    <br />
-                    <input type="text" name="manager_username" placeholder="<?php _lp('Username') ?>" class="full-width"/>
-                </label>
-                <label>
-                    <b>
-                        <?php _lp('Password') ?>:
-                    </b>
-                    <br />
-                    <input type="password" name="manager_password" placeholder="<?php _lp('Password') ?>" class="full-width"/>
-                </label>
-
-                <label> <input type="checkbox" name="remenber"  /> <?php _lp('Remenber me') ?> </label>
-                <label><input type="submit" value="<?php _lp('log in') ?>" class="full-width btn" /></label>
-                <br />
-
-                <a href="<?php echo UR_MP ?>Access/Forget" class="text-center" style="color:black;display: block"><?php _lp('Forget your password ?') ?></a>
-            </form>
-            <span style="color:white;">  
-                <?php
-                _lp('Powered by ');
-                _lp('Toos Framework');
-                ?>  2013 &copy; <?php echo date('Y') ?>
-            </span>
-        </section> <!-- section login end -->
+                    _lp('Powered by ');
+                    _lp('Toos Framework');
+                    ?>  2013 &copy; <?php echo date('Y') ?>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
     </body>
+
 </html>
+
