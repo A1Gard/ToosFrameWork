@@ -21,6 +21,7 @@ $is_rtl = (_lg('dir') == 'rtl');
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
         <?php if ($is_rtl): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
         <?php else: ?>
@@ -29,7 +30,6 @@ $is_rtl = (_lg('dir') == 'rtl');
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
 
 
         <?php if ($is_rtl): ?>
