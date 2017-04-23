@@ -306,7 +306,15 @@ class TListView {
                             break;
                         case '%t':
                             $a = substr($value, 2);
-                            $result .= $date->PDate($date_format, $record[$a]);
+                            $result .= $date->SDate(DT_SHORT_TIME, $record[$a]);
+                            break;
+                        case '%u':
+                            $a = substr($value, 2);
+                            $result .= $date->SDate(DT_SHORT_FULL_DATETIME, $record[$a]);
+                            break;
+                        case '%d':
+                            $a = substr($value, 2);
+                            $result .= $date->SDate(DT_SHORT_DATE, $record[$a]);
 
                             break;
                         // show array

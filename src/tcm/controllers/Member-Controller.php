@@ -23,7 +23,7 @@ class Member extends TController {
     public function Index() {
 
 
-        $this->view->cls_list = $this->model->Read('member_id, member_name, member_email, member_type');
+        $this->view->cls_list = $this->model->Read('member_id, member_name, member_email, member_type, member_register_time');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
         $this->view->PageRender('Member/Index', self::$_main_title);
     }

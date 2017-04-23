@@ -225,6 +225,10 @@ define('REALTION_FRIEND', 5);
 
 # ------------------------------------------------------------------------------
 
+define('DT_SHORT_TIME', 'H:i:s');
+
+define('DT_SHORT_DATE', 'Y/m/d');
+define('DT_SHORT_FULL_DATETIME', DT_SHORT_TIME . ' ' . DT_SHORT_DATE);
 
 define("SECOND", 1);
 define("MINUTE", 60 * SECOND);

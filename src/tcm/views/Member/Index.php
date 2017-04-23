@@ -9,7 +9,8 @@ $m_type = array(0 => 'تایید نشده',
 
 $listview = new TListView('member_id');
 $listview->SetList($this->cls_list);
-$listview->AddColum(_lg('Name'), 'member_name', 8);
+$listview->AddColum(_lg('Name'), 'member_name', 4);
+$listview->AddColum(_lg('Time'), '%umember_register_time', 4);
 $listview->AddColum(_lg('Email'), 'member_email', 4);
 $listview->AddColum(_lg('Status'), '%am_type|member_type', 2);
 $pattern = '<a class="button delete" href="' . UR_MP . 'Member/Delete/%id%"> ' . 
