@@ -76,12 +76,12 @@ class TPagination {
             }
         }
 
-        $result = '<div class="pagination">';
+        $result = '<div class="pagination"> <div class="blue ui buttons">';
 
         // if greater than 1 show first and prv
         if ($acvtive_page > 1) {
-            $result .= '<a href="' . $prefix . "page=" . (1) . '" title="' . ('اولین') . '" >' . '&lt;&lt;' . "</a> \n";
-            $result .= '<a href="' . $prefix . "page=" . ($acvtive_page - 1) . '" >' . ('قبلی') . "</a> \n";
+            $result .= '<a  class="ui button" href="' . $prefix . "page=" . (1) . '" title="' . ('اولین') . '" >' . '&lt;&lt;' . "</a> \n";
+            $result .= '<a class="ui button" href="' . $prefix . "page=" . ($acvtive_page - 1) . '" >' . ('قبلی') . "</a> \n";
         }
 
         // if page count less than 10 .
@@ -89,75 +89,77 @@ class TPagination {
             // show all page
             for ($i = 1; $i <= $this->page_count; $i++) {
                 if ($i != $acvtive_page) {
-                    $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+                    $result .= '<a class="ui button" href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
                 } else {
-                    $result .= '<a class="actived">' . $i . "</a> \n";
+                    $result .= '<a class="ui button active">' . $i . "</a> \n";
                 }
             }
         } else { // more than 10 page
             switch ($acvtive_page) {
-                // if active page less than 7
-                case ($acvtive_page < 7):
+                // if active page less than 6
+                case ($acvtive_page < 6):
                     for ($i = 1; $i <= $acvtive_page + 3; $i++) {
                         if ($i != $acvtive_page) {
-                            $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+                            $result .= '<a class="ui button" href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
                         } else {
-                            $result .= '<a class="actived">' . $i . "</a> \n";
+                            $result .= '<a class="ui button active">' . $i . "</a> \n";
                         }
                     }
                     // show over flow
-                    $result .= '<a href="overflow-last" >' . '...' . "</a> \n";
-                    $result .= '<div class="overflow" id="overflow-last">';
-
-                    for ($i = $acvtive_page + 4; $i < $this->page_count; $i++) {
-                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
-                    }
-                    $result .= '</div>';
+                    $result .= '<a  class="ui button" href="#overflow-last" >' . '...' . "</a> \n";
+//                    $result .= '<div class="overflow" id="overflow-last">';
+//
+//                    for ($i = $acvtive_page + 4; $i < $this->page_count; $i++) {
+//                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+//                    }
+//                    $result .= '</div>';
                     break;
 
                 // if active page in last 5 page
                 case ($acvtive_page > ($this->page_count - 5)):
                     // show overflows pages
-                    $result .= '<a href="overflow-first" >' . '...' . "</a> \n";
-                    $result .= '<div class="overflow" id="overflow-first">';
-
-                    for ($i = 1; $i < ($acvtive_page - 3); $i++) {
-                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
-                    }
-                    $result .= '</div>';
+                    $result .= '<a  class="ui button" href="#overflow-first" >' . '...' . "</a> \n";
+//                    $result .= '<div class="ui button inputer" >' . '<input type="number" value="" min="0" max="10" class="input" >' . "</div> \n";
+//                    $result .= '<div class="overflow" id="overflow-first">';
+//
+//                    for ($i = 1; $i < ($acvtive_page - 3); $i++) {
+//                        $result .= '<a  class="ui button" href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+//                    }
+//                    $result .= '</div>';
                     for ($i = ($acvtive_page - 3); $i <= $this->page_count; $i++) {
                         if ($i != $acvtive_page) {
-                            $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+                            $result .= '<a  class="ui button"  href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
                         } else {
-                            $result .= '<a class="actived">' . $i . "</a> \n";
+                            $result .= '<a  class="ui button active">' . $i . "</a> \n";
                         }
                     }
                     break;
 
                 default:
                     // else not in 5 first page or 5 last page
-                    $result .= '<a href="overflow-first" >' . '...' . "</a> \n";
-                    $result .= '<div class="overflow" id="overflow-first">';
-                    for ($i = 1; $i < ($acvtive_page - 3); $i++) {
-                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
-                    }
-                    $result .= '</div>';
+//                    $result .= '<div class="ui button" >' . '<input type="number" value="" min="0" max="10" >' . "</div> \n";
+                    $result .= '<a  class="ui button" href="#overflow-first" >' . '...' . "</a> \n";
+//                    $result .= '<div class="overflow" id="overflow-first">';
+//                    for ($i = 1; $i < ($acvtive_page - 3); $i++) {
+//                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+//                    }
+//                    $result .= '</div>';
 
                     for ($i = ($acvtive_page - 3); $i <= $acvtive_page + 3; $i++) {
                         if ($i != $acvtive_page) {
-                            $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+                            $result .= '<a class="ui button" href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
                         } else {
-                            $result .= '<a class="actived">' . $i . "</a> \n";
+                            $result .= '<a class="ui button active">' . $i . "</a> \n";
                         }
                     }
 
-                    $result .= '<a href="overflow-last" >' . '...' . "</a> \n";
-                    $result .= '<div class="overflow" id="overflow-last">';
-
-                    for ($i = $acvtive_page + 4; $i < $this->page_count; $i++) {
-                        $result .= '<a href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
-                    }
-                    $result .= '</div>';
+                    $result .= '<a class="ui button" href="#overflow-last" >' . '...' . "</a> \n";
+//                    $result .= '<div class="overflow" id="overflow-last">';
+//
+//                    for ($i = $acvtive_page + 4; $i < $this->page_count; $i++) {
+//                        $result .= '<a class="ui button" href="' . $prefix . "page=" . $i . '" >' . $i . "</a> \n";
+//                    }
+//                    $result .= '</div>';
 
                     break;
             }
@@ -166,10 +168,11 @@ class TPagination {
 
         // if not last page show last and next
         if ($acvtive_page < $this->page_count) {
-            $result .= '<a href="' . $prefix . "page=" . ($acvtive_page + 1) . '" >' . ('بعدی') . "</a> \n";
-            $result .= '<a href="' . $prefix . "page=" . ($this->page_count) . '" title="' . ('آخرین') . '" >' . '&gt;&gt;' . "</a> \n";
+            $result .= '<a class="ui button" href="' . $prefix . "page=" . ($acvtive_page + 1) . '" >' . ('بعدی') . "</a> \n";
+            $result .= '<a class="ui button" href="' . $prefix . "page=" . ($this->page_count) . '" title="' . ('آخرین') . '" >' . '&gt;&gt;' . "</a> \n";
         }
-        $result .= '</div>';
+
+        $result .= '</div></div>';
 
 
         // result hook

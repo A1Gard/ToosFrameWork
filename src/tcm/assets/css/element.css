@@ -334,53 +334,20 @@ ul.sidebar-menu li a.active i {
     text-align: center;
 }
 
-.pagination a{
-    display: inline-block;
-    padding: 5px;
-    margin: 3px;
-    border: 1px solid #13a7c7;
-    color: #1392e9;
-    -o-transition:.6s;
-    -ms-transition:.6s;
-    -moz-transition:.6s;
-    -webkit-transition:.6s;
-    transition:.6s;
+.pagination .button{
+    border-left: 1px solid rgba(255,255,255,0.3);
 }
-.pagination a:hover{
-    background:#CF0;
-}
-.pagination > a:first-child{
-    border-radius:  0 5px 5px  0;
-}
-.pagination > a:last-child{
-    border-radius:   5px 0  0 5px;
+.pagination .button:first-child{
+    border-left: 0;
 }
 
-
-.pagination a:hover{
-    background:#CF0;
+.pagination .inputer{
+    padding: 0;
+    color: #111;
 }
-.pagination a.actived{
-    background:#1392e9;
-    color: white;
-}
-
-.pagination .overflow {
-    overflow: hidden;
-    display: none;
-    background: white;
-    opacity: 0.8;
-    max-width: 80%;
-    position:absolute;
-    left: 10%;
-    right: 10%;
-    padding: 0.5em;
-    z-index: 9999;
-}
-
-.pagination a:active,
-.pagination a:focus{
-    outline:2px outset #0073ea;
+.pagination .inputer{
+    color: #111 !important;
+    text-align: center;
 }
 /* -------------------------------------------------- */
 /*	Accordion

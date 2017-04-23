@@ -77,3 +77,13 @@ label > .cke_reset {
     margin-right:100px;
 
 }
+
+.pagination .button{
+    font-size: 9pt !important;
+}
+.pagination .button:first-child{
+    border-left: 1px solid rgba(255,255,255,0.3);
+}
+.pagination .button:last-child{
+    border-left: 0;
+}
