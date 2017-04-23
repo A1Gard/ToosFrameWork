@@ -522,42 +522,31 @@ ul.sidebar-menu li a.active i {
 
 .notification-bar{
     /* overflow: hidden; */
-
+    padding: .5em 0;
+    margin-bottom: 1em;
 }
 .notification-bar .notification{
-    border-radius:3px;
-    margin:3px;
-    border-style:solid;
-    border-width:1px;
-    padding:3px;
-    background:#eee ;
-    border-color: silver;
 }
 
 .notification-bar .error{
-    background:#feb0b0;
-    border-color:red;
+    background:#feb0b0 !important;
+    border-color:red !important;
     color:darkred;
 }
-
 .notification-bar .warning{
-    background: #fdfa95;
-    border-color: #ffde00;
-}
-.notification-bar .warning{
-    background: #fbdca0;
-    border-color: #f6b83f;
+    background: #fbbd08 !important;
+    border-color: #f6b83f !important;
     color: #644405;
 }
 .notification-bar .success{
-    background: #91e26a;
-    border-color: #58c026;
+    background: #91e26a !important;
+    border-color: #58c026 !important;
     color: #316b15;
 }
 
 .notification-bar .info{
-    background: #85b7e7;
-    border-color: #1392e9;
+    background: #85b7e7 !important;
+    border-color: #1392e9 !important;
     color: #1a5186;
 }
 

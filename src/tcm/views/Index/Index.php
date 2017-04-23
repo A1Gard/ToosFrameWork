@@ -43,7 +43,7 @@ $frm->AddField('radio', 'نوع', null, array('name' => 'member_type'), array(0 
     1 => array('1', 'تایید شده'),
     2 => array('2', 'اخراجی')));
 
-$frm->AddField('submit', '', 'ارسال');
+$frm->AddField('submit', '', 'ارسال',array('class'=>'green'));
 ?>
 <div class="">
     <?php $frm->Render(); ?>

@@ -39,15 +39,23 @@ class TNotification {
         $icons['info'] = 'fa-info-circle';
         $icons['success'] = 'fa-check-circle';
         $icons[''] = 'fa-dot-circle-o';
+        $colors['error'] = 'negative';
+        $colors['warning'] = 'yellow';
+        $colors['info'] = 'blue';
+        $colors['success'] = 'positive';
+        $colors[''] = '';
 
         if (isset($_SESSION['notification']) && is_array($_SESSION['notification'])) {
             $result = null;
             foreach ($_SESSION['notification'] as $k => $notify) {
-                $result .= "\t" . '<div class="notification ' . $notify['type'] . '">
-                            <span class="fa ' . $icons[$notify['type']] . '"></span>
-                            ' . $notify['text'] . '
-                            <span class="fa fa-close"></span>
-                        </div>';
+
+                $result .= "\t" . '<div class="ui ' . $notify['type'] . ' message transition notification">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <span class="fa ' . $icons[$notify['type']] . '"></span>
+                        ' . $notify['text'] . '
+                    </div>
+                </div>';
                 unset($_SESSION['notification'][$k]);
             }
         }

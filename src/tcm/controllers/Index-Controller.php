@@ -24,7 +24,7 @@ class Index extends TController {
         $dt = new TDate();
         $viss['visitcount'] = $st->VisitCount($dt->Today(), time());
         $viss['visitorcount'] = $st->VisitorCount($dt->Today(), time());
-
+        
 
         $t = time();
         $s = $dt->Yesterday();
