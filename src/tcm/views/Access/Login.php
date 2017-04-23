@@ -68,6 +68,8 @@ $is_rtl = (_lg('dir') == 'rtl');
 
             .header .content{
                 color: #fff; 
+                font-size: 16pt;
+
             }
 
         </style>
@@ -131,7 +133,7 @@ $is_rtl = (_lg('dir') == 'rtl');
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
-                                <input type="manager_password" name="password"  class="input" placeholder="<?php _lp('Password') ?>">
+                                <input type="password" name="manager_password"  class="input" placeholder="<?php _lp('Password') ?>">
                             </div>
                         </div>
                         <div class="field <?php _lp('text-left'); ?>">
