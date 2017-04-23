@@ -25,6 +25,11 @@ $_LANG = array(
     'DIR',
     'rtl',
     
+    
+    # view/header.php:23
+    'text-left',
+    'text-right',
+    
     #
     'langname',
     ' پارسی ',
