@@ -2,6 +2,7 @@
 
 session_start();
 //unset($_SESSION['notification']);
+//session_destroy();
 require_once './tconfig.php';
 
 if (_DBG_):

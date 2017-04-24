@@ -34,13 +34,12 @@ class TMAC {
         // check isset sesstion for return
         if (isset($_SESSION[$key])) {
             $result = $_SESSION[$key];
-
-        }else {
-            $result = null ;
+        } else {
+            $result = null;
         }
-            // result hook
-            _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
-            return $result;
+        // result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
+        return $result;
     }
 
     /**
@@ -94,7 +93,7 @@ class TMAC {
     public static function SetCookie($key, $value, $min) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $key, $value, $min);
-        
+
         setcookie($key, $value, time() + ($min * 60));
     }
 
@@ -107,7 +106,7 @@ class TMAC {
 
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $user_details, $remenber);
-        
+
         self::SetSession('MN_ID', $user_details['manager_id']);
         self::SetSession('MN_TYPE', $user_details['manager_type']);
         self::SetSession('MN_UA', md5($_SERVER['HTTP_USER_AGENT']));
@@ -136,7 +135,7 @@ class TMAC {
     public static function TakeAccess() {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
-        
+
         self::DestroySession('MN_ID');
         self::DestroySession('MN_TYPE');
         self::DestroySession('MN_UA');
@@ -178,7 +177,6 @@ class TMAC {
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
         return $result;
-        
     }
 
     /**
@@ -187,6 +185,11 @@ class TMAC {
     public static function StoreRequest() {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
+        
+        if (self::GetSession('post') !== null) {
+            return FALSE;
+        }
+        
         if (isset($_POST)) {
             self::SetSession('request', true);
             self::SetSession('post', $_POST);
@@ -203,8 +206,9 @@ class TMAC {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
         // check if not post any think and not reqest set before than restore request
-        if ((!isset($_POST) || count($_POST == 0 )) && self::GetSession('request')  == true) {
+        if ((!isset($_POST) || count($_POST == 0)) && self::GetSession('request') == true) {
             $_POST = self::GetSession('post');
+            $_REQUEST = self::GetSession('post');
             self::DestroySession('request');
             self::DestroySession('post');
             self::DestroySession('redirect');
@@ -236,35 +240,35 @@ class TMAC {
             }
         }
 
-        global  $MANAGER_TYPE ;
+        global $MANAGER_TYPE;
         // check permissions
         $typ = self::GetSession('MN_TYPE');
         if ($typ != $MANAGER_TYPE['OWNER'] && $typ != $MANAGER_TYPE['ADMIN'] && $typ == $MANAGER_TYPE['DEFINED']) {
-            if (!in_array(CURRENT_EXTENSION,  self::GetSession('MN_PR') )) {
+            if (!in_array(CURRENT_EXTENSION, self::GetSession('MN_PR'))) {
                 $allow = array(
                     'Index/e403',
                     'Access/Logout'
                 );
-                if ( !in_array($_GET['req'], $allow) ) {
+                if (!in_array($_GET['req'], $allow)) {
                     Redirect(UR_MP . 'Index/e403');
                     exit();
                 }
             }
         }
-        
+
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $result);
-        
+
         if (!$result) {
             self::TakeAccess();
             // store session to after login
             self::StoreRequest();
 
             Redirect(UR_MP . 'Access/Login');
+            exit();
         } else {
             return TRUE;
         }
-        
     }
 
     /**

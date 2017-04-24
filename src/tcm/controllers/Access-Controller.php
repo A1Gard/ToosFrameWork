@@ -14,6 +14,8 @@ class Access extends TController {
 
         parent::__construct();
         self::$_main_title = _lg('Access');
+                TMAC::Init();
+
     }
 
     /**
@@ -47,16 +49,17 @@ class Access extends TController {
 
         $loaction = UR_MP;
 
+
         // check if logined go dashoard or not go back or default login page and show message
         switch ($pass_result[0]) {
             // login ssuccess
             case 1:
-                TMail::SendMail($_POST['manager_email'], _lg("Remenber password"), _lg("Hi dear %s <br> Your new password is ".$pass_result['passwd']),array($_POST['manager_username']));
+                TMail::SendMail($_POST['manager_email'], _lg("Remenber password"), _lg("Hi dear %s <br> Your new password is " . $pass_result['passwd']), array($_POST['manager_username']));
                 if (!_DEVELOPER_) {
                     RedirectNotification($loaction . 'Access/Forget', 'Password sent, please check your mail.', NF_INFO);
-                }else{
+                } else {
 //                    die('zz');
-                    RedirectNotification($loaction . 'Access/Forget', 'Password sent, please check your mail. [dev] Password is: %s', NF_INFO,array($pass_result['passwd']));
+                    RedirectNotification($loaction . 'Access/Forget', 'Password sent, please check your mail. [dev] Password is: %s', NF_INFO, array($pass_result['passwd']));
                 }
                 break;
             // login failed
@@ -88,7 +91,7 @@ class Access extends TController {
             // login ssuccess
             case 1:
                 // get last page try to do
-                $loaction = (TMAC::GetSession('request') === true) ? TMAC::GetSession('redirect') : UR_MP;
+                $loaction = (TMAC::GetSession('request') !== null) ? TMAC::GetSession('redirect') : UR_MP;
 
                 Redirect($loaction);
                 break;

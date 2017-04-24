@@ -15,6 +15,7 @@ class TController extends TBootstarp {
 
     function __construct($base = '') {
 
+
         // registry class create   ;
         $registry = TRegistry::GetInstance();
 
@@ -34,7 +35,9 @@ class TController extends TBootstarp {
             // manger access controller
             TMAC::Init();
             TMAC::CheckLogin();
-            TMAC::StoreRequest();
+            if (TMAC::GetSession('post') !== null) {
+                TMAC::RestoreRequest();
+            }
         }
     }
 
