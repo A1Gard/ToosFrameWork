@@ -185,11 +185,11 @@ class TMAC {
     public static function StoreRequest() {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
-        
+
         if (self::GetSession('post') !== null) {
             return FALSE;
         }
-        
+
         if (isset($_POST)) {
             self::SetSession('request', true);
             self::SetSession('post', $_POST);
@@ -208,7 +208,7 @@ class TMAC {
         // check if not post any think and not reqest set before than restore request
         if ((!isset($_POST) || count($_POST == 0)) && self::GetSession('request') == true) {
             $_POST = self::GetSession('post');
-            $_REQUEST = self::GetSession('post');
+            $_REQUEST = array_merge(self::GetSession('post'), $_GET);
             self::DestroySession('request');
             self::DestroySession('post');
             self::DestroySession('redirect');
