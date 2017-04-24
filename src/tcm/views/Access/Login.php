@@ -8,6 +8,8 @@
  * @todo : login view page
  */
 $is_rtl = (_lg('dir') == 'rtl');
+TMAC::Init();
+require_once '../libs/TNotification.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,6 +73,12 @@ $is_rtl = (_lg('dir') == 'rtl');
                 font-size: 16pt;
 
             }
+            .ui.form .error.message.notification, .ui.form .success.message.notification, .ui.form .warning.message.notification{
+                display: block ;
+                font-size:8.5pt;
+                margin-bottom: 10px;
+            }
+            
 
         </style>
         <script>
@@ -124,6 +132,9 @@ $is_rtl = (_lg('dir') == 'rtl');
                 </h2>
                 <form class="ui large form" action="<?php echo UR_MP; ?>Access/Check" method="post">
                     <div class="ui stacked segment">
+                        <div class="">
+                            <?php TNotification::Show(); ?>
+                        </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
@@ -150,7 +161,9 @@ $is_rtl = (_lg('dir') == 'rtl');
                         <div class="ui fluid large teal submit button"><?php _lp('Login') ?></div>
                     </div>
 
-                    <div class="ui error message"></div>
+                    <div class="ui error message">
+
+                    </div>
 
                 </form>
 

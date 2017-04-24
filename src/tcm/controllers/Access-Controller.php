@@ -14,8 +14,7 @@ class Access extends TController {
 
         parent::__construct();
         self::$_main_title = _lg('Access');
-                TMAC::Init();
-
+        TMAC::Init();
     }
 
     /**
@@ -97,12 +96,15 @@ class Access extends TController {
                 break;
             // login failed
             case 2:
-                RedirectNotification($loaction . 'Access/Login', 'Login failed : Username or password is incorrect.', NI_ERROR);
+                TNotification::Add(_lg('Login failed : Username or password is incorrect.'), NF_ERROR);
+                Redirect($loaction . 'Access/Login');
                 break;
             // try failed tried more than max
             case 3:
-                $args = array($login_result['max'], $login_result['time']);
-                RedirectNotification($loaction . 'Access/Login', 'You have used up your failed login quota (%d)! Please wait %d minutes before trying again.', NI_ERROR, $args);
+//                $args = array(, );
+
+                TNotification::Add(sprintf(_lg('You have used up your failed login quota (%d)! Please wait %d minutes before trying again.'), $login_result['max'], $login_result['time']), NF_ERROR);
+                Redirect($loaction . 'Access/Login');
                 break;
 
             default:

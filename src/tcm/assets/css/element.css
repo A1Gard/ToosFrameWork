@@ -560,6 +560,11 @@ ul.sidebar-menu li a.active i {
     opacity:1;
 }
 
+.ui.form .error.message.notification, .ui.form .success.message.notification, .ui.form .warning.message.notification{
+    display: block ;
+}
+
+
 .highlite .fa{
     display: none;
 }

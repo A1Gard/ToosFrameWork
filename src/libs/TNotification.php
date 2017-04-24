@@ -45,6 +45,7 @@ class TNotification {
         $colors['success'] = 'positive';
         $colors[''] = '';
 
+
         if (isset($_SESSION['notification']) && is_array($_SESSION['notification'])) {
             $result = null;
             foreach ($_SESSION['notification'] as $k => $notify) {
