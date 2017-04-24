@@ -24,20 +24,20 @@ class TController extends TBootstarp {
         $this->view = new TView();
 
         $not_login_need = array(
-            'Access,Login' ,
+            'Access,Login',
             'Access,Check',
             'Access,Forget',
             'Access,ChangePasswd'
-        ); 
+        );
         // check if not in login page 
-        if (!in_array(parent::$request, $not_login_need) ) {
+        if (!in_array(parent::$request, $not_login_need)) {
             // manger access controller
             TMAC::Init();
             TMAC::CheckLogin();
-            TMAC::RestoreRequest();
+            TMAC::StoreRequest();
         }
     }
-            
+
     /**
      * @todo load controllerUR_MP_ASSETS if exsits
      * @param string $name
@@ -140,7 +140,7 @@ class TController extends TBootstarp {
      * @return boolean
      */
     public static function Loader() {
-        
+
         return true;
     }
 
@@ -163,7 +163,7 @@ class TController extends TBootstarp {
      * @return boolean
      */
     public static function Finalizer() {
-        
+
         $registry = TRegistry::GetInstance();
         $registry->RemoveValue(ROOT_EXTENSION, __CLASS__);
         return true;
