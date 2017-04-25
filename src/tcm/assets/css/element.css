@@ -923,3 +923,38 @@ ol.drg li.placeholder:before {
     background:  #28282e ;
     border-radius: 0 0 5px 5px;
 }
+
+.tagautocomplete{
+    
+}
+
+#tagautocomplete-box{
+    position: absolute;
+    z-index: 99999 ;
+    width: 200px;
+    background: #fff ;
+    list-style: none;
+    padding: 0;
+    top:40%;
+    left:10%;
+    border: 1px solid #eee;
+    display: none;
+}
+
+#tagautocomplete-box li{
+    color: #111;
+    border-bottom: 1px solid #eee;
+    padding: 4px;
+    font-weight: 600;
+}
+
+#tagautocomplete-box li:hover{
+    background: #eee ;
+}
+
+.tag-list{
+    margin-bottom: 10px;
+}
+.tag-list .label{
+    margin-top: 6px;
+}

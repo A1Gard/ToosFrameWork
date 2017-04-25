@@ -64,12 +64,22 @@ $frm->AddField('submit', '', 'ویرایش یادداشت');
 
                     </div>
                     <div class="active content" style="min-height:150px">
-
                         <input class="tags" value="<?php echo $this->tags; ?>" data-ajax="<?php echo UR_MP ?>Topic/Search" data-edit="<?php echo UR_MP ?>Topic/TagChange" >
                     </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/tag.autocomplete.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $(".tags").tagautocomplete({
+                    'id' : <?php echo $this->record['topic_id'] ?>, 
+                    'minLength': 2,
+                    'searchUrl': "<?php echo UR_MP ?>Topic/Search",
+                    'changeUrl': "<?php echo UR_MP ?>Topic/TagChange"
+                });
+            });
+        </script>
         <div class="grd-secondary" style="padding:1em;">
 
             <div class="attach">
