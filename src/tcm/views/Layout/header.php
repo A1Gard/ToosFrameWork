@@ -8,10 +8,13 @@
  * @todo : cotntrol panel header
  */
 $is_rtl = (_lg('dir') == 'rtl');
+
+$dt = TDate::GetInstance();
 //$is_rtl = false;
 ?><!DOCTYPE html>
 <html>
     <head>
+        
         <title>
             <?php
             echo $this->title . " | ";
@@ -48,7 +51,7 @@ $is_rtl = (_lg('dir') == 'rtl');
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
-        
+
     </head>
     <body> <!--  class="collapse-menu non-menu" -->
 
@@ -98,7 +101,7 @@ $is_rtl = (_lg('dir') == 'rtl');
                                     echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
                                     ?>
                                 </a>
-                                <div class="description"> last visit: 2017-02-16 </div>
+                                <div class="description"> <?php _lp('Login date'); ?>: <?php echo $dt->SDate(DT_SHORT_DATE, $s->GetProfileField('manager_lastlogin')) ?> </div>
                             </div>
                         </div>
                     </div>

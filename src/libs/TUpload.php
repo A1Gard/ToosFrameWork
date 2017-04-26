@@ -70,7 +70,7 @@ class TUpload {
             $result['success'] = FALSE;
             $result['value'] = $_FILES[$file_name]["error"];
         } else {
-
+            global  $ext;
             $ext = strtolower(pathinfo($_FILES[$file_name]["name"], PATHINFO_EXTENSION));
             $_FILES[$file_name]["name"] = substr($_FILES[$file_name]["name"], 0, strlen($_FILES[$file_name]["name"]) - ( ( strlen($ext) ) + 1 ));
             if ($this->upload_mode == UPLOAD_BY_TYPE) {
@@ -94,9 +94,9 @@ class TUpload {
                     $uploaded_file = $destination . $_FILES[$file_name]["name"]
                             . '_' . $i . '.' . $ext;
                 } while (file_exists($uploaded_file));
-                $_FILES[$file_name]["name"] = $_FILES[$file_name]["name"] . '_' . $i;
+                $_FILES[$file_name]["name"] = $_FILES[$file_name]["name"] . '_' . $i.'.';
             }
-            $this->_save($file_name, $uploaded_file);
+            $x = $this->_save($file_name, $uploaded_file);
 
             $result['value']['name'] = $_FILES[$file_name]["name"];
             $result['value']['size'] = $_FILES[$file_name]["size"];
@@ -124,7 +124,8 @@ class TUpload {
         
         // get file info
         $size = $_FILES[$file_name]["size"];
-        $ext = strtolower(pathinfo($_FILES[$file_name]["name"], PATHINFO_EXTENSION));
+        global  $ext;
+//        $ext = strtolower(pathinfo($_FILES[$file_name]["name"], PATHINFO_EXTENSION));
 
         // check all file info
         if (!in_array($ext, $this->allowed_type)) {
@@ -143,7 +144,6 @@ class TUpload {
         
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
-        
         return $result;
     }
 
