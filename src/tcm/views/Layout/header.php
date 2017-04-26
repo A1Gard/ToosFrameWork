@@ -98,7 +98,7 @@ $s = new TSystem();
                             <img class="ui avatar image" src="<?php $avatar = $s->GetProfileField('manager_avatar');
                     echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar); ?>"> 
                             <div class="content">
-                                <a class="header">
+                                <a class="header white-text" href="<?php echo UR_MP ?>Manager/Profile">
                                     <?php _lp('Hello'); ?>, 
                                     <?php
                                     echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])

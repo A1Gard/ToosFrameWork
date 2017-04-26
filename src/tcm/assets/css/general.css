@@ -118,6 +118,12 @@ body{
     padding-right: 1em;
 }
 
+
+.white-text{
+    color: #fff !important;
+}
+
+
 /*
 --------------------------------------------------------------------------------
                                         collpase menu
