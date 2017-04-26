@@ -24,8 +24,11 @@ $is_rtl = (_lg('dir') == 'rtl');
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
         <?php if ($is_rtl): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.rtl.min.css" />
+
         <?php else: ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.min.css" />
         <?php endif; ?>
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
@@ -43,7 +46,9 @@ $is_rtl = (_lg('dir') == 'rtl');
 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs//ckeditor/ckeditor.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
+        
     </head>
     <body> <!--  class="collapse-menu non-menu" -->
 

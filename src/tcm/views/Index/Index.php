@@ -62,6 +62,8 @@ $frm->AddField('submit', '', 'ارسال',array('class'=>'green'));
         </div>
 
     </div>
+    
+    
     <div class="grd12">
         <div class="white-bg" >
             <br />
@@ -195,6 +197,10 @@ $frm->AddField('submit', '', 'ارسال',array('class'=>'green'));
         </div>
     </div>
 
+    
+    <div class="ui button blue" onclick="alertify.success('Success message');">
+        
+    </div>
 </div>
 <!--<script type="text/javascript">
     var randomScalingFactor = function () {
