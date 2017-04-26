@@ -123,6 +123,23 @@ class TSystem extends TModel {
         }
 
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+        
+        return $result;
+    }
+    /**
+     * get comment count
+     * @param string $field field column name
+     * @return var
+     */
+    public function GetProfileField( $field  ) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $field);
+        $sql = "SELECT `$field`   FROM %table% WHERE manager_id = "
+                . TMAC::GetSession('MN_ID');
+        $result = $this->db->Select($sql, array('manager'));
+        $result = $result[0][$field];
+
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
         return $result;
     }
 
