@@ -487,6 +487,12 @@ $_LANG = array(
     'Name',
     'نام',
     #
+    'Login date',
+    'زمان ورود',
+    #
+    'Edit Profile',
+    'ویرایش نیمرخ',
+    #
     't',
     '',
     #
