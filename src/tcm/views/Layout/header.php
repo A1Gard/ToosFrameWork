@@ -10,11 +10,14 @@
 $is_rtl = (_lg('dir') == 'rtl');
 
 $dt = TDate::GetInstance();
+$s = new TSystem();
+
+
 //$is_rtl = false;
 ?><!DOCTYPE html>
 <html>
     <head>
-        
+
         <title>
             <?php
             echo $this->title . " | ";
@@ -92,12 +95,12 @@ $dt = TDate::GetInstance();
                 <div class="ui header">
                     <div class="ui list">
                         <div class="item">
-                            <img class="ui avatar image" src="<?php echo UR_MP ?>assets/img/avatar.jpg"> 
+                            <img class="ui avatar image" src="<?php $avatar = $s->GetProfileField('manager_avatar');
+                    echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar); ?>"> 
                             <div class="content">
                                 <a class="header">
                                     <?php _lp('Hello'); ?>, 
                                     <?php
-                                    $s = new TSystem();
                                     echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
                                     ?>
                                 </a>
@@ -125,6 +128,6 @@ $dt = TDate::GetInstance();
                     </div>
 
                     <div class="notification-bar">
-                        <?php TNotification::Show(); ?>
+<?php TNotification::Show(); ?>
                     </div>
 
