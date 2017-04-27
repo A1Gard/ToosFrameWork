@@ -1,5 +1,4 @@
- <?php
-
+<?php
 /**
  * @package Toos FrameWork
  * @author A1Gard <a1gard@4xmen.ir>
@@ -9,17 +8,17 @@
  * @todo : cotntrol panel footer
  */
 ?>   
- 
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-               <?php
-                _lp('Powered by ');
-                _lp('Toos Framework');
-                ?>  2013 &copy; <?php echo date('Y') ?>
-        </div>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/side-menu.js"></script>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
-    </body>
+
+</div>
+</div>
+</div>
+<div class="copyright">
+    <?php
+    _lp('Powered by ');
+    _lp('Toos Framework');
+    ?>  <?php echo $dt->Sdate('Y', strtotime('2013/03/22')); ?> &copy; <?php echo $dt->Sdate('Y') ?>
+</div>
+<script type="text/javascript" src="<?php echo UR_MP ?>assets/js/side-menu.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
+</body>
 </html>

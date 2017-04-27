@@ -9,6 +9,7 @@
  */
 $is_rtl = (_lg('dir') == 'rtl');
 TMAC::Init();
+$dt = TDate::GetInstance();
 require_once '../libs/TNotification.php';
 ?>
 <!DOCTYPE html>
@@ -174,7 +175,7 @@ require_once '../libs/TNotification.php';
                     <?php
                     _lp('Powered by ');
                     _lp('Toos Framework');
-                    ?>  2013 &copy; <?php echo date('Y') ?>
+                    ?>  <?php echo $dt->Sdate('Y', strtotime('2013/03/22')); ?> &copy; <?php echo $dt->Sdate('Y') ?>
                 </div>
             </div>
         </div>

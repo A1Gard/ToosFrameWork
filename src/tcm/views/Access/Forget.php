@@ -8,7 +8,7 @@
  * @todo : login view page
  */
 $is_rtl = (_lg('dir') == 'rtl');
-
+$dt = TDate::GetInstance();
 ?>
 <!DOCTYPE html>
 <html>
@@ -136,7 +136,7 @@ $is_rtl = (_lg('dir') == 'rtl');
                                 <input type="manager_email" name="email"  class="input" placeholder="<?php _lp('Email') ?>">
                             </div>
                         </div>
-                        
+
                         <div class="ui fluid large teal submit button"><?php _lp('Send new password') ?></div>
                     </div>
 
@@ -151,7 +151,7 @@ $is_rtl = (_lg('dir') == 'rtl');
                     <?php
                     _lp('Powered by ');
                     _lp('Toos Framework');
-                    ?>  2013 &copy; <?php echo date('Y') ?>
+                    ?>  <?php echo $dt->Sdate('Y', strtotime('2013/03/22')); ?> &copy; <?php echo $dt->Sdate('Y') ?>
                 </div>
             </div>
         </div>
