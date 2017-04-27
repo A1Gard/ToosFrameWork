@@ -11,6 +11,7 @@ $is_rtl = (_lg('dir') == 'rtl');
 
 $dt = TDate::GetInstance();
 $s = new TSystem();
+                $reg = TRegistry::GetInstance();
 
 
 //$is_rtl = false;
@@ -54,9 +55,14 @@ $s = new TSystem();
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
+        
+        <script type="text/javascript">
+            var UR_MP = "<?php echo UR_MP ?>";
+            var UR_BASE = "<?php echo UR_BASE ?>";
+        </script>
 
     </head>
-    <body> <!--  class="collapse-menu non-menu" -->
+    <body class="<?php if ($reg->GetValue(ROOT_USER,'sidebarstatus') == 0){ echo 'collapse-menu non-menu';} ?>"> <!--  class="collapse-menu non-menu" -->
 
         <div class="ui inverted menu" id="header">
             <div class="ui container" style="max-width: none;width:100%;">
