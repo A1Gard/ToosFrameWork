@@ -9,10 +9,10 @@ body{
     padding-right: 1em;
 }
 
-.general-form .grd-secondary{
+.grd-secondary{
     padding: 0;
-    padding-right: 0em;
-    padding-left: 1em;
+    padding-left: 0;
+    padding-right: 1em !important;
 }
 
 .copyright{
@@ -20,6 +20,14 @@ body{
     margin-left: 0;
 }
 
+
+
+.grd-primary{
+    float: right;
+}
+.grd-secondary{
+    float: left;
+}
 /*
 --------------------------------------------------------------------------------
                                         collpase menu

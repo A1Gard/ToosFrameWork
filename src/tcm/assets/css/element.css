@@ -523,7 +523,7 @@ ul.sidebar-menu li a.active i {
 .notification-bar{
     /* overflow: hidden; */
     padding: .5em 0;
-    margin-bottom: 1em;
+    margin-bottom:0;
 }
 .notification-bar .notification{
 }
@@ -976,3 +976,8 @@ ol.drg li.placeholder:before {
 .select2-selection--multiple{
     padding: .25em;
 }
+
+.general-form .grd-secondary{
+    margin-bottom: 1em;
+}
+

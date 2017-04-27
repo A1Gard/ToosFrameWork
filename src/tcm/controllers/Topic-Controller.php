@@ -29,7 +29,7 @@ class Topic extends TController {
 
     public function NewTopic() {
         $this->view->navigator->AddItem(_lg('Topics'), UR_MP . 'Topic/Index');
-        $this->view->PageRender('Topic/NewTopic',_lg("New Topic") );
+        $this->view->PageRender('Topic/NewTopic', _lg("New Topic"));
     }
 
     public function Edit($id) {
@@ -41,7 +41,7 @@ class Topic extends TController {
         $this->view->tags = implode($a, ',');
 
         $this->view->attach = $this->model->GetAttached($id);
-        $this->view->PageRender('Topic/Edit',  _lg('Edit') . ' - ' . $this->view->record['topic_title']);
+        $this->view->PageRender('Topic/Edit', _lg('Edit') . ' - ' . $this->view->record['topic_title']);
     }
 
     public function Update($id) {
@@ -53,7 +53,8 @@ class Topic extends TController {
         $_POST['topic_term'] = UrlTerm($_POST['topic_title']);
 
         $this->model->Edit($id, $_POST);
-        GoBack('/edit');
+        TNotification::Add(_lg('Topic has been updated'),NF_SUCCESS);
+        GoBack();
     }
 
     public function Search() {
@@ -96,7 +97,7 @@ class Topic extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $index = $side_menu->AddItem(_lg('Topics'), '#', 0, 'fa-bullhorn',-112);
+        $index = $side_menu->AddItem(_lg('Topics'), '#', 0, 'fa-bullhorn', -112);
         $side_menu->AddItem(_lg("Topics list"), UR_MP .
                 'Topic', $index);
         $side_menu->AddItem(_lg("New Topic"), UR_MP .

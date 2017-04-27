@@ -11,7 +11,7 @@ $is_rtl = (_lg('dir') == 'rtl');
 
 $dt = TDate::GetInstance();
 $s = new TSystem();
-                $reg = TRegistry::GetInstance();
+$reg = TRegistry::GetInstance();
 
 
 //$is_rtl = false;
@@ -57,14 +57,16 @@ $s = new TSystem();
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/select2/js/select2.min.js"></script> 
-        
+
         <script type="text/javascript">
             var UR_MP = "<?php echo UR_MP ?>";
             var UR_BASE = "<?php echo UR_BASE ?>";
         </script>
 
     </head>
-    <body class="<?php if ($reg->GetValue(ROOT_USER,'sidebarstatus') == 0){ echo 'collapse-menu non-menu';} ?>"> <!--  class="collapse-menu non-menu" -->
+    <body class="<?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0) {
+            echo 'collapse-menu non-menu';
+        } ?>"> <!--  class="collapse-menu non-menu" -->
 
         <div class="ui inverted menu" id="header">
             <div class="ui container" style="max-width: none;width:100%;">
@@ -104,13 +106,14 @@ $s = new TSystem();
                     <div class="ui list">
                         <div class="item">
                             <img class="ui avatar image" src="<?php $avatar = $s->GetProfileField('manager_avatar');
-                    echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar); ?>"> 
+                    echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar);
+                    ?>"> 
                             <div class="content">
                                 <a class="header white-text" href="<?php echo UR_MP ?>Manager/Profile">
                                     <?php _lp('Hello'); ?>, 
-                                    <?php
-                                    echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
-                                    ?>
+<?php
+echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
+?>
                                 </a>
                                 <div class="description"> <?php _lp('Login date'); ?>: <?php echo $dt->SDate(DT_SHORT_DATE, $s->GetProfileField('manager_lastlogin')) ?> </div>
                             </div>

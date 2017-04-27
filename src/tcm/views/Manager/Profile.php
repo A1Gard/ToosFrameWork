@@ -29,7 +29,7 @@ $promise = explode(',', $this->record['manager_permission']);
         <?php echo $frm->FormBody(); ?>
     </div>
     <div class="grd-secondary">
-        <div class="ui segment inverted"  style="padding:0.5em 1.5em;margin-left: 1em;">
+        <div class="ui segment inverted">
             &nbsp;
             <img src="<?php echo  $this->record['manager_avatar'] ?>" alt="[]" class="img-responsive img-rounded" />
             <br />
