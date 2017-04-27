@@ -925,7 +925,7 @@ ol.drg li.placeholder:before {
 }
 
 .tagautocomplete{
-    
+
 }
 
 #tagautocomplete-box{
@@ -957,4 +957,22 @@ ol.drg li.placeholder:before {
 }
 .tag-list .label{
     margin-top: 6px;
+}
+
+.select2-container .select2-selection--single{
+    padding: .44em 1em;
+    height: auto;
+    font-size: 9pt;
+    text-align: center;
+}
+.select2-results__option,.select2-search__field,.select2-selection__choice{
+    color: #111;
+}
+
+.select2-search__field{
+    padding: 0.3em 3px !important;
+}
+
+.select2-selection--multiple{
+    padding: .25em;
 }

@@ -58,6 +58,9 @@ body{
 #side-bar{
     overflow: visible;
 }
+#nscroll{
+    max-height: 90vh;
+}
 #side-bar.visible{
     z-index: 99;
 }
@@ -123,6 +126,13 @@ body{
     color: #fff !important;
 }
 
+.copyright{
+    padding: 1em 2em;
+    text-align: center;
+    color: #FFF;
+    font-weight: 900;
+    margin-left: 20%;
+}
 
 /*
 --------------------------------------------------------------------------------
@@ -132,10 +142,17 @@ body{
 .collapse-menu #header #menu-control{
     display: flex;
 }
+.collapse-menu #side-bar .ui.header{
+    margin-top: 1em;
+}
 
 .collapse-menu  .pusher,.pusher .pusher{
     background: transparent !important ;
     max-width: none;
+}
+.collapse-menu  .copyright{
+    margin-left: 0;
+    margin-right: 0;
 }
 
 

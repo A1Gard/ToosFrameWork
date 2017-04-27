@@ -103,9 +103,12 @@ $(function () {
 
 
 //sematic ui
+    $('.choosen').select2();
+    
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
+    
 
     $('.message .close')
             .on('click', function () {
@@ -246,7 +249,7 @@ $(function () {
         mousescrollstep: 80,
         horizrailenabled: false
     });
-    nice2 = $("#side-bar").niceScroll({
+    nice2 = $("#nscroll").niceScroll({
         scrollspeed: 60,
         mousescrollstep: 80,
         horizrailenabled: false
@@ -263,5 +266,5 @@ $(function () {
 
 // after load complete
 $(window).load(function () {
-    
+ 
 });
