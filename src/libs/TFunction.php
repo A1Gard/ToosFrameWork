@@ -210,3 +210,28 @@ function UrlTerm($name, $replace_char = '-') {
     }
     return $name;
 }
+
+/**
+ * send jsone header
+ */
+function SendJsonHeader() {
+    header("Content-type:application/json");
+}
+
+/**
+ * send jsone header width result params
+ * @param mixed $result
+ */
+function SendJsonHeaderWithResult($result) {
+    header("Content-type:application/json");
+    echo json_encode($result);
+    die;
+}
+
+/**
+ * return manager id
+ */
+function GetManagerId() {
+    TMAC::Init();
+    return  TMAC::GetSession('MN_ID');
+}
