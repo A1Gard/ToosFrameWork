@@ -85,6 +85,25 @@ class TRegistry {
         // send to insert in regiery
         return $this->db->Insert('registry', $data);
     }
+    /**
+     * @todo safe add new key to registry
+     * @param int $root root of key 
+     * @param string $key name
+     * @param variable $value content
+     * @return bool
+     */
+    public function SafeAddValue($root, $key, $value) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
+        // make value
+        $data = array('type' => 'iss',
+            'registry_root' => $root,
+            'registry_key' => $key,
+            'registry_value' => $value);
+
+        // send to insert in regiery
+        return $this->db->Replace('registry', $data);
+    }
 
     /**
      * @todo delete key from regitry
