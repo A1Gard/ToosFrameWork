@@ -114,6 +114,19 @@ class Manager extends TController {
         }
     }
 
+    /**
+     * show and hide sidebar
+     * @param string $mode show|hide
+     */
+    public function ToggleSideBar($mode = 'show') {
+        if ($mode == 'show') {
+            $this->model->SetSidebarMode(1);
+        } else {
+            $this->model->SetSidebarMode(0);
+        }
+        SendJsonHeaderWithResult(array('result' => true));
+    }
+
     public static function Loader() {
         global $side_menu;
 

@@ -39,6 +39,8 @@ define('ROOT_SERVER', 2);
 define('ROOT_PLUGIN', 3);
 // extension root keys
 define('ROOT_EXTENSION', 4);
+// user root keys
+define('ROOT_USER', 5);
 
 
 

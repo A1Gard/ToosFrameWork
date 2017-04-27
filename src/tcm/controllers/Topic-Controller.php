@@ -57,12 +57,12 @@ class Topic extends TController {
     }
 
     public function Search() {
-        header("Content-type:application/json");
+        SendJsonHeader();
         echo $this->model->Search($_GET['term']);
     }
 
     public function TagChange() {
-        header("Content-type:application/json");
+        SendJsonHeader();
         echo $this->model->TagChange($_POST['tag'], $_POST['id'], $_POST['action']);
     }
 

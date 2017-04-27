@@ -15,10 +15,9 @@
 class ManagerModel extends TModel {
 
     function __construct() {
-        parent::__construct('manager','manager_');
-    }    
-    
-    
+        parent::__construct('manager', 'manager_');
+    }
+
     /**
      * @todo edit an reocrd with id 
      * @param int $id
@@ -27,13 +26,24 @@ class ManagerModel extends TModel {
      * @category general
      */
     public function Edit($id, $data, $prefix = null) {
-        $on_edit =  $this->GetRecord($id);
-        if ($on_edit['manager_protected']  && $_SESSION['MN_ID'] == $on_edit['manager_id'] ||$on_edit['manager_protected'] == 0 ) {
+        $on_edit = $this->GetRecord($id);
+        if ($on_edit['manager_protected'] && $_SESSION['MN_ID'] == $on_edit['manager_id'] || $on_edit['manager_protected'] == 0) {
             parent::Edit($id, $data, $prefix);
             return true;
         }
         return false;
     }
-} 
+
+    /**
+     * set side bar mode for admin
+     * @param int $mode
+     */
+    public function SetSidebarMode($mode) {
+        $reg = TRegistry::GetInstance();
+                $reg->SafeAddValue(ROOT_USER,'sidebarstatus',$mode,GetManagerId());
+        return true;
+    }
+
+}
 
 ?>

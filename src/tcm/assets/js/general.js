@@ -266,5 +266,37 @@ $(function () {
 
 // after load complete
 $(window).load(function () {
- 
+    $("#toggle-menu").bind('click', function () {
+        if ($('body').hasClass('non-menu')) {
+
+            $.get(UR_MP + 'Manager/ToggleSideBar/show', function (e) {
+                if (e.result == true) {
+                    $('body').removeClass('collapse-menu');
+                    $('body').removeClass('non-menu');
+//            responsiveControll() ;
+                    $('#side-bar').sidebar('hide');
+                    setTimeout(function () {
+                        $('#side-bar').addClass('visible');
+                    }, 100);
+                } else {
+                    alertify.success('error');
+                }
+            });
+
+
+        } else {
+            
+             $.get(UR_MP + 'Manager/ToggleSideBar/hide', function (e) {
+                if (e.result == true) {
+                    $('body').click();
+                    $('body').addClass('collapse-menu');
+                    $('body').addClass('non-menu');
+                    $('#side-bar').removeClass('visible');
+                } else {
+                    alertify.success('error');
+                }
+            });
+        }
+
+    });
 });

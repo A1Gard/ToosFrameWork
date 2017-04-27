@@ -37,6 +37,7 @@ $s = new TSystem();
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.min.css" />
         <?php endif; ?>
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/select2/css/select2.min" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
@@ -55,6 +56,7 @@ $s = new TSystem();
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/select2/js/select2.min.js"></script> 
         
         <script type="text/javascript">
             var UR_MP = "<?php echo UR_MP ?>";
