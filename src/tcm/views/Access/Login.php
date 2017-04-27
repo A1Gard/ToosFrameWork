@@ -127,7 +127,7 @@ require_once '../libs/TNotification.php';
                 <h2 class="ui teal image header ">
                     <img src="<?= UR_MP_ASSETS ?>img/wlogo.png" alt="[]" class="image" />
                     <div class="content">
-                        <?php echo _lp('Log-in to your account'); ?>
+                        <?php echo _lp('Login to your account'); ?>
                     </div>
                 </h2>
                 <form class="ui large form" action="<?php echo UR_MP; ?>Access/Check" method="post">

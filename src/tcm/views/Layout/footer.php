@@ -13,7 +13,12 @@
                 </div>
             </div>
         </div>
-
+        <div class="copyright">
+               <?php
+                _lp('Powered by ');
+                _lp('Toos Framework');
+                ?>  2013 &copy; <?php echo date('Y') ?>
+        </div>
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/side-menu.js"></script>
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
     </body>
