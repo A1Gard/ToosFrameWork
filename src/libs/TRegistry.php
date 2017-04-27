@@ -35,12 +35,21 @@ class TRegistry {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key);
 
+        $data = array(":registry_root" => $root,
+            ":registry_key" => $key);
+
+        if ($root == ROOT_USER) {
+            $other = ' AND registry_meta = :registry_meta';
+            $data[':registry_meta'] = GetManagerId();
+        } else {
+            $other = '';
+        }
+
         // sql
         $sql = "SELECT registry_value FROM %table% WHERE 
-            registry_root = :registry_root AND registry_key = :registry_key ;";
+            registry_root = :registry_root AND registry_key = :registry_key $other ;";
         // select
-        $result = $this->db->Select($sql, array('registry'), array('type' => 'is', ":registry_root" => $root,
-            ":registry_key" => $key));
+        $result = $this->db->Select($sql, array('registry'), $data);
         if (isset($result[0]['registry_value'])) {
             $result_ = $result[0]['registry_value'];
         } else {
@@ -71,35 +80,41 @@ class TRegistry {
      * @param int $root root of key 
      * @param string $key name
      * @param variable $value content
+     * @param int $meta regiter meta
      * @return bool
      */
-    public function AddValue($root, $key, $value) {
+    public function AddValue($root, $key, $value, $meta = 0) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
         // make value
         $data = array('type' => 'iss',
             'registry_root' => $root,
             'registry_key' => $key,
+            'registry_meta' => $meta,
             'registry_value' => $value);
 
         // send to insert in regiery
         return $this->db->Insert('registry', $data);
     }
+
     /**
      * @todo safe add new key to registry
      * @param int $root root of key 
      * @param string $key name
      * @param variable $value content
+     * @param int $meta regiter meta
      * @return bool
      */
-    public function SafeAddValue($root, $key, $value) {
+    public function SafeAddValue($root, $key, $value, $meta = 0) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
         // make value
         $data = array('type' => 'iss',
             'registry_root' => $root,
             'registry_key' => $key,
+            'registry_meta' => $meta,
             'registry_value' => $value);
+
 
         // send to insert in regiery
         return $this->db->Replace('registry', $data);
@@ -118,7 +133,6 @@ class TRegistry {
             `registry_key` = '$key'");
     }
 
-    
     /**
      * is key Exists
      * @param int $root root of key 
@@ -139,7 +153,7 @@ class TRegistry {
 
         if ($result[0]['count'] == 0) {
             $result_ = false;
-        }else{
+        } else {
             $result_ = true;
         }
 
