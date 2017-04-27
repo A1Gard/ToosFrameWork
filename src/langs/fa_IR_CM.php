@@ -493,6 +493,15 @@ $_LANG = array(
     'Edit Profile',
     'ویرایش نیمرخ',
     #
+    'Recover your account password',
+    'بازیابی گذرواژه حساب کاربری',
+    #
+    'Login to your account',
+    'ورود به حساب کاربریتان',
+    #
+    'Edit Profile',
+    'ویرایش نیمرخ',
+    #
     't',
     '',
     #
