@@ -179,3 +179,7 @@ body.pushable>.pusher{
     padding: 0;
     padding-left: 1em;
 }
+
+.ui.inverted.form input[type=file]{
+    padding: .5em;
+}
