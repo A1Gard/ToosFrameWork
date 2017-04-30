@@ -104,11 +104,11 @@ $(function () {
 
 //sematic ui
     $('.choosen').select2();
-    
+
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-    
+
 
     $('.message .close')
             .on('click', function () {
@@ -285,8 +285,8 @@ $(window).load(function () {
 
 
         } else {
-            
-             $.get(UR_MP + 'Manager/ToggleSideBar/hide', function (e) {
+
+            $.get(UR_MP + 'Manager/ToggleSideBar/hide', function (e) {
                 if (e.result == true) {
                     $('body').click();
                     $('body').addClass('collapse-menu');

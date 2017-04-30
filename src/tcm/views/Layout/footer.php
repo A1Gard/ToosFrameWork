@@ -20,5 +20,23 @@
 </div>
 <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/side-menu.js"></script>
 <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
+<?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0): ?>
+    <script type="text/javascript">
+        var lastevent = new Date();
+        $(function () {
+
+            $('body').bind('mousemove', function (e) {
+                var now = new Date();
+                var difference = (now - lastevent) / 1000;
+                if ($(window).width() - e.pageX <= 10 && $(window).height() - e.pageY <= 10 && difference >= 1) {
+                    lastevent = new Date();
+                    $("#menu-control").click();
+                }
+    //        console.log(e.pageY);
+            });
+
+        });
+    </script>
+<?php endif; ?>
 </body>
 </html>
