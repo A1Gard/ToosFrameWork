@@ -20,7 +20,7 @@
 </div>
 <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/side-menu.js"></script>
 <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
-<?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0): ?>
+<?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0 && HOT_CORNER): ?>
     <script type="text/javascript">
         var lastevent = new Date();
         $(function () {

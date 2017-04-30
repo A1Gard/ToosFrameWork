@@ -17,9 +17,9 @@
  */
 
 // verstion 
-define('VERSION', '0.8');
+define('VERSION', '0.9');
 // build no
-define('BUILD', '20160323');
+define('BUILD', '20170601');
 // database version
 define('DB_VERSION', 'unstable');
 
@@ -227,11 +227,6 @@ define('REALTION_FRIEND', 5);
 
 # ------------------------------------------------------------------------------
 
-define('DT_SHORT_TIME', 'H:i:s');
-
-define('DT_SHORT_DATE', 'Y/m/d');
-define('DT_SHORT_FULL_DATETIME', DT_SHORT_TIME . ' ' . DT_SHORT_DATE);
-
 define("SECOND", 1);
 define("MINUTE", 60 * SECOND);
 define("HOUR", 60 * MINUTE);
@@ -288,3 +283,19 @@ $os_list = array(
     'Search Bot'
 );
 
+
+
+
+
+
+
+/**
+ * Customize system config
+ */
+define('DT_SHORT_TIME', 'H:i:s');
+
+define('DT_SHORT_DATE', 'Y/m/d');
+define('DT_SHORT_FULL_DATETIME', DT_SHORT_TIME . ' ' . DT_SHORT_DATE);
+
+
+define("HOT_CORNER", true);
