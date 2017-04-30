@@ -179,6 +179,11 @@ require_once '../libs/TNotification.php';
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            $(function () {
+                  $('.ui.checkbox').checkbox();
+            });
+        </script>
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
     </body>
 
