@@ -28,11 +28,14 @@ $reg = TRegistry::GetInstance();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+
+
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
         <?php if ($is_rtl): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.rtl.min.css" />
-
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/mpdatepicker/jquery.mpdatepicker.css" />
         <?php else: ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.min.css" />
@@ -41,6 +44,8 @@ $reg = TRegistry::GetInstance();
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
+
+
 
 
         <?php if ($is_rtl): ?>
@@ -58,15 +63,29 @@ $reg = TRegistry::GetInstance();
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/select2/js/select2.min.js"></script> 
 
+        <?php if ($is_rtl): ?>
+            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/mpdatepicker/jquery.mpdatepicker.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $(".Pdatepicker").mpdatepicker({});
+
+                    $(".Pdatetimepicker").mpdatepicker({
+                        'timePicker': true
+                    });
+                });
+            </script>
+        <?php endif; ?>
         <script type="text/javascript">
             var UR_MP = "<?php echo UR_MP ?>";
             var UR_BASE = "<?php echo UR_BASE ?>";
         </script>
 
     </head>
-    <body class="<?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0) {
-            echo 'collapse-menu non-menu';
-        } ?>"> <!--  class="collapse-menu non-menu" -->
+    <body class="<?php
+    if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0) {
+        echo 'collapse-menu non-menu';
+    }
+    ?>"> <!--  class="collapse-menu non-menu" -->
 
         <div class="ui inverted menu" id="header">
             <div class="ui container" style="max-width: none;width:100%;">
@@ -105,15 +124,16 @@ $reg = TRegistry::GetInstance();
                 <div class="ui header">
                     <div class="ui list">
                         <div class="item">
-                            <img class="ui avatar image" src="<?php $avatar = $s->GetProfileField('manager_avatar');
-                    echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar);
-                    ?>"> 
+                            <img class="ui avatar image" src="<?php
+                            $avatar = $s->GetProfileField('manager_avatar');
+                            echo ($avatar == '' ? UR_MP . 'assets/img/avatar.jpg' : $avatar);
+                            ?>"> 
                             <div class="content">
                                 <a class="header white-text" href="<?php echo UR_MP ?>Manager/Profile">
                                     <?php _lp('Hello'); ?>, 
-<?php
-echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
-?>
+                                    <?php
+                                    echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID'])
+                                    ?>
                                 </a>
                                 <div class="description"> <?php _lp('Login date'); ?>: <?php echo $dt->SDate(DT_SHORT_DATE, $s->GetProfileField('manager_lastlogin')) ?> </div>
                             </div>
@@ -139,6 +159,6 @@ echo $s->GetField('manager', 'manager_', 'manager_displayname', $_SESSION['MN_ID
                     </div>
 
                     <div class="notification-bar">
-<?php TNotification::Show(); ?>
+                        <?php TNotification::Show(); ?>
                     </div>
 
