@@ -295,6 +295,7 @@ $os_list = array(
 define('DT_SHORT_TIME', 'H:i:s');
 
 define('DT_SHORT_DATE', 'Y/m/d');
+define('DT_JS_SHORT_DATE', 'yyyy/mm/dd');
 define('DT_SHORT_FULL_DATETIME', DT_SHORT_TIME . ' ' . DT_SHORT_DATE);
 
 

@@ -32,6 +32,8 @@ $reg = TRegistry::GetInstance();
 
 
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
+
+
         <?php if ($is_rtl): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.rtl.min.css" />
@@ -39,6 +41,8 @@ $reg = TRegistry::GetInstance();
         <?php else: ?>
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/pickadate/themes/default.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/pickadate/themes/default.date.css" />
         <?php endif; ?>
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/select2/css/select2.min" />
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
@@ -69,8 +73,17 @@ $reg = TRegistry::GetInstance();
                 $(function () {
                     $(".Pdatepicker").mpdatepicker({});
 
-                    $(".Pdatetimepicker").mpdatepicker({
-                        'timePicker': true
+                });
+            </script>
+        <?php else: ?>
+            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/pickadate/picker.js"></script> 
+            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/pickadate/picker.date.js"></script> 
+            <script type="text/javascript">
+                $(function () {
+                    $('.datepicker').pickadate({
+                        format: "<?php echo DT_JS_SHORT_DATE; ?>",
+                        selectYears: true,
+                        selectMonths: true
                     });
                 });
             </script>

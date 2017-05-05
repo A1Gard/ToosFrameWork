@@ -135,8 +135,8 @@ $(function () {
 
 
     $('.ui.radio.checkbox').checkbox();
-
-
+    
+    
     // checkbox group select begin
     // source: http://stackoverflow.com/questions/659508/how-can-i-shift-select-multiple-checkboxes-like-gmail
     var $chkboxes = $('.listview-checkbox');

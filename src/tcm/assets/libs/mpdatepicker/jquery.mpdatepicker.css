@@ -15,6 +15,7 @@
     padding:6px;
     padding-left:25px;
     border:1px solid  silver;
+    background-repeat: no-repeat !important;
 }
 #mpdatepicker-block {
     direction: rtl;
@@ -38,6 +39,7 @@
     user-select: none; /* Non-prefixed version, currently
                           not supported by any browser */
     max-width: 100%;
+    color: #111;
 }
 
 #mpdatepicker-block table{

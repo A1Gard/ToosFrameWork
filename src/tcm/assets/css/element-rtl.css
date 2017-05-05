@@ -103,3 +103,8 @@ label > .cke_reset {
     direction: rtl;
     text-align: right;
 }
+
+.mpdatepicker {
+    background-repeat: no-repeat !important;
+    background-position: 7px 5px !important;
+}
