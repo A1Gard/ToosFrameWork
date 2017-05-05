@@ -28,11 +28,11 @@
             $('body').bind('mousemove', function (e) {
                 var now = new Date();
                 var difference = (now - lastevent) / 1000;
-                if ($(window).width() - e.pageX <= 10 && $(window).height() - e.pageY <= 10 && difference >= 1) {
+                if (<?php if ($is_rtl): ?> $(window).width() - <?php endif; ?> e.pageX <= 10 && $(window).height() - e.pageY <= 10 && difference >= 1) {
                     lastevent = new Date();
                     $("#menu-control").click();
                 }
-    //        console.log(e.pageY);
+                //        console.log(e.pageY);
             });
 
         });
