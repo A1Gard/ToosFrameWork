@@ -32,6 +32,7 @@ $reg = TRegistry::GetInstance();
 
 
         <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/clock-pick/jquery-clockpicker.min.css" />
 
 
         <?php if ($is_rtl): ?>
@@ -66,6 +67,7 @@ $reg = TRegistry::GetInstance();
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/select2/js/select2.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/clock-pick/jquery-clockpicker.min.js"></script> 
 
         <?php if ($is_rtl): ?>
             <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/mpdatepicker/jquery.mpdatepicker.js"></script>

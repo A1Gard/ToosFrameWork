@@ -981,3 +981,17 @@ ol.drg li.placeholder:before {
     margin-bottom: 1em;
 }
 
+/*quike shotcuts*/
+
+.qshortcuts .ui.button{
+    margin: .3em ;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:border-box;
+    font-size: 20pt;
+    padding: 1em;
+    display: block;
+}
+.qshortcuts .ui.button i{
+    font-size: 20pt;
+}
