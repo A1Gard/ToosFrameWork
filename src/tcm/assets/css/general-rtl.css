@@ -37,3 +37,10 @@ body{
 .collapse-menu #body-content{
     margin-right: 0;
 }
+
+
+/*patchs*/
+
+.popover-title{
+    direction: ltr;
+}
