@@ -105,7 +105,7 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button pink">  
+        <a href="<?php echo UR_MP ?>Index/Sell" class="ui button pink">  
             <i class="fa fa-shopping-cart"></i>
             فروش
         </a>
@@ -222,12 +222,12 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
                 tooltip: {
                     crosshairs: true,
                     shared: true,
-                    valueSuffix: '°C'
+                    valueSuffix: 'تومان'
                 },
                 legend: {
                 },
                 series: [{
-                        name: 'Temperature',
+                        name: 'مبلغ',
                         data: averages,
                         zIndex: 1,
                         marker: {

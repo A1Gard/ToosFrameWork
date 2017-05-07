@@ -8,10 +8,10 @@
  * @subpackage   index.php
  * @issue : index page link to all CM with bootstrap 
  */
-
+header('location: /tcm ');
 // is user in manager page
 define('__MP__', FALSE);
-    
+
 
 
 

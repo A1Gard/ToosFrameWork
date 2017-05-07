@@ -24,7 +24,7 @@ class Index extends TController {
         $dt = new TDate();
         $viss['visitcount'] = $st->VisitCount($dt->Today(), time());
         $viss['visitorcount'] = $st->VisitorCount($dt->Today(), time());
-        
+
 
         $t = time();
         $s = $dt->Yesterday();
@@ -76,7 +76,6 @@ class Index extends TController {
         $this->view->PageRender('Index/Index', _lg('Desktop'));
     }
 
-
     public function Sentence1() {
         $this->view->sen = $this->model->Sentence1();
 //        var_dump($this->view->sen);
@@ -104,6 +103,15 @@ class Index extends TController {
     public function Setting() {
         $this->view->Setting = $this->model->Setting();
         $this->view->PageRender('Index/Setting', _lg('Setting'));
+    }
+
+    public function Sell() {
+        $model = new TModel('topic', 'topic_');
+        $this->view->cls_list = $model->Read('topic_id, topic_counter, '
+                . 'topic_title, topic_status');
+        $this->view->pagination = new TPagination($model->GetPageCount());
+        $this->view->navigator->AddItem(('فهرست فروش'), UR_MP . '');
+        $this->view->PageRender('Index/sell', ('فروش  جدید'));
     }
 
     public function Statistic() {
