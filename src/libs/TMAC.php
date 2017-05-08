@@ -87,14 +87,15 @@ class TMAC {
     /**
      * @todo set cookie value with key 
      * @param string $key
-     * @param variable $value
-     * @param int $min how many min until expire
+     * @param string $value
+     * @param int $min how many min until expire  |default  15 days
+     * @param  sting $path 
      */
-    public static function SetCookie($key, $value, $min) {
+    public static function SetCookie($key, $value, $min = 21600, $path = '/') {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__, $key, $value, $min);
 
-        setcookie($key, $value, time() + ($min * 60));
+        setcookie($key, $value, time() + ($min * 60), $path);
     }
 
     /**
@@ -115,15 +116,14 @@ class TMAC {
 
         // set cookie if need 
         if ($remenber) {
-
             // get registry value Reminber time how many min.
             $registry = TRegistry::GetInstance();
             $min = $registry->GetValue(ROOT_SYSTEM, 'remenber_time');
 
-            self::SetCookie('MN_ID', $UserDetails['manager_id'], $min);
-            self::SetCookie('MN_TYPE', $UserDetails['manager_type'], $min);
+            self::SetCookie('MN_ID', $user_details['manager_id'], $min);
+            self::SetCookie('MN_TYPE', $user_details['manager_type'], $min);
             self::SetCookie('MN_UA', md5($_SERVER['HTTP_USER_AGENT']), $min);
-            self::SetCookie('MN_PR', explode(',', $user_details['manager_permission']), $min);
+            self::SetCookie('MN_PR', $user_details['manager_permission'], $min);
             self::SetCookie('MN_LK', LOGIN_KEY, $min);
         }
     }
@@ -234,8 +234,11 @@ class TMAC {
                 self::SetSession('MN_ID', $_COOKIE['MN_ID']);
                 self::SetSession('MN_TYPE', $_COOKIE['MN_TYPE']);
                 self::SetSession('MN_UA', $_COOKIE['MN_UA']);
-                self::SetSession('MN_PR', $_COOKIE['MN_PR']);
                 self::SetSession('MN_LK', $_COOKIE['MN_LK']);
+                if (isset($_COOKIE['MN_PR'])) {
+
+                    self::SetSession('MN_PR', explode(',', $_COOKIE['MN_PR']));
+                }
                 $result = true;
             }
         }

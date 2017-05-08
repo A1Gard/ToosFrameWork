@@ -70,12 +70,8 @@ class AccessModel extends TModel {
                 $this->db->Update('manager',array('type' => 'i',"manager_lastlogin" => time()) ,
                         "manager_id = '{$result[0]['manager_id']}'");
 
-                // make remenber
-                isset($_POST['remenber'])? $remenber = TRUE : $remenber = FALSE;
-
                 // give access
-                TMAC::GiveAccess($result[0], $remenber);
-                
+                TMAC::GiveAccess($result[0], isset($_POST['remenber']));
                 
                 $ret[0] = 1;
                 return $ret;
