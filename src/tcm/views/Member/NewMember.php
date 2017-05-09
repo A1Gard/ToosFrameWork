@@ -30,5 +30,20 @@ $frm->AddField('submit', '', 'ارسال');
         ?>
 
     </div>
+    <div class="grd-secondary">
+        <div class="ui inverted segment">
+            <div class="ui inverted accordion">
+                <div class="active title">
+                    <i class="dropdown icon"></i>
+                    <?php _lp('Guide') ?>
+                </div>
+                <div class="active content" style="min-height:150px">
+                    <p>
+                        <?php _lp('Lorem ipsum dolor sit amet short') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
