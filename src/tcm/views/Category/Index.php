@@ -14,7 +14,7 @@ $frm->AddField('submit', '', 'ارسال');
         <div class="margin">
             
         <ul class="listview">
-            <li class="pinned animate"> 
+            <li class="list-header"> 
                 <div  class="row">
                     <div class="grd2">ش</div>
                     <div class="grd16"> عنوان</div>
@@ -29,8 +29,8 @@ $frm->AddField('submit', '', 'ارسال');
                         <div class="grd2"><?php echo $cls['category_id'] ?></div>
                         <div class="grd16"><?php echo $cls['category_title'] ?></div>
                         <div class="grd6">
-                            <a class="button delete" href="<?php echo UR_MP ?>Category/Delete/<?php echo $cls['category_id'] ?>"> حذف </a>
-                            <a class="button" href="<?php echo UR_MP ?>Category/Edit/<?php echo $cls['category_id'] ?>"> ویرایش </a>
+                            <a class="ui button delete negative" href="<?php echo UR_MP ?>Category/Delete/<?php echo $cls['category_id'] ?>"> حذف </a>
+                            <a class="ui button blue" href="<?php echo UR_MP ?>Category/Edit/<?php echo $cls['category_id'] ?>"> ویرایش </a>
                         </div>
                     </div>
                 </li>
