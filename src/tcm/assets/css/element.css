@@ -759,20 +759,13 @@ ul.sidebar-menu li a.active i {
 
 
 /*awesome selectore*/
-.awesome{
-    max-width:1000px;
-    max-height:80vh;
-    margin: 10vh auto;
-    overflow:scroll;
-    overflow-x:hidden;
-}
-.awesome ul{
+#fontawesome-items{
     background: white;
     overflow: hidden;
     padding:1em;
 }
 
-.awesome li{
+#fontawesome-items li{
     display:inline-block;
     background:#eeeee;
     border: 1px solid  silver;
@@ -783,11 +776,11 @@ ul.sidebar-menu li a.active i {
     text-align: center;
 }
 
-.awesome li:hover{
+#fontawesome-items li:hover{
     background-color:#CF0;
 }
 
-.awesome li i{
+#fontawesome-items li i{
     color:black;
     font-size: 20pt;
     display: block;

@@ -27,7 +27,7 @@ $frm->AddField('submit', '', _lg('Edit'));
 </h2>
 <div class="general-form">
     <div class="row">
-    <?php echo $frm->FormHeader(); ?>
+        <?php echo $frm->FormHeader(); ?>
         <div class="grd-primary">
             <?php echo $frm->FormBody(); ?>
         </div>
@@ -54,7 +54,29 @@ $frm->AddField('submit', '', _lg('Edit'));
 
         </div>
 
-    <?php echo $frm->FormFooter(); ?>
+        <div class="grd-secondary">
+            <div class="ui inverted segment">
+                <div class="ui inverted accordion">
+                    <div class="active title">
+                        <i class="dropdown icon"></i>
+                        <?php _lp('Icon') ?>
+                    </div>
+                    <div class="active content" style="min-height:150px">
+                        <div class="text-center margin">
+                            <i class="fa fa-4x <?php echo $this->record['topic_icon'] ?>" id="ico"></i>
+                        </div>
+                        <br />
+                        <button  class="ui button awesome-select" data-view="#ico" data-awesome="#topic_icon" value="<?php echo _lp('Select icon'); ?>" >
+                            <?php echo _lp('Select an icon'); ?>
+                        </button>
+                        <input type="hidden" value="<?php echo $view->record['topic_icon'] ?>" id="topic_icon" name="topic_icon" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <?php echo $frm->FormFooter(); ?>
 
 
         <div class="grd-secondary">
@@ -122,25 +144,6 @@ $frm->AddField('submit', '', _lg('Edit'));
             </div>
         </div>
 
-        <div class="grd-secondary">
-            <div class="ui inverted segment">
-                <div class="ui inverted accordion">
-                    <div class="active title">
-                        <i class="dropdown icon"></i>
-                        <?php _lp('Icon') ?>
-                    </div>
-                    <div class="active content" style="min-height:150px">
-                        <div class="text-center margin">
-                            <i class="fa fa-4x <?php echo $this->record['topic_icon'] ?>" id="ico"></i>
-                        </div>
-                        <br />
-                        <button type="submit" class="ui button awesome-select" data-view="#ico" data-awesome="#topic_icon" value="select icon" >
-                            <?php echo _lp('Select an icon'); ?>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </div>

@@ -2,6 +2,10 @@
 // global values
 var lastChecked = null;
 
+var fontaswsome_items = '';
+var fontawesome_target = '';
+var fontawesome_view = '';
+
 
 function responsiveControll() {
     if ($(window).width() <= 960) {
@@ -211,6 +215,50 @@ $(function () {
     });
 
 
+    $(".awesome-select").bind('click', function () {
+//        console.log(fontaswsome_items.length);
+//        var len =  ;
+        var title = $(this).val();
+        fontawesome_target = $(this).data('awesome');
+        fontawesome_view = $(this).data('view');
+        if ('' == fontaswsome_items) {
+            $.get(UR_MP + 'assets/css/font-awesome.min.css', function (r) {
+                var b = false;
+                var result = r.match(/fa\-([a-z]|-|[0-9])*/g);
+                fontaswsome_items = '<div class="ui modal awmodal">' +
+                        '<div class="header">' + title + '</div>' +
+                        '<div class="content"><ul id="fontawesome-items">';
+
+
+                for (var i in result) {
+                    if (b == false && result[i] != 'fa-glass') {
+                        continue;
+                    }
+                    b = true;
+                    if (result[i].length > 3) {
+
+                    }
+                    fontaswsome_items += '<li data-icon="' + result[i] + '"> <i class="fa ' + result[i] + '"></i> </li>';
+                }
+                fontaswsome_items += ' </ul> </div></div> ';
+                $("body").append(fontaswsome_items);
+                $('.awmodal.modal').modal('show');
+                fontaswsome_items = 'true';
+            });
+        } else {
+            $('.awmodal.modal').modal('show');
+        }
+        
+        return false;
+
+    });
+
+    $(document).on('click', '#fontawesome-items li', function () {
+        var icon = $(this).data('icon');
+        $(fontawesome_target).val(icon);
+        $(fontawesome_view).attr('class', 'fa fa-4x ' + icon);
+        $('.awmodal.modal').modal('hide');
+    });
 
 //#############################################################################
 //                               meni control
