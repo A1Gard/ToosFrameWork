@@ -526,6 +526,9 @@ $_LANG = array(
     'Guide',
     'راهنما',
     #
+    "Replay Text",
+    'متن پاسخ',
+    #
     't',
     '',
     #
