@@ -107,11 +107,11 @@ class TSystem extends TModel {
      * get comment count
      * @return int
      */
-    public function GetPenddlingCommentCount($number_only = false) {
+    public function GetPENDDINGCommentCount($number_only = false) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $number_only);
         $sql = "SELECT COUNT(*) AS 'count' FROM %table% WHERE comment_status = "
-                . COMMENT_STATUS_PENDDLING;
+                . COMMENT_STATUS_PENDDING;
         $result = $this->db->Select($sql, array('comment'));
         $result = $result[0]['count'];
         if (!$number_only) {

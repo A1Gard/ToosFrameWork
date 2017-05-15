@@ -204,7 +204,7 @@ define('MEMBER_BANDED', 3);
  * comment status
  */
 
-define('COMMENT_STATUS_PENDDLING', 0);
+define('COMMENT_STATUS_PENDDING', 0);
 define('COMMENT_STATUS_APPROVED', 1);
 define('COMMENT_STATUS_UNAPPROVED', 2);
 

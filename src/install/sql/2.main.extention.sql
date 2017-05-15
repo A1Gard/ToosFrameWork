@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `%prefix%comment` (
   `comment_member_id` int(11) NOT NULL COMMENT 'member id',
   `comment_text` mediumtext COLLATE utf8_estonian_ci NOT NULL COMMENT 'comment content',
   `comment_guest_info` text COLLATE utf8_estonian_ci COMMENT 'if guest info',
-  `comment_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'comment status, default = penddling',
+  `comment_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'comment status, default = pendding',
   `comment_ip` bigint(20) unsigned NOT NULL COMMENT 'commneter id',
   `comment_time` int(11) NOT NULL,
   `comment_parent` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '0 = not reply',
