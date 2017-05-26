@@ -89,8 +89,8 @@ class Category extends TController {
         $index = $side_menu->AddItem(_lg('Categories'), '#', 0, 'fa-book');
         $side_menu->AddItem(_lg('Categories classic list'), UR_MP .
                 'Category', $index);
-        $side_menu->AddItem(_lg('Categories node list'), UR_MP .
-                'Category/Pro', $index);
+//        $side_menu->AddItem(_lg('Categories node list'), UR_MP .
+//                'Category/Pro', $index);
     }
 
     /**

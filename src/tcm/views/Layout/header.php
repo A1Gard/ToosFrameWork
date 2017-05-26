@@ -109,12 +109,13 @@ $reg = TRegistry::GetInstance();
                 </a>
                 <a href="#" class="header item">
                     <img class="logo" src="<?php echo UR_MP ?>assets/img/wlogo.png" alt="logo">
+                    &nbsp;
                     <?php
                     _lp('Toos Framework');
                     ?>
                 </a>
-                <a href="#" class="item">Home</a>
-                <div class="ui simple dropdown item">
+                <a href="#" class="item"><?php echo _lp('Home'); ?></a>
+<!--                <div class="ui simple dropdown item">
                     Dropdown <i class="dropdown icon"></i>
                     <div class="menu">
                         <a class="item" href="#">Link Item</a>
@@ -131,7 +132,7 @@ $reg = TRegistry::GetInstance();
                         </div>
                         <a class="item" href="#">Link Item</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <div id="body-content">

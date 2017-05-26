@@ -6,10 +6,10 @@ $listview = new TListView('comment_id');
 $listview->SetList($this->cls_list);
 $listview->SetPattern(1, '<img src="' . UR_MP_ASSETS . 'images/comment%s.png" alt="[comment status]" />');
 $listview->AddColum(_lg('Status'), '%1comment_status', 2);
-$listview->AddColum('ip', '%icomment_ip', 3);
-$listview->AddColum(_lp("Datetime"), '%ucomment_time', 3);
-$listview->AddColum(_lp('Commenter'), 'manager_displayname,member_name', 3);
-$listview->AddColum(_lp('title'), 'topic_title', 7);
+$listview->AddColum(_lg('ip'), '%icomment_ip', 3);
+$listview->AddColum(_lg("Datetime"), '%ucomment_time', 3);
+$listview->AddColum(_lg('Commenter'), 'manager_displayname,member_name', 3);
+$listview->AddColum(_lg('title'), 'topic_title', 7);
 $listview->AddColum('', 'comment_text', 16);
 $pattern = '<a class="button delete" href="' . UR_MP . 'Comment/Delete/%id%"> ' . _lg('Delete') . ' </a>
                 <a class="button approve" href="' . UR_MP . 'Comment/Status/%id%/1"> ' . _lg('Approve') . ' </a>
