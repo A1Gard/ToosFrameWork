@@ -69,7 +69,7 @@ $frm->AddField('submit', '', _lg('Edit'));
                         <button  class="ui button awesome-select" data-view="#ico" data-awesome="#topic_icon" value="<?php echo _lp('Select icon'); ?>" >
                             <?php echo _lp('Select an icon'); ?>
                         </button>
-                        <input type="hidden" value="<?php echo $view->record['topic_icon'] ?>" id="topic_icon" name="topic_icon" />
+                        <input type="hidden" value="<?php echo $this->record['topic_icon'] ?>" id="topic_icon" name="topic_icon" />
                     </div>
                 </div>
             </div>
