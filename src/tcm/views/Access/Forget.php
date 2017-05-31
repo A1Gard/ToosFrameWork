@@ -137,7 +137,7 @@ $dt = TDate::GetInstance();
                             </div>
                         </div>
 
-                        <div class="ui fluid large teal submit button"><?php _lp('Send new password') ?></div>
+                        <button tabindex="0" class="ui fluid large teal submit button"><?php _lp('Send new password') ?></button>
                     </div>
 
                     <div class="ui error message"></div>
