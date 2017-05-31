@@ -159,7 +159,7 @@ require_once '../libs/TNotification.php';
 
                             </label>
                         </div>
-                        <div class="ui fluid large teal submit button"><?php _lp('Login') ?></div>
+                        <button class="ui fluid large teal submit button" tabindex="0"><?php _lp('Login') ?></button>
                     </div>
 
                     <div class="ui error message">
