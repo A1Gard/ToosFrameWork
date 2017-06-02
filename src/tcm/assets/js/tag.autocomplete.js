@@ -21,8 +21,7 @@
             /// add auto complete box for once time
             if ($("#tagautocomplete-box").length == 0) {
 
-                $('body').append('<ul id="tagautocomplete-box"><li>test</li><li>test</li></ul>');
-
+                $('body').append('<ul id="tagautocomplete-box"></ul>');
 
 
 
@@ -74,11 +73,15 @@
                 var str = $(this).val();
                 var tagRepo = $(this).parent().find('.tag-list');
                 var tags = str.split(',');
+
                 for (var i in tags) {
-                    $(tagRepo).append(' <a class="ui label">' +
-                            tags[i] +
-                            '<i class="delete icon"></i>' +
-                            '</a>');
+                    if (tags[i].length !== 0) {
+
+                        $(tagRepo).append(' <a class="ui label">' +
+                                tags[i] +
+                                '<i class="delete icon"></i>' +
+                                '</a>');
+                    }
                 }
                 $(this).val('');
             }
