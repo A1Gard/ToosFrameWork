@@ -60,6 +60,16 @@ function GoBack($message = null) {
     }
 }
 
+
+
+
+/**
+ * go back with js for save form information
+ */
+function GoBackJs() {
+    echo '<script type="text/javascript"> window.history.back(); </script>' ;
+}
+
 /**
  * @todo redirect to $location
  * @param string $location url to redirect
