@@ -61,6 +61,23 @@ class TModel {
         $database_handle = $this->db;
     }
 
+    
+    /**
+     * 
+     * @param string $table_name
+     * @param string $prefix
+     */
+    public function Reassign($table_name = null, $prefix = null) {
+        // set etable name
+        $this->table_name = $table_name;
+        // set prefix
+        if ($prefix == null) {
+            $this->prefix = $table_name . '_';
+        } else {
+            $this->prefix = $prefix;
+        }
+    }
+
     /**
      * @todo Read record list from table
      * @param string $colums list of required colum in list
@@ -103,7 +120,7 @@ class TModel {
         // if not have filter
         if (!isset($_GET['filter'], $_GET['search'])) {
             $where = array();
-        } 
+        }
         if (isset($_GET['filter'])) {
             $filter = explode(',', $_GET['filter']);
             // else have filter apply fillter
@@ -147,7 +164,7 @@ class TModel {
             $cond .= ')';
         }
 //        print_r($where);
-        if (isset($_GET['rel'], $_GET['typ']) && $_GET['rel'] != 0  ) {
+        if (isset($_GET['rel'], $_GET['typ']) && $_GET['rel'] != 0) {
             $sql = "SELECT $colums 
         FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
         ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ORDER BY {$order}  LIMIT $start,$limit";
@@ -176,7 +193,7 @@ class TModel {
         $result = $this->db->Insert($this->table_name, $data);
         return $this->db->last_insert_id;
     }
-    
+
     /**
      * @todo replace data to table width array
      * @param array $data 
@@ -244,7 +261,7 @@ class TModel {
         // if not have filter
         if (!isset($_GET['filter'], $_GET['search'])) {
             $where = array();
-        } 
+        }
         if (isset($_GET['filter'])) {
             $filter = explode(',', $_GET['filter']);
             // else have filter apply fillter
@@ -288,7 +305,7 @@ class TModel {
             $cond .= ')';
         }
 
-        if ( isset($_GET['rel'],$_GET['typ']) && $_GET['rel'] != 0 ) {
+        if (isset($_GET['rel'], $_GET['typ']) && $_GET['rel'] != 0) {
             $sql = "SELECT COUNT(*) AS 'count' 
         FROM " . DB_PREFIX . $this->table_name . " as t LEFT JOIN " . DB_PREFIX . "relation r 
         ON r.dst = t." . $this->prefix . "id WHERE r.typ =  :t  AND r.src = :s  AND $cond ";
@@ -322,16 +339,17 @@ class TModel {
      */
     function Selectable($title = null, $value = null, $where = '1') {
         if ($title == null) {
-            $title = $this->prefix . 'title' ;
+            $title = $this->prefix . 'title';
         }
         if ($value == null) {
-            $value = $this->prefix . 'id' ;
+            $value = $this->prefix . 'id';
         }
         $sql = "SELECT $value AS '0',$title AS '1' FROM %table% WHERE "
                 . " $where ";
         $result = $this->db->Select($sql, array($this->table_name));
         return $result;
     }
+
     /**
      * get normal array for display in TListview
      * @param string $title field for title of <option> ;
@@ -341,15 +359,15 @@ class TModel {
      */
     function NormalArray($title = null, $value = null, $where = '1') {
         if ($title == null) {
-            $title = $this->prefix . 'title' ;
+            $title = $this->prefix . 'title';
         }
         if ($value == null) {
-            $value = $this->prefix . 'id' ;
+            $value = $this->prefix . 'id';
         }
         $sql = "SELECT $value ,$title FROM %table% WHERE "
                 . " $where ";
         $res = $this->db->Select($sql, array($this->table_name));
-        foreach ($res as  $record) {
+        foreach ($res as $record) {
             $result[$record[$value]] = $record[$title];
         }
         return $result;
