@@ -404,4 +404,14 @@ class TModel {
         $rel->Add($src, $dst, $type . $this->relatiion_suffix);
     }
 
+    /**
+     * get relation 
+     * @param int $dst
+     * @param int $type
+     */
+    public function GetRelation($dst, $type) {
+        $rel = TRelation::GetInstance();
+        return  $rel->GetByDestination($dst, $type . $this->relatiion_suffix);
+    }
+
 }
