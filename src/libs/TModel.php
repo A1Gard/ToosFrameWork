@@ -13,6 +13,7 @@ class TModel {
     // table name for general functopn in this class
     private $table_name = null;
     private $prefix = null;
+    private $relatiion_suffix = '';
 
     function __construct($table_name = null, $prefix = null) {
 
@@ -61,7 +62,14 @@ class TModel {
         $database_handle = $this->db;
     }
 
-    
+    /**
+     * set default suffix
+     * @param int $suffix
+     */
+    public function SetRealtionPrefix($suffix) {
+        $this->relatiion_suffix = $suffix;
+    }
+
     /**
      * 
      * @param string $table_name
@@ -383,6 +391,17 @@ class TModel {
     function ReadEx($fields, $where = '1', $params = array()) {
         $result = $this->db->Select("SELECT $fields FROM %table% WHERE $where", array($this->table_name), $params);
         return $result;
+    }
+
+    /**
+     * add relation info
+     * @param int $src
+     * @param int $dst
+     * @param int $type
+     */
+    public function AddRelation($src, $dst, $type) {
+        $rel = TRelation::GetInstance();
+        $rel->Add($src, $dst, $type . $this->relatiion_suffix);
     }
 
 }
