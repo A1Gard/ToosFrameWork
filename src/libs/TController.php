@@ -162,6 +162,19 @@ class TController extends TBootstarp {
     }
 
     /**
+     * add realtion 
+     * @param string $src
+     * @param int $dst
+     * @param int $type
+     */
+    public function AddRelation($src, $dst, $type) {
+        $lst = explode(',', $src);
+        foreach ($lst as $curr_src) {
+            $this->model->AddRelation($curr_src, $dst, $type);
+        }
+    }
+
+    /**
      * extension finalizer | run once on extension unstialling 
      * @return boolean
      */
