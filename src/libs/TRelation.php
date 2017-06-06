@@ -35,7 +35,7 @@ class TRelation extends TModel {
         // insert relation
         $data = array('src' => $source,
             'dst' => $destination, 'typ' => $type);
-        $result = $this->db->Insert('relation', $data);
+        $result = $this->db->SafeInsert('relation', $data);
 
         return $result;
     }
