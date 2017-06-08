@@ -401,7 +401,7 @@ class TModel {
      */
     public function AddRelation($src, $dst, $type) {
         $rel = TRelation::GetInstance();
-        $rel->Add($src, $dst, $type . $this->relatiion_suffix);
+        return $rel->Add($src, $dst, $type . $this->relatiion_suffix);
     }
 
     /**
@@ -411,7 +411,18 @@ class TModel {
      */
     public function GetRelation($dst, $type) {
         $rel = TRelation::GetInstance();
-        return  $rel->GetByDestination($dst, $type . $this->relatiion_suffix);
+        return $rel->GetByDestination($dst, $type . $this->relatiion_suffix);
+    }
+
+    /**
+     * remove relation info
+     * @param int $src
+     * @param int $dst
+     * @param int $type
+     */
+    public function RemoveRelation($src, $dst, $type) {
+        $rel = TRelation::GetInstance();
+        return $rel->Remove($src, $dst, $type . $this->relatiion_suffix);
     }
 
 }
