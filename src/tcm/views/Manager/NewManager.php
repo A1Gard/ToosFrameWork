@@ -2,15 +2,15 @@
 global $MANAGER_TYPE;
 $frm = new TForm(UR_MP . 'Manager/Insert', 'post', array('class' => 'form'));
 
-$frm->AddField('text', _lg('Username'), null, array('name' => 'manager_username'));
-$frm->AddField('email', _lg('Email'), null, array('name' => 'manager_email'));
-$frm->AddField('password', _lg('password'), null, array('name' => 'manager_password'));
-$frm->AddField('text', _lg('Display name'), null, array('name' => 'manager_displayname'));
+$frm->AddField('text', ('Username'), null, array('name' => 'manager_username'));
+$frm->AddField('email', ('Email'), null, array('name' => 'manager_email'));
+$frm->AddField('password', ('password'), null, array('name' => 'manager_password'));
+$frm->AddField('text', ('Display name'), null, array('name' => 'manager_displayname'));
 
-$frm->AddField('select', _lg('Type'), null, array('name' => 'manager_type'), $MANAGER_TYPE);
-$frm->AddField('checkbox', _lg('Protected'), 1, array('name' => 'manager_protected'));
+$frm->AddField('select', ('Type'), null, array('name' => 'manager_type'), $MANAGER_TYPE);
+$frm->AddField('checkbox', ('Protected'), 1, array('name' => 'manager_protected'));
 
-$frm->AddField('submit', '', _lg('Submit'));
+$frm->AddField('submit', '', ('Submit'));
 ?>
 
 
