@@ -79,7 +79,7 @@ $_LANG = array(
     'کلاس',
     # controller/Topic-controller.php:18
     'Topic',
-    'یاددداشت',
+    'یادداشت',
     # controller/Doc-controller.php:18
     'Doc',
     'سند',
@@ -528,6 +528,42 @@ $_LANG = array(
     #
     "Replay Text",
     'متن پاسخ',
+    #
+    'Keywords',
+    'کلمات کلیدی',
+    #
+    'Abstract',
+    'چکیده',
+    #
+    'Text',
+    'متن',
+    #
+    'Submit',
+    'ارسال',
+    #
+    'VC',
+    'ت ب',
+    #
+    'DateTime',
+    'تاریخ و ساعت',
+    #
+    'Commenter',
+    'ارسال کننده',
+    #
+    't',
+    '',
+    #
+    't',
+    '',
+    #
+    't',
+    '',
+    #
+    't',
+    '',
+    #
+    't',
+    '',
     #
     't',
     '',
