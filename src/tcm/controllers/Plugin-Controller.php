@@ -23,7 +23,7 @@ class Plugin extends TController {
         $this->_notifiControl(func_get_args());
         $this->view->plugins = $this->model->PluginFinder();
 
-        $this->view->PageRender('Plugin/Index', self::$_main_title);
+        $this->view->PageRender('Plugin/Index'. __CLASS__, self::$_main_title);
     }
 
     public function Status($id, $new_staus) {
@@ -40,7 +40,7 @@ class Plugin extends TController {
     public static function Loader() {
         global $side_menu;
 
-        $index = $side_menu->AddItem(_lg('Plugin'), 'Plugin', 0, 'fa-plug');
+        $index = $side_menu->AddItem(_lg('Plugin'), UR_MP . 'Plugin', 0, 'fa-plug');
     }
 
     public function BulkAction() {
