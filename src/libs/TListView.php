@@ -179,7 +179,7 @@ class TListView {
                 }
                 $result .= '&nbsp;<button class="ui button"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['search']) && $_GET['search'] != '') {
-                    $result .= '&nbsp;<button onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
+                    $result .= '&nbsp;<button class="ui button" onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
                 $result .= '</form></div>';
             }
@@ -209,7 +209,7 @@ class TListView {
 
                 $result .= '&nbsp;<button  class="ui button"><span class="fa fa-search"></span></button>';
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
-                    $result .= '&nbsp;<button onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
+                    $result .= '&nbsp;<button class="ui button" onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
                 $result .= '</form>';
             }
@@ -232,7 +232,7 @@ class TListView {
             foreach ($this->filter['title'] as $key => $value) {
                 $result .= '<a class="button ui" href="' . $prefix . 'filter=' .
                         $this->filter['key'][$key] . ',' .
-                        $this->filter['value'][$key] . '">' . $value . '</a>';
+                        $this->filter['value'][$key] . '">' .  _lg($value) . '</a>';
             }
 
             $result .= '</div>';
@@ -272,7 +272,7 @@ class TListView {
             }
             $result .= '<a href="' . $prefix . 'order=' . $col_name
                     . (!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order'] == $col_name ? '&desc=1' : '' ) . '"  class="grd' .
-                    $this->column['size'][$key] . ' head" >' . $value . '</a>';
+                    $this->column['size'][$key] . ' head" >' .  _lg($value) . '</a>';
         }
         // action haader
         $result .= '<div class="grd' . $this->action['size'] . ' head"> &nbsp; </div>';
@@ -302,6 +302,9 @@ class TListView {
                         case '%i':
                             $a = substr($value, 2);
                             $result .= long2ip($record[$a]);
+                        case '%c':
+                            $a = substr($value, 2);
+                            $result .= number_format($record[$a]);
 
                             break;
                         case '%t':
@@ -385,7 +388,7 @@ class TListView {
             foreach ($this->bulk_action['function'] as $key => $value) {
                 $result .= '<option  value="' . $value . ',' .
                         $this->bulk_action['value'][$key] . '">'
-                        . $this->bulk_action['title'][$key] . '</option>';
+                        ._lg( $this->bulk_action['title'][$key]) . '</option>';
             }
 
             $result .= '</select> &nbsp;';
