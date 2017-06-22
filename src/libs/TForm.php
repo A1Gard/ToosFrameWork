@@ -175,7 +175,7 @@ class TForm {
         if ($value == null) :
 
             foreach ($items as $data) {
-                $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                $select .= '<option value="' . $data[0] . '" >' .  _lg($data[1]) . '</option>' . PHP_EOL;
             }
 
         else:  // have default value
@@ -183,10 +183,10 @@ class TForm {
 
                 // if equal default value
                 if ($data[0] == $value) {
-                    $select .= '<option selected="" value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                    $select .= '<option selected="" value="' . $data[0] . '" >' . _lg($data[1]) . '</option>' . PHP_EOL;
                     continue;
                 }
-                $select .= '<option value="' . $data[0] . '" >' . $data[1] . '</option>' . PHP_EOL;
+                $select .= '<option value="' . $data[0] . '" >' . _lg($data[1]) . '</option>' . PHP_EOL;
             }
         endif; // if have not defualt value
 
@@ -309,21 +309,21 @@ class TForm {
         switch ($type) {
 
             case 'other':
-                $result = ' <div class="field"> <label>  ' . $label . '  </label> ' . $element . ' </div>' . PHP_EOL;
+                    $result = ' <div class="field"> <label>  ' . _lg($label) . '  </label> ' . $element . ' </div>' . PHP_EOL;
                 break;
 
             case 'checkbox':
-                $result = '<div class="inline field"> <div class="ui checkbox"> ' . $element . '<label>' . $label . ' </label> </div></div> ' . PHP_EOL;
+                $result = '<div class="inline field"> <div class="ui checkbox"> ' . $element . '<label>' .  _lg($label)  . ' </label> </div></div> ' . PHP_EOL;
                 break;
             case 'radio':
-                $result = '<div class="inline fields">  <div class="field">' . $label . ' : ' . $element . ' </div></div>' . PHP_EOL;
+                $result = '<div class="inline fields">  <div class="field">' .  _lg($label)  . ' : ' . $element . ' </div></div>' . PHP_EOL;
                 break;
             case 'hidden':
                 $result = $element . PHP_EOL;
                 break;
 
             default:
-                $result = '<div class="field"> <label>  ' . $label . ' </label> ' . $element . ' </div>' . PHP_EOL;
+                $result = '<div class="field"> <label>  ' .  _lg($label)  . ' </label> ' . $element . ' </div>' . PHP_EOL;
                 break;
         }
 
