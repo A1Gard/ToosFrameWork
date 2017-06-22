@@ -7,15 +7,15 @@ $topic_status = array(
 
 $frm = new TForm(UR_MP . 'Topic/Insert', 'post', array('class' => 'form rtl'));
 
-$frm->AddField('text', _lg('Title'), null, array('name' => 'topic_title'));
-$frm->AddField('text', _lg('Keywords'), null, array('name' => 'topic_keyword'));
+$frm->AddField('text', ('Title'), null, array('name' => 'topic_title'));
+$frm->AddField('text', ('Keywords'), null, array('name' => 'topic_keyword'));
 
-$frm->AddField('textarea', _lg('Abstract'), null, array('name' => 'topic_abstract'));
-$frm->AddField('textarea', _lg('Text'), null, array('name' => 'topic_text', 'class' => 'ckeditor'));
+$frm->AddField('textarea', ('Abstract'), null, array('name' => 'topic_abstract'));
+$frm->AddField('textarea', ('Text'), null, array('name' => 'topic_text', 'class' => 'ckeditor'));
 //$frm->AddField('spliter', 'تست اسپیلتر');
 
-$frm->AddField('select', _lg('Status'), null, array('name' => 'topic_status'), $topic_status);
-$frm->AddField('submit', '', _lg('Submit'));
+$frm->AddField('select', ('Status'), null, array('name' => 'topic_status'), $topic_status);
+$frm->AddField('submit', '', ('Submit'));
 //    $frm->AddField('text', 'label', null, array('name' => ''));
 ?>
 
