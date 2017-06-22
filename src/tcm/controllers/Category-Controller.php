@@ -23,7 +23,7 @@ class Category extends TController {
 
         $this->view->cls_list = $this->model->CategoryList();
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Index', self::$_main_title);
+        $this->view->PageRender('Category/Index'. __CLASS__, self::$_main_title);
     }
 
     public function Insert() {
@@ -35,12 +35,12 @@ class Category extends TController {
         $this->view->navigator->AddItem(_lg('Categories'), UR_MP . 'Category/Index');
         $this->view->record = $this->model->GetRecord($id);
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['category_title']);
+        $this->view->PageRender('Category/Edit'. __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['category_title']);
     }
 
-    public function Pro() {
+    public function Node() {
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Pro', self::$_main_title . " Pro");
+        $this->view->PageRender('Category/Node'. __CLASS__, self::$_main_title . " Pro");
     }
 
     public function Update($id) {

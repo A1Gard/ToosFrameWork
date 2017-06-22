@@ -47,7 +47,7 @@ class DropDownMenu extends TController {
      */
     public function Index() {
         $this->view->dropdown = new TDropDownMenu();
-        $this->view->PageRender('DropDownMenu/Index', self::$_main_title);
+        $this->view->PageRender('DropDownMenu/Index'. __CLASS__, self::$_main_title);
     }
 
     public function Insert() {

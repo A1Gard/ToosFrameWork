@@ -23,7 +23,7 @@ class Access extends TController {
     public function Index() {
 
         $this->view->msg = "We are in index......";
-        $this->view->PageRender('Index/Index', self::$_main_title);
+        $this->view->PageRender('Index/Index' . __CLASS__, self::$_main_title);
     }
 
     /**

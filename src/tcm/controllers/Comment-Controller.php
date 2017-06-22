@@ -24,7 +24,7 @@ class Comment extends TController {
         $this->view->cls_list = $this->model->Read('comment_id,comment_ip, comment_time, '
                 . 'comment_member_id, comment_status, comment_parent, comment_text,comment_topic_id');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
-        $this->view->PageRender('Comment/Index', self::$_main_title);
+        $this->view->PageRender('Comment/Index'. __CLASS__, self::$_main_title);
     }
 
     /**
@@ -35,7 +35,7 @@ class Comment extends TController {
         $this->view->prn = $parent;
         $this->view->tid = $topic_id;
         $this->view->navigator->AddItem(_lg('Comments'), UR_MP . 'Comment/Index');
-        $this->view->PageRender('Comment/NewComment', self::$_main_title . ' جدید ');
+        $this->view->PageRender('Comment/New'. __CLASS__, self::$_main_title . ' جدید ');
     }
 
     public function Insert() {

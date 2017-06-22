@@ -73,7 +73,7 @@ class Index extends TController {
         $this->view->lastsch = $sys->GetRecordByOrd('statistic', 'statistic_id', ' CHAR_LENGTH(statistic_keyword) > 2 ', 'DESC');
 
         $this->view->vis = $viss;
-        $this->view->PageRender('Index/Index', _lg('Desktop'));
+        $this->view->PageRender('Index/Index'. __CLASS__, _lg('Desktop'));
     }
 
     public function Sentence1() {
@@ -102,7 +102,7 @@ class Index extends TController {
 
     public function Setting() {
         $this->view->Setting = $this->model->Setting();
-        $this->view->PageRender('Index/Setting', _lg('Setting'));
+        $this->view->PageRender('Index/Setting'. __CLASS__, _lg('Setting'));
     }
 
     public function Sell() {
