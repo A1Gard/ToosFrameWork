@@ -1,21 +1,21 @@
 <?php
 $frm = new TForm(UR_MP . 'Member/Insert', 'post', array('class' => 'form rtl'));
 
-$frm->AddField('text', 'نام', null, array('name' => 'member_name'));
-$frm->AddField('email', 'ایمیل', null, array('name' => 'member_email'));
-$frm->AddField('password', 'گذرواژه', null, array('name' => 'member_password'));
-$frm->AddField('text', 'استاتوس', null, array('name' => 'member_status'));
-$frm->AddField('text', 'زمان تمدید', null, array('name' => 'member_active_time', 'class' => _lg('datepicker')));
-$frm->AddField('file', 'آواتار', null, array('name' => 'member_avatar'));
-$frm->AddField('text', 'مقطع', null, array('name' => 'member_degree'));
-$frm->AddField('text', 'رشته تحصیلی', null, array('name' => 'member_field'));
-$frm->AddField('text', 'شماره تماس', null, array('name' => 'member_number'));
-$frm->AddField('text', 'شهر', null, array('name' => 'member_city'));
-$frm->AddField('select', 'نوع', null, array('name' => 'member_type'), array(0 => array('0', 'تایید نشده'),
+$frm->AddField('text', 'Name', null, array('name' => 'member_name'));
+$frm->AddField('email', 'Email', null, array('name' => 'member_email'));
+$frm->AddField('password', 'Password', null, array('name' => 'member_password'));
+$frm->AddField('text', 'Status', null, array('name' => 'member_status'));
+$frm->AddField('text', 'Active Time', null, array('name' => 'member_active_time', 'class' => _lg('datepicker')));
+$frm->AddField('file', 'Avatar', null, array('name' => 'member_avatar'));
+$frm->AddField('text', 'Degree', null, array('name' => 'member_degree'));
+$frm->AddField('text', 'Field', null, array('name' => 'member_field'));
+$frm->AddField('text', 'Phone', null, array('name' => 'member_number'));
+$frm->AddField('text', 'City', null, array('name' => 'member_city'));
+$frm->AddField('select', 'Type', null, array('name' => 'member_type'), array(0 => array('0', 'تایید نشده'),
     1 => array('1', 'تایید شده'),
     2 => array('2', 'اخراجی')));
 
-$frm->AddField('submit', '', 'ارسال');
+$frm->AddField('submit', '', 'Submit');
 ?>
 <br />
 <h2 class="rtl">
