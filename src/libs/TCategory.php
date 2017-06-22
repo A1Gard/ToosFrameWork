@@ -118,7 +118,7 @@ class TCategory extends TModel {
                 $this->table_name . '_id' . ' <> :id ';
         $result = $this->db->Select($sql, array($this->table_name), array('type' => 'i', ':id' => (int) $expect_id), PDO::FETCH_BOTH);
         $result[-1][0] = 0;
-        $result[-1][1] = _lg('No parent');
+        $result[-1][1] = 'No parent';
         sort($result);
        
         // result hook
