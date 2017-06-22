@@ -25,26 +25,14 @@ class Member extends TController {
 
         $this->view->cls_list = $this->model->Read('member_id, member_name, member_email, member_type, member_register_time');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
-        $this->view->PageRender('Member/Index', self::$_main_title);
+        $this->view->PageRender('Member/Index'. __CLASS__, self::$_main_title);
     }
 
     public function NewMember() {
         $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
-        $this->view->PageRender('Member/NewMember', self::$_main_title . ' جدید ');
+        $this->view->PageRender('Member/New'. __CLASS__, self::$_main_title . ' جدید ');
     }
-
-    public function RIns() {
-        $this->report->Create($_POST);
-        Redirect(UR_MP . 'Member/Edit/' . $_POST['report_member_id']);
-    }
-
-    public function Report($id) {
-        $this->view->navigator->AddItem(_lg('Members'), UR_MP . 'Member/Index');
-        $this->view->navigator->AddItem('  بازگشت به صفحه عضو', UR_MP . 'Member/Edit/' . $id);
-        $this->view->id = $id;
-        $this->view->PageRender('Member/Report', '  کارنامه جدید');
-    }
-
+    
     public function Insert() {
         $_POST['member_password'] = Password($_POST['member_password']);
         $date = TDate::GetInstance();
@@ -59,7 +47,7 @@ class Member extends TController {
         $this->view->record = $this->model->GetRecord($id);
         $_GET['filter'] = 'report_member_id,' . $id;
 //        $this->view->reports = $this->report->Read('report_id,report_title', 99);
-        $this->view->PageRender('Member/Edit', self::$_main_title . ' ویرایش  - ' . $this->view->record['member_name']);
+        $this->view->PageRender('Member/Edit'. __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['member_name']);
     }
 
     public function Update($id) {
