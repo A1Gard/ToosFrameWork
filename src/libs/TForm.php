@@ -257,7 +257,7 @@ class TForm {
                 $input .= ' <div class="ui radio checkbox"> <input type="radio" ' .
                         $this->_makeAttr($attr) . " value=" . $data[0] .
                         ($value == $data[0] ? ' checked="" ' : '') . ' /> <label>' .
-                        $data[1] . '</label> </div>  &nbsp;&nbsp; &nbsp;';
+                        _lg($data[1]). '</label> </div>  &nbsp;&nbsp; &nbsp;';
             }
             // checkbox event   
         } elseif ($type == 'checkbox') {
@@ -276,7 +276,7 @@ class TForm {
             // normal input genarate
             $input = '<input  type="' . $type .
                     '" ' . $this->_makeAttr($attr) . " " .
-                    ($value == 'null' ? '' : 'value="' . $value . '"') . '/>';
+                            ($value == 'null' ? '' : 'value="' . _lg($value) . '"') . '/>';
         } else { // normal input genarate
             $input = '<input placeholder="' . $label . '" type="' . $type .
                     '" ' . $this->_makeAttr($attr) . " " .
