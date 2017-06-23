@@ -988,3 +988,70 @@ ol.drg li.placeholder:before {
 .qshortcuts .ui.button i{
     font-size: 20pt;
 }
+
+
+/*upload modal*/
+
+
+#upload-modal {
+
+    color: #111 ;
+
+}
+
+#upload-modal .tab{
+    height: 350px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+#upload-modal #drg-upload{
+    border: 2px dashed #ddd ;
+    text-align: center;
+    font-size: 25px;
+    padding: 70px 0 ;
+}
+#upload-modal #drg-upload.dragenter{
+    border: 2px dashed #0066cc ;
+
+}
+
+#upload-progress{
+    display: none;
+}
+#upload-modal .image{
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+    background: #28282e ;
+}
+#upload-modal .image img{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#upload-modal .card a,.gallery .card a{
+    font-size: 9pt !important;
+}
+#upload-modal .card{
+    cursor: pointer;
+}
+
+#upload-modal .card.selceted{
+    background:   #1392e9 !important ;
+    -o-transition:.6s;
+    -ms-transition:.6s;
+    -moz-transition:.6s;
+    -webkit-transition:.6s;
+    transition:.6s;
+}
+
+
+#upload-modal .card.selceted a{
+    color: #fff ;
+}

@@ -148,6 +148,99 @@ class TUpload {
     }
 
     /**
+     * save upload file
+     * @param string $file_name $_FILES array key
+     * @return mixed
+     */
+    public function MultiSave($file_name,$index) {
+
+        // pre
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $file_name);
+
+        $result = array('success' => TRUE, 'value' => '');
+        // check file resived ture
+        if ($_FILES[$file_name]["error"][$index] > 0) {
+            $result['success'] = FALSE;
+            $result['value'] = $_FILES[$file_name]["error"][$index];
+        } else {
+            global  $ext;
+            $ext = strtolower(pathinfo($_FILES[$file_name]["name"][$index], PATHINFO_EXTENSION));
+            $_FILES[$file_name]["name"][$index] = substr($_FILES[$file_name]["name"][$index], 0, strlen($_FILES[$file_name]["name"][$index]) - ( ( strlen($ext) ) + 1 ));
+            if ($this->upload_mode == UPLOAD_BY_TYPE) {
+
+                $destination = $this->upload_dir . '/' . $ext . '/';
+                if (!file_exists($destination)) {
+                    mkdir($destination, 0777, true);
+                }
+            } else {
+                $destination = $this->upload_dir . '/';
+            }
+
+
+            if (!file_exists($destination . $_FILES[$file_name]["name"][$index] . '.' . $ext)) {
+
+                $uploaded_file = $destination . $_FILES[$file_name]["name"][$index] . '.' . $ext;
+            } else {
+                $i = 0;
+                do {
+                    $i++;
+                    $uploaded_file = $destination . $_FILES[$file_name]["name"][$index]
+                            . '_' . $i . '.' . $ext;
+                } while (file_exists($uploaded_file));
+                $_FILES[$file_name]["name"][$index] = $_FILES[$file_name]["name"][$index] . '_' . $i.'.';
+            }
+            $x = $this->_msave($file_name,$index, $uploaded_file);
+
+            $result['value']['name'] = $_FILES[$file_name]["name"][$index];
+            $result['value']['size'] = $_FILES[$file_name]["size"][$index];
+            $result['value']['path'] = $uploaded_file;
+            $result['value']['ext'] = $ext;
+
+            // result hook
+            _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+            return $result;
+        }
+    }
+
+    /**
+     * private save by the rules
+     * @param string $file_name $_FILES array key
+     * @param string $file_destination
+     * @param bool $allow_overwrite
+     * @return string | bool
+     */
+    private function _msave($file_name,$index, $file_destination, $allow_overwrite = TRUE) {
+
+         // pre
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $file_destination
+                , $allow_overwrite, $type);
+        
+        // get file info
+        $size = $_FILES[$file_name]["size"][$index];
+        global  $ext;
+//        $ext = strtolower(pathinfo($_FILES[$file_name]["name"], PATHINFO_EXTENSION));
+
+        // check all file info
+        if (!in_array($ext, $this->allowed_type)) {
+            return 'File type is not allowed.';
+        }
+
+        if ($size > MAX_UPLOAD_SIZE) {
+            return 'File size is bigger than allowed.';
+        }
+
+        if ($allow_overwrite == false && file_exists($file_destination)) {
+            return 'Denny to overwrite';
+        }
+
+        $result = move_uploaded_file($_FILES[$file_name]["tmp_name"][$index], $file_destination);
+        
+        // result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result);
+        return $result;
+    }
+
+    /**
      * save force by take and folder file
      * @param string $file_name $_FILES array key
      * @param string $dir directory in upload folder

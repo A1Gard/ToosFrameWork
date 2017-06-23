@@ -15,7 +15,7 @@
 class UploadModel extends TModel {
 
     function __construct() {
-        parent::__construct('attach');
+        parent::__construct('upload','up_');
     }    
     
     

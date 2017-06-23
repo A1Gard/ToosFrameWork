@@ -5,6 +5,8 @@ var lastChecked = null;
 var fontaswsome_items = '';
 var fontawesome_target = '';
 var fontawesome_view = '';
+var upload_file_list;
+
 
 
 function responsiveControll() {
@@ -76,6 +78,40 @@ function onRemoveTag(tag) {
 }
 
 
+
+// start upload ajax ;
+
+function startUpload() {
+    $('#upload-progress').show();
+    var fd = new FormData;
+    for (var f in upload_file_list) {
+        var file = upload_file_list[f];
+        fd.append('file[' + f + ']', file);
+    }
+    var xhr = new XMLHttpRequest();
+    (xhr.upload || xhr).addEventListener('progress', function (e) {
+        var done = e.position || e.loaded
+        var total = e.totalSize || e.total;
+        $('#upload-progress').progress({
+            percent: Math.round(done / total * 100)
+        });
+    });
+    xhr.addEventListener('load', function (e) {
+        $('#upload-progress').hide();
+        $.get(UR_MP + 'Upload/UploadList', function (e) {
+            upload_list.items = e;
+            $("#uploaded").click();
+        });
+    });
+    xhr.open('post', UR_MP + 'Upload/MultiAdd/file', true);
+    xhr.send(fd);
+
+
+}
+
+
+
+
 $(function () {
 
 
@@ -112,7 +148,9 @@ $(function () {
     $('.ui.dropdown').dropdown({
         on: 'hover'
     });
-
+    $('.menu .item')
+            .tab()
+            ;
 
     $('.message .close')
             .on('click', function () {
@@ -248,7 +286,7 @@ $(function () {
         } else {
             $('.awmodal.modal').modal('show');
         }
-        
+
         return false;
 
     });
@@ -261,11 +299,93 @@ $(function () {
     });
 
 //#############################################################################
+//                               Drag and drop | click upload modal
+//#############################################################################
+
+    $('#drg-upload').on(
+            'dragover',
+            function (e) {
+//                $(this).removeClass('dragenter');
+                e.preventDefault();
+                e.stopPropagation();
+            }
+    );
+
+    $('#drg-upload').on(
+            'dragleave',
+            function (e) {
+                $(this).removeClass('dragenter');
+                e.preventDefault();
+                e.stopPropagation();
+            }
+    );
+    $('#drg-upload').on(
+            'dragenter',
+            function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).addClass('dragenter');
+            }
+    );
+
+    $('#drg-upload').on(
+            'drop',
+            function (e) {
+                if (e.originalEvent.dataTransfer) {
+                    if (e.originalEvent.dataTransfer.files.length) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        /*UPLOAD FILES HERE*/
+//                        console.log(e.originalEvent.dataTransfer.files);
+                        upload_file_list = e.originalEvent.dataTransfer.files;
+                        startUpload();
+                    }
+                }
+                $(this).removeClass('dragenter');
+            }
+    );
+    $('#drg-upload').bind('click', function () {
+        $("#hide-file-selector").trigger('click');
+    });
+
+    $("#hide-file-selector").bind('change', function () {
+//        console.log($(this)[0].files);
+        upload_file_list = $(this)[0].files;
+        startUpload();
+    });
+
+
+    $("#upload-modal .actions .button").bind('click.rem', function () {
+    });
+
+
+
+    $(document).on('click', "#upload-modal:not(.multiple) .card", function () {
+        $("#upload-modal .card").removeClass('selceted');
+        $(this).addClass('selceted');
+    });
+
+    $(document).on('click', "#upload-modal.multiple .card", function () {
+        $(this).toggleClass('selceted');
+    });
+//#############################################################################
 //                               meni control
 //#############################################################################
 
     $("#menu-control").bind('click', function () {
         $('#side-bar').sidebar('toggle');
+    });
+//#############################################################################
+//                               bulk action confirm
+//#############################################################################
+
+    $(".listview-form").bind('submit', function () {
+        var value = $(this).find("select").val();
+        if ( value.indexOf('Delete')  !== -1 || value.indexOf('delete')  !== -1) {
+            if (!confirm('Are you sure for delete?')) {
+                return false;
+            }
+        }
     });
 
 //#############################################################################
@@ -353,4 +473,9 @@ $(window).load(function () {
         }
 
     });
+//
+//    $('#upload-modal')
+//            .modal('show')
+//            ;
 });
+

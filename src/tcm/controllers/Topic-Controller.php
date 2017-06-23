@@ -20,7 +20,6 @@ class Topic extends TController {
      * @todo Show index without any thing
      */
     public function Index() {
-        $this->_notifiControl(func_get_args());
         $this->view->cls_list = $this->model->Read('topic_id, topic_counter, '
                 . 'topic_title, topic_status');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
@@ -33,7 +32,6 @@ class Topic extends TController {
     }
 
     public function Edit($id) {
-        $this->_notifiControl(func_get_args());
         $this->view->navigator->AddItem(_lg('Topics'), UR_MP . 'Topic/Index');
         $this->view->record = $this->model->GetRecord($id);
         $tag = new TTag();
