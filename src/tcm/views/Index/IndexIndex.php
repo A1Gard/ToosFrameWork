@@ -131,199 +131,58 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
 
     </div>
     <div class="grd24">
+        <?php
+        $chart1 = new TChart(CHART_MODE_AREA, 'testid');
+        $chart1->SetRTL();
+        $chart1->SetTitle('Sample نمونه 1');
+        $chart1->SetSubtitle('Source: <a href="http://github.com/A1Gard"> mychart subtitle </a>');
+        $chart1->SetTooltip(array('text' => array('pointFormat' => '{series.name} ')));
+        $chart1->SetyAxis(array('title' => array('text' => ' نوشته text اریب')));
+        $chart1->SetxAxis(array('allowDecimals' => false));
+        $chart1->SetOption(array('area' => array(
+                'pointStart' => 2010,
+                'marker' => array(
+                    'enabled' => FALSE,
+                    'symbol' => 'circle',
+                    'radius' => 2
+                )
+        )));
+        $chart1->AddSerie('Iran', array(12, 14, 35, 10, 14, 16, 26, 14, 36, 6));
+        $chart1->AddSerie('Russia', array(34, 24, 21, 30, 10, 8, 11, 15, 4, 27));
 
-        <div id="container" style="min-width: 230px; height: 400px; margin: 0 auto;direction: ltr"></div>
+        echo $chart1->ChartRender('100%', '400px');
+        echo $chart1->JsRender();
+        ?>
+        <br />
+        <br />
+        <br />
 
-
-
-        <script type="text/javascript">
-
-
-            var ranges = [
-                [1246406400000, 14.3, 27.7],
-                [1246492800000, 14.5, 27.8],
-                [1246579200000, 15.5, 29.6],
-                [1246665600000, 16.7, 30.7],
-                [1246752000000, 16.5, 25.0],
-                [1246838400000, 17.8, 25.7],
-                [1246924800000, 13.5, 24.8],
-                [1247011200000, 10.5, 21.4],
-                [1247097600000, 9.2, 23.8],
-                [1247184000000, 11.6, 21.8],
-                [1247270400000, 10.7, 23.7],
-                [1247356800000, 11.0, 23.3],
-                [1247443200000, 11.6, 23.7],
-                [1247529600000, 11.8, 20.7],
-                [1247616000000, 12.6, 22.4],
-                [1247702400000, 13.6, 19.6],
-                [1247788800000, 11.4, 22.6],
-                [1247875200000, 13.2, 25.0],
-                [1247961600000, 14.2, 21.6],
-                [1248048000000, 13.1, 17.1],
-                [1248134400000, 12.2, 15.5],
-                [1248220800000, 12.0, 20.8],
-                [1248307200000, 12.0, 17.1],
-                [1248393600000, 12.7, 18.3],
-                [1248480000000, 12.4, 19.4],
-                [1248566400000, 12.6, 19.9],
-                [1248652800000, 11.9, 20.2],
-                [1248739200000, 11.0, 19.3],
-                [1248825600000, 10.8, 17.8],
-                [1248912000000, 11.8, 18.5],
-                [1248998400000, 10.8, 16.1]
-            ],
-                    averages = [
-                        [1246406400000, 21.5],
-                        [1246492800000, 22.1],
-                        [1246579200000, 23],
-                        [1246665600000, 23.8],
-                        [1246752000000, 21.4],
-                        [1246838400000, 21.3],
-                        [1246924800000, 18.3],
-                        [1247011200000, 15.4],
-                        [1247097600000, 16.4],
-                        [1247184000000, 17.7],
-                        [1247270400000, 17.5],
-                        [1247356800000, 17.6],
-                        [1247443200000, 17.7],
-                        [1247529600000, 16.8],
-                        [1247616000000, 17.7],
-                        [1247702400000, 16.3],
-                        [1247788800000, 17.8],
-                        [1247875200000, 18.1],
-                        [1247961600000, 17.2],
-                        [1248048000000, 14.4],
-                        [1248134400000, 13.7],
-                        [1248220800000, 15.7],
-                        [1248307200000, 14.6],
-                        [1248393600000, 15.3],
-                        [1248480000000, 15.3],
-                        [1248566400000, 15.8],
-                        [1248652800000, 15.2],
-                        [1248739200000, 14.8],
-                        [1248825600000, 14.4],
-                        [1248912000000, 15],
-                        [1248998400000, 13.6]
-                    ];
-
-
-            Highcharts.chart('container', {
-                title: {
-                    text: ' میزان فروش یک ماه اخیر '
-                },
-                xAxis: {
-                    type: 'datetime'
-                },
-                yAxis: {
-                    title: {
-                        text: null
-                    }
-                },
-                tooltip: {
-                    crosshairs: true,
-                    shared: true,
-                    valueSuffix: 'تومان'
-                },
-                legend: {
-                },
-                series: [{
-                        name: 'مبلغ',
-                        data: averages,
-                        zIndex: 1,
-                        marker: {
-                            fillColor: 'white',
-                            lineWidth: 2,
-                            lineColor: Highcharts.getOptions().colors[0]
-                        }
-                    }, {
-                        name: 'Range',
-                        data: ranges,
-                        type: 'arearange',
-                        lineWidth: 0,
-                        linkedTo: ':previous',
-                        color: Highcharts.getOptions().colors[0],
-                        fillOpacity: 0.3,
-                        zIndex: 0
-                    }]
-            });
-        </script>
     </div>
+    <div class="grd24">
+        <?php
+        $chart2 = new TChart(CHART_MODE_PIE, 'testid2');
+        $chart2->SetRTL();
+        $chart2->SetTitle('Sample نمونه 2');
+        $chart2->SetSubtitle('Source: <a href="http://github.com/A1Gard"> mychart subtitle </a>');
+        $chart2->SetTooltip(array('pointFormat' => '{series.name}: <b>{point.percentage:.1f}%</b>'));
+//        $chart1->SetyAxis(array('title' => array('text' => ' نوشته text اریب')));
+//        $chart1->SetxAxis(array('allowDecimals' => false));
+        $chart2->SetOption(array('pie' => array(
+                'allowPointSelect' => true,
+                'cursor' => 'pointer',
+                'dataLabels' => array(
+                    'enabled' => true,
+                    'format' => '<b>{point.name}</b>: {point.percentage:.1f} %',
+                )
+        )));
+        $chart2->AddSerie('Iran', (55));
+        $chart2->AddSerie('USA', (33));
+        $chart2->AddSerie('UK', (12));
+        $chart2->AddSerie('Russia', (45));
 
-
-    <div class="grd12">
-        <br />
-        <br />
-
-        <div id="container2" style="min-width: 200px; height: 400px; max-width: 600px; margin: 0 auto;;direction: ltr;margin-left: .5em;"></div>
-
-
-        <script type="text/javascript">
-
-
-// Radialize the colors
-            Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
-                return {
-                    radialGradient: {
-                        cx: 0.5,
-                        cy: 0.3,
-                        r: 0.7
-                    },
-                    stops: [
-                        [0, color],
-                        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                    ]
-                };
-            });
-
-// Build the chart
-            Highcharts.chart('container2', {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-                    type: 'pie'
-                },
-                title: {
-                    text: 'نمودار فروش',
-                    useHTML: Highcharts.hasBidiBug
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            style: {
-                                color: (Highcharts.theme),
-                                textShadow: false,
-                                textOutline: false,
-                                useHTML: Highcharts.hasBidiBug
-                            },
-                            connectorColor: 'silver'
-                        }
-                    }
-                },
-                series: [{
-                        name: 'نوع جنس',
-                        data: [
-                            {name: ' تسمه های نقاله  ', y: 56.33},
-                            {
-                                name: 'انتقال نیرو',
-                                y: 24.03,
-                                sliced: true,
-                                selected: true
-                            },
-                            {name: 'توری تلفلنی', y: 10.38},
-                            {name: 'چسب', y: 4.77}, {name: 'Other', y: 0.91},
-                            {name: ' سایر ', y: 0.2}
-                        ],
-                    }]
-            });
-        </script>
+        echo $chart2->ChartRender('100%', '400px');
+        echo $chart2->JsRender();
+        ?>
     </div>
     <div class="grd12">
         <br />
