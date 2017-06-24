@@ -66,7 +66,7 @@ class TModel {
      * set default suffix
      * @param int $suffix
      */
-    public function SetRealtionPrefix($suffix) {
+    public function SetRealtionSuffix($suffix) {
         $this->relatiion_suffix = $suffix;
     }
 
