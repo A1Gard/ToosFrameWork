@@ -66,6 +66,14 @@ class TopicModel extends TModel {
         return $result;
     }
 
+    function GetGallery($id) {
+        $idz = implode(',', $this->GetRelation($id, REALTION_GALLERY));
+        if (strlen($idz) == 0) {
+            return array();
+        }
+        return $this->db->Select("SELECT up_id,up_location,up_filename FROM %table% WHERE up_id IN ($idz)", 'upload');
+    }
+
 }
 
 ?>

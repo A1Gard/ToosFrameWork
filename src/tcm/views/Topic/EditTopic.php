@@ -5,9 +5,9 @@ $frm = new TForm(UR_MP . 'Topic/Update/' . $this->record['topic_id'], 'post', ar
 
 
 $topic_status = array(
-    0 => array('0', 'پیش نویس'),
-    1 => array('1', ' انتشار عمومی'),
-    2 => array('2', 'ویژه اعضا'),
+    0 => ( 'Drafts'),
+    1 => ( 'Publics'),
+    2 => ( 'Only member'),
 );
 
 $frm->AddField('text', ('Title'), $this->record['topic_title'], array('name' => 'topic_title'));

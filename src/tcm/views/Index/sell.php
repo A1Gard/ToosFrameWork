@@ -51,7 +51,7 @@ $frm->AddField('endgroup');
         </div>
         <div class="title">
             <i class="dropdown icon"></i>
-            اطلاعات محصول
+            اطلاعات یادداشت
         </div>
         <div class="content">
             <?php

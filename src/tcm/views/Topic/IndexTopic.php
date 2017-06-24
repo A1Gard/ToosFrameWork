@@ -8,9 +8,9 @@ $listview->AddColum(('Title'), 'topic_title', 12);
 $listview->AddColum(('Status'), 'topic_status', 2);
 $listview->AddColum(('VC'), 'topic_counter', 2);
 $pattern = '<a class="button ui delete red" href="' . UR_MP . 'Topic/Delete/%id%"> ' . 
-        ('Delete') . ' </a>
+        _lg('Delete') . ' </a>
             <a class="button ui blue" href="' . UR_MP . 'Topic/Edit/%id%"> ' . 
-        ('Edit') . ' </a>';
+        _lg('Edit') . ' </a>';
 $listview->AddAction($pattern, 5, 'topic_status');
 
 $listview->AddFilter(('Drafted'), 'topic_status', '0');

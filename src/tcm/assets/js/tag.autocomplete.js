@@ -129,6 +129,7 @@
                             content += '<li class="tag-loaded" data-id="' + e[k][settings.resultId] + '">' +
                                     e[k][settings.resultTitle] + "</li>";
                         }
+
                         $("#tagautocomplete-box").html(content).css({
                             'left': $($.hanfle.current).offset().left,
                             'top': $($.hanfle.current).offset().top + 20,

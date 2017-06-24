@@ -215,7 +215,7 @@ define('COMMENT_STATUS_UNAPPROVED', 2);
  * relationship Type
  * system relation between 1 - 9 
  * sub relation must be between 10 - 99
- * other realtion must be fron 100
+ * other realtion must be from 100
  */
 
 define('RELATION_TAG', 1);
@@ -223,6 +223,7 @@ define('RELATION_CATEGORY', 2);
 define('REALTION_ATTACH', 3);
 define('REALTION_LIKE', 4);
 define('REALTION_FRIEND', 5);
+define('REALTION_GALLERY', 6);
 
 
 # ------------------------------------------------------------------------------
@@ -300,3 +301,4 @@ define('DT_SHORT_FULL_DATETIME', DT_SHORT_TIME . ' ' . DT_SHORT_DATE);
 
 
 define("HOT_CORNER", true);
+define("MINIFY_HTML", true);

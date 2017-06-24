@@ -7,70 +7,46 @@
  * @subpackage   index.php
  * @todo : index - index page view
  */
-
-
+//$this->Setting['s'] = unserialize($this->Setting['s']);
 $this->cat = new TCategory();
-$frm = new TForm('', 'post');
-$frm->AddField('select', 'دسته اول', $this->Setting['s']['1'], array('name' => 's[1]'),$this->cat->CategoryByExpect(0));
-$frm->AddField('select', 'دسته دوم', $this->Setting['s']['2'], array('name' => 's[2]'),$this->cat->CategoryByExpect(0));
+global $price_mode;
+$frm = new TForm(UR_MP . 'Index/SaveSetting"', 'post');
+$frm->AddField('text', 'title', $this->Setting['title'], array('name' => 'title'));
+$frm->AddField('startgroup');
+$frm->AddField('number', 'Max try', $this->Setting['login_max_try'], array('name' => 'login_max_try'));
+$frm->AddField('number', 'Ignore Time', $this->Setting['login_ignore_time'], array('name' => 'login_ignore_time'));
+$frm->AddField('endgroup');
+$frm->AddField('textarea', 'Footer', $this->Setting['footer'], array('name' => 'footer'));
+$frm->AddField('textarea', 'User error', $this->Setting['error'], array('name' => 'error', 'class' => 'ckeditor'));
 
+//$frm->AddField('select', 'دسته دوم', $this->Setting['s']['2'], array('name' => 's[2]'), $this->cat->CategoryByExpect(0));
 
+$frm->AddField('submit', '', ('Save'));
 ?>
 
 <div class="row autofit rtl" >
     <div class="grd-primary">
 
-        <form class="real" method="post" action="<?php echo  UR_MP ?>/Index/SaveSetting" style="padding: 2em;">
-            <label>
-                <span>
-                    عنوان سایت
-                </span>
-                <input type="text" value="<?php echo  $this->Setting['title'] ?>" name="title" />
-            </label>
-            <br />
-            <label>
-                <span>
-                    حداکثر تلاش
-                </span>
-                <input type="number" value="<?php echo  $this->Setting['login_max_try'] ?>" name="login_max_try" />
-            </label>
-            <br />
-            <label>
-                <span>
-                    میزان محرومیت
-                </span>
-                <input type="number" value="<?php echo  $this->Setting['login_ignore_time'] ?>" name="login_ignore_time" />
-            </label>
-            <br />
-            <label>
-                <span>
-                    پیوند ها: 
-                </span>
-                <textarea name="links" class="ckeditor" ><?php echo  $this->Setting['links'] ?></textarea>
-            </label>
-            <br />
-            <label>
-                <span>
-                    پانوشت: 
-                </span>
-                <textarea name="footer" class="ckeditor" ><?php echo  $this->Setting['footer'] ?></textarea>
-            </label>
-            <br />
-            <label>
-                <span>
-                    پیام خطای کابری: 
-                </span>
-                <textarea name="error" class="ckeditor" ><?php echo  $this->Setting['error'] ?></textarea>
-            </label>
-            <?php echo  $frm->FormBody(); ?>
-            <br />
-            <input type="submit" value="ذخیره" />
-        </form>
+        <?php echo $frm->Render(); ?>
 
     </div>
     <div class="grd-secondary">
-        <div class="temp" style="padding: 1em;">
-            حداکثر تلاش برای ورود به سیستم می باشد که اگر تعداد آن از حد بگذرد به اندازه تعداد مدت محرومیت دقیقه از تلاش برای ورود کاربر جلوگیری میشود
+        <div class="ui inverted segment">
+            <div class="ui inverted accordion">
+                <div class="active title">
+                    <i class="dropdown icon"></i>
+                    <?php _lp('Guide') ?>
+                </div>
+                <div class="active content" style="min-height:150px">
+                    <p>
+                        حداکثر تلاش برای ورود به سیستم می باشد که اگر تعداد آن از حد بگذرد به اندازه تعداد مدت محرومیت دقیقه از تلاش برای ورود کاربر جلوگیری میشود
+                    </p>
+                    <p>
+                        پیام خطای کاربری پیامی است که اگر دسترسی کاربر مجاز نبود به آن نمایش داده میشود
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>

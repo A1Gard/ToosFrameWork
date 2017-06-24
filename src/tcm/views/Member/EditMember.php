@@ -1,5 +1,9 @@
 <?php
 //var_dump($this->record);
+$mtype['0'] = 'Pendding';
+$mtype['1'] = 'Approeved';
+$mtype['2'] = 'Unapproeved';
+
 $date = TDate::GetInstance();
 $frm = new TForm(UR_MP . 'Member/Update/' . $this->record['member_id'], 'post', array('class' => 'form rtl'));
 $frm->AddField('text', 'Name', $this->record['member_name'], array('name' => 'member_name'));
@@ -12,13 +16,10 @@ $frm->AddField('text', 'Degree', $this->record['member_degree'], array('name' =>
 $frm->AddField('text', 'Field', $this->record['member_field'], array('name' => 'member_field'));
 $frm->AddField('text', 'Phone', $this->record['member_number'], array('name' => 'member_number'));
 $frm->AddField('text', 'City', $this->record['member_city'], array('name' => 'member_city'));
-$frm->AddField('select', 'Type', $this->record['member_type'], array('name' => 'member_type'), array(0 => array('0', 'تایید نشده'),
-    1 => array('1', 'تایید شده'),
-    2 => array('2', 'اخراجی')));
-$frm->AddField('select', 'وضعیت چت', $this->record['member_chat'], array('name' => 'member_chat'), array(0 => array('1', ' فعال'),
-    1 => array('0', 'اخراجی')));
+$frm->AddField('select', 'Type', $this->record['member_type'], array('name' => 'member_type'), $mtype);
 
-$frm->AddField('submit', '', 'ویرایش');
+
+$frm->AddField('submit', '', 'Edit');
 //print_r($this->reports);
 ?>
 <br />
@@ -30,6 +31,10 @@ $frm->AddField('submit', '', 'ویرایش');
 <div class="row">
     <div class="grd-primary">
         <?php $frm->Render(); ?>
+        <br />
+        <br />
+        <br />
+
     </div>
     <div class="grd-secondary">
         <div class="temp"></div>

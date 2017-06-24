@@ -1,9 +1,10 @@
 <?php
 $topic_status = array(
-    0 => array('0', 'پیش نویس'),
-    1 => array('1', ' انتشار عمومی'),
-    2 => array('2', 'ویژه اعضا'),
+    0 => ( 'Drafts'),
+    1 => ( 'Publics'),
+    2 => ( 'Only member'),
 );
+
 
 $frm = new TForm(UR_MP . 'Topic/Insert', 'post', array('class' => 'form rtl'));
 

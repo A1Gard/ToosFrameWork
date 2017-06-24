@@ -20,7 +20,6 @@ class Plugin extends TController {
      * @todo Show index without any thing
      */
     public function Index() {
-        $this->_notifiControl(func_get_args());
         $this->view->plugins = $this->model->PluginFinder();
 
         $this->view->PageRender('Plugin/Index'. __CLASS__, self::$_main_title);
