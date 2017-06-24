@@ -38,5 +38,63 @@
         });
     </script>
 <?php endif; ?>
+
+
+<div class="ui modal fullscreen" id="upload-modal">
+    <div class="header"><?php echo _lp('Upload modal'); ?></div>
+    <div class="content">
+        <div class="ui top attached tabular menu">
+            <a class="active item" data-tab="first" id="uploaded">
+                <?php echo _lp('Upload list'); ?>
+
+            </a>
+            <a class="item" data-tab="second">
+                <?php echo _lp('Upload new file'); ?>
+            </a>
+        </div>
+        <div class="ui bottom attached active tab segment" data-tab="first">
+            <div class="ui six column grid" id="upload-list">
+                <div class="column" v-for="item in items" :data-id="item.up_id">
+                    <div class="ui fluid card ">
+                        <div class="image">
+                            <img :src="'<?php echo UR_BASE ?>'+ item.up_location" />
+                        </div>
+                        <div class="content">
+                            <a class="header">{{ item.up_filename }}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="ui bottom attached tab segment" data-tab="second">
+
+            <form action="" method="POST" id="drg-upload">
+
+                <?php echo _lp('For upload drag & drop here'); ?>
+            </form>
+            <input type="file" id="hide-file-selector" class="hidden"  multiple="" />
+            <div class="ui indicating progress" id="upload-progress">
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="label"> <?php echo _lp('Uploading'); ?></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var upload_list = new Vue({
+            el: '#upload-list',
+            data: {
+                items: [
+                ]
+            }
+        });
+    </script>
+    <div class="actions">
+        <div class="ui cancel button negative"><?php echo _lp('Cancel'); ?></div>
+        <div class="ui button positive" id="upload-ok"><?php echo _lp('Ok'); ?></div>
+    </div>
+</div>
 </body>
 </html>

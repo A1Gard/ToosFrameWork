@@ -8,5 +8,34 @@
  * @subpackage   index.php
  * @issue : index page link to all CM with bootstrap 
  */
-header('location: /tcm ');
 
+
+require_once './tconstant.php';
+require_once './api/initial.php';
+
+define('PAGE_C', 12);
+
+
+$dt = new TDate();
+
+if (isset($_COOKIE['mid'])) {
+    $_SESSION['mid'] = $_COOKIE['mid'];
+}
+
+
+
+
+Redirect('/tcm');
+
+if (isset($templatez) && is_array($templatez)) {
+    $smarty->assign('browser', TVisitor::DetectBrowser());
+    foreach ($templatez as $template) {
+        $smarty->display($template . '.tpl');
+    }
+}
+
+################################################################################
+                          //==========================\\
+                         //->    Just renember Sh    <-\\
+                        //------------------------------\\
+################################################################################

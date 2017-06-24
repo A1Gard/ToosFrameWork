@@ -95,7 +95,7 @@ $reg = TRegistry::GetInstance();
             var UR_BASE = "<?php echo UR_BASE ?>";
         </script>
 
-        
+
         <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/vue.min.js"></script>
     </head>
     <body class="<?php
@@ -103,7 +103,7 @@ $reg = TRegistry::GetInstance();
         echo 'collapse-menu non-menu';
     }
     ?>"> <!--  class="collapse-menu non-menu" -->
-       
+
         <div class="ui inverted menu" id="header">
             <div class="ui container" style="max-width: none;width:100%;">
                 <a href="#" class="item" id="menu-control">  
@@ -116,7 +116,11 @@ $reg = TRegistry::GetInstance();
                     _lp('Toos Framework');
                     ?>
                 </a>
-                <a href="#" class="item"><?php echo _lp('Home'); ?></a>
+                <a href="<?php echo UR_MP ?>" class="item"><?php echo _lp('Desktop'); ?></a>
+                <a href="<?php echo UR_BASE; ?>" target="_blank" class="item">
+                    <i class="icon firefox"></i>
+                    <?php echo _lp('Website'); ?>
+                </a>
                 <!--                <div class="ui simple dropdown item">
                                     Dropdown <i class="dropdown icon"></i>
                                     <div class="menu">

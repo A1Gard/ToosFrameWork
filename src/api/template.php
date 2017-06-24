@@ -1,7 +1,5 @@
 <?php
 
-
-
 $theme_dir = $reg->GetValue(ROOT_SYSTEM, 'theme');
 
 $smarty = new Smarty();
@@ -21,14 +19,15 @@ function minify_html($tpl_output, &$smarty) {
     return $tpl_output;
 }
 
-// register the outputfilter
-$smarty->register_outputfilter('minify_html');
+if (MINIFY_HTML) {
+    // register the outputfilter
+    $smarty->register_outputfilter('minify_html');
+}
 
 
-$templatez = array() ;
+$templatez = array();
 
 
-$smarty->assign('theme_url', UR_BASE . $theme_dir );
-
+$smarty->assign('theme_url', UR_BASE . $theme_dir);
 
 ?>
