@@ -14,16 +14,22 @@ define('CHART_MODE_PIE', 'pie');
 
 class TChart {
 
-    private $mode = '';
-    private $id = '';
-    private $title = '';
-    private $subtitle = '';
-    private $rtl = '';
-    private $tooltip = array();
-    private $series = array();
-    private $option = array();
-    private $xaxis = array();
-    private $yaxis = array();
+    private $mode = ''; // chart mode
+    private $id = ''; // id element
+    private $title = ''; // chart title
+    private $subtitle = ''; // sub title of chart
+    private $rtl = ''; // rtl mode text
+    private $tooltip = array(); // chart tooltip
+    private $series = array(); // series
+    private $option = array(); // options
+    private $xaxis = array(); // x axsis for 2d s
+    private $yaxis = array(); // y axis for 2ds
+
+    /**
+     * 
+     * @param string $mode contacnt of chart mode start with CHART_MODE_
+     * @param string $id chart element id most be uniqe
+     */
 
     public function __construct($mode, $id) {
         // pre hook
@@ -32,12 +38,20 @@ class TChart {
         $this->id = $id;
     }
 
+    /**
+     *  set chaert title 
+     * @param string $title
+     */
     public function SetTitle($title) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $title);
         $this->title = $title;
     }
 
+    /**
+     *  set rtl or ltr mode for chart
+     * @param bool $rtl
+     */
     public function SetRTL($rtl = true) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $rtl);
@@ -48,12 +62,20 @@ class TChart {
         }
     }
 
+    /**
+     * set global chart options [plotOptions]
+     * @param array $option
+     */
     public function SetOption($option) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $option);
         $this->option = $option;
     }
 
+    /**
+     *  tooltip set for chart tooltip view
+     * @param array $tooltip
+     */
     public function SetTooltip($tooltip) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $tooltip);
@@ -63,6 +85,10 @@ class TChart {
         $this->tooltip = $tooltip;
     }
 
+    /**
+     * set X Axsis for 2d charts info
+     * @param array $axis
+     */
     public function SetxAxis($axis) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $axis);
@@ -72,18 +98,32 @@ class TChart {
         $this->xaxis = $axis;
     }
 
+    /**
+     * set Y Axsis for 2d charts info
+     * @param array $axis
+     */
     public function SetyAxis($axis) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $axis);
         $this->yaxis = $axis;
     }
 
+    /**
+     * set chart subtitle
+     * @param string $subtitle
+     */
     public function SetSubtitle($subtitle) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $subtitle);
         $this->subtitle = $subtitle;
     }
 
+    /**
+     * add chart value series 
+     * @param string $name
+     * @param array|int $data
+     * @param array $option
+     */
     public function AddSerie($name, $data, $option = null) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $name, $data, $option);
@@ -103,6 +143,11 @@ class TChart {
         }
     }
 
+    /**
+     * render the js of chart must be run after ChartRender
+     * @param bool $has_block hast <sccript> block or not
+     * @return string
+     */
     public function JsRender($has_block = true) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $has_block);
@@ -125,6 +170,14 @@ class TChart {
         return $js_code;
     }
 
+    /**
+     *  render the chart 
+     * @param string $width example 100% [css mode]
+     * @param string $height example 400px [css mode]
+     * @param string $css alternative css for chart view convas
+     * @return string
+     */
+    
     public function ChartRender($width, $height, $css = '') {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $width, $height, $css);
@@ -134,6 +187,10 @@ class TChart {
         return $result;
     }
 
+    /**
+     * render area chart mode js
+     * @return string
+     */
     private function _areaJS() {
 
         $block = "Highcharts.chart('" . $this->id . "', {" . PHP_EOL;
@@ -157,6 +214,10 @@ class TChart {
         return $block;
     }
 
+    /**
+     * render pie chart mode js
+     * @return string
+     */
     private function _pieJS() {
 
         $block = "Highcharts.chart('" . $this->id . "', {" . PHP_EOL;
