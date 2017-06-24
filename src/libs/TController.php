@@ -113,29 +113,7 @@ class TController extends TBootstarp {
         GoBack('/do');
     }
 
-    /**
-     * add notifcation
-     * @param mixed $array_check array of argumans
-     */
-    public function _notifiControl() {
-        return FALSE;
-        if (isset($array_check[0])) {
-            if ($array_check[0] == 'delete') {
-                TNotification::Add(self::$_main_title . _lg(" has been delete"), 'success');
-            } elseif ($array_check[0] == 'do') {
-                TNotification::Add(_lg("Bulk action do successfully"), 'success');
-            }
-        }
-
-
-        if (isset($array_check[1])) {
-            if ($array_check[1] == 'create') {
-                TNotification::Add(self::$_main_title . _lg(" has been create"), 'success');
-            } elseif ($array_check[1] == 'edit') {
-                TNotification::Add(self::$_main_title . _lg(" has been update"), 'success');
-            }
-        }
-    }
+  
 
     /**
      * extension loader | load in every page for
