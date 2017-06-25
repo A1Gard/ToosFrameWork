@@ -69,17 +69,26 @@ class TRegistry {
     }
 
     /**
+     * warring this function can be sql injection if use direct user input
      * @todo Update registry key's value
      * @param int $root root of key
      * @param string $key key of registry
      * @param string $value new value content
+     * @param int $meta_id meta id
      * @return bool
      */
-    public function SetValue($root, $key, $value) {
+    public function SetValue($root, $key, $value, $meta_id = null) {
         // pre hook
-        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value);
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $value, $meta_id);
+
+        $where = "registry_root = '$root' AND registry_key = '$key' ";
+        $data = array('type' => 's', "registry_value" => $value);
+
+        if ($meta_id !== null) {
+            $where .= " AND registry_meta = '$meta_id' ";
+        }
         // update value by root & key
-        return $this->db->Update('registry', array('type' => 's', "registry_value" => $value), "registry_root = '$root' AND registry_key = '$key' ");
+        return $this->db->Update('registry', $data, $where);
     }
 
     /**
