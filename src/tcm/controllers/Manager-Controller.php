@@ -25,12 +25,12 @@ class Manager extends TController {
         $this->view->cls_list = $this->model->Read('manager_id, manager_username,'
                 . ' manager_displayname, manager_email');
         $this->view->pagination = new TPagination($this->model->GetPageCount());
-        $this->view->PageRender('Manager/Index'. __CLASS__, self::$_main_title);
+        $this->view->PageRender('Manager/Index' . __CLASS__, self::$_main_title);
     }
 
     public function NewManager() {
         $this->view->navigator->AddItem(_lg('Managers'), UR_MP . 'Manager/Index');
-        $this->view->PageRender('Manager/New'. __CLASS__, self::$_main_title . ' جدید ');
+        $this->view->PageRender('Manager/New' . __CLASS__, self::$_main_title . ' جدید ');
     }
 
     public function Insert() {
@@ -45,13 +45,13 @@ class Manager extends TController {
     public function Edit($id) {
         $this->view->navigator->AddItem(_lg('Managers'), UR_MP . 'Manager/Index');
         $this->view->record = $this->model->GetRecord($id);
-        $this->view->PageRender('Manager/Edit'. __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['manager_username']);
+        $this->view->PageRender('Manager/Edit' . __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['manager_username']);
     }
 
     public function Profile() {
         $this->view->navigator->AddItem(_lg('Managers'), UR_MP . 'Manager/Index');
         $this->view->record = $this->model->GetRecord(TMAC::GetSession('MN_ID'));
-        $this->view->PageRender('Manager/Profile'. __CLASS__, self::$_main_title . ' - ' . _lg('Edit Profile'));
+        $this->view->PageRender('Manager/Profile' . __CLASS__, self::$_main_title . ' - ' . _lg('Edit Profile'));
     }
 
     public function Update($id) {
@@ -95,11 +95,16 @@ class Manager extends TController {
                 $_POST['manager_password'] = Password($_POST['manager_password']);
             }
         }
+
+
         unset($_POST['manager_password2']);
         if (isset($_POST['allow'])) {
             $_POST['manager_permission'] = implode(',', $_POST['allow']);
             unset($_POST['allow']);
         }
+        $reg = TRegistry::GetInstance();
+        $reg->SafeAddValue(ROOT_USER, 'record_list_limit', $_POST['record_list_limit'], GetManagerId());
+        unset($_POST['record_list_limit']);
         if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0) {
             $upload = new TUpload();
             $result = $upload->Save('avatar');
