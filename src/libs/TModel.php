@@ -97,7 +97,7 @@ class TModel {
         if ($limit == null) {
             // set defualt limit 
             $registry = TRegistry::GetInstance();
-            $limit = $registry->GetValue(ROOT_SYSTEM, 'record_list_limit');
+            $limit = $registry->GetValueEx(ROOT_USER, 'record_list_limit', GetManagerId());
         }
 
         if ($table_name == null) {
@@ -262,7 +262,7 @@ class TModel {
         if ($limit == null) {
             // set defualt limit 
             $registry = TRegistry::GetInstance();
-            $limit = $registry->GetValue(ROOT_SYSTEM, 'record_list_limit');
+            $limit = $registry->GetValueEx(ROOT_USER, 'record_list_limit', GetManagerId());
         }
 
         $cond = '1';
@@ -442,6 +442,34 @@ class TModel {
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     *  check has duplicate in database for insert or update uniqe index fields
+     *  warring this function can be sql injection if use direct user input
+     * @param string $field
+     * @param string|int|float $value
+     * @param id $id
+     * @return boolean
+     */
+    public function CheckDuplicate($field, $value, $id = null) {
+
+        $where = " $field = :value ";
+        $data_bind = array(':value' => $value);
+
+        if ($id != null) {
+            $where .= " {$this->prefix}id <> :id ";
+            $data_bind[':id'] = $id;
+        }
+
+        $result = $this->db->Select("SELECT COUNT(*) AS 'c' FROM %table% WHERE "
+                . $where, array($this->table_name), $data_bind);
+
+        if ($result[0]['c'] == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 
