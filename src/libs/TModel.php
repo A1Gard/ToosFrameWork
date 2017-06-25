@@ -425,4 +425,23 @@ class TModel {
         return $rel->Remove($src, $dst, $type . $this->relatiion_suffix);
     }
 
+    /**
+     *  can remove an record or this record related by other table
+     * @param string $tbl other table name
+     * @param string $fld other field name
+     * @param int $id current recrod to delete 
+     * @param string $custom_where other canditnal for search
+     * @return boolean
+     */
+    function CanRemove($tbl, $fld, $id, $custom_where = '') {
+        $result = $this->db->Select("SELECT COUNT(*) AS 'c' FROM %table% WHERE "
+                . "$fld = :id $custom_where ", array($tbl), array(':id' => $id)
+        );
+        if ($result[0]['c'] == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
