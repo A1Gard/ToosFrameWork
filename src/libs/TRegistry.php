@@ -170,6 +170,26 @@ class TRegistry {
         return $result_;
     }
 
-    
+    /**
+     * @todo Select value from custom root registry key or cant return system value
+     * @param int $root root of key
+     * @param string $key key name
+     * @param int $meta_id meta id
+     * @return variable
+     */
+    public function GetValueEx($root, $key, $meta_id) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key, $meta_id);
+
+        $result_ = $this->GetValue($root, $key, $meta_id);
+        if ($result_ == null) {
+            $result_ = $this->GetValue(ROOT_SYSTEM, $key);
+        }
+
+        // result hook
+        _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $result_);
+        // retrun result
+        return $result_;
+    }
 
 }
