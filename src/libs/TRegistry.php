@@ -29,9 +29,10 @@ class TRegistry {
      * @todo Select value from registry key
      * @param int $root root of key
      * @param string $key key name
+     * @param int $meta_id meta id
      * @return variable
      */
-    public function GetValue($root, $key) {
+    public function GetValue($root, $key, $meta_id = null) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $root, $key);
 
@@ -42,7 +43,13 @@ class TRegistry {
             $other = ' AND registry_meta = :registry_meta';
             $data[':registry_meta'] = GetManagerId();
         } else {
-            $other = '';
+
+            if ($meta_id !== null) {
+                $other = ' AND registry_meta = :registry_meta';
+                $data[':registry_meta'] = $meta_id;
+            } else {
+                $other = '';
+            }
         }
 
         // sql
@@ -162,5 +169,7 @@ class TRegistry {
         // retrun result
         return $result_;
     }
+
+    
 
 }
