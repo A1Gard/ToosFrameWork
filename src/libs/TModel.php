@@ -427,8 +427,9 @@ class TModel {
 
     /**
      *  can remove an record or this record related by other table
+     *  warring this function can be sql injection if use direct user input
      * @param string $tbl other table name
-     * @param string $fld other field name
+     * @param string $fld other field name related to current record
      * @param int $id current recrod to delete 
      * @param string $custom_where other canditnal for search
      * @return boolean
