@@ -166,7 +166,6 @@ class TChart {
         }
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $js_code);
-        return $result;
         return $js_code;
     }
 
