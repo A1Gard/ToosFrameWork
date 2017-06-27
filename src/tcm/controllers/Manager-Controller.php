@@ -147,4 +147,13 @@ class Manager extends TController {
                 'Manager/Profile', $index);
     }
 
+    public function Delete($id) {
+        if (!$this->model->CanRemove('topic', 'topic_owner_id', $id)) {
+            TNotification::Add('Cant delete this manager has topic', NF_ERROR);
+            GoBack();
+            die;
+        }
+        parent::Delete($id);
+    }
+
 }
