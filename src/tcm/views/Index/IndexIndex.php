@@ -130,7 +130,7 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
         <br />
 
     </div>
-    <div class="grd24">
+    <div class="grd12">
         <?php
         $chart1 = new TChart(CHART_MODE_AREA, 'testid');
         $chart1->SetRTL();
@@ -158,7 +158,7 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
         <br />
 
     </div>
-    <div class="grd24">
+    <div class="grd12">
         <?php
         $chart2 = new TChart(CHART_MODE_PIE, 'testid2');
         $chart2->SetRTL();
