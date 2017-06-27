@@ -39,6 +39,7 @@ class Manager extends TController {
 //        $_POST['manager_register_time'] = time();
 //        $_POST['manager_active_time'] = $date->Parsi2Timestamp($_POST['manager_active_time']);
         $id = $this->model->Create($_POST);
+        TNotification::Add('Manager added successfully.', NF_SUCCESS);
         Redirect(UR_MP . 'Manager/Edit/' . $id);
     }
 
@@ -65,9 +66,10 @@ class Manager extends TController {
             unset($_POST['allow']);
         }
         if ($this->model->Edit($id, $_POST)) {
+            TNotification::Add('Manager edited successfully.', NF_SUCCESS);
             Redirect(UR_MP . 'Manager/Edit/' . $id);
         } else {
-            TNotification::Add(_lg("You can't edit this manager this protected"), NF_WARNING);
+            TNotification::Add(("You can't edit this manager this protected"), NF_WARNING);
             Redirect(UR_MP . 'Manager/Edit/' . $id);
         }
     }
