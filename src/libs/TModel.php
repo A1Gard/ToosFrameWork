@@ -459,7 +459,7 @@ class TModel {
         $data_bind = array(':value' => $value);
 
         if ($id != null) {
-            $where .= " {$this->prefix}id <> :id ";
+            $where .= " AND {$this->prefix}id <> :id ";
             $data_bind[':id'] = $id;
         }
 
