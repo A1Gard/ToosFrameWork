@@ -232,7 +232,7 @@ class TListView {
             foreach ($this->filter['title'] as $key => $value) {
                 $result .= '<a class="button ui" href="' . $prefix . 'filter=' .
                         $this->filter['key'][$key] . ',' .
-                        $this->filter['value'][$key] . '">' .  _lg($value) . '</a>';
+                        $this->filter['value'][$key] . '">' . _lg($value) . '</a>';
             }
 
             $result .= '</div>';
@@ -272,7 +272,7 @@ class TListView {
             }
             $result .= '<a href="' . $prefix . 'order=' . $col_name
                     . (!isset($_GET['desc']) && isset($_GET['order']) && $_GET['order'] == $col_name ? '&desc=1' : '' ) . '"  class="grd' .
-                    $this->column['size'][$key] . ' head" >' .  _lg($value) . '</a>';
+                    $this->column['size'][$key] . ' head" >' . _lg($value) . '</a>';
         }
         // action haader
         $result .= '<div class="grd' . $this->action['size'] . ' head"> &nbsp; </div>';
@@ -300,34 +300,48 @@ class TListView {
 
                     switch (substr($value, 0, 2)) {
                         case '%i':
+                            // ip 
                             $a = substr($value, 2);
                             $result .= long2ip($record[$a]);
+                            break;
+
                         case '%c':
+                            // currency
                             $a = substr($value, 2);
                             $result .= number_format($record[$a]);
-
                             break;
+
                         case '%t':
+                            // time
                             $a = substr($value, 2);
                             $result .= $date->SDate(DT_SHORT_TIME, $record[$a]);
                             break;
+
                         case '%u':
+                            // datetime
                             $a = substr($value, 2);
                             $result .= $date->SDate(DT_SHORT_FULL_DATETIME, $record[$a]);
                             break;
+
                         case '%d':
+                            // date
                             $a = substr($value, 2);
                             $result .= $date->SDate(DT_SHORT_DATE, $record[$a]);
-
                             break;
-                        // show array
+
                         case '%a':
+                            // show array
                             $a = substr($value, 2);
                             $v = explode('|', $a);
                             $arr = $v[0];
                             global $$arr;
                             $array = $$arr;
                             $result .= $array[$record[$v[1]]];
+                            break;
+                        case '%e':
+                            // linked edit column
+                            $a = substr($value, 2);
+                            $result .= '<a class="edit" href="' . UR_MP . $location . '/Edit/' . $record[$this->id] . '">' . $record[$a] . '</a>';
                             break;
                         case '%1':
                         case '%2':
@@ -388,7 +402,7 @@ class TListView {
             foreach ($this->bulk_action['function'] as $key => $value) {
                 $result .= '<option  value="' . $value . ',' .
                         $this->bulk_action['value'][$key] . '">'
-                        ._lg( $this->bulk_action['title'][$key]) . '</option>';
+                        . _lg($this->bulk_action['title'][$key]) . '</option>';
             }
 
             $result .= '</select> &nbsp;';
