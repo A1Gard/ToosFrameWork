@@ -556,14 +556,17 @@ $_LANG = array(
     'Website',
     'وبسایت',
     #
-    't',
-    '',
+    'Current password',
+    'گذرواژه فعلی',
     #
-    't',
-    '',
+    'New password',
+    'گذرواژه جدید',
     #
-    't',
-    '',
+    'Repeat password',
+    'تکرار گذرواژه',
+    #
+    'Page record count',
+    'تعداد نمایش آیتم در فهرست',
     #
     't',
     '',
