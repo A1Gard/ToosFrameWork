@@ -4,7 +4,7 @@ $prefix = GetLinkPrefix('order');
 
 $listview = new TListView('topic_id');
 $listview->SetList($this->cls_list);
-$listview->AddColum(('Title'), 'topic_title', 12);
+$listview->AddColum(('Title'), '%etopic_title', 12);
 $listview->AddColum(('Status'), 'topic_status', 2);
 $listview->AddColum(('VC'), 'topic_counter', 2);
 $pattern = '<a class="button ui delete red" href="' . UR_MP . 'Topic/Delete/%id%"> ' . 
