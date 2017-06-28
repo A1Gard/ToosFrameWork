@@ -881,6 +881,20 @@ ol.drg li.placeholder:before {
     background:  #222 ;
 
 }
+
+.listview li .row a{
+    color:  #eee;
+    font-weight: 700;
+}
+.listview li .row a:hover{
+    color: #91e26a;
+}
+
+.listview li .row a.edit{
+    display: block;
+    padding: 0;
+}
+
 .listview .list-header .head{
     background:  #222 !important;
     padding: 8px;
