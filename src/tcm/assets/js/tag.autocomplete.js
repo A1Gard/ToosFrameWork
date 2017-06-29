@@ -1,6 +1,10 @@
 ;
 (function ($) {
 
+//    $(document).on('mouseneter','#tagautocomplete-box li',function(){
+//        $('#tagautocomplete-box li').removeClass('hover');
+//    });
+
     $.fn.tagautocomplete = function (options) {
 
         $.hanfle = this;
@@ -16,6 +20,27 @@
 
         }, options);
 
+        this.addingtag = function (clicked) {
+            $.post(settings.changeUrl, {tag: $.trim($($.hanfle.tag).text()),
+                id: settings.id, action: 0}, function (e) {
+                if (e.success == true) {
+                    $($.hanfle.current).parent().find('.tag-list').append(
+                            ' <a class="ui label" data-id="' + $($.hanfle.tag).data('id') + '">' +
+                            $($.hanfle.tag).text() +
+                            '<i class="delete icon"></i>' +
+                            '</a>');
+                    if (clicked) {
+                        $($.hanfle.current).val('');
+                    }else{
+                        $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")").addClass('hover');
+                    }
+
+                } else {
+                    // alertify error ;
+                }
+            });
+        };
+
 
         this.each(function () {
             /// add auto complete box for once time
@@ -28,21 +53,7 @@
                 // ta selecting event
                 $(document).on('click', '.tag-loaded', function () {
                     $.hanfle.tag = this;
-
-                    $.post(settings.changeUrl, {tag: $.trim($(this).text()),
-                        id: settings.id, action: 0}, function (e) {
-                        if (e.success == true) {
-                            $($.hanfle.current).parent().find('.tag-list').append(
-                                    ' <a class="ui label" data-id="' + $($.hanfle.tag).data('id') + '">' +
-                                    $($.hanfle.tag).text() +
-                                    '<i class="delete icon"></i>' +
-                                    '</a>');
-                            $($.hanfle.current).val('');
-
-                        } else {
-                            // alertify error ;
-                        }
-                    });
+                    $.hanfle.addingtag(true);
                 });
 
                 // ta remove tag event
@@ -97,23 +108,37 @@
                 $.hanfle.current = this;
 
                 var keycode = event.keyCode || event.which;
-                if (keycode == 13) {
-                    $.post(settings.changeUrl, {tag: $.trim(str),
-                        id: settings.id, action: 0}, function (e) {
-                        if (e.success == true) {
-                            $($.hanfle.current).parent().find('.tag-list').append(
-                                    ' <a class="ui label" data-id="' + $($.hanfle.tag).data('id') + '">' +
-                                    str +
-                                    '<i class="delete icon"></i>' +
-                                    '</a>');
-                            $($.hanfle.current).val('');
+                var has_focus_hover = $("#tagautocomplete-box li.hover").length === 0 ? false : true;
 
-                        } else {
-                            // alertify error ;
-                        }
-                    });
+                // on press enter
+                if (keycode == 13) {
+
+                    if (has_focus_hover) {
+
+                        $.hanfle.tag = $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")");
+                        $.hanfle.addingtag(false);
+
+                    } else {
+
+                        $.post(settings.changeUrl, {tag: $.trim(str),
+                            id: settings.id, action: 0}, function (e) {
+                            if (e.success == true) {
+                                $($.hanfle.current).parent().find('.tag-list').append(
+                                        ' <a class="ui label" data-id="' + $($.hanfle.tag).data('id') + '">' +
+                                        str +
+                                        '<i class="delete icon"></i>' +
+                                        '</a>');
+                                $($.hanfle.current).val('');
+
+                            } else {
+                                // alertify error ;
+                            }
+                        });
+                    }
                     return false;
                 }
+
+
             });
 
             // on search
@@ -121,6 +146,11 @@
 
                 str = $(this).val();
                 $.hanfle.current = this;
+
+                var keycode = event.keyCode || event.which;
+                if (keycode == 38 || keycode == 40) {
+                    return false;
+                }
 
                 if (str.length >= settings.minLength) {
                     $.get(settings.searchUrl, {term: $(this).val()}, function (e) {
@@ -143,6 +173,43 @@
                     }).slideDown(300);
                 } else {
                     $("#tagautocomplete-box").slideUp(220);
+                }
+
+            });
+
+//            $(this).unbind('keydown');
+            // arrow up|  arrow down for choose
+            $(this).bind('keydown', function (e) {
+                var keycode = event.keyCode || event.which;
+                var has_focus_hover = $("#tagautocomplete-box li.hover").length === 0 ? false : true;
+
+                // on press up
+                if (keycode == 38) {
+                    e.preventDefault();
+                    if (has_focus_hover) {
+                        $("#tagautocomplete-box li.hover").removeClass('hover');
+                        $.hanfle.last_index--;
+                        $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")").addClass('hover');
+                    } else {
+                        $.hanfle.last_index = ($("#tagautocomplete-box li").length - 1);
+                        $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")").addClass('hover');
+                    }
+                    return false;
+                }
+                // on press down
+                if (keycode == 40) {
+
+                    e.preventDefault();
+                    if (has_focus_hover) {
+                        $("#tagautocomplete-box li.hover").removeClass('hover');
+                        $.hanfle.last_index++;
+                        $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")").addClass('hover');
+                    } else {
+                        $.hanfle.last_index = 0;
+                        $("#tagautocomplete-box li:eq(" + $.hanfle.last_index + ")").addClass('hover');
+                    }
+
+                    return false;
                 }
             });
 
