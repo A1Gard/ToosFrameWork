@@ -568,6 +568,9 @@ $_LANG = array(
     'Page record count',
     'تعداد نمایش آیتم در فهرست',
     #
+    'Topic has been updated',
+    'یادداشت ویرایش شد',
+    #
     't',
     '',
     #
