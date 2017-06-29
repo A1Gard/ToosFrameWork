@@ -156,4 +156,21 @@ class Manager extends TController {
         parent::Delete($id);
     }
 
+    public function BulkAction() {
+        if (stripos($_POST['action'], 'delete') !== false) {
+            $idz = array();
+            foreach ($_POST['id'] as $key => $id) {
+                if (!$this->model->CanRemove('topic', 'topic_owner_id', $id)) {
+                    $idz[] = $id;
+                }
+            }
+            if (count($idz) !== 0) {
+                TNotification::Add(_lg('Cant delete these ' . implode(',', $idz) . '  manager has topic, Please uncheck these'), NF_ERROR);
+                GoBack();
+                die;
+            }
+        }
+        parent::BulkAction();
+    }
+
 }
