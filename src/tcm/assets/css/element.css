@@ -955,8 +955,9 @@ ol.drg li.placeholder:before {
     font-weight: 600;
 }
 
-#tagautocomplete-box li:hover{
+#tagautocomplete-box li:hover,#tagautocomplete-box li.hover{
     background: #eee ;
+    cursor: pointer;
 }
 
 .tag-list{
@@ -965,6 +966,7 @@ ol.drg li.placeholder:before {
 .tag-list .label{
     margin-top: 6px;
 }
+
 
 .select2-container .select2-selection--single{
     padding: .44em 1em;
