@@ -194,7 +194,7 @@ class TMAC {
             self::SetSession('request', true);
             self::SetSession('post', $_POST);
         }
-        self::SetSession('redirect', UR_BASE . trim($_SERVER['REQUEST_URI'], '/'));
+        self::SetSession('redirect', '/'. trim($_SERVER['REQUEST_URI'], '/'));
         // result hook
         _hk('R' . ':' . __CLASS__ . ':' . __FUNCTION__, __CLASS__);
     }
