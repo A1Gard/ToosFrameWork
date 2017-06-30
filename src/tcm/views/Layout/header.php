@@ -93,6 +93,7 @@ $reg = TRegistry::GetInstance();
         <script type="text/javascript">
             var UR_MP = "<?php echo UR_MP ?>";
             var UR_BASE = "<?php echo UR_BASE ?>";
+            var ajax_diable = false;
         </script>
 
 
@@ -103,6 +104,12 @@ $reg = TRegistry::GetInstance();
         echo 'collapse-menu non-menu';
     }
     ?>"> <!--  class="collapse-menu non-menu" -->
+
+        <div id="preloader">
+            <div class="ui segment inverted">
+                <div class="ui active loader blue"></div>
+            </div>
+        </div>
 
         <div class="ui inverted menu" id="header">
             <div class="ui container" style="max-width: none;width:100%;">
