@@ -30,6 +30,17 @@ body{
     font-family: 'Vazir';
 }
 
+#preloader{
+    position: fixed;
+    left:49%;
+    top: 49vh;
+    display: none;
+    z-index: 9999;
+}
+#preloader .segment{
+    padding: 25px;
+}
+
 #header{
     z-index: 999 !important;
     position: relative;
