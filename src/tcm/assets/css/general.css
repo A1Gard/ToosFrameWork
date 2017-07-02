@@ -46,6 +46,7 @@ body{
     position: relative;
     background: transparent ;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 #header #menu-control{
