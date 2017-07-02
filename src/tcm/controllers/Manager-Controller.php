@@ -94,8 +94,8 @@ class Manager extends TController {
                 TNotification::Add(_lg('Two password not equal', NF_ERROR));
                 GoBack();
                 die;
-                $_POST['manager_password'] = Password($_POST['manager_password']);
             }
+            $_POST['manager_password'] = Password($_POST['manager_password']);
         }
 
 
