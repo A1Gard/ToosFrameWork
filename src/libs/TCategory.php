@@ -227,7 +227,7 @@ class TCategory extends TModel {
                 $result .= ' checked="" ';
             }
             // set value
-            $result .= ' value="' . $record[$this->table_name . '_id'] . '"/>' .
+            $result .= ' value="' . $record[$this->table_name . '_id'] . '"/> &nbsp;' .
                     $record[$this->table_name . '_title'] . '</label>';
             // re run the function
             $result .= $this->GetCheckedCategories($sources, $record[$this->table_name . '_id']);
