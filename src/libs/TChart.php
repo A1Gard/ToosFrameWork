@@ -211,6 +211,37 @@ class TChart {
         return $result;
     }
 
+    /**
+     * render area chart mode js
+     * @return string
+     */
+    private function _columnJS() {
+
+        $block = "Highcharts.chart('" . $this->id . "', {" . PHP_EOL;
+        $block .= "chart: {type: 'column'}," . PHP_EOL;
+        $block .= "title: {text: '{$this->title}'{$this->rtl}}," . PHP_EOL;
+        
+        if ($this->subtitle != '') {
+            $block .= "subtitle: {text: '{$this->subtitle}'{$this->rtl}}," . PHP_EOL;
+        }
+        $block .= "credits: { enabled: false }," . PHP_EOL;
+        if ($this->xaxis != array()) {
+            $block .= "xAxis: " . json_encode($this->xaxis) . ',' . PHP_EOL;
+        }
+//        if ($this->yaxis != array()) {
+//            $block .= "yAxis: " . json_encode($this->yaxis) . ',' . PHP_EOL;
+//        }
+        $block .= "tooltip:" . json_encode($this->tooltip) . "," . PHP_EOL;
+        $block .= "series: " . json_encode($this->series) . ',' . PHP_EOL;
+        if ($this->rtl != '') {
+            $block .= "legend:{ symbolPadding: -20 ,rtl:true,reversed:true,layout:'vertical'} " . ',' . PHP_EOL;
+        }
+        if ($this->option != array()) {
+            $block .= "plotOptions: " . json_encode($this->option) . ',' . PHP_EOL;
+        }
+        $block .= "});" . PHP_EOL;
+        return $block;
+    }
     
     
     /**
