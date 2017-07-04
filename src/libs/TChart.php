@@ -11,12 +11,14 @@
  */
 define('CHART_MODE_AREA', 'area');
 define('CHART_MODE_PIE', 'pie');
+define('CHART_MODE_COLUMN', 'column');
 
 class TChart {
 
     private $mode = ''; // chart mode
     private $id = ''; // id element
     private $title = ''; // chart title
+
     private $subtitle = ''; // sub title of chart
     private $rtl = ''; // rtl mode text
     private $tooltip = array(); // chart tooltip
@@ -24,6 +26,7 @@ class TChart {
     private $option = array(); // options
     private $xaxis = array(); // x axsis for 2d s
     private $yaxis = array(); // y axis for 2ds
+
 
     /**
      * 
@@ -39,7 +42,7 @@ class TChart {
     }
 
     /**
-     *  set chaert title 
+     *  set chart title 
      * @param string $title
      */
     public function SetTitle($title) {
@@ -48,7 +51,6 @@ class TChart {
         $this->title = $title;
     }
 
-    /**
      *  set rtl or ltr mode for chart
      * @param bool $rtl
      */
@@ -82,6 +84,9 @@ class TChart {
         if ($this->rtl !== '') {
             $tooltip['useHTML'] = 'Highcharts.hasBidiBug';
         }
+        if (count($this->font) > 0) {
+            $tooltip['style'] = array('fontFamily'=>$this->font['name'],'fontSize' => $this->font['size']) ;
+        }
         $this->tooltip = $tooltip;
     }
 
@@ -105,6 +110,9 @@ class TChart {
     public function SetyAxis($axis) {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $axis);
+        if ($this->rtl !== '') {
+            $axis['opposite'] = true;
+        }
         $this->yaxis = $axis;
     }
 
@@ -176,7 +184,6 @@ class TChart {
      * @param string $css alternative css for chart view convas
      * @return string
      */
-    
     public function ChartRender($width, $height, $css = '') {
         // pre hook
         _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $width, $height, $css);
@@ -186,6 +193,8 @@ class TChart {
         return $result;
     }
 
+    
+    
     /**
      * render area chart mode js
      * @return string
@@ -206,6 +215,9 @@ class TChart {
         }
         $block .= "tooltip:" . json_encode($this->tooltip) . "," . PHP_EOL;
         $block .= "series: " . json_encode($this->series) . ',' . PHP_EOL;
+        if ($this->rtl != '') {
+            $block .= "legend:{ symbolPadding: -20 ,rtl:true,reversed:true} " . ',' . PHP_EOL;
+        }
         if ($this->option != array()) {
             $block .= "plotOptions: " . json_encode($this->option) . ',' . PHP_EOL;
         }
@@ -218,20 +230,28 @@ class TChart {
      * @return string
      */
     private function _pieJS() {
-
         $block = "Highcharts.chart('" . $this->id . "', {" . PHP_EOL;
-        $block .= "chart: {type: 'pie'}," . PHP_EOL;
+        $block .= "chart: {type: 'pie',}," . PHP_EOL;
         $block .= "title: {text: '{$this->title}'{$this->rtl}}," . PHP_EOL;
         if ($this->subtitle != '') {
             $block .= "subtitle: {text: '{$this->subtitle}'{$this->rtl}}," . PHP_EOL;
         }
 
         $block .= "tooltip:" . json_encode($this->tooltip) . "," . PHP_EOL;
-        $block .= "series: [{name: 'Brands',colorByPoint: true,data:" . json_encode($this->series) . '}],' . PHP_EOL;
+        $block .= "series: [{name: '{$this->name}',colorByPoint: true,data:" . json_encode($this->series) . '}],' . PHP_EOL;
+        if ($this->rtl != '') {
+            $this->option['pie']['dataLabels']['enabled'] = true;
+            $this->option['pie']['dataLabels']['y'] = -1;
+//            $this->option['pie']['dataLabels']['format'] ='\u202B' + '{point.name}';
+            $this->option['pie']['dataLabels']['style']['textShadow'] = false;
+            $this->option['pie']['dataLabels']['style']['fontSize'] = '12pt';
+            $this->option['pie']['dataLabels']['useHTML'] = true;
+        }
         if ($this->option != array()) {
             $block .= "plotOptions: " . json_encode($this->option) . ',' . PHP_EOL;
         }
-        $block .= "});" . PHP_EOL;
+//        $block .= "pie:{dataLabels:{enabled: true, format: '\u202B' + '{point.name}',style:{fontSize: '25px',textShadow:false} ,useHTML:true }}" . PHP_EOL;
+        $block .= " });" . PHP_EOL;
         return $block;
     }
 
