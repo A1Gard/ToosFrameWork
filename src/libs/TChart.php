@@ -18,7 +18,7 @@ class TChart {
     private $mode = ''; // chart mode
     private $id = ''; // id element
     private $title = ''; // chart title
-
+    private $name = ''; // chart name
     private $subtitle = ''; // sub title of chart
     private $rtl = ''; // rtl mode text
     private $tooltip = array(); // chart tooltip
@@ -26,7 +26,7 @@ class TChart {
     private $option = array(); // options
     private $xaxis = array(); // x axsis for 2d s
     private $yaxis = array(); // y axis for 2ds
-
+    private $font = array(); // defualt font
 
     /**
      * 
@@ -51,6 +51,18 @@ class TChart {
         $this->title = $title;
     }
 
+    /**
+     *  set chart name 
+     * @param string $name
+     */
+    public function SetName($name) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $name);
+        $this->name = $name;
+    }
+
+    
+    /**
      *  set rtl or ltr mode for chart
      * @param bool $rtl
      */
