@@ -61,7 +61,13 @@ class TChart {
         $this->name = $name;
     }
 
-    
+    public function SetFont($name, $size) {
+        // pre hook
+        _hk('P' . ':' . __CLASS__ . ':' . __FUNCTION__, $this, $name, $size);
+        $this->font['name'] = $name;
+        $this->font['size'] = $size;
+    }
+
     /**
      *  set rtl or ltr mode for chart
      * @param bool $rtl
