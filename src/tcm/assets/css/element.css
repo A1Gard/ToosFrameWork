@@ -1071,3 +1071,10 @@ ol.drg li.placeholder:before {
 #upload-modal .card.selceted a{
     color: #fff ;
 }
+
+
+/* select2 patches */
+.select2 .selection{
+    display: none;
+}
+
