@@ -27,6 +27,8 @@ class TListView {
     private $search = null;
     // private relation
     private $relation = array();
+    // new button 
+    private $new_button = false;
 
     /**
      * 
@@ -85,6 +87,10 @@ class TListView {
         $this->action['pattern'] = $pattern;
         $this->action['size'] = $size;
         $this->action['class'] = $class;
+    }
+
+    public function SetNewBbutton($bool = true) {
+        $this->new_button = $bool;
     }
 
     /**
@@ -160,7 +166,7 @@ class TListView {
         $result = null;
 
         // show saerch or item 
-        if ($this->search != null || $this->relation != array()) {
+        if ($this->search != null || $this->relation != array() || $this->new_button) {
 
             $result .= '<div class="listview-search" ><div class="row">';
             // show search here
@@ -182,13 +188,15 @@ class TListView {
                     $result .= '&nbsp;<button class="ui button" onclick="$(this).parent().find(\'.search,.search-fields\').remove();"><span class="fa fa-close"></span></button>';
                 }
                 $result .= '</form></div>';
+            }else{
+                $result .= '<div class="grd12"></div>';
             }
 
             // relation info
             if ($this->relation != array()) {
 
                 $md = new TModel($this->relation['table']);
-                $result .= '<form class="grd12 "  action="' . UR_MP . $location . '">' .
+                $result .= '<form class="grd12 listview-second-area"  action="' . UR_MP . $location . '">' .
                         ($this->relation['ico'] != '' ? '<span class="fa fa-' .
                                 $this->relation['ico'] . '"></span>&nbsp;&nbsp;' : '')
                         . '<select name="rel" class="rel ui dropdown">';
@@ -211,7 +219,12 @@ class TListView {
                 if (isset($_GET['rel']) && $_GET['rel'] != '') {
                     $result .= '&nbsp;<button class="ui button" onclick="$(this).parent().find(\'.rel,.rel-type\').remove();"><span class="fa fa-close"></span></button>';
                 }
+                if ($this->new_button) {
+                    $result .= '<a href="' . UR_MP . CURRENT_EXTENSION . '/New' . CURRENT_EXTENSION . '" class="ui button green"> ' . _lg('Add new Record') . '</a>';
+                }
                 $result .= '</form>';
+            } else if ($this->new_button) {
+                $result .= '<div class="grd12 listview-second-area"><a href="' . UR_MP . CURRENT_EXTENSION . '/New' . CURRENT_EXTENSION . '" class="ui button green"> ' . _lg('Add new Record') . '</a></div>';
             }
 
             $result .= '</div></div>';

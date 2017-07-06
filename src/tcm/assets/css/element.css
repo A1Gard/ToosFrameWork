@@ -931,6 +931,13 @@ ol.drg li.placeholder:before {
     border-radius: 0 0 5px 5px;
 }
 
+.listview-second-area{
+    overflow: hidden;
+}
+.listview-second-area .green{
+    float: right;
+}
+
 .tagautocomplete{
 
 }

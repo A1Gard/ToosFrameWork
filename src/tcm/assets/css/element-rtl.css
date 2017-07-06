@@ -108,3 +108,10 @@ label > .cke_reset {
     background-repeat: no-repeat !important;
     background-position: 7px 5px !important;
 }
+
+
+/*listview*/
+
+.listview-second-area .green{
+    float: left;
+}
