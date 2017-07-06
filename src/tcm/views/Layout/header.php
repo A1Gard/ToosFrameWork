@@ -90,6 +90,10 @@ $reg = TRegistry::GetInstance();
                 });
             </script>
         <?php endif; ?>
+
+
+        <?php echo TAseetLoader::AssetsLoad(); ?>
+            
         <script type="text/javascript">
             var UR_MP = "<?php echo UR_MP ?>";
             var UR_BASE = "<?php echo UR_BASE ?>";

@@ -234,6 +234,10 @@ define("HOUR", 60 * MINUTE);
 define("DAY", 24 * HOUR);
 define("MONTH", 30 * DAY);
 
+# ------------------------------------------------------------------------------
+
+define('ASSET_TYPE_JS', '<script type="text/javascript" src="%s"></script>');
+define('ASSET_TYPE_CSS', '<link type="text/css" rel="stylesheet" href="%s" />');
 
 # ------------------------------------------------------------------------------
 // not all browser famus browsers

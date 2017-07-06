@@ -8,33 +8,30 @@
  * @subpackage   View  Super class
  * @todo : View
  */
-
 class TView {
 
     function __construct() {
         // make Navigator in view
         $this->navigator = new TNavigator(_lg('Toos'));
+        $this->assest_loader =  TAseetLoader::GetInstance();
     }
-    
-    
-    public function PageRender($file,$title='',$is_include = true) {
-        
+
+    public function PageRender($file, $title = '', $is_include = true) {
+
         $this->title = $title;
-        
+
         if ($is_include) {
-            
+
             // final page title add to Navigator
             $this->navigator->AddItem($title);
-            
+
             require 'views/Layout/header.php';
             require 'views/' . $file . '.php';
             require 'views/Layout/footer.php';
-            
         } else {
-            
+
             require 'views/' . $file . '.php';
         }
-        
     }
 
 }
