@@ -79,7 +79,7 @@ $(function () {
             $(el).slideDown(defaults.speed, function () {
                 if (elementInViewport($(el)[0]) === false) {
                     // show overflow menu
-                    $("#nav-accordion").css("margin-top", ('-' + ($(el).position().top - 110 ) + 'px'));
+                    $("#nav-accordion").css("margin-top", ('-' + ($(el).position().top - 180 ) + 'px'));
                 }
             });
             // remove slide active from all
