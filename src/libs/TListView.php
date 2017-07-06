@@ -89,7 +89,7 @@ class TListView {
         $this->action['class'] = $class;
     }
 
-    public function SetNewBbutton($bool = true) {
+    public function SetNewButton($bool = true) {
         $this->new_button = $bool;
     }
 

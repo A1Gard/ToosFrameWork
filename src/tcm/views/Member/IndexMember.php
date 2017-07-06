@@ -29,7 +29,7 @@ $listview->AddBulkAcction(('Banning'), 'Edit', 'member_type,2');
 $listview->AddBulkAcction(('Delete'), 'Delete', null);
 
 $listview->AddSearch('member_name,member_email,member_number');
-$listview->SetNewBbutton();
+$listview->SetNewButton();
 
 $listview->Render('Member');
 

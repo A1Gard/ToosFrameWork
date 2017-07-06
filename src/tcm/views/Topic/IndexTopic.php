@@ -25,7 +25,7 @@ $listview->AddBulkAcction(('Delete'), 'Delete', null);
 
 $listview->AddSearch('topic_title,topic_text');
 $listview->AddRelation('category_id','category_title','category','2','book');
-$listview->SetNewBbutton();
+$listview->SetNewButton();
 
 $listview->Render('Topic');
 

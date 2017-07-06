@@ -20,7 +20,7 @@ $listview->AddFilter(('Unprotected'), 'manager_protected', '0');
 //$listview->AddBulkAcction(' ویژه اعضا کردن جمعی', 'Edit', 'topic_status,2');
 $listview->AddBulkAcction(('Delete'), 'Delete', null);
 
-$listview->SetNewBbutton();
+$listview->SetNewButton();
 $listview->Render('Manager');
 
 $this->pagination->Render();
