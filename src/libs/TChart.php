@@ -243,7 +243,6 @@ class TChart {
         return $block;
     }
     
-    
     /**
      * render area chart mode js
      * @return string
@@ -265,7 +264,7 @@ class TChart {
         $block .= "tooltip:" . json_encode($this->tooltip) . "," . PHP_EOL;
         $block .= "series: " . json_encode($this->series) . ',' . PHP_EOL;
         if ($this->rtl != '') {
-            $block .= "legend:{ symbolPadding: -20 ,rtl:true,reversed:true} " . ',' . PHP_EOL;
+            $block .= "legend:{ symbolPadding: -20 ,rtl:true,reversed:true,layout:'vertical'} " . ',' . PHP_EOL;
         }
         if ($this->option != array()) {
             $block .= "plotOptions: " . json_encode($this->option) . ',' . PHP_EOL;
