@@ -23,7 +23,7 @@ class Category extends TController {
 
         $this->view->cls_list = $this->model->CategoryList();
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Index'. __CLASS__, self::$_main_title);
+        $this->view->PageRender('Category/Index' . __CLASS__, self::$_main_title);
     }
 
     public function Insert() {
@@ -35,12 +35,13 @@ class Category extends TController {
         $this->view->navigator->AddItem(_lg('Categories'), UR_MP . 'Category/Index');
         $this->view->record = $this->model->GetRecord($id);
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Edit'. __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['category_title']);
+        $this->view->PageRender('Category/Edit' . __CLASS__, self::$_main_title . ' ویرایش  - ' . $this->view->record['category_title']);
     }
 
     public function Node() {
         $this->view->cat = $this->model->GetInstance();
-        $this->view->PageRender('Category/Node'. __CLASS__, self::$_main_title . " Pro");
+        TAseetLoader::AddAsset(ASSET_TYPE_JS, UR_MP . 'assets/libs/jquery-sortable/jquery-sortable-min.js');
+        $this->view->PageRender('Category/Node' . __CLASS__, self::$_main_title . " Pro");
     }
 
     public function Update($id) {
@@ -79,18 +80,18 @@ class Category extends TController {
         } else {
             $result['value'] = _lg('List order saved failed');
         }
-
+        SendJsonHeader();
         echo json_encode($result);
     }
 
     public static function Loader() {
         global $side_menu;
-        
+
         $index = $side_menu->AddItem(_lg('Categories'), '#', 0, 'fa-book');
         $side_menu->AddItem(_lg('Categories classic list'), UR_MP .
                 'Category', $index);
-//        $side_menu->AddItem(_lg('Categories node list'), UR_MP .
-//                'Category/Pro', $index);
+        $side_menu->AddItem(_lg('Categories node list'), UR_MP .
+                'Category/Node', $index);
     }
 
     /**

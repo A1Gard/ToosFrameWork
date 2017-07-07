@@ -49,7 +49,7 @@ class Topic extends TController {
         }
         $_POST['topic_time'] = time();
         $_POST['topic_term'] = UrlTerm($_POST['topic_title']);
-        if ($this->model->CheckDuplicate('topic_term', $_POST['topic_term'],$id)) {
+        if ($this->model->CheckDuplicate('topic_term', $_POST['topic_term'], $id)) {
             TNotification::Add(_lg('The Term has duplicate please change title.'), NF_WARNING);
             GoBackJs();
             die;

@@ -1,13 +1,13 @@
 
-<div class="gray-ol rtl"> 
+<div class="gray-ol"> 
 
-    <form action="<?php echo UR_MP ?>Category/Sync" method="post" id="sort_form">
+    <form action="<?php echo UR_MP . CURRENT_EXTENSION ?>/Sync" method="post" id="sort_form">
 
         <?php echo $this->cat->CategoryOL(); ?>
 
         <input type="hidden" id="sorted" name="sorted" />
         <br />
-        <button type="submit" > <?php _lp('Save'); ?> </button>
+        <button type="submit" class="ui button blue" > <?php _lp('Save'); ?> </button>
     </form>
 
 </div>
@@ -25,7 +25,7 @@
 
             var data = group.sortable("serialize").get();
 
-            console.log(group);
+//            console.log(group);
             var jsonString = JSON.stringify(data, null, ' ');
 
             $("#sorted").val(jsonString);
@@ -35,7 +35,15 @@
             $.ajax({
                 type: 'POST',
                 data: $(this).serialize(),
-                url: $(this).attr('action')
+                url: $(this).attr('action'),
+                success: function (e) {
+                    if (e.success) {
+                        alertify.success(e.value);
+
+                    } else {
+                        alertify.error(e.value);
+                    }
+                }
             });
 
             return window.ret;

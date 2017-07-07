@@ -166,6 +166,31 @@ body{
     margin-right: 0;
 }
 
+.gray-ol ol{
+    list-style: none;
+    padding: 0;
+}
+.gray-ol ol li{
+    padding:6px;
+    padding-right: 2em;
+    padding-left: 2em;
+    margin-bottom: 8px;
+    background: rgba(0,0,0,0.07) ;
+    border-bottom: 1px solid rgba(0,0,0,0.40) ;
+    border-top: 1px solid rgba(0,0,0,0.40) ;
+    padding-bottom: 0;
+}
+.gray-ol ol li ol{
+    background: rgba(0, 183, 186, 0.1);
+    border:1px dashed rgba(0,0,0,0.60) ;
+    padding: 5px;
+    margin-top: .5em;
+}
+.gray-ol ol li ol li{
+    padding-right: 0;
+    padding-left: 0;
+}
+
 
 /*
 --------------------------------------------------------------------------------
