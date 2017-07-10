@@ -571,6 +571,9 @@ $_LANG = array(
     'Topic has been updated',
     'یادداشت ویرایش شد',
     #
+    'Add new Record',
+    'افزودن مورد جدید',
+    #
     't',
     '',
     #
