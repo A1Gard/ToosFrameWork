@@ -31,46 +31,46 @@ $reg = TRegistry::GetInstance();
 
 
 
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/topstrap.css" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/clock-pick/jquery-clockpicker.min.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/topstrap.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/clock-pick/jquery-clockpicker.min.css" />
 
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.min.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/alertifyjs/css/alertify.min.css" />
 
         <?php if ($is_rtl): ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/alertifyjs/css/alertify.rtl.min.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/mpdatepicker/jquery.mpdatepicker.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/alertifyjs/css/alertify.rtl.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/mpdatepicker/jquery.mpdatepicker.css" />
         <?php else: ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/pickadate/themes/default.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/pickadate/themes/default.date.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui/semantic.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/pickadate/themes/default.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/pickadate/themes/default.date.css" />
         <?php endif; ?>
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/select2/css/select2.min" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/font-awesome.min.css" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/select2/css/select2.min" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/font-awesome.min.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/element.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/general.css" />
 
 
 
 
         <?php if ($is_rtl): ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element-rtl.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/element-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/general-rtl.css" />
 
         <?php endif; ?>
 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-migrate-1.4.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/jquery-migrate-1.4.1.min.js"></script>
 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/nicescroll/jquery.nicescroll.min.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/ckeditor/ckeditor.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/alertifyjs/alertify.min.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/select2/js/select2.min.js"></script> 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/clock-pick/jquery-clockpicker.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui/semantic.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/nicescroll/jquery.nicescroll.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/ckeditor/ckeditor.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/alertifyjs/alertify.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/select2/js/select2.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/clock-pick/jquery-clockpicker.min.js"></script> 
 
         <?php if ($is_rtl): ?>
-            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/mpdatepicker/jquery.mpdatepicker.js"></script>
+            <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/mpdatepicker/jquery.mpdatepicker.js"></script>
             <script type="text/javascript">
                 $(function () {
                     $(".Pdatepicker").mpdatepicker({});
@@ -78,8 +78,8 @@ $reg = TRegistry::GetInstance();
                 });
             </script>
         <?php else: ?>
-            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/pickadate/picker.js"></script> 
-            <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/pickadate/picker.date.js"></script> 
+            <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/pickadate/picker.js"></script> 
+            <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/pickadate/picker.date.js"></script> 
             <script type="text/javascript">
                 $(function () {
                     $('.datepicker').pickadate({
@@ -101,7 +101,7 @@ $reg = TRegistry::GetInstance();
         </script>
 
 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/vue.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/vue.min.js"></script>
     </head>
     <body class="<?php
     if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0) {
@@ -121,7 +121,7 @@ $reg = TRegistry::GetInstance();
                     <i class="icon bars"></i>
                 </a>
                 <a href="#" class="header item">
-                    <img class="logo" src="<?php echo UR_MP ?>assets/img/wlogo.png" alt="logo">
+                    <img class="logo" src="<?php echo UR_MP_ASSETS; ?>/img/wlogo.png" alt="logo">
                     &nbsp;
                     <?php
                     _lp('Toos Framework');

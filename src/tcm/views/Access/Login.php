@@ -10,7 +10,7 @@
 $is_rtl = (_lg('dir') == 'rtl');
 TMAC::Init();
 $dt = TDate::GetInstance();
-require_once '../libs/TNotification.php';
+require_once PA_LIBS .'TNotification.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,24 +25,24 @@ require_once '../libs/TNotification.php';
 
 
         <?php if ($is_rtl): ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui-rtl/semantic.rtl.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui-rtl/semantic.rtl.min.css" />
         <?php else: ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui/semantic.min.css" />
         <?php endif; ?>
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element.css" />
-        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/element.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/general.css" />
 
 
         <?php if ($is_rtl): ?>
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/element-rtl.css" />
-            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP ?>assets/css/general-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/element-rtl.css" />
+            <link type="text/css" rel="stylesheet" href="<?php echo UR_MP_ASSETS; ?>/css/general-rtl.css" />
 
         <?php endif; ?>
 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/jquery-migrate-1.4.1.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/jquery-migrate-1.4.1.min.js"></script>
 
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/semantic-ui/semantic.min.js"></script> 
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/semantic-ui/semantic.min.js"></script> 
 
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -184,7 +184,7 @@ require_once '../libs/TNotification.php';
                   $('.ui.checkbox').checkbox();
             });
         </script>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/general.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/general.js"></script>
     </body>
 
 </html>

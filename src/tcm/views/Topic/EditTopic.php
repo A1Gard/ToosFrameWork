@@ -96,7 +96,7 @@ $frm->AddField('submit', '', ('Edit'));
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="<?php echo UR_MP ?>assets/js/tag.autocomplete.js"></script>
+        <script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/tag.autocomplete.js"></script>
         <script type="text/javascript">
             $(function () {
                 $(".tags").tagautocomplete({

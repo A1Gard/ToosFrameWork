@@ -2,8 +2,8 @@
 /**
  * @package Toos FrameWork
  * @author A1Gard <a1gard@4xmen.ir>
- * @date : 22-March-2013 (2-1-1392) 
- * @time : 16:32 
+ * @date : 22-March-2013 (2-1-1392)
+ * @time : 16:32
  * @subpackage   index.php
  * @todo : index - index page view
  */
@@ -69,55 +69,56 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
 ?>
 <?php
 //$frm->Render();
+
 ?>
-<script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/hichart/highcharts.js"></script>
-<script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/hichart/highcharts-more.js"></script>
-<script type="text/javascript" src="<?php echo UR_MP ?>assets/libs/hichart/themes/dark-unica.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/highcharts.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/highcharts-more.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/themes/dark-unica.js"></script>
 <div class="row qshortcuts autofit" >
     <div class="grd6">
-        <a href="#" class="ui button grey">  
+        <a href="#" class="ui button grey">
             <i class="fa fa-cubes"></i>
             انبار
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button blue">  
+        <a href="#" class="ui button blue">
             <i class="fa fa-calendar"></i>
             روزشمار
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button orange">  
+        <a href="#" class="ui button orange">
             <i class="fa fa-child"></i>
             افراد
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button">  
+        <a href="#" class="ui button">
             <i class="fa fa-user"></i>
             مشتریان
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button green">  
+        <a href="#" class="ui button green">
             <i class="fa fa-bar-chart"></i>
             گزارش ها
         </a>
     </div>
     <div class="grd6">
-        <a href="<?php echo UR_MP ?>Index/Sell" class="ui button pink">  
+        <a href="<?php echo UR_MP ?>Index/Sell" class="ui button pink">
             <i class="fa fa-shopping-cart"></i>
             فروش
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button red">  
+        <a href="#" class="ui button red">
             <i class="fa fa-envelope-o"></i>
             مکاتبه
         </a>
     </div>
     <div class="grd6">
-        <a href="#" class="ui button purple">  
+        <a href="#" class="ui button purple">
             <i class="fa fa-vcard-o"></i>
             دفترچه تلفن
         </a>
@@ -128,7 +129,6 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
     <div class="grd24">
         &nbsp;
         <br />
-
     </div>
     <div class="grd12">
         <?php
