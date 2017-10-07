@@ -9,6 +9,8 @@
  * @issue : index page link to all CM with bootstrap 
  */
 require_once './tconstant.php';
+
+
 // if system not install redirect to install page
 if (file_exists('tconfig.php')) {
     // include config file to do 
@@ -34,9 +36,7 @@ if (isset($_GET['req'])) {
     $_REQUEST['req'] = $_GET['req'];
 }
 
-var_dump($req);
-die;
-
+die('under constract');
 
 require_once './api/initial.php';
 

@@ -1,8 +1,8 @@
 <?php
 //var_dump($this->record);
 $mtype['0'] = 'Pendding';
-$mtype['1'] = 'Approeved';
-$mtype['2'] = 'Unapproeved';
+$mtype['1'] = 'Approved';
+$mtype['2'] = 'UnApproved';
 
 $date = TDate::GetInstance();
 $frm = new TForm(UR_MP . 'Member/Update/' . $this->record['member_id'], 'post', array('class' => 'form rtl'));

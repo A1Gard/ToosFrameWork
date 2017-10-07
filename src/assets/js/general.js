@@ -123,9 +123,9 @@ $(function () {
 //#############################################################################
 
     $(document).ajaxStart(function () {
-            if (ajax_diable == true) {
-                return ;
-            }
+        if (ajax_diable == true) {
+            return;
+        }
         $("#preloader").fadeIn(200);
     });
 
@@ -161,7 +161,12 @@ $(function () {
 
 
 //sematic ui
-    $('.choosen').select2();
+    try {
+        $('.choosen').select2();
+    } catch (e) {
+
+    }
+
 
     $('.ui.dropdown').dropdown({
         on: 'hover'
@@ -196,11 +201,17 @@ $(function () {
 
     $('.ui.radio.checkbox').checkbox();
 
-    $('.clockpicker,.timepicker').clockpicker({
-        placement: 'bottom',
-        align: 'left',
-        donetext: 'Done'
-    });
+    try {
+        $('.clockpicker,.timepicker').clockpicker({
+            placement: 'bottom',
+            align: 'left',
+            donetext: 'Done'
+        });
+
+    } catch (e) {
+
+    }
+
 
 
     // checkbox group select begin
@@ -435,22 +446,27 @@ $(function () {
 //#############################################################################
 //                               nice scroll
 //#############################################################################
+    try {
 
-    nice = $("body").niceScroll({
-        scrollspeed: 60,
-        mousescrollstep: 80,
-        horizrailenabled: false
-    });
-    nice2 = $("#nscroll").niceScroll({
-        scrollspeed: 60,
-        mousescrollstep: 80,
-        horizrailenabled: false
-    });
-    nice3 = $(".nice_scroll").niceScroll({
-        scrollspeed: 60,
-        mousescrollstep: 80,
-        horizrailenabled: false
-    });
+        nice = $("body").niceScroll({
+            scrollspeed: 60,
+            mousescrollstep: 80,
+            horizrailenabled: false
+        });
+        nice2 = $("#nscroll").niceScroll({
+            scrollspeed: 60,
+            mousescrollstep: 80,
+            horizrailenabled: false
+        });
+        nice3 = $(".nice_scroll").niceScroll({
+            scrollspeed: 60,
+            mousescrollstep: 80,
+            horizrailenabled: false
+        });
+    } catch (e) {
+
+    }
+
 
 });
 
