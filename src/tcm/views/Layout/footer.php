@@ -18,8 +18,8 @@
     _lp('Toos Framework');
     ?>  <?php echo $dt->Sdate('Y', strtotime('2013/03/22')); ?> &copy; <?php echo $dt->Sdate('Y') ?>
 </div>
-<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/side-menu.js"></script>
-<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/js/general.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>js/side-menu.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>js/general.js"></script>
 <?php if ($reg->GetValue(ROOT_USER, 'sidebarstatus') == 0 && HOT_CORNER): ?>
     <script type="text/javascript">
         var lastevent = new Date();

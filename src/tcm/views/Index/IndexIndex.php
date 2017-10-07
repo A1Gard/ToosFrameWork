@@ -71,9 +71,9 @@ $frm->AddField('submit', '', 'ارسال', array('class' => 'green'));
 //$frm->Render();
 
 ?>
-<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/highcharts.js"></script>
-<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/highcharts-more.js"></script>
-<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>/libs/hichart/themes/dark-unica.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>libs/hichart/highcharts.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>libs/hichart/highcharts-more.js"></script>
+<script type="text/javascript" src="<?php echo UR_MP_ASSETS; ?>libs/hichart/themes/dark-unica.js"></script>
 <div class="row qshortcuts autofit" >
     <div class="grd6">
         <a href="#" class="ui button grey">

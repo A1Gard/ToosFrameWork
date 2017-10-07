@@ -31,9 +31,9 @@ class TUpload {
         if ($upload_mode == UPLOAD_BY_DATE) {
             $date = TDate::GetInstance();
 
-            $this->upload_dir = '../upload/file/' . $date->SDate('Y/m');
+            $this->upload_dir = 'upload/file/' . $date->SDate('Y/m');
         } else {
-            $this->upload_dir = '../upload/file/type';
+            $this->upload_dir = 'upload/file/type';
         }
 
         if (!file_exists($this->upload_dir)) {
@@ -44,7 +44,7 @@ class TUpload {
         $this->upload_mode = $upload_mode;
 
         if ($other != '') {
-            $this->upload_dir = '../upload/' . $other;
+            $this->upload_dir = 'upload/' . $other;
         }
 
         // result hook

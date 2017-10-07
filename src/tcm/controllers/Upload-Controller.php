@@ -44,7 +44,7 @@ class Upload extends TController {
             $data['up_size'] = $_FILES[$file]['size'][$key];
             $data['up_time'] = time();
             $data['up_ext'] = $result['value']['ext'];
-            $data['up_location'] = substr($result['value']['path'], 3);
+            $data['up_location'] = $result['value']['path'];
             $output[$key] = $data;
             $output[$key]['up_id'] = $this->model->create($data);
         }
