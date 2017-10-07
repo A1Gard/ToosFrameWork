@@ -13,9 +13,9 @@ $listview->AddColum(('Name'), 'member_name', 4);
 $listview->AddColum(('Time'), '%umember_register_time', 4);
 $listview->AddColum(('Email'), 'member_email', 4);
 $listview->AddColum(('Status'), '%am_type|member_type', 2);
-$pattern = '<a class="ui button delete" href="' . UR_MP . 'Member/Delete/%id%"> ' .
+$pattern = '<a class="ui button red delete" href="' . UR_MP . 'Member/Delete/%id%"> ' .
         _lg('Delete') . ' </a>
-            <a class="ui button" href="' . UR_MP . 'Member/Edit/%id%"> ' .
+            <a class="ui button blue" href="' . UR_MP . 'Member/Edit/%id%"> ' .
         _lg('Edit') . ' </a>';
 $listview->AddAction($pattern, 4, 'member_type');
 
