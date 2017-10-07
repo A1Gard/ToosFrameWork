@@ -201,7 +201,7 @@ class TForm {
      */
     private function _addTextarea($label, $attr, $value) {
 
-        $textarea = '<textarea placeholder="' . $label . '" ' .
+        $textarea = '<textarea placeholder="' . _lg($label) . '" ' .
                 $this->_makeAttr($attr) . ' >' . $value . '</textarea>';
 
         // add label 
@@ -278,7 +278,7 @@ class TForm {
                     '" ' . $this->_makeAttr($attr) . " " .
                             ($value == 'null' ? '' : 'value="' . _lg($value) . '"') . '/>';
         } else { // normal input genarate
-            $input = '<input placeholder="' . $label . '" type="' . $type .
+            $input = '<input placeholder="' . _lg($label) . '" type="' . $type .
                     '" ' . $this->_makeAttr($attr) . " " .
                     ($value == 'null' ? '' : 'value="' . $value . '"') . '/>';
         }
