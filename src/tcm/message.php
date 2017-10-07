@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php
-        define('__MP__', true);
+//        define('__MP__', true);
         include_once '../tconfig.php';
         include_once '../tconstant.php';
         include_once '../libs/TLanguage.php';

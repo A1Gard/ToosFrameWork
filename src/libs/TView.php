@@ -25,12 +25,12 @@ class TView {
             // final page title add to Navigator
             $this->navigator->AddItem($title);
 
-            require 'views/Layout/header.php';
-            require 'views/' . $file . '.php';
-            require 'views/Layout/footer.php';
+            require PA_MP_REAL . '/views/Layout/header.php';
+            require PA_MP_REAL . '/views/' . $file . '.php';
+            require PA_MP_REAL . '/views/Layout/footer.php';
         } else {
 
-            require 'views/' . $file . '.php';
+            require PA_MP_REAL . '/views/' . $file . '.php';
         }
     }
 

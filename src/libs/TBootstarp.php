@@ -23,7 +23,6 @@ class TBootstarp {
 
         // get - load request to class
         $this->_GetRequest();
-
         // load controller
         $this->_Loader(count($this->_url));
 
@@ -65,6 +64,7 @@ class TBootstarp {
 
         // loading extension loaders
         $this->_ExtensionLoader();
+        
 
         // check is requset any thing
         if (($length == 1) && ($this->_url[0] == 'index.php')) {
@@ -84,13 +84,13 @@ class TBootstarp {
      */
     private function _LoadDefaultController() {
 
-        if (__MP__) {
-            // default file ;
-            $filename = 'controllers/Index-Controller.php';
-        } else {
+//        if (__MP__) {
+//            // default file ;
+//            $filename = 'controllers/Index-Controller.php';
+//        } else {
 
-            $filename = 'controllers/Index-Controller.php';
-        }
+            $filename = PA_MP_REAL . '/controllers/Index-Controller.php';
+//        }
 
         // check file  inc file
         if (file_exists($filename)) {
@@ -118,15 +118,14 @@ class TBootstarp {
      * @return bool
      */
     private function _LoadExistsController($length) {
-
         // default file ;
-        $filename = 'controllers/' . $this->_url[0] . '-Controller.php';
+        $filename = PA_MP_REAL . '/controllers/' . $this->_url[0] . '-Controller.php';
 
         // check file  inc file
         if (file_exists($filename))
             require_once $filename;
         else {
-            $filename = 'controllers/Index-Controller.php';
+            $filename = PA_MP_REAL . '/controllers/Index-Controller.php';
             require_once  $filename;
             $_404 = new Index();
             $_404->e404();
@@ -148,7 +147,7 @@ class TBootstarp {
         $this->controller->LoadModel($this->_url[0]);
         
         if (!method_exists($this->controller, $this->_url[1])) {
-            $filename = 'controllers/Index-Controller.php';
+            $filename = PA_MP_REAL . '/controllers/Index-Controller.php';
             require_once  $filename;
             $_404 = new Index();
             $_404->e404();
@@ -175,7 +174,7 @@ class TBootstarp {
     
     private function _ExtensionLoader() {
         global $loaded_extensions;
-        $path = './controllers/';
+        $path = PA_MP_REAL . '/controllers/';
         foreach (glob($path.'*.php') as $controller) {
             include_once $controller;
             $cls = substr($controller, strlen($path), -15);

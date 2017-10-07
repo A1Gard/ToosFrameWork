@@ -21,13 +21,12 @@ function responsiveControll() {
 }
 
 
+
 function nocomma(num) {
     a = num.replace(/\,/g, ''); // 1125, but a string, so convert it to number
     return a.toString();
 
 }
-
-
 
 function commafy(num) {
 
@@ -129,7 +128,7 @@ $(function () {
             }
         $("#preloader").fadeIn(200);
     });
-    
+
     $(document).ajaxComplete(function (event, XMLHttpRequest, ajaxOptions) {
         if (XMLHttpRequest.status >= 400) {
             return false;
@@ -137,7 +136,7 @@ $(function () {
         $("#preloader").delay(100).fadeOut(220);
 
     });
-    
+
 
 //#############################################################################
 //                               class control
@@ -408,7 +407,7 @@ $(function () {
     });
 
 //#############################################################################
-//                               window scrolling 
+//                               window scrolling
 //#############################################################################
 
     $(window).bind('scroll', function (e) {
@@ -424,7 +423,7 @@ $(function () {
     });
 
 //#############################################################################
-//                               window resize 
+//                               window resize
 //#############################################################################
 
     $(window).bind('resize', function (e) {
@@ -500,4 +499,3 @@ $(window).load(function () {
         $(this).closest('.field').addClass('required');
     });
 });
-

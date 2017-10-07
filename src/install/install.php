@@ -9,7 +9,7 @@ if (!isset($_SESSION['install'])) {
 
 
 global $database_handle;
-define('__MP__', FALSE);
+//define('__MP__', FALSE);
 // include all required libs
 include_once '../tconstant.php';
 include_once '../tconfig.php';

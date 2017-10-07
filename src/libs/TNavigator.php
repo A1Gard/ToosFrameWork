@@ -54,10 +54,10 @@ class TNavigator {
      * construct class and get root title and add to item
      * @param String $root
      */
-    function __construct($root) {
+    function __construct($root,$is_manager = true) {
 
         // add root in first
-        $this->_addItem($root, __MP__ ? UR_MP : UR_BASE );
+        $this->_addItem($root, $is_manager ? UR_MP : UR_BASE );
     }
 
     /**

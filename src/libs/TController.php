@@ -47,7 +47,7 @@ class TController extends TBootstarp {
      */
     public function LoadModel($name) {
 
-        $filename = 'models/' . $name . '-Model.php';
+        $filename =  PA_MP_REAL . '/models/' . $name . '-Model.php';
         // check exists
         if (file_exists($filename)) {
             // require and make class

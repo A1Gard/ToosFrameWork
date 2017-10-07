@@ -17,11 +17,11 @@
 function __autoload($class) {
 
 
-    if (__MP__) {
-        $file = PA_LIBS_MP . $class . '.php';
-    } else {
+//    if (__MP__) {
+//        $file = PA_LIBS . $class . '.php';
+//    } else {
         $file = 'libs/' . $class . '.php';
-    }
+//    }
 
     if (file_exists($file)) {
         require $file;

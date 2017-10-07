@@ -23,7 +23,7 @@ class TLanguage {
         // check loaded or not
         if (count(self::$_lang) == 0) {
             // load
-            require '../langs/' . LANG . '_CM.php';
+            require 'langs/' . LANG . '_CM.php';
             self::$_lang = $_LANG;
             self::$_lang_search = array_map('strtolower', $_LANG);
         } else {

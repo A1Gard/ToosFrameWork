@@ -8,12 +8,40 @@
  * @subpackage   index.php
  * @issue : index page link to all CM with bootstrap 
  */
-
-
 require_once './tconstant.php';
+// if system not install redirect to install page
+if (file_exists('tconfig.php')) {
+    // include config file to do 
+    require 'tconfig.php';
+} else {
+    header('location:install');
+    exit;
+}
+
+// check is have request
+if (isset($_GET['req'])) {
+    // initial request
+    $_GET['req'] = trim($_GET['req'], '/');
+    $req = explode('/', $_GET['req']);
+    // check is manaher path ?
+    if ($req[0] == PA_MP) {
+        $_GET['req'] = str_replace(PA_MP, '', $_GET['req']);
+        $_GET['req'] = trim($_GET['req'], '/');
+        $_REQUEST['req'] = $_GET['req'];
+        require_once PA_MP_REAL . '/index.php';
+        exit();
+    }
+    $_REQUEST['req'] = $_GET['req'];
+}
+
+var_dump($req);
+die;
+
+
 require_once './api/initial.php';
 
 define('PAGE_C', 12);
+
 
 
 $dt = new TDate();
@@ -21,9 +49,6 @@ $dt = new TDate();
 if (isset($_COOKIE['mid'])) {
     $_SESSION['mid'] = $_COOKIE['mid'];
 }
-
-
-
 
 Redirect('/tcm');
 

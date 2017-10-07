@@ -9,35 +9,23 @@
  * @issue : index page link to all CM with bootstrap 
  */
 // is user in manger page?
-define('__MP__', TRUE);
+//define('__MP__', TRUE);
 
 // define db & golobal
 $database_handle = null;
 $hook_store = null;
 
 
-// if system not install redirect to install page
-if (file_exists('../tconfig.php')) {
-    // include config file to do 
-    require '../tconfig.php';
-}else{
-    header('location:../install');
-    exit;
-}
-// include constant file 
-require '../tconstant.php';
-
-require PA_LIBS_MP . 'TFunction.php';
+require PA_LIBS . 'TFunction.php';
 
 //  include magic functions
-require '../libs/TMagicFunctions.php';
+require PA_LIBS . 'TMagicFunctions.php';
 
 
 // check install directory
-if (file_exists('../install') && _DEVELOPER_ == false) {
+if (file_exists('install') && _DEVELOPER_ == false) {
     Redirect(UR_MP . 'message.php?title='.urlencode('Security Mode').'&text='.urlencode('Login disabled, Please remove install directory before login'));
 }
-
 
 // load plug-in's files
 $plugin_loader = new TPluginLoader();
