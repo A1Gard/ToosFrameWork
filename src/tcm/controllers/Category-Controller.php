@@ -40,7 +40,7 @@ class Category extends TController {
 
     public function Node() {
         $this->view->cat = $this->model->GetInstance();
-        TAseetLoader::AddAsset(ASSET_TYPE_JS, UR_MP . 'assets/libs/jquery-sortable/jquery-sortable-min.js');
+        TAseetLoader::AddAsset(ASSET_TYPE_JS, UR_BASE . 'assets/libs/jquery-sortable/jquery-sortable-min.js');
         $this->view->PageRender('Category/Node' . __CLASS__, self::$_main_title . " Pro");
     }
 
