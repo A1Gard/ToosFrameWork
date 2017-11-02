@@ -231,11 +231,11 @@ class TModel {
         }
     }
 
-    /**
-     * @todo edit an reocrd with id 
+     /**
+     * @todo edit an record with id 
      * @param int $id
      * @param array $data
-     * @param string $prefix prifex id
+     * @param string $prefix prefix id
      * @category general
      */
     public function Edit($id, $data, $prefix = null) {
@@ -244,6 +244,16 @@ class TModel {
         }
         $id = intval($id);
         return $this->db->Update($this->table_name, $data, "{$prefix}id = '{$id}'");
+    }
+
+    /**
+     * @todo edit an record with id and other condition 
+     * @param string $where
+     * @param array $data
+     * @category general
+     */
+    public function EditEx($where, $data) {
+        return $this->db->Update($this->table_name, $data, $where);
     }
 
     /**
