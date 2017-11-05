@@ -56,7 +56,7 @@ class Upload extends TController {
     public function RealTimeUpload($file_name = 'upload') {
         $upload = new TUpload();
         $result = $upload->Save($file_name);
-        $url = str_replace('../upload/', UR_UPLOAD, $result['value']['path']);
+        $url = UR_BASE . str_replace('../upload/', UR_UPLOAD, $result['value']['path']);
         echo "<html><body><script type=\"text/javascript\">window.parent."
         . "CKEDITOR.tools.callFunction('1','" . $url . "');</script></body></html>;";
     }
