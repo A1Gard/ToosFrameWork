@@ -23,12 +23,12 @@ class PluginModel extends TModel {
         $file_names = scandir(PLUGIN_DIR);
         $result = array();
         foreach ($file_names as $plugin) {
-            if ($plugin != '.' && $plugin != '..') {
+            if ($plugin != '.' && $plugin != '..' && is_dir($plugin)) {
                 $result[] = $this->_GetPluginInfo($plugin);
             }
         }
 
-        return $this->Read('*',9999);
+        return $this->Read('*', 9999);
     }
 
     private function _GetPluginInfo($plugin_name) {
@@ -43,19 +43,18 @@ class PluginModel extends TModel {
                 'plugin_author' => $plugin_name::$author,
                 'plugin_discrption' => $plugin_name::$discrption,
             );
-            
+
             $data['plugin_id'] = $this->Create($data);
-            
-            $data['plugin_active'] = 0 ;
-            
+
+            $data['plugin_active'] = 0;
         }
         return 0;
     }
-    
-    public function GetPlugInName($id,$inc=false) {
+
+    public function GetPlugInName($id, $inc = false) {
         $info = $this->GetRecord($id);
         if ($inc) {
-            include_once PLUGIN_DIR . $info['plugin_name'] . '/' 
+            include_once PLUGIN_DIR . $info['plugin_name'] . '/'
                     . $info['plugin_name'] . '.php';
         }
         return $info['plugin_name'];
