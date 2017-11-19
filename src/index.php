@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package Toos FrameWork
  * @author A1Gard <a1gard@4xmen.ir>
@@ -21,6 +22,8 @@ if (file_exists('tconfig.php')) {
 
 // check is have request
 if (isset($_GET['req'])) {
+    $offset = strpos(UR_BASE, '/', 9);
+    $_GET['req'] = str_replace(substr(UR_BASE, $offset+1), '', $_GET['req']);
     // initial request
     $_GET['req'] = trim($_GET['req'], '/');
     $req = explode('/', $_GET['req']);
