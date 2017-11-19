@@ -13,7 +13,7 @@ class TView {
     function __construct() {
         // make Navigator in view
         $this->navigator = new TNavigator(_lg('Toos'));
-        $this->assest_loader =  TAseetLoader::GetInstance();
+        $this->assest_loader = TAseetLoader::GetInstance();
     }
 
     public function PageRender($file, $title = '', $is_include = true) {
@@ -26,11 +26,18 @@ class TView {
             $this->navigator->AddItem($title);
 
             require PA_MP_REAL . '/views/Layout/header.php';
-            require PA_MP_REAL . '/views/' . $file . '.php';
+            if (file_exists(PA_MP_REAL . '/views/' . $file . '.php')) {
+                require PA_MP_REAL . '/views/' . $file . '.php';
+            } else {
+                _lp("Can't find this page for render");
+            }
             require PA_MP_REAL . '/views/Layout/footer.php';
         } else {
-
-            require PA_MP_REAL . '/views/' . $file . '.php';
+            if (file_exists(PA_MP_REAL . '/views/' . $file . '.php')) {
+                require PA_MP_REAL . '/views/' . $file . '.php';
+            } else {
+                _lp("Can't find this page for render");
+            }
         }
     }
 
