@@ -159,7 +159,7 @@ $reg = TRegistry::GetInstance();
                         <div class="item">
                             <img class="ui avatar image" src="<?php
                             $avatar = $s->GetProfileField('manager_avatar');
-                            echo ($avatar == '' ? UR_BASE . 'assets/img/avatar.jpg' : $avatar);
+                            echo ($avatar == '' ? UR_BASE . 'assets/img/avatar.jpg' : UR_BASE . $avatar);
                             ?>"> 
                             <div class="content">
                                 <a class="header white-text" href="<?php echo UR_MP ?>Manager/Profile">
