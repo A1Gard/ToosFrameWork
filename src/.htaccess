@@ -7,7 +7,7 @@
 
 # redirect Virtual address to index php.
 RewriteEngine on
-RewriteBase /
+#RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
